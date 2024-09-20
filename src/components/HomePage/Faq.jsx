@@ -2,9 +2,9 @@ import React from "react";
 
 const Faq = () => {
   return (
-    <section className="dark:bg-gray-100 dark:text-gray-800">
-      <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
-        <h2 className="text-2xl font-semibold sm:text-4xl">
+    <section className="dark:bg-gray-100 dark:text-gray-800 bg-black">
+      <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8 bg-black text-white">
+        <h2 className="text-2xl font-semibold sm:text-4xl mb-8">
           Frequently Asked Questions
         </h2>
 
