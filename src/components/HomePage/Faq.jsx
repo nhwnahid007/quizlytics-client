@@ -61,9 +61,8 @@ const Faq = () => {
               What can I expect in the CSS quiz?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
-              Each correct answer earns you points, and your final score is the
-              sum of all correct responses. There are no penalties for incorrect
-              answers.{" "}
+              The CSS quiz includes questions on selectors, layout models
+              (Flexbox, Grid), animations, responsiveness, and more.{" "}
             </p>
           </details>
         </div>
