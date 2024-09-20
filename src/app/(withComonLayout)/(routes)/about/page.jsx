@@ -2,6 +2,7 @@ import React from 'react';
 
 const page = () => {
     return (
+        // about us
         <div
             className='bg-cover bg-right bg-no-repeat text-white text-center'
             style={{ backgroundImage: `url('https://i.ibb.co/X4fQqDn/question-mark-1872634-1920.jpg')` }}
