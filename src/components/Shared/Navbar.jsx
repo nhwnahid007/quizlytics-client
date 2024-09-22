@@ -1,7 +1,24 @@
+'use client';
+
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const Navbar = () => {
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        dropdownRef.current.open = false;
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="bg-black text-white py-2">
       <div className="navbar max-w-6xl mx-auto">
@@ -59,7 +76,7 @@ const Navbar = () => {
               <Link href={'/'}>Home</Link>
             </li>
             <li>
-              <details>
+              <details ref={dropdownRef}>
                 <summary>Category</summary>
                 <ul className="p-2 text-black">
                   <li>
