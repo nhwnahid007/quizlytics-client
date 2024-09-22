@@ -13,7 +13,6 @@ export default function Home() {
       <Feedback />
       <Partnership />
       <Faq />
-      <Footer />
     </div>
   );
 }
