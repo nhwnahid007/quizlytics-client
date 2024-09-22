@@ -2,6 +2,7 @@ import React from 'react';
 
 const page = () => {
     return (
+        // about us
         <div
             className='bg-cover bg-right bg-no-repeat text-white text-center'
             style={{ backgroundImage: `url('https://i.ibb.co/X4fQqDn/question-mark-1872634-1920.jpg')` }}
@@ -16,7 +17,7 @@ const page = () => {
 
                     {/* Introduction Paragraph */}
                     <p className='text-white text-lg md:text-xl leading-relaxed mb-8'>
-                        Welcome to <span className='font-bold'>Quizlytics</span>—your ultimate platform for mastering multiple-choice questions (MCQs) tailored specifically for students and job seekers in Bangladesh. Whether you're preparing for board exams or aiming for success in job recruitment tests, Quizlytics is here to provide an engaging and effective learning environment.
+                        Welcome to <span className='font-bold'>Quizlytics</span>—your ultimate platform for mastering multiple-choice questions (MCQs) tailored specifically for students and job seekers in Bangladesh. Whether you&apos;re preparing for board exams or aiming for success in job recruitment tests, Quizlytics is here to provide an engaging and effective learning environment.
                         Our platform is designed with the needs of students and competitive exam aspirants in mind, offering a wide range of quiz categories, timed tests, and features that help you track your progress and enhance your knowledge.
                     </p>
 
@@ -41,7 +42,7 @@ const page = () => {
                         <li className='p-4 rounded-md' style={{ backgroundColor: '#9CA3AF' }}>
                             <strong>🔄 Limited Quiz Attempts:</strong> 
                             <p className='mt-2'>
-                                To ensure fairness and maintain the challenge, each quiz has a limit on the number of attempts. This feature encourages users to thoroughly prepare before attempting quizzes and adds an element of strategy to the learning process. Once you've reached the maximum allowed attempts, the quiz becomes inaccessible, helping ensure a balanced competition.
+                                To ensure fairness and maintain the challenge, each quiz has a limit on the number of attempts. This feature encourages users to thoroughly prepare before attempting quizzes and adds an element of strategy to the learning process. Once you&apos;ve reached the maximum allowed attempts, the quiz becomes inaccessible, helping ensure a balanced competition.
                             </p>
                         </li>
 
@@ -55,7 +56,7 @@ const page = () => {
                         <li className='p-4 rounded-md' style={{ backgroundColor: '#111827' }}>
                             <strong>📈 Instant Results & Detailed Feedback:</strong> 
                             <p className='mt-2'>
-                                Get instant results as soon as you complete a quiz. You'll receive a detailed summary of your performance, including a breakdown of the correct answers and a comparison with your own selections. This immediate feedback helps you identify mistakes and understand the correct solutions.
+                                Get instant results as soon as you complete a quiz. You&apos;ll receive a detailed summary of your performance, including a breakdown of the correct answers and a comparison with your own selections. This immediate feedback helps you identify mistakes and understand the correct solutions.
                             </p>
                         </li>
 
@@ -83,7 +84,7 @@ const page = () => {
                         <li className='p-4 rounded-md' style={{ backgroundColor: '#1E293B' }}>
                             <strong>📝 Articles & Resources:</strong> 
                             <p className='mt-2'>
-                                Our platform also features a section dedicated to articles and resources on a wide range of topics. From study tips and exam strategies to insights into quiz trends, our regularly updated content keeps users informed and engaged. Whether you're preparing for a specific exam or looking to expand your general knowledge, this section offers valuable guidance and support.
+                                Our platform also features a section dedicated to articles and resources on a wide range of topics. From study tips and exam strategies to insights into quiz trends, our regularly updated content keeps users informed and engaged. Whether you&apos;re preparing for a specific exam or looking to expand your general knowledge, this section offers valuable guidance and support.
                             </p>
                         </li>
 
