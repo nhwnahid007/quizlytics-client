@@ -15,7 +15,7 @@ const ServicesPage = () => {
             <div className="w-full max-w-xs text-center">
               <Image
                 className="object-cover object-center w-full h-48 mx-auto rounded-lg"
-                src="/nahid.jpg" // Replace with a correct URL or path
+                src="https://i.ibb.co.com/4jQKHbZ/myself-1.png" // Replace with a correct URL or path
                 alt="Nahid"
                 width={300}
                 height={300}
