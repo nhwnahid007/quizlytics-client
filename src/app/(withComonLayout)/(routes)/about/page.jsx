@@ -16,7 +16,7 @@ const page = () => {
                     </h1>
 
                     {/* Introduction Paragraph */}
-                    <p className='text-white text-lg md:text-xl leading-relaxed mb-8'>
+                    <p className='text-white text-lg md:text-xl md:mx-auto mx-4 leading-relaxed mb-8'>
                         Welcome to <span className='font-bold'>Quizlytics</span>—your ultimate platform for mastering multiple-choice questions (MCQs) tailored specifically for students and job seekers in Bangladesh. Whether you&apos;re preparing for board exams or aiming for success in job recruitment tests, Quizlytics is here to provide an engaging and effective learning environment.
                         Our platform is designed with the needs of students and competitive exam aspirants in mind, offering a wide range of quiz categories, timed tests, and features that help you track your progress and enhance your knowledge.
                     </p>
@@ -24,7 +24,7 @@ const page = () => {
                     {/* Detailed Features Section */}
                     <h2 className='text-2xl font-semibold  text-[#ff0000] mb-4'>Key Features</h2>
 
-                    <ul className=' text-white my-7 grid grid-cols-2 gap-5 mx-auto text-lg md:text-xl'>
+                    <ul className=' text-white my-7 grid md:grid-cols-2 grid-cols-1 gap-5 md:mx-auto mx-4 text-lg md:text-xl'>
                         <li className='p-4 rounded-md' style={{ backgroundColor: '#1E293B' }}>
                             <strong>🗂️ Quiz Categories:</strong> 
                             <p className='mt-2'>

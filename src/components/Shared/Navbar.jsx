@@ -94,6 +94,9 @@ const Navbar = () => {
             <li>
               <Link href={'/contact'}>Contact</Link>
             </li>
+            <li>
+              <Link href={'/team'}>Our Team</Link>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
