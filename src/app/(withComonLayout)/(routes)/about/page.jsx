@@ -24,7 +24,7 @@ const page = () => {
                     {/* Detailed Features Section */}
                     <h2 className='text-2xl font-semibold  text-[#ff0000] mb-4'>Key Features</h2>
 
-                    <ul className='space-y-6 text-white grid grid-cols-2 gap-5 text-lg md:text-xl'>
+                    <ul className=' text-white grid grid-cols-2 gap-5 text-lg md:text-xl'>
                         <li className='p-4 rounded-md' style={{ backgroundColor: '#1E293B' }}>
                             <strong>🗂️ Quiz Categories:</strong> 
                             <p className='mt-2'>
