@@ -4,12 +4,12 @@ const page = () => {
     return (
         // about us
         <div
-            className='bg-cover bg-right bg-no-repeat text-white text-center'
+            className='bg-cover bg-right bg-no-repeat text-center text-white'
             style={{ backgroundImage: `url('https://i.ibb.co/X4fQqDn/question-mark-1872634-1920.jpg')` }}
         >
             {/* Gradient Overlay */}
             <div className='inset-0 bg-gradient-to-r from-black via-black/60 to-transparent'>
-                <div className='w-full lg:w-[70%] md:pr-32 mx-auto py-8'>
+                <div className='w-full lg:w-[70%]  mx-auto py-8'>
                     {/* Heading */}
                     <h1 className='text-4xl md:text-6xl text-center font-bold text-[#ff0000] mb-8'>
                         About Quizlytics
@@ -24,7 +24,7 @@ const page = () => {
                     {/* Detailed Features Section */}
                     <h2 className='text-2xl font-semibold  text-[#ff0000] mb-4'>Key Features</h2>
 
-                    <ul className=' text-white grid grid-cols-2 gap-5 text-lg md:text-xl'>
+                    <ul className=' text-white my-7 grid grid-cols-2 gap-5 mx-auto text-lg md:text-xl'>
                         <li className='p-4 rounded-md' style={{ backgroundColor: '#1E293B' }}>
                             <strong>🗂️ Quiz Categories:</strong> 
                             <p className='mt-2'>
