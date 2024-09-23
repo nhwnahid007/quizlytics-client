@@ -4,19 +4,19 @@ const page = () => {
     return (
         // about us
         <div
-            className='bg-cover bg-right bg-no-repeat text-white text-center'
+            className='bg-cover bg-right bg-no-repeat text-center text-white'
             style={{ backgroundImage: `url('https://i.ibb.co/X4fQqDn/question-mark-1872634-1920.jpg')` }}
         >
             {/* Gradient Overlay */}
             <div className='inset-0 bg-gradient-to-r from-black via-black/60 to-transparent'>
-                <div className='w-full lg:w-[70%] md:pr-32 mx-auto py-8'>
+                <div className='w-full lg:w-[70%]  mx-auto py-8'>
                     {/* Heading */}
                     <h1 className='text-4xl md:text-6xl text-center font-bold text-[#ff0000] mb-8'>
                         About Quizlytics
                     </h1>
 
                     {/* Introduction Paragraph */}
-                    <p className='text-white text-lg md:text-xl leading-relaxed mb-8'>
+                    <p className='text-white text-lg md:text-xl md:mx-auto mx-4 leading-relaxed mb-8'>
                         Welcome to <span className='font-bold'>Quizlytics</span>—your ultimate platform for mastering multiple-choice questions (MCQs) tailored specifically for students and job seekers in Bangladesh. Whether you&apos;re preparing for board exams or aiming for success in job recruitment tests, Quizlytics is here to provide an engaging and effective learning environment.
                         Our platform is designed with the needs of students and competitive exam aspirants in mind, offering a wide range of quiz categories, timed tests, and features that help you track your progress and enhance your knowledge.
                     </p>
@@ -24,7 +24,7 @@ const page = () => {
                     {/* Detailed Features Section */}
                     <h2 className='text-2xl font-semibold  text-[#ff0000] mb-4'>Key Features</h2>
 
-                    <ul className='space-y-6 text-white grid grid-cols-2 gap-5 text-lg md:text-xl'>
+                    <ul className=' text-white my-7 grid md:grid-cols-2 grid-cols-1 gap-5 md:mx-auto mx-4 text-lg md:text-xl'>
                         <li className='p-4 rounded-md' style={{ backgroundColor: '#1E293B' }}>
                             <strong>🗂️ Quiz Categories:</strong> 
                             <p className='mt-2'>
