@@ -10,7 +10,7 @@ const Banner = () => {
             <div className='absolute inset-0 bg-gradient-to-r from-black via-black/50'>
                 <div className='relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-8 md:px-20 pt-20'>
                     <div className='w-full lg:w-[70%] md:pr-32'>
-                        <div className='w-[683px]'>
+                        <div className='w-full md:w-[683px]'>
                             <h1 className='text-3xl md:text-5xl font-bold text-[#ff0000] mb-4 md:pr-20'>Challenge Your Mind with Fun Quizzes</h1>
                             <p className='text-white'>Explore a wide range of engaging and interactive quizzes designed to test your knowledge across various topics. Track your progress, compete with friends, and see how you rank on leaderboards. From general knowledge to niche subjects, there is a quiz for everyone. Dive in and discover how much you really know!</p>
                             <div className='flex gap-4 mt-8'>
