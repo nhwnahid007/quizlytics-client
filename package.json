@@ -9,11 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "axios": "^1.7.7",
+    "bcrypt": "^5.1.1",
+    "mongodb": "^6.9.0",
     "next": "14.2.12",
+    "next-auth": "^4.24.8",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.53.0",
     "react-icons": "^5.3.0",
-    "swiper": "^11.1.14"
+    "sweetalert2": "^11.14.1"
   },
   "devDependencies": {
     "daisyui": "^4.12.10",
@@ -21,5 +26,10 @@
     "eslint-config-next": "14.2.12",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "tailwind.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
