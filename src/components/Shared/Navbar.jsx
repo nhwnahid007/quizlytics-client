@@ -1,9 +1,9 @@
 "use client"
 import { signOut, useSession } from 'next-auth/react';
+import React, { useEffect, useRef } from "react";
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-
+// tiny comment on navbar
 const Navbar = () => {
   const dropdownRef = useRef(null);
 
