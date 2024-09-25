@@ -1,15 +1,17 @@
 'use client';
 
 import Link from "next/link";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Navbar = () => {
   const dropdownRef = useRef(null);
+  const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         dropdownRef.current.open = false;
+        setIsActive(false);
       }
     };
 
@@ -19,8 +21,12 @@ const Navbar = () => {
     };
   }, []);
 
+  const handleDropdownClick = () => {
+    setIsActive(!isActive);
+  };
+
   return (
-    <div className="bg-black text-white py-2">
+    <div className={`py-2 ${isActive ? 'bg-gray-800' : 'bg-black'} text-white`}>
       <div className="navbar max-w-6xl mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -76,9 +82,9 @@ const Navbar = () => {
               <Link href={'/'}>Home</Link>
             </li>
             <li>
-              <details ref={dropdownRef}>
+              <details ref={dropdownRef} onClick={handleDropdownClick}>
                 <summary>Category</summary>
-                <ul className="p-2 text-black">
+                <ul className="p-2 z-50 text-black">
                   <li>
                     <a>Submenu 1</a>
                   </li>
