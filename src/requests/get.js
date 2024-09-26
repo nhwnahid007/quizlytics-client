@@ -4,7 +4,8 @@ import axios from 'axios';
 const getMCQ = async(category, skill) => {
 
     try{
-        const res = await axios.get(`http://localhost:4000/quiz?category=${category}&skill=${skill}`)
+       
+        const res = await axios.get(`https://quiz.muktikathan.com/quiz?category=${category}&skill=${skill}`)
         return res.data
     }
     catch (error)

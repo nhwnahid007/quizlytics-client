@@ -15,7 +15,7 @@ const QuizScreen = () => {
     new Array(allQuestions?.length)
   );
 
-  const isQuizEnded = currentQuizIndex === allQuestions.length;
+  const isQuizEnded = currentQuizIndex === allQuestions?.length;
 
   useEffect(() => {
     const getAllMCQ = async (html, beginner) => {
@@ -48,7 +48,7 @@ const QuizScreen = () => {
         <Quiz
           question={allQuestions[currentQuizIndex]}
           currentQuestion={currentQuizIndex + 1}
-          totalQuestion={allQuestions.length}
+          totalQuestion={allQuestions?.length}
           setAnswer={(index) => {
             setMarkedAnswer((arr) => {
               let newArray = [...arr];
