@@ -1,13 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
-import { GrLinkNext, GrRadialSelected } from "react-icons/gr";
+import { GrRadialSelected } from "react-icons/gr";
 
 const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
   const [selectedOption, setSelectedOption] = useState(null);
   const timer = useRef(null);
   const progressBar = useRef(null);
 
-  const handleGoToNextQuiz = () => {
+  const handleGoToNextQuiz = useCallback(() => {
     if (timer.current) {
       clearTimeout(timer.current);
     }
@@ -17,11 +17,11 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
     });
 
     setSelectedOption(null);
-  };
+  }, [selectedOption, setAnswer]);
 
   useEffect(() => {
     progressBar.current.value = 100;
-    const duration = 10 * 1000;
+    const duration = 15 * 1000;
     const stepTime = 10;
     const steps = duration / stepTime;
     const decrement = 100 / steps;
@@ -43,6 +43,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
       clearTimeout(timer.current);
     };
   }, [question, handleGoToNextQuiz]);
+
   return (
     <div className="max-w-3xl p-12 shadow-2xl mx-auto my-12">
       <progress
@@ -63,8 +64,8 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
         <div className="grid grid-cols-2 gap-4">
           {question?.options.map((item, index) => (
             <div
-              key={item.id}
-              className={`flex gap-2 items-center ps-4 py-2 rounded-full ${
+              key={index}
+              className={`flex gap-2 items-center  p-4 rounded-2xl ${
                 index == selectedOption
                   ? "bg-black text-white"
                   : "bg-pink-300 text-black"
