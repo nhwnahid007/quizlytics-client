@@ -3,7 +3,7 @@ import React from "react";
 
 const QuizResult = ({ result }) => {
   return (
-    <div className="text-center max-w-3xl mx-auto h-64">
+    <div className="text-center max-w-3xl mx-auto">
       <h1 className="text-red-700 font-bold text-3xl my-20">
         Your skill is {result?.percentageMark}%
       </h1>

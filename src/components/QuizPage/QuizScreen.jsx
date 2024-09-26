@@ -5,8 +5,8 @@ import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
 
 const QuizScreen = () => {
-  const [category, setCategory] = useState("css");
-  const [skill, setSkill] = useState("beginner");
+  const [category, setCategory] = useState("react");
+  const [skill, setSkill] = useState("primary");
   const [allQuestions, setAllQuestion] = useState();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -63,7 +63,7 @@ const QuizScreen = () => {
   }
 
   return (
-    <div>
+    <div className="h-screen">
       {isQuizEnded ? (
         <QuizResult result={calculateResult()} isQuizEnded />
       ) : (
