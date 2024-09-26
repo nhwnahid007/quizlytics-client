@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
-import { GrRadialSelected } from "react-icons/gr";
+import { GrLinkNext, GrRadialSelected } from "react-icons/gr";
 
 const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -20,31 +20,59 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
   };
 
   useEffect(() => {
-    timer.current = setTimeout(handleGoToNextQuiz, 100000);
+    progressBar.current.value = 100;
+    const duration = 10 * 1000;
+    const stepTime = 10;
+    const decrement = 100 / (duration / stepTime);
+    const updateProgressBar = () => {
+      if (progressBar.current.value > 0) {
+        progressBar.current.value -= decrement;
+        setTimeout(updateProgressBar, stepTime);
+      }
+    };
+
+    setTimeout(updateProgressBar, stepTime);
+    timer.current = setTimeout(handleGoToNextQuiz, duration);
+    return () => {
+      clearTimeout(timer.current);
+    };
   }, [question]);
   return (
-    <div className="max-w-3xl p-20 shadow-2xl mx-auto my-12">
+    <div className="max-w-3xl p-12 shadow-2xl mx-auto my-12">
+      <progress
+        className="progress progress-success w-full"
+        max="100"
+        ref={progressBar}
+      ></progress>
       <div>
-        <h1 className="text-center text-md font-light">
+        <h1 className="text-center text-md font-light my-10">
           Quiz <span>{currentQuestion}</span> of <span>{totalQuestion}</span>
         </h1>
         <div>
-          <h1 className="text-start font-semibold text-lg text-red-600 mb-4">
+          <h1 className="text-justify font-semibold text-lg text-red-600 mb-4">
             <span className="text-warning">Question : </span>
             {question.question}
           </h1>
         </div>
-        <div className="h-32">
-          {question.options.map((item) => (
-            <div key={item.id} className="flex gap-2 items-center">
+        <div className="grid grid-cols-2 gap-4">
+          {question.options.map((item, index) => (
+            <div
+              key={item.id}
+              className={`flex gap-2 items-center ps-4 py-2 rounded-full ${
+                index == selectedOption
+                  ? "bg-black text-white"
+                  : "bg-pink-300 text-black"
+              }`}
+              onClick={() => setSelectedOption(index)}
+            >
               <GrRadialSelected className="mx-2" />
               {item}
             </div>
           ))}
         </div>
-        <div className="my-2">
-          <button className="btn btn-warning" onClick={handleGoToNextQuiz}>
-            Next
+        <div className="mt-6 text-center">
+          <button className="btn btn-error w-full" onClick={handleGoToNextQuiz}>
+            Next Quiz
           </button>
         </div>
       </div>
