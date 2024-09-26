@@ -20,11 +20,11 @@ const Faq = () => {
           </details>
           <details className="w-full border rounded-lg">
             <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
-              Is there a time limit for each quiz?
+              Are the quizzes timed?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
-              Yes, most quizzes have a time limit to add an extra challenge, but
-              it varies depending on the quiz topic.{" "}
+              Yes, most quizzes have a set time limit to complete. The time
+              varies depending on the difficulty and length of the quiz.{" "}
             </p>
           </details>
           <details className="w-full border rounded-lg">
@@ -39,30 +39,30 @@ const Faq = () => {
           </details>
           <details className="w-full border rounded-lg">
             <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
-              Are there backend-focused quizzes?
+              Can I skip questions and return to them later in the quiz?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
-              Yes! We offer quizzes on MongoDB, Firebase, and Express, covering
-              database management, authentication, and server-side logic.{" "}
+              Yes, you can skip questions and come back to them before
+              submitting your final answers.{" "}
             </p>
           </details>
           <details className="w-full border rounded-lg">
             <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
-              How difficult is the React quiz?
+              Can I share feedback on quizzes?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
-              The React quiz is designed for both beginners and intermediate
-              learners, covering topics like components, state management,
-              hooks, lifecycle methods, and JSX.{" "}
+              Yes! After completing your quiz task, you can share your feedback
+              on quizzes of social media platform.{" "}
             </p>
           </details>
           <details className="w-full border rounded-lg">
             <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
-              What can I expect in the CSS quiz?
+              Can I suggest new quiz topics?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
-              The CSS quiz includes questions on selectors, layout models
-              (Flexbox, Grid), animations, responsiveness, and more.{" "}
+              Yes, we welcome user feedback! If you’d like to suggest new quiz
+              topics or technologies, you can contact us via the `Contact`
+              section.{" "}
             </p>
           </details>
         </div>
