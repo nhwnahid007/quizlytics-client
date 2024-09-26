@@ -23,16 +23,24 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
     progressBar.current.value = 100;
     const duration = 10 * 1000;
     const stepTime = 10;
-    const decrement = 100 / (duration / stepTime);
+    const steps = duration / stepTime;
+    const decrement = 100 / steps;
+
+    let stepCount = 0;
     const updateProgressBar = () => {
-      if (progressBar.current.value > 0) {
-        progressBar.current.value -= decrement;
+      stepCount++;
+      progressBar.current.value = Math.max(100 - stepCount * decrement, 0);
+      if (stepCount < steps) {
         setTimeout(updateProgressBar, stepTime);
+      } else {
+        clearTimeout(timer.current);
+        progressBar.current.value = 100;
+        handleGoToNextQuiz();
       }
     };
 
     setTimeout(updateProgressBar, stepTime);
-    timer.current = setTimeout(handleGoToNextQuiz, duration);
+
     return () => {
       clearTimeout(timer.current);
     };
@@ -51,11 +59,11 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
         <div>
           <h1 className="text-justify font-semibold text-lg text-red-600 mb-4">
             <span className="text-warning">Question : </span>
-            {question.question}
+            {question?.question}
           </h1>
         </div>
         <div className="grid grid-cols-2 gap-4">
-          {question.options.map((item, index) => (
+          {question?.options.map((item, index) => (
             <div
               key={item.id}
               className={`flex gap-2 items-center ps-4 py-2 rounded-full ${

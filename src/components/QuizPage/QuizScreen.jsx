@@ -15,6 +15,8 @@ const QuizScreen = () => {
     new Array(allQuestions?.length)
   );
 
+  console.log(markedAnswer);
+
   const isQuizEnded = currentQuizIndex === allQuestions?.length;
 
   useEffect(() => {
@@ -32,6 +34,21 @@ const QuizScreen = () => {
 
   console.log(allQuestions);
 
+  const calculateResult = () => {
+    let correctAnswers = 0;
+    allQuestions.forEach((element, index) => {
+      if (element.correct_answers == markedAnswer[index]) {
+        correctAnswers++;
+      }
+    });
+
+    return {
+      totalQuiz: allQuestions?.length,
+      correctAnswers,
+      percentageMark: Math.trunc((correctAnswers / allQuestions.length) * 100),
+    };
+  };
+
   if (isLoading) {
     return (
       <div>
@@ -43,7 +60,7 @@ const QuizScreen = () => {
   return (
     <div>
       {isQuizEnded ? (
-        <QuizResult />
+        <QuizResult result={calculateResult()} isQuizEnded />
       ) : (
         <Quiz
           question={allQuestions[currentQuizIndex]}
