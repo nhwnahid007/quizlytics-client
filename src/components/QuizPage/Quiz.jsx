@@ -19,32 +19,32 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
     setSelectedOption(null);
   };
 
-  useEffect(() => {
-    progressBar.current.value = 100;
-    const duration = 10 * 1000;
-    const stepTime = 10;
-    const steps = duration / stepTime;
-    const decrement = 100 / steps;
+  //   useEffect(() => {
+  //     progressBar.current.value = 100;
+  //     const duration = 10 * 1000;
+  //     const stepTime = 10;
+  //     const steps = duration / stepTime;
+  //     const decrement = 100 / steps;
 
-    let stepCount = 0;
-    const updateProgressBar = () => {
-      stepCount++;
-      progressBar.current.value = Math.max(100 - stepCount * decrement, 0);
-      if (stepCount < steps) {
-        setTimeout(updateProgressBar, stepTime);
-      } else {
-        clearTimeout(timer.current);
-        progressBar.current.value = 100;
-        handleGoToNextQuiz();
-      }
-    };
+  //     let stepCount = 0;
+  //     const updateProgressBar = () => {
+  //       stepCount++;
+  //       progressBar.current.value = Math.max(100 - stepCount * decrement, 0);
+  //       if (stepCount < steps) {
+  //         setTimeout(updateProgressBar, stepTime);
+  //       } else {
+  //         clearTimeout(timer.current);
+  //         progressBar.current.value = 100;
+  //         handleGoToNextQuiz();
+  //       }
+  //     };
 
-    setTimeout(updateProgressBar, stepTime);
+  //     setTimeout(updateProgressBar, stepTime);
 
-    return () => {
-      clearTimeout(timer.current);
-    };
-  }, [question]);
+  //     return () => {
+  //       clearTimeout(timer.current);
+  //     };
+  //   }, [question]);
   return (
     <div className="max-w-3xl p-12 shadow-2xl mx-auto my-12">
       <progress

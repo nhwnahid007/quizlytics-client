@@ -5,6 +5,8 @@ import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
 
 const QuizScreen = () => {
+  const [category, setCategory] = useState("css");
+  const [skill, setSkill] = useState("beginner");
   const [allQuestions, setAllQuestion] = useState();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -20,9 +22,9 @@ const QuizScreen = () => {
   const isQuizEnded = currentQuizIndex === allQuestions?.length;
 
   useEffect(() => {
-    const getAllMCQ = async (html, beginner) => {
+    const getAllMCQ = async () => {
       try {
-        const data = await getMCQ(html, beginner);
+        const data = await getMCQ(category, skill);
         setAllQuestion(data);
         setIsLoading(false);
       } catch (error) {
@@ -30,14 +32,14 @@ const QuizScreen = () => {
       }
     };
     getAllMCQ();
-  }, []);
+  }, [category, skill]);
 
   console.log(allQuestions);
 
   const calculateResult = () => {
     let correctAnswers = 0;
     allQuestions.forEach((element, index) => {
-      if (element.correct_answers == markedAnswer[index]) {
+      if (element.correct_answer == markedAnswer[index]) {
         correctAnswers++;
       }
     });
@@ -51,8 +53,11 @@ const QuizScreen = () => {
 
   if (isLoading) {
     return (
-      <div>
-        <h1>Quiz is loading. Please wait...</h1>
+      <div className="max-w-6xl mx-auto text-center py-60">
+        <h1 className="text-4xl font-semibold my-20">
+          Quiz is loading. Please wait...
+        </h1>
+        <span className="loading loading-bars loading-lg"></span>
       </div>
     );
   }
