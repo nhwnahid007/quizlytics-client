@@ -19,7 +19,7 @@ const Contact = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-black">
-      <div className="bg-white bg-opacity-50 shadow-md rounded-lg p-8 flex flex-col md:flex-row">
+      <div className="bg-[#FFEFD3] opacity-90 shadow-md rounded-lg p-8 flex flex-col md:flex-row">
         <div className="md:w-1/2 flex justify-center items-center p-4 order-1 md:order-2 relative">
           {!imageLoaded && (
             <div className="absolute inset-0 flex items-center justify-center">
