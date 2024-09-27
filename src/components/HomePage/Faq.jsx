@@ -42,8 +42,7 @@ const Faq = () => {
               Can I skip questions and return to them later in the quiz?
             </summary>
             <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
-              Yes, you can skip questions and come back to them before
-              submitting your final answers.{" "}
+              Yes, you can skip questions but not return to them before.{" "}
             </p>
           </details>
           <details className="w-full border rounded-lg">
