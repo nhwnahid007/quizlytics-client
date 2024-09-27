@@ -20,6 +20,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
   }, [selectedOption, setAnswer]);
 
   useEffect(() => {
+    console.log("question changed", question);
     progressBar.current.value = 100;
     const duration = 15 * 1000;
     const stepTime = 10;

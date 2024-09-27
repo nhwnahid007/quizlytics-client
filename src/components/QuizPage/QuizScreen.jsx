@@ -19,7 +19,7 @@ const QuizScreen = () => {
 
   //   console.log(markedAnswer);
 
-  const isQuizEnded = currentQuizIndex == allQuestions?.length;
+  const isQuizEnded = currentQuizIndex === allQuestions?.length;
 
   useEffect(() => {
     const getAllMCQ = async () => {
