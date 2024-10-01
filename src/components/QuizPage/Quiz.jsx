@@ -16,7 +16,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
     if (timer.current) {
       clearTimeout(timer.current);
     }
-
+    //bug fixed
     flushSync(() => {
       setAnswer(selectedOptionRef.current);
     });
