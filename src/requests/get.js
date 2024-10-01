@@ -2,8 +2,7 @@ import axios from 'axios';
 
 
 const getMCQ = async(category, skill) => {
-
-    const url = `https://quiz.muktikathan.com/quiz?category=${category}&skill=${skill}`
+    const url = `https://quizlytics.jonomukti.org/quiz?category=${category}&skill=${skill}`;
     console.log(url);
     try{
        

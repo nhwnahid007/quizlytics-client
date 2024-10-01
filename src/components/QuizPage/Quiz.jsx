@@ -34,7 +34,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
     }
 
     const duration = 15 * 1000;
-    const stepTime = 100;
+    const stepTime = 5;
     const steps = duration / stepTime;
     const decrement = 100 / steps;
 
@@ -99,7 +99,9 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
                 onClick={() => handleOptionClick(index)}
               >
                 <GrRadialSelected className="mr-2 text-lg sm:text-xl md:text-2xl flex-shrink-0" />
-                <span className="text-sm sm:text-base md:text-lg leading-tight">{item}</span>
+                <span className="text-sm sm:text-base md:text-lg leading-tight">
+                  {item}
+                </span>
               </div>
             ))}
           </div>
