@@ -34,7 +34,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
     }
 
     const duration = 15 * 1000;
-    const stepTime = 100;
+    const stepTime = 5;
     const steps = duration / stepTime;
     const decrement = 100 / steps;
 

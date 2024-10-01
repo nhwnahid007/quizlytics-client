@@ -24,7 +24,9 @@ const QuizScreen = () => {
   useEffect(() => {
     const getAllMCQ = async () => {
       try {
+        setAllQuestion([]);
         const data = await getMCQ(category, skill);
+        console.log(data);
         setAllQuestion(data);
         setIsLoading(false);
       } catch (error) {
@@ -34,7 +36,7 @@ const QuizScreen = () => {
     getAllMCQ();
   }, [category, skill]);
 
-  console.log(allQuestions);
+  // console.log(allQuestions);
 
   const calculateResult = () => {
     let correctAnswers = 0;
