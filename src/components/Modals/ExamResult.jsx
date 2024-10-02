@@ -20,7 +20,7 @@ const ExamResult = ({ myMark }) => {
                 <h1 className='text-[#30d158] text-center text-4xl'>Your achieved mark !</h1>
                 <div className='mt-4 flex justify-center gap-4'>
                     <button onClick={handleGoHome} className='text-red-600 hover:bg-red-600 hover:text-[#ffefd3] font-medium py-2 px-4 border border-red-600 rounded-md'>Exit</button>
-                    <button className='text-[#30d158] hover:bg-[#30d158] hover:text-[#ffefd3] font-medium py-2 px-4 border border-[#30d158] rounded-md'>See Results</button>
+                    {/* <button className='text-[#30d158] hover:bg-[#30d158] hover:text-[#ffefd3] font-medium py-2 px-4 border border-[#30d158] rounded-md'>See Results</button> */}
                 </div>
             </div>
         </div>
