@@ -1,20 +1,22 @@
 import axios from 'axios';
 
-
-const getMCQ = async(category, skill) => {
-    const url = `https://quizlytics.jonomukti.org/quiz?category=${category}&skill=${skill}`;
-    console.log(url);
-    try{
-       
-        const res = await axios.get(url)
-        return res.data
+export const getMCQ = async (category, level) => {
+    console.log(category, level);
+    try {
+        const res = await axios.get(`https://quizlytics.jonomukti.org/quiz?category=${category}&skill=${level}`);
+        return res.data;
+    } catch (error) {   
+        console.error("Error fetching MCQ:", error);
+        return [];
     }
-    catch (error)
-    {
-        console.log("Error Fetching MCQ", error);
-        return []
-    }
- 
-};
+}
 
-export default getMCQ;
+export const getMark = async(examId) => {
+    try {
+        const res = await axios.get(`https://quizlytics-server-gamma.vercel.app/my_mark/${examId}`);
+        return res.data;
+    } catch (error) {
+        console.error("Error fetching MCQ:", error);
+        return [];
+    }
+}
