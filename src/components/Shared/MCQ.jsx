@@ -128,8 +128,8 @@ const MCQ = ({ currentMCQ, setCurrentMCQ, exactMCQ, userExamData, setUserExamDat
 
             <div className='flex justify-between items-center mt-6'>
                 {/* Next & Prev */}
-                <div className='flex justify-end gap-4'>
-                    <button className='btn bg-[#ff2929] px-6 text-white'>Prev</button>
+                <div className='flex justify-end'>
+                    {/* <button className='btn bg-[#ff2929] px-6 text-white'>Prev</button> */}
                     <button onClick={handleNext} className='btn bg-[#3db828] px-6 text-white'>Next</button>
                 </div>
                 {/* Timer */}

@@ -1,10 +1,9 @@
 "use client"
-import useRouterHook from '@/app/hooks/useRouterHook';
 import Image from 'next/image';
 import React from 'react';
 
 const Banner = () => {
-    const router = useRouterHook();
+
     const handleQuicktExam = () => {
         router.push('/exam');
     }
@@ -22,7 +21,7 @@ const Banner = () => {
                             <p className='text-white'>Explore a wide range of engaging and interactive quizzes designed to test your knowledge across various topics. Track your progress, compete with friends, and see how you rank on leaderboards. From general knowledge to niche subjects, there is a quiz for everyone. Dive in and discover how much you really know!</p>
                             <div className='flex gap-4 mt-8'>
                                 <button onClick={handleQuicktExam} className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ff0000] hover:bg-[#ffefd3] text-white hover:text-black">Quick Exam</button>
-                                <button  className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ffefd3] hover:bg-[#ff0000] text-black hover:text-white">Top Results</button>
+                                <button className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ffefd3] hover:bg-[#ff0000] text-black hover:text-white">Top Results</button>
                             </div>
                         </div>
                     </div>
