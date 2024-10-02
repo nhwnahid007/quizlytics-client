@@ -21,7 +21,7 @@ const Login = () => {
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        if(isNaN(password)){
+        if (isNaN(password)) {
             setValidState("Close Eye icon in the password field")
         }
 
@@ -38,7 +38,7 @@ const Login = () => {
 
 
     return (
-        <div className='relative h-[110vh] bg-cover bg-no-repeat bg-center m-0' style={{ backgroundImage: `url('https://i.ibb.co/hyGhyjj/pexels-gnist-706500.jpg')`, marginBottom: '0' }}>
+        <div className='relative h-[140vh] lg:h-[110vh] bg-cover bg-no-repeat bg-center m-0' style={{ backgroundImage: `url('https://i.ibb.co/hyGhyjj/pexels-gnist-706500.jpg')`, marginBottom: '0' }}>
             {/* Gradient Overlay */}
             <div className='absolute inset-0 bg-gradient-to-l from-black via-black/60 h-full'>
                 <div className='w-[90%] md:max-w-6xl mx-auto py-12 md:flex justify-end h-full'>
@@ -58,7 +58,7 @@ const Login = () => {
                                 <button className='btn bg-black text-[#ffefd3] hover:text-black text-lg mt-6 w-full'>Login</button>
                                 {validState === "Invalid User!" && <p className='text-[#ff0000] mt-2 text-center font-semibold'>{validState}</p>}
                                 <p className='font-bold text-center py-4 border-b-2 border-black mb-4'></p>
-                                <SocialAuth />
+                            <SocialAuth />
                             </form>
                             <p className='font-bold text-center py-2 border-b-2 border-black mb-4'></p>
                             <div className="flex justify-center">
