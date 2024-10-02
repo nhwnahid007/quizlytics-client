@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const useAllMCQ = () => {
-    const [allMCQ, setAllMCQ] = useState([]);
+const useAllMCQ = (initialState = []) => {
+    const [allMCQ, setAllMCQ] = useState(initialState);
     return [allMCQ, setAllMCQ];
 };
 

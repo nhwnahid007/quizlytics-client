@@ -2,34 +2,35 @@
 import useMakeExam from '@/app/hooks/useMakeExam';
 import React, { useState } from 'react';
 
-const MakeExam = ({ setShowMakeExam, setWaiting, setLoading, setSearchCategory, setSearchLavel }) => {
-    // const [searchError, setSearchError] = useState("");
-    // const [levelError, setLevelError] = useState("");
-    // const [search, setSearch] = useState();
-    // const [lavel, setLavel] = useState();
+const MakeExam = ({ setShowMakeExam, setSearchCategory, setSearchLavel, setLoadData }) => {
+    const [searchError, setSearchError] = useState("");
+    const [levelError, setLevelError] = useState("");
+    const [search, setSearch] = useState();
+    const [lavel, setLavel] = useState();
 
     const handleStart = () => {
-        // let hasError = false;
+        let hasError = false;
 
-        // if (!search) {
-        //     setSearchError("Field is required!");
-        //     hasError = true;
-        // } else {
-        //     setSearchError("");
-        // }
+        if (!search) {
+            setSearchError("Field is required!");
+            hasError = true;
+        } else {
+            setSearchError("");
+        }
 
-        // if (!lavel) {
-        //     setLevelError("Must select a level");
-        //     hasError = true;
-        // } else {
-        //     setLevelError("");
-        // }
+        if (!lavel) {
+            setLevelError("Must select a level");
+            hasError = true;
+        } else {
+            setLevelError("");
+        }
 
-        // if (!hasError) {
-        //     setSearchCategory(search);
-        //     setSearchLavel(lavel);
+        if (!hasError) {
+            setSearchCategory(search);
+            setSearchLavel(lavel);
             setShowMakeExam(false);
-        // }
+            setLoadData(true)
+        }
     }
 
     return (
@@ -49,7 +50,7 @@ const MakeExam = ({ setShowMakeExam, setWaiting, setLoading, setSearchCategory, 
                 <div className='w-full md:w-[480px] mx-auto flex flex-col md:flex-row gap-4 mt-6'>
                     <div className='w-full md:w-1/2'>
                         <input onChange={(e) => setSearch(e.target.value)} type="text" className='bg-black w-full py-2 px-4 text-[#ffefd3] rounded-lg text-lg' placeholder='Write topics' />
-                        {/* {searchError && <p className='text-red-600'>{searchError}</p>} */}
+                        {searchError && <p className='text-red-600'>{searchError}</p>}
                     </div>
                     <div className='w-full md:w-1/2'>
                         <select onChange={(e) => setLavel(e.target.value)} className='bg-black w-full py-2 px-4 text-[#ffefd3] rounded-lg text-lg'>
@@ -58,7 +59,7 @@ const MakeExam = ({ setShowMakeExam, setWaiting, setLoading, setSearchCategory, 
                             <option value="moderate">Moderate</option>
                             <option value="advanced">Advanced</option>
                         </select>
-                        {/* {levelError && <p className='text-red-600'>{levelError}</p>} */}
+                        {levelError && <p className='text-red-600'>{levelError}</p>}
                     </div>
                 </div>
                 <div className='flex justify-center mt-6'>
