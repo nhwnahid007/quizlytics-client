@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
 const Banner = () => {
@@ -15,11 +14,9 @@ const Banner = () => {
                             <h1 className='text-3xl md:text-5xl font-bold text-[#ff0000] mb-4 md:pr-20'>Challenge Your Mind with Fun Quizzes</h1>
                             <p className='text-white'>Explore a wide range of engaging and interactive quizzes designed to test your knowledge across various topics. Track your progress, compete with friends, and see how you rank on leaderboards. From general knowledge to niche subjects, there is a quiz for everyone. Dive in and discover how much you really know!</p>
                             <div className='flex gap-4 mt-8'>
-                <Link href="https://quizlytics.vercel.app/startQuiz">
-                    <button className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ff0000] hover:bg-[#ffefd3] text-white hover:text-black">Start Quiz Now</button>
-                </Link>
-                <button className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ffefd3] hover:bg-[#ff0000] text-black hover:text-white">Second one</button>
-            </div>
+                                <button className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ff0000] hover:bg-[#ffefd3] text-white hover:text-black">First one</button>
+                                <button className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ffefd3] hover:bg-[#ff0000] text-black hover:text-white">Second one</button>
+                            </div>
                         </div>
                     </div>
                     <div className='w-full lg:w-[30%] flex lg:justify-center items-center'>

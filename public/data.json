@@ -1,0 +1,110 @@
+[
+  {
+    "id": "1",
+    "question": "Fill in the blank: The main method in Java is declared as:",
+    "options": [
+      "public void main(String)",
+      "void main(String args)",
+      "public static void main(String args)",
+      "void static main(String)"
+    ],
+    "correct_answer": "2"
+  },
+  {
+    "id": "2",
+    "question": "Which of the following is NOT a valid data type in Java?",
+    "options": [
+      "int",
+      "boolean",
+      "char",
+      "array"
+    ],
+    "correct_answer": "3"
+  },
+  {
+    "id": "3",
+    "question": "What is the purpose of the 'this' keyword in Java?",
+    "options": [
+      "To refer to the current object",
+      "To pass an argument to a method",
+      "To create a new object",
+      "To terminate a program"
+    ],
+    "correct_answer": "0"
+  },
+  {
+    "id": "4",
+    "question": "Which of the following is an access modifier in Java?",
+    "options": [
+      "protected",
+      "friend",
+      "public",
+      "virtual"
+    ],
+    "correct_answer": "2"
+  },
+  {
+    "id": "5",
+    "question": "What is the difference between a class and an interface in Java?",
+    "options": [
+      "A class can inherit from multiple parents, while an interface cannot.",
+      "An interface can have methods with implementations, while a class cannot.",
+      "A class can be instantiated, while an interface cannot.",
+      "There is no difference between a class and an interface."
+    ],
+    "correct_answer": "2"
+  },
+  {
+    "id": "6",
+    "question": "Which of the following is a built-in exception class in Java?",
+    "options": [
+      "IOException",
+      "ValueError",
+      "SyntaxError",
+      "IndexOutOfBoundsException"
+    ],
+    "correct_answer": "0"
+  },
+  {
+    "id": "7",
+    "question": "True or False: Java uses pass-by-reference for all types of variables.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct_answer": "1"
+  },
+  {
+    "id": "8",
+    "question": "Which of the following is a superclass of all other classes in Java?",
+    "options": [
+      "java.lang.Object",
+      "java.lang.String",
+      "java.lang.Math",
+      "java.lang.System"
+    ],
+    "correct_answer": "0"
+  },
+  {
+    "id": "9",
+    "question": "What is the purpose of a static method in Java?",
+    "options": [
+      "To access non-static members of a class",
+      "To access static members of a class",
+      "To create an object of a class",
+      "To override a method in a subclass"
+    ],
+    "correct_answer": "1"
+  },
+  {
+    "id": "10",
+    "question": "Which of the following is NOT a Java keyword?",
+    "options": [
+      "private",
+      "protected",
+      "public",
+      "if"
+    ],
+    "correct_answer": "3"
+  }
+]

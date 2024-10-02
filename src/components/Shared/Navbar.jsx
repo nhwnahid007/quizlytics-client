@@ -93,7 +93,10 @@ const Navbar = () => {
         </div>
         <div className="navbar-end flex gap-4">
           {!session ? (
-            <Link href='/login' className="btn px-8 bg-[#ffefd3]">Login</Link>
+            <div className='flex gap-2 md:gap-4'>
+              <Link href='/login' className="btn px-2 md:px-8 bg-[#ffefd3]">Login</Link>
+              <Link href='/register' className="btn px-2 md:px-8 bg-[#ffefd3]">Register</Link>
+            </div>
           ) : (
             <div className="dropdown dropdown-end">
               <div tabIndex={0} role="button" className="btn btn-ghost w-[64px] h-[64px] avatar">
