@@ -118,7 +118,7 @@ const Register = () => {
     }
 
     return (
-        <div className='relative h-[160vh] md:h-[135vh] bg-cover bg-no-repeat bg-center' style={{ backgroundImage: `url('https://i.ibb.co/hyGhyjj/pexels-gnist-706500.jpg')` }}>
+        <div className='relative h-[200vh] md:h-[170vh] lg:h-[130vh] bg-cover bg-no-repeat bg-center' style={{ backgroundImage: `url('https://i.ibb.co/hyGhyjj/pexels-gnist-706500.jpg')` }}>
             {/* Gradient Overlay */}
             <div className='absolute inset-0 bg-gradient-to-l from-black via-black/60'>
                 <div className='w-[90%] md:max-w-6xl mx-auto py-20 md:flex justify-end'>
@@ -161,9 +161,9 @@ const Register = () => {
                                     <button className='btn bg-black text-[#ffefd3] hover:text-black text-lg w-full mt-4'>Register</button>
                                     {validState === "Please fill out all fields!" && <p className='text-[#ff0000] mt-2 text-center font-semibold'>{validState}</p>}
                                     <p className='font-bold text-center py-4 border-b-2 border-black mb-4'></p>
-                                    <SocialAuth />
                                 </div>
                             </form>
+                            <SocialAuth />
                             <p className='mt-4 font-medium '>Already have an account ? <Link href={'/login'} className='text-[#18725d]'>Please Login</Link></p>
                         </div>
                     </div>
