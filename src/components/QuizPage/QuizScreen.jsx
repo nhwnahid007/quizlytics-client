@@ -3,11 +3,14 @@ import getMCQ from "@/requests/get";
 import React, { useEffect, useState } from "react";
 import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
+import { useSession } from "next-auth/react";
 
 const QuizScreen = () => {
   const [category, setCategory] = useState("react");
   const [skill, setSkill] = useState("primary");
   const [allQuestions, setAllQuestion] = useState();
+  // const { data: session } = useSession();
+  // console.log(session);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -17,7 +20,7 @@ const QuizScreen = () => {
     new Array(allQuestions?.length)
   );
 
-  //   console.log(markedAnswer);
+  console.log(markedAnswer);
 
   const isQuizEnded = currentQuizIndex === allQuestions?.length;
 
@@ -26,7 +29,7 @@ const QuizScreen = () => {
       try {
         setAllQuestion([]);
         const data = await getMCQ(category, skill);
-        console.log(data);
+        // console.log(data);
         setAllQuestion(data);
         setIsLoading(false);
       } catch (error) {
@@ -36,7 +39,7 @@ const QuizScreen = () => {
     getAllMCQ();
   }, [category, skill]);
 
-  // console.log(allQuestions);
+  console.log(allQuestions);
 
   const calculateResult = () => {
     let correctAnswers = 0;
@@ -67,7 +70,12 @@ const QuizScreen = () => {
   return (
     <div className="h-screen">
       {isQuizEnded ? (
-        <QuizResult result={calculateResult()} isQuizEnded />
+        <QuizResult
+          result={calculateResult()}
+          markedAnswer={markedAnswer}
+          allQuestions={allQuestions}
+          isQuizEnded
+        />
       ) : (
         <Quiz
           question={allQuestions[currentQuizIndex]}
