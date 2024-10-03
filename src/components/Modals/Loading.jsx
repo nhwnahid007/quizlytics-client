@@ -13,7 +13,7 @@ const Loading = ({setShowLoading}) => {
     
           {/* Stylish loading text */}
           <div className="flex flex-col items-center">
-            <h1 className="md:text-6xl text-xl text-white font-semibold bg-gradient-to-r from-red-600 to-red-800 text-transparent bg-clip-text animate-pulse">
+            <h1 className="md:text-6xl text-xl text-red font-semibold bg-gradient-to-r from-red-600 to-red-800 text-transparent bg-clip-text animate-pulse">
               Question in processing...
             </h1>
             <p className="mt-2 text-[#ffefd3] text-lg opacity-80">Please wait a moment</p>
