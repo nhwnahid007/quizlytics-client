@@ -1,16 +1,14 @@
-import useDate from '@/app/hooks/useDate';
-import useExamId from '@/app/hooks/useExamId';
+"use client";
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 
 const MCQ = ({ currentMCQ, setCurrentMCQ, exactMCQ, userExamData, setUserExamData, examId, setExamId, setShowResult }) => {
     const { id, question, options = [] } = exactMCQ || {};
     const [selectedAnswer, setSelectedAnswer] = useState(null);
-    const [secondsElapsed, setSecondsElapsed] = useState(0);
-    const [clickNext, setClickNext] = useState(false)
-    const today = useDate();
+    const [secondsRemaining, setSecondsRemaining] = useState(10); // Countdown from 10 seconds
+    const [clickNext, setClickNext] = useState(false);
 
-    // access next auth session
+    // Access NextAuth session
     const { data: session } = useSession();
     const name = session?.user?.name;
     const email = session?.user?.email;
@@ -23,88 +21,90 @@ const MCQ = ({ currentMCQ, setCurrentMCQ, exactMCQ, userExamData, setUserExamDat
         window.crypto.getRandomValues(array); 
         return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
     }
+    
     useEffect(() => {
         const generatedExamId = generateExamId();
         setExamId(generatedExamId);
         console.log('Generated Exam ID:', generatedExamId);
-    }, [setExamId]); 
+    }, [setExamId]);
 
-    // handle next button
+    // Handle next button
     const handleNext = () => {
-        setClickNext(true);
-        setCurrentMCQ(currentMCQ + 1);
-        setSecondsElapsed(0);
-    }
+        // Only increment if the currentMCQ is less than 9 (to show question numbers 1-10)
+        if (currentMCQ < 10) {
+            setClickNext(true);
+            setCurrentMCQ(currentMCQ + 1);
+            setSecondsRemaining(10); // Reset the timer
+        } else {
+            setShowResult(true); // If it's the last question, show the result
+        }
+    };
 
-
-    // ===================================================================
-
-    // Calculate minutes and seconds for display
-    const minutes = Math.floor(secondsElapsed / 60); // Total minutes
-    const seconds = secondsElapsed % 60; // Remaining seconds
-
+    // Save exam data when 'clickNext' is true or when timer reaches 0
     useEffect(() => {
-        // Function to save the exam data
         const saveExamData = () => {
             const examData = {
                 ...exactMCQ,
                 examId: examId,
-                exam_date: today,
+                exam_date: new Date().toISOString(),
                 user_answer: selectedAnswer, 
                 user_name: name,
                 user_email: email,
                 user_profile: profile || image
             };
             
-            // Check if the question has already been saved
             setUserExamData(prevData => {
                 const isAlreadyRecorded = prevData.some(item => item.id === examData.id);
                 if (!isAlreadyRecorded) {
                     return [...prevData, examData]; // Append new data
                 }
-                return prevData; // Return unchanged data if already saved
+                return prevData;
             });
         };
-        
-        // Save data if either 'clickNext' or 'secondsElapsed === 10'
-        if (clickNext || secondsElapsed === 10) {
-            saveExamData(); // Save the exam data
-            setClickNext(false); // Reset clickNext to prevent re-triggering
+
+        if (clickNext || secondsRemaining === 0) {
+            saveExamData();
+            setClickNext(false); // Reset clickNext
         }
-    }, [clickNext, secondsElapsed, exactMCQ, selectedAnswer, examId, today, name, email, profile, image, setUserExamData]);
-    
-    // Handle time-based question change
+    }, [clickNext, secondsRemaining, exactMCQ, selectedAnswer, examId, name, email, profile, image, setUserExamData]);
+
+    // Countdown timer for the MCQ
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setSecondsElapsed(prevSeconds => {
-                // if currentMCQ is more than 10, stop the timer
-                if (currentMCQ > 10) {
-                    clearInterval(intervalId);
-                    setShowResult(true);
-                    // return 0;
-                }
-                // If 10 seconds pass, move to the next question and reset timer
-                if (prevSeconds >= 10) {
+            setSecondsRemaining(prevSeconds => {
+                if (prevSeconds === 0) {
                     setCurrentMCQ(currentMCQ + 1);
-                    return 0;
+                    return 10; // Reset to 10 seconds for the next question
                 }
-                return prevSeconds + 1;
+                return prevSeconds - 1; // Decrease the timer
             });
         }, 1000);
     
         return () => clearInterval(intervalId);
-    }, [currentMCQ, setCurrentMCQ, setShowResult]);
+    }, [currentMCQ, setCurrentMCQ]);
 
     // Handle the selection of an answer
     const handleAnswerSelection = (event) => {
         setSelectedAnswer(event.target.value);
     };
 
-    console.log(userExamData);
     return (
         <div className='p-8 bg-[#ffefd3] rounded-lg'>
-            <h3 className='text-lg font-bold mb-4'><span>{currentMCQ}.</span> {question}</h3>
-            {/* Radio list */}
+            {/* Timer on top */}
+            <div className='flex justify-center mb-4'>
+                <div className='bg-[#ff0000] p-2 text-white py-3 px-10 rounded-md font-semibold'>
+                    <h1 className='text-lg'>
+                        {secondsRemaining < 10 ? `0${secondsRemaining}` : secondsRemaining} seconds
+                    </h1>
+                </div>
+            </div>
+
+            {/* MCQ Question */}
+            <h3 className='text-lg font-bold mb-4'>
+                <span>{currentMCQ}.</span> {question}
+            </h3>
+
+            {/* Radio list for options */}
             <div className='radio-section'>
                 <div className='radio-list'>
                     {options.map((option, index) => (
@@ -126,21 +126,14 @@ const MCQ = ({ currentMCQ, setCurrentMCQ, exactMCQ, userExamData, setUserExamDat
                 </div>
             </div>
 
-            <div className='flex justify-between items-center mt-6'>
-                {/* Next & Prev */}
-                <div className='flex justify-end'>
-                    {/* <button className='btn bg-[#ff2929] px-6 text-white'>Prev</button> */}
-                    <button onClick={handleNext} className='btn bg-[#3db828] px-6 text-white'>Next</button>
-                </div>
-                {/* Timer */}
-                <div className='bg-[#001524] p-2 text-white py-3 px-10 rounded-md font-semibold'>
-                    <h1 className='text-lg'>
-                        {minutes < 10 ? `0${minutes}` : minutes} : {seconds < 10 ? `0${seconds}` : seconds}
-                    </h1>
-                </div>
+            {/* Bottom section with Next button */}
+            <div className='flex justify-end items-center mt-6'>
+                <button onClick={handleNext} className='btn bg-[#3db828] px-6 text-white'>
+                    Next
+                </button>
             </div>
         </div>
-    )
+    );
 }
 
 export default MCQ;
