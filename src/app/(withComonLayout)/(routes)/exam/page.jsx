@@ -122,7 +122,7 @@ const Exam = () => {
                         <Loading />
                     ) : !showResult ? (
                         <>
-                            <div className='w-[580px] mx-auto bg-black text-[#ffefd3] rounded-lg mb-8 p-4'>
+                            <div className='w-[580px] mx-auto bg-black text-[#ffefd3] rounded-lg mb-3 p-1'>
                                 <h2 className='text-2xl text-center font-bold text-[#39FF14]'>Assessment Overview</h2>
                                 <div className='w-full md:w-[480px] mx-auto my-6 flex justify-between'>
                                     <div className='flex flex-col space-y-1'>
