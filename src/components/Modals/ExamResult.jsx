@@ -7,6 +7,8 @@ import {
   PinterestShareButton,
   TwitterIcon,
   TwitterShareButton,
+  RedditShareButton,
+  RedditIcon,
 } from "next-share";
 import React from "react";
 
@@ -56,7 +58,7 @@ const ExamResult = ({myMark}) => {
         </h1>
         <div className="mt-4 flex justify-center gap-4 w-full">
           <div className="font-medium py-1 px-8 border border-red-600 rounded-md">
-            <h2 className="text-xl mb-5 text-center">Share With:</h2>
+            <h2 className="text-xl mb-5 text-center">Share Social Media:</h2>
             <FacebookShareButton
               url={"https://quizlytics.vercel.app/"}
               quote={`I scored ${myMark} / 10 on my exam! Check it out on Quizlytics.`}
@@ -76,12 +78,17 @@ const ExamResult = ({myMark}) => {
               url={"https://quizlytics.vercel.app/"}
               title={`I scored ${myMark} / 10 on my exam! Check it out on Quizlytics.`}
             >
-              <TwitterIcon
-                className="animate-bounce duration-300"
-                size={32}
-                round
-              />
+              <TwitterIcon className="animate-bounce" size={32} round />
             </TwitterShareButton>
+
+            <RedditShareButton
+              url={"https://github.com/next-share"}
+              title={
+                "next-share is a social share buttons for your next React apps."
+              }
+            >
+              <RedditIcon className="animate-bounce ml-5" size={32} round />
+            </RedditShareButton>
           </div>
         </div>
       </div>
