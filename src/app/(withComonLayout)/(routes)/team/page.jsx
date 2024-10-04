@@ -24,13 +24,13 @@ const ServicesPage = () => {
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex space-x-4 pt-10">
-                    <a href="https://github.com/nahid" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                    <a href=" https://github.com/nhwnahid007" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
                       <FaGithub size={24} />
                     </a>
-                    <a href="https://linkedin.com/in/nahid" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                    <a href="https://www.linkedin.com/in/nhwnahid" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
                       <FaLinkedin size={24} />
                     </a>
-                    <a href="https://twitter.com/nahid" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
+                    <a href=" https://www.facebook.com/nhwnahid" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white">
                       <FaFacebook size={24} />
                     </a>
                   </div>
@@ -55,7 +55,7 @@ const ServicesPage = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex space-x-4 pt-10">
                     <a
-                      href="https://github.com/nahid"
+                      href="https://github.com/musaakramsaleh"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-white"
@@ -63,7 +63,7 @@ const ServicesPage = () => {
                       <FaGithub size={24} />
                     </a>
                     <a
-                      href="https://linkedin.com/in/nahid"
+                      href="https://www.linkedin.com/in/musa-akram-saleh"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-white"
@@ -71,7 +71,7 @@ const ServicesPage = () => {
                       <FaLinkedin size={24} />
                     </a>
                     <a
-                      href="https://twitter.com/nahid"
+                      href="https://www.facebook.com/profile.php?id=100050096121271"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-white"
@@ -104,7 +104,7 @@ const ServicesPage = () => {
                 <div className="absolute inset-0 bg-black bg-opacity-50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex space-x-4 pt-10">
                     <a
-                      href="https://github.com/nahid"
+                      href="https://github.com/rafiul-razib"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-white"
@@ -112,7 +112,7 @@ const ServicesPage = () => {
                       <FaGithub size={24} />
                     </a>
                     <a
-                      href="https://linkedin.com/in/nahid"
+                      href="https://www.linkedin.com/in/rafiul-habib"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-white"
@@ -120,7 +120,7 @@ const ServicesPage = () => {
                       <FaLinkedin size={24} />
                     </a>
                     <a
-                      href="https://twitter.com/nahid"
+                      href="https://www.facebook.com/rafiul.razib?_rdc=1&_rdr"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-gray-400 hover:text-white"
