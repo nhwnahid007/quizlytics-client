@@ -106,7 +106,7 @@ const Navbar = () => {
                     alt='user'
                     width={64} // Explicitly set the width
                     height={64} // Explicitly set the height
-                    className='rounded-full'
+                    className='rounded-full w-full h-full'
                   />
                 </div>
               </div>
