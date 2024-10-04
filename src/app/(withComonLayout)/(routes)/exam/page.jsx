@@ -183,6 +183,7 @@ const Exam = () => {
                 </div>
               </div>
 
+<<<<<<< HEAD
               <Questions
                 currentMCQ={currentMCQ}
                 setCurrentMCQ={setCurrentMCQ}
@@ -202,6 +203,52 @@ const Exam = () => {
       )}
     </div>
   );
+=======
+    return (
+        <div className="bg-[#dad7cd] min-h-[100vh] py-20">
+            {showMakeExam ? (
+                <MakeExam setShowMakeExam={setShowMakeExam} setSearchLavel={setSearchLavel} setSearchCategory={setSearchCategory} setLoadData={setLoadData}  />
+            ) : (
+                <>
+                    {allMCQ.length !== 10 ? (
+                        <Loading />
+                    ) : !showResult ? (
+                        <>
+                            <div className='w-[580px] mx-auto bg-black text-[#ffefd3] rounded-lg mb-3 p-1'>
+                                <h2 className='text-2xl text-center font-bold text-[#39FF14]'>Assessment Overview</h2>
+                                <div className='w-full md:w-[480px] mx-auto my-6 flex justify-between'>
+                                    <div className='flex flex-col space-y-1'>
+                                        <h1><span className='font-semibold text-[#f08f45]'>Date:</span> {today}</h1>
+                                        <h1><span className='font-semibold text-[#f08f45]'>Duration:</span> 100 Seconds</h1>
+                                        <h1><span className='font-semibold text-[#f08f45]'>Examinee:</span> Tanvir Rahman</h1>
+                                    </div>
+                                    <div className='flex flex-col space-y-1'>
+                                        <h1><span className='font-semibold text-[#f08f45]'>MCQ:</span> 10</h1>
+                                        <h1><span className='font-semibold text-[#f08f45]'>Total Marks:</span> 1 x 10 = 10</h1>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <Questions
+                                currentMCQ={currentMCQ}
+                                setCurrentMCQ={setCurrentMCQ}
+                                userExamData={userExamData}
+                                setUserExamData={setUserExamData}
+                                examId={examId}
+                                setExamId={setExamId}
+                                allMCQ={allMCQ}
+                                setAllMCQ={setAllMCQ}
+                                setShowResult={setShowResult}
+                            />
+                        </>
+                    ) : (
+                        <ExamResult myMark={myMark} />
+                    )}
+                </>
+            )}
+        </div>
+    );
+>>>>>>> 5e6849fc83b311a5c50d9dfb04e09803760ca3a8
 };
 
 export default Exam;
