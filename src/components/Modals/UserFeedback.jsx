@@ -3,13 +3,22 @@ import React, {useState, useEffect} from "react";
 import {FaStar} from "react-icons/fa";
 import {RxCross1} from "react-icons/rx";
 import axios from "axios";
+import Image from "next/image";
+import {useSession} from "next-auth/react";
 
 const DropDown = () => {
   const [isModalOpen, setisModalOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [message, setMessage] = useState("");
+  // const [userName, setUserName] = useState("");
+  // const [userImage, setUserImage] = useState("");
   const [feedback, setFeedback] = useState([]);
   const [error, setError] = useState("");
+  const {data: session} = useSession();
+  const name = session?.user?.name;
+  const email = session?.user?.email;
+  const profile = session?.user?.profile;
+  const image = session?.user?.image;
 
   // Fetch all feedback on component mount
   useEffect(() => {
@@ -37,9 +46,15 @@ const DropDown = () => {
       await axios.post("https://quizlytics.jonomukti.org/feedback", {
         message,
         rating,
+        name,
+        image,
+        profile,
+        email,
       });
       setMessage("");
       setRating(0);
+      // setUserName("");
+      // setUserImage("");
       setError("");
       setisModalOpen(false);
 
@@ -89,7 +104,37 @@ const DropDown = () => {
             {/* Feedback form */}
             <div className="p-4 border-b border-[#d1d1d1]">
               {error && <p className="text-red-500 mb-2">{error}</p>}
-              <div className="w-[100%]">
+              {/* <div className="w-[100%] mb-4">
+                <label htmlFor="userName" className="font-[400] text-[15px]">
+                  Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="userName"
+                  id="userName"
+                  placeholder="Your name"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  className="border-[#e5eaf2] border rounded-md outline-none mt-1 px-4 w-full py-3 focus:border-[#3B9DF8] transition-colors duration-300"
+                />
+              </div> */}
+
+              {/* <div className="w-[100%] mb-4">
+                <label htmlFor="userImage" className="font-[400] text-[15px]">
+                  Image URL <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="userImage"
+                  id="userImage"
+                  placeholder="Image URL"
+                  value={userImage}
+                  onChange={(e) => setUserImage(e.target.value)}
+                  className="border-[#e5eaf2] border rounded-md outline-none mt-1 px-4 w-full py-3 focus:border-[#3B9DF8] transition-colors duration-300"
+                />
+              </div> */}
+
+              <div className="w-[100%] mb-4">
                 <label htmlFor="message" className="font-[400] text-[15px]">
                   Message <span className="text-red-500">*</span>
                 </label>
@@ -142,35 +187,6 @@ const DropDown = () => {
           </div>
         </div>
       </div>
-
-      {/* Display feedback */}
-      {/* <div className="p-8">
-        <h2 className="text-[1.5rem] font-bold">All Feedback</h2>
-        {feedback.length > 0 ? (
-          <ul className="space-y-4 mt-1">
-            {feedback.map((item, index) => (
-              <li key={index} className="border p-4 rounded-md">
-                <p>{item.message}</p>
-                <div className="flex items-center mt-2">
-                  {[...Array(5)].map((_, starIndex) => (
-                    <FaStar
-                      key={starIndex}
-                      className={`${
-                        starIndex + 1 <= item.rating
-                          ? "text-yellow-400"
-                          : "text-gray-300"
-                      }`}
-                      size={20}
-                    />
-                  ))}
-                </div>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No feedback available.</p>
-        )}
-      </div> */}
     </>
   );
 };
