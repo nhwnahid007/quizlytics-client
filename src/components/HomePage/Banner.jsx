@@ -9,6 +9,10 @@ const Banner = () => {
     router.push("/exam");
   };
 
+  const handleCustomExam = () => {
+    router.push("/customQuiz");
+  };
+
   return (
     <div
       className="relative h-[130vh] lg:h-[90vh] bg-cover bg-right bg-no-repeat text-white"
@@ -39,8 +43,11 @@ const Banner = () => {
                 >
                   Quick Exam
                 </button>
-                <button className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ffefd3] hover:bg-[#ff0000] text-black hover:text-white">
-                  Top Results
+                <button
+                  onClick={handleCustomExam}
+                  className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ffefd3] hover:bg-[#ff0000] text-black hover:text-white"
+                >
+                  Custom Exam
                 </button>
               </div>
             </div>

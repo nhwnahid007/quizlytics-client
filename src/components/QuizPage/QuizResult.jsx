@@ -23,7 +23,7 @@ const QuizResult = ({ result, markedAnswer, allQuestions }) => {
   const handleSaveRecord = async () => {
     setLoading(true);
     const res = await axios.post(
-      "http://localhost:4000/saveHistory",
+      "https://quizlytics.jonomukti.org/saveHistory",
       attemptDetails
     );
 
