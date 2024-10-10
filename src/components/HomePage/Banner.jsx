@@ -1,8 +1,14 @@
+"use client";
+import useRouterHook from "@/app/hooks/useRouterHook";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 
 const Banner = () => {
+  const router = useRouterHook();
+  const handleQuicktExam = () => {
+    router.push("/exam");
+  };
+
   return (
     <div
       className="relative h-[130vh] lg:h-[90vh] bg-cover bg-right bg-no-repeat text-white"
@@ -27,13 +33,14 @@ const Banner = () => {
                 know!
               </p>
               <div className="flex gap-4 mt-8">
-                <Link href="https://quizlytics.vercel.app/startQuiz">
-                  <button className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ff0000] hover:bg-[#ffefd3] text-white hover:text-black">
-                    Start Quiz Now
-                  </button>
-                </Link>
+                <button
+                  onClick={handleQuicktExam}
+                  className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ff0000] hover:bg-[#ffefd3] text-white hover:text-black"
+                >
+                  Quick Exam
+                </button>
                 <button className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ffefd3] hover:bg-[#ff0000] text-black hover:text-white">
-                  Second one
+                  Top Results
                 </button>
               </div>
             </div>

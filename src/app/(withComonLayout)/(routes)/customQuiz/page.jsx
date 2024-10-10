@@ -1,29 +1,21 @@
+"use client";
+import CustomExam from "@/components/Modals/CustomExam";
 import QuizScreen from "@/components/QuizPage/QuizScreen";
+import Link from "next/link";
 
 import { useState } from "react";
 
 const page = () => {
   const [quizKey, setQuizKey] = useState(null);
-
-  const handleChange = (e) => {
-    setQuizKey(e.target.value);
-  };
-
-  console.log(quizKey);
+  const [customExam, setCustomExam] = useState(true);
 
   return (
     <div>
-      <div className="mb-4">
-        <label className="block text-gray-700"></label>
-        <input
-          type="text"
-          name="question"
-          value={questionData.question}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded mt-2"
-        />
-      </div>
-      {/* <QuizScreen /> */}
+      {customExam ? (
+        <CustomExam setCustomExam={setCustomExam} setQuizKey={setQuizKey} />
+      ) : (
+        <QuizScreen quizKey={quizKey} />
+      )}
     </div>
   );
 };
