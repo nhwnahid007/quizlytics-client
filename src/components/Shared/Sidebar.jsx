@@ -18,6 +18,11 @@ const Sidebar = () => {
       route: "/Dashboard/customquestion",
       icon: <FaCommentDots />,
     },
+    {
+      title: "All Custom questions",
+      route: "/Dashboard/examinersDashboard",
+      icon: <FaCommentDots />,
+    },
     { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
   ];
 
