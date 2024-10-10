@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaChartLine, FaCommentDots, FaUser  } from "react-icons/fa";
+import { FaChartLine, FaCommentDots, FaUser } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const Sidebar = () => {
@@ -18,7 +18,12 @@ const Sidebar = () => {
       route: "/Dashboard/customquestion",
       icon: <FaCommentDots />,
     },
-    { title: "Reports", route: "/dashboard/reports", icon: <FaUser  /> },
+    {
+      title: "All Custom questions",
+      route: "/Dashboard/examinersDashboard",
+      icon: <FaCommentDots />,
+    },
+    { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
   ];
 
   return (
@@ -39,7 +44,8 @@ const Sidebar = () => {
           )}
         </button>
         <div className="flex gap-x-4 items-center">
-          <Link href="/Dashboard"
+          <Link
+            href="/Dashboard"
             className={`text-white origin-left font-medium text-xl duration-200 ${
               !isSidebarOpen && "scale-0"
             }`}
@@ -68,7 +74,12 @@ const Sidebar = () => {
           ))}
           <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4">
             <span className="text-lg">🏠</span>
-            <Link href="/" className={`${!isSidebarOpen && "hidden"} origin-left duration-200`}>
+            <Link
+              href="/"
+              className={`${
+                !isSidebarOpen && "hidden"
+              } origin-left duration-200`}
+            >
               Go to Homepage
             </Link>
           </li>
@@ -78,4 +89,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar; 
+export default Sidebar;
