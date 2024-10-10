@@ -1,14 +1,16 @@
 "use client";
-import getMCQ from "@/requests/get";
+import getMCQ, { getCustomQuiz } from "@/requests/get";
 import React, { useEffect, useState } from "react";
 import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
 import { useSession } from "next-auth/react";
 
 const QuizScreen = () => {
-  const [category, setCategory] = useState("react");
-  const [skill, setSkill] = useState("primary");
+  // const [category, setCategory] = useState("react");
+  // const [skill, setSkill] = useState("primary");
+  const [quizKey, setQuizKey] = useState("7998BL");
   const [allQuestions, setAllQuestion] = useState();
+  // console.log(allQuestions);
   // const { data: session } = useSession();
   // console.log(session);
 
@@ -28,16 +30,17 @@ const QuizScreen = () => {
     const getAllMCQ = async () => {
       try {
         setAllQuestion([]);
-        const data = await getMCQ(category, skill);
+        const data = await getCustomQuiz(quizKey);
         // console.log(data);
-        setAllQuestion(data);
+        setAllQuestion(data[0].quizArr);
         setIsLoading(false);
+        // console.log(allQuestions);
       } catch (error) {
         console.log("data fetching error", error);
       }
     };
     getAllMCQ();
-  }, [category, skill]);
+  }, [quizKey]);
 
   console.log(allQuestions);
 

@@ -20,3 +20,25 @@ export const getMark = async(examId) => {
         return [];
     }
 }
+
+export const getCustomQuiz = async(quizKey) =>{
+    try{
+        const res = await axios.get(`https://quizlytics.jonomukti.org/getCustomQuizByKey?qKey=${quizKey}`)
+        return res.data;
+    } catch(error){
+        console.error("Error fetching Custom Quiz:", error);
+        return [];
+    }
+}
+
+export const allCustomQuiz = async() =>{
+    try{
+        const res = await axios.get(`https://quizlytics.jonomukti.org/allCustomQuiz`)
+        return res.data;
+    } catch(error){
+        console.error("Error fetching All Custom Quiz:", error);
+        return [];
+    }
+}
+
+
