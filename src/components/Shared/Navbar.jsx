@@ -116,7 +116,7 @@ const Navbar = () => {
               >
                 <li className='text-center text-black font-bold text-lg px-4 mb-4 leading-6'>{name}</li>
                 <li className='bg-black text-[#ffefd3] p-2 rounded-xl mb-2'>
-                  <Link href='/dashboard'>My Dashboard</Link>
+                  <Link href='/Dashboard'>My Dashboard</Link>
                 </li>
                 <li 
                   className='bg-black text-[#ffefd3] px-4 py-2 rounded-xl cursor-pointer' 

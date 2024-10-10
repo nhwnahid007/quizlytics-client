@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, {useState} from "react";
+import {useForm} from "react-hook-form";
 import emailjs from "@emailjs/browser";
-import { ToastContainer, toast } from "react-toastify";
+import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 
@@ -14,7 +14,7 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
     reset,
   } = useForm();
 
@@ -97,7 +97,7 @@ const Contact = () => {
                 id="name"
                 type="text"
                 placeholder="Name"
-                {...register("name", { required: true })}
+                {...register("name", {required: true})}
               />
               {errors.name && (
                 <span className="text-red-500 text-xs">
@@ -117,7 +117,7 @@ const Contact = () => {
                 id="email"
                 type="email"
                 placeholder="Email"
-                {...register("email", { required: true })}
+                {...register("email", {required: true})}
               />
               {errors.email && (
                 <span className="text-red-500 text-xs">
@@ -137,7 +137,7 @@ const Contact = () => {
                 id="message"
                 placeholder="Message"
                 rows="4"
-                {...register("message", { required: true })}
+                {...register("message", {required: true})}
               ></textarea>
               {errors.message && (
                 <span className="text-red-500 text-xs">
