@@ -1,51 +1,81 @@
-'use client'
-import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation'; // Import usePathname to get the current route
+"use client";
+import { useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { FaChartLine, FaCommentDots, FaUser  } from "react-icons/fa";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const pathname = usePathname(); // Get the current pathname
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Default to open
+  const pathname = usePathname();
 
-  const isActive = (route) => pathname === route; // Check if the route is active
+  const isActive = (route) => pathname === route;
+
+  const Menus = [
+    { title: "Home", route: "/Dashboard", icon: <FaChartLine /> },
+    {
+      title: "Make custom questions",
+      route: "/Dashboard/customquestion",
+      icon: <FaCommentDots />,
+    },
+    { title: "Reports", route: "/dashboard/reports", icon: <FaUser  /> },
+  ];
 
   return (
-    <div>
-      {/* Sidebar */}
-      <div className={`fixed md:relative h-screen z-20 inset-y-0 left-0 w-64 bg-gray-800 text-white p-5 transition-transform transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0`}>
-        <h2 className="text-2xl font-semibold mb-6">Dashboard</h2>
-        <nav>
-          <ul>
-            <li className="mb-4">
-              <Link href="/Dashboard" className={`block py-2 px-4 rounded ${isActive('/dashboard') ? 'bg-gray-700 text-yellow-300' : 'hover:bg-gray-700'}`}>
-                Home
-              </Link>
-            </li>
-            <li className="mb-4">
-              <Link href="/Dashboard/customquestion" className={`block py-2 px-4 rounded ${isActive('/Dashboard/customquestion') ? 'bg-gray-700 text-yellow-300' : 'hover:bg-gray-700'}`}>
-                Make custom questions
-              </Link>
-            </li>
-            <li>
-              <Link href="/dashboard/reports" className={`block py-2 px-4 rounded ${isActive('/dashboard/reports') ? 'bg-gray-700 text-yellow-300' : 'hover:bg-gray-700'}`}>
-                Reports
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      {/* Hamburger Button for mobile */}
-      <button
-        className="md:hidden m-4"
-        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+    <div className="flex">
+      <div
+        className={`${
+          isSidebarOpen ? "w-72" : "w-20"
+        } bg-gray-800 h-screen p-5 pt-8 relative duration-300 text-white`}
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-        </svg>
-      </button>
+        <button
+          className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-yellow-300"
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        >
+          {isSidebarOpen ? (
+            <FiChevronLeft className="h-6 w-6" />
+          ) : (
+            <FiChevronRight className="h-6 w-6" />
+          )}
+        </button>
+        <div className="flex gap-x-4 items-center">
+          <Link href="/Dashboard"
+            className={`text-white origin-left font-medium text-xl duration-200 ${
+              !isSidebarOpen && "scale-0"
+            }`}
+          >
+            Dashboard
+          </Link>
+        </div>
+        <ul className="pt-6">
+          {Menus.map((Menu, index) => (
+            <li
+              key={index}
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4 ${
+                isActive(Menu.route) ? "bg-gray-700 text-yellow-300" : ""
+              }`}
+            >
+              <span className="text-lg">{Menu.icon}</span>
+              <Link
+                href={Menu.route}
+                className={`${
+                  !isSidebarOpen && "hidden"
+                } origin-left duration-200`}
+              >
+                {Menu.title}
+              </Link>
+            </li>
+          ))}
+          <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4">
+            <span className="text-lg">🏠</span>
+            <Link href="/" className={`${!isSidebarOpen && "hidden"} origin-left duration-200`}>
+              Go to Homepage
+            </Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default Sidebar; 

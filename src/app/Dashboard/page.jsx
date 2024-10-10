@@ -1,9 +1,10 @@
+import QuizlyticsDashboard from '@/components/Dashboard/QuizlyticsDashboard';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-            <p>Hello world</p>
+            <QuizlyticsDashboard></QuizlyticsDashboard>
         </div>
     );
 };
