@@ -2,7 +2,7 @@
 import { allCustomQuiz } from "@/requests/get";
 import { useState, useEffect } from "react";
 
-const page = () => {
+const Page = () => {
   const [allQuiz, setAllQuiz] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -51,4 +51,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const page = () => {
+const Page = () => {
   const [quizKey, setQuizKey] = useState(1234);
 
   function generateRandomKey() {
@@ -197,4 +197,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
