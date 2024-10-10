@@ -5,10 +5,10 @@ import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
 import { useSession } from "next-auth/react";
 
-const QuizScreen = () => {
+const QuizScreen = ({ quizKey }) => {
   // const [category, setCategory] = useState("react");
   // const [skill, setSkill] = useState("primary");
-  const [quizKey, setQuizKey] = useState("7998BL");
+  // const [quizKey, setQuizKey] = useState("7998BL");
   const [allQuestions, setAllQuestion] = useState();
   // console.log(allQuestions);
   // const { data: session } = useSession();
@@ -71,7 +71,7 @@ const QuizScreen = () => {
   }
 
   return (
-    <div className="h-screen">
+    <div className="h-auto">
       {isQuizEnded ? (
         <QuizResult
           result={calculateResult()}

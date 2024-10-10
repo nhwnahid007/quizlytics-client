@@ -9,7 +9,7 @@ const CustomExam = ({ setCustomExam, setQuizKey }) => {
     console.log("exam started");
   };
   return (
-    <div className="h-screen flex flex-col justify-center items-center">
+    <div className="h-56 flex flex-col justify-center items-center">
       <div className="mb-4 text-center">
         <label className="block text-gray-200">Enter Quiz Key to Start</label>
         <input
