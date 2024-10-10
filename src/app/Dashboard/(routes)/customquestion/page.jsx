@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import axios from 'axios'; 
-const page = () => {
+const Page = () => {
     const [questionData, setQuestionData] = useState({
         question: '',
         options: ['', '', '', ''],
@@ -143,4 +143,4 @@ const page = () => {
       ); 
 }
 
-export default page;
+export default Page;
