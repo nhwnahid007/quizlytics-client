@@ -1,8 +1,28 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import {FaQuoteLeft} from "react-icons/fa";
+import {useState, useEffect} from "react";
+import axios from "axios";
 
 const Feedback = () => {
+  const [feedback, setFeedback] = useState([]);
+
+  // Fetch all feedback on component mount
+  useEffect(() => {
+    const fetchFeedback = async () => {
+      try {
+        const response = await axios.get(
+          "https://quizlytics.jonomukti.org/all-feedback"
+        );
+        setFeedback(response.data);
+      } catch (err) {
+        setError("Failed to fetch feedback.");
+      }
+    };
+    fetchFeedback();
+  }, []);
+
   return (
     <div className="bg-[#ffefd3] py-16">
       <h1 className="text-4xl font-bold text-black text-center mb-12">
@@ -10,16 +30,17 @@ const Feedback = () => {
       </h1>
       <div className="w-[90%] md:max-w-6xl mx-auto flex justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {feedbackData.map((item) => (
-            <div key={item.name} className="w-full   bg-black p-6 rounded-xl">
+          {feedback?.map((item) => (
+            <div key={item.name} className="w-full bg-black p-6 rounded-xl">
               <Image
-                src={item.user}
+                src={item.image}
                 alt="feedback"
                 width={140}
                 height={140}
                 className="rounded-full mx-auto mt-4"
               />
               <div>
+                <h2>Rating: {item.rating}</h2>
                 <h2 className="text-xl font-semibold text-white text-center mt-4">
                   {item.name}
                 </h2>
@@ -27,7 +48,7 @@ const Feedback = () => {
                   <span>
                     <FaQuoteLeft />
                   </span>
-                  {item.description}
+                  {item.message}
                 </p>
               </div>
             </div>
