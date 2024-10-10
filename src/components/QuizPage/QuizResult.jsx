@@ -1,3 +1,4 @@
+import useRouterHook from "@/app/hooks/useRouterHook";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -37,12 +38,18 @@ const QuizResult = ({ result, markedAnswer, allQuestions }) => {
     }
   };
 
+  const router = useRouterHook();
+
+  const handleGoToHome = () => {
+    router.push("/");
+  };
+
   if (loading) {
     return "Progress is being saved in database! Please Wait!!";
   }
 
   return (
-    <div className="text-center max-w-3xl mx-auto">
+    <div className="text-center max-w-3xl mx-auto py-12 border my-10">
       <h1 className="text-red-700 font-bold text-3xl my-20">
         Your skill is {result?.percentageMark}%
       </h1>
@@ -51,9 +58,14 @@ const QuizResult = ({ result, markedAnswer, allQuestions }) => {
         {result?.totalQuiz}
       </h1>
 
-      <button onClick={handleSaveRecord} className="btn btn-error mt-12">
-        Save Progress
-      </button>
+      <div className="flex gap-4 justify-center items-center">
+        <button onClick={handleSaveRecord} className="btn btn-error mt-12">
+          Save Progress
+        </button>
+        <button onClick={handleGoToHome} className="btn btn-primary mt-12">
+          Back to Home
+        </button>
+      </div>
     </div>
   );
 };
