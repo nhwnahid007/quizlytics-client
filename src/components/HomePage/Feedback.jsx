@@ -4,11 +4,11 @@ import React from "react";
 import {FaQuoteLeft} from "react-icons/fa";
 import {useState, useEffect} from "react";
 import axios from "axios";
+import {FaStar} from "react-icons/fa";
 
 const Feedback = () => {
   const [feedback, setFeedback] = useState([]);
 
-  // Fetch all feedback on component mount
   useEffect(() => {
     const fetchFeedback = async () => {
       try {
@@ -40,10 +40,17 @@ const Feedback = () => {
                 className="rounded-full mx-auto mt-4"
               />
               <div>
-                <h2>Rating: {item.rating}</h2>
                 <h2 className="text-xl font-semibold text-white text-center mt-4">
                   {item.name}
                 </h2>
+                <div className="flex mt-2">
+                  <p className="flex items-center mx-auto">
+                    <span className="text-white mr-2">Rating:</span>
+                    {Array.from({length: item.rating}).map((_, index) => (
+                      <FaStar key={index} style={{color: "gold"}} />
+                    ))}
+                  </p>
+                </div>
                 <p className="text-white my-4 italic flex gap-2">
                   <span>
                     <FaQuoteLeft />
