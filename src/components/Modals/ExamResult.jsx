@@ -11,6 +11,7 @@ import {
   RedditIcon,
 } from "next-share";
 import React from "react";
+import UserFeedback from "./UserFeedback";
 
 const ExamResult = ({myMark}) => {
   const router = useRouterHook();
@@ -56,6 +57,9 @@ const ExamResult = ({myMark}) => {
         <h1 className="text-[#30d158] text-center text-4xl mb-10">
           Your achieved mark!
         </h1>
+        <div>
+          <UserFeedback />
+        </div>
         <div className="mt-4 flex justify-center gap-4 w-full">
           <div className="font-medium py-1 px-8 border border-red-600 rounded-md">
             <h2 className="text-xl mb-5 text-center">Share Social Media:</h2>
