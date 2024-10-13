@@ -46,7 +46,6 @@ const Page = () => {
               <TableHead>View Quiz</TableHead>
               <TableHead>Quiz Creator</TableHead>
               <TableHead className="text-center">Number of Qusetions</TableHead>
-              <TableHead>Update Quiz</TableHead>
               <TableHead className="text-right">Delete Quiz</TableHead>
             </TableRow>
           </TableHeader>
@@ -64,15 +63,11 @@ const Page = () => {
                     View
                   </Button>
                 </TableCell>
-                <TableCell>{item.creatorEmail}</TableCell>
+                <TableCell>{item.quizCreator}</TableCell>
                 <TableCell className="text-center">
                   {item.quizArr.length}
                 </TableCell>
-                <TableCell>
-                  <Button variant="secondary" size="sm">
-                    Update
-                  </Button>
-                </TableCell>
+
                 <TableCell className="text-right">
                   <Button variant="destructive" size="sm">
                     Delete
