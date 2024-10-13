@@ -31,7 +31,7 @@ const Sidebar = () => {
       <div
         className={`${
           isSidebarOpen ? "w-72" : "w-20"
-        } bg-gray-800 h-screen p-5 pt-8 relative duration-300 text-white`}
+        } bg-gray-800 h-auto p-5 pt-8 relative duration-300 text-white`}
       >
         <button
           className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-yellow-300"

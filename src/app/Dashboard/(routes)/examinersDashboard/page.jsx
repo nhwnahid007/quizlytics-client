@@ -58,7 +58,7 @@ const Page = () => {
                   {item.quizStartKey}
                 </TableCell>
                 <TableCell>{item.quizTitle}</TableCell>
-                <TableCell>{item.quizRoom}</TableCell>
+                <TableCell>{item.quizCategory}</TableCell>
                 <TableCell>
                   <Button variant="outline" size="sm">
                     View
