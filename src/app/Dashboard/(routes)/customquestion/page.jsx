@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import Swal from "sweetalert2";
 
 const Page = () => {
   const [quizKey, setQuizKey] = useState(1234);
@@ -117,6 +118,13 @@ const Page = () => {
         "https://quizlytics.jonomukti.org/saveManualQuiz",
         quizSet
       );
+      Swal.fire({
+        title: "Success!",
+        toast: true,
+        text: "Quiz saved successfully",
+        icon: "success",
+        timer: 2000,
+      });
       console.log("Questions submitted successfully:", response.data);
       console.log(questions);
       // Clear the questions array after submission

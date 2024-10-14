@@ -10,31 +10,64 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+
 import { Button } from "@/components/ui/button";
+import { RiDeleteBinLine } from "react-icons/ri";
+import useAllQuiz from "@/app/hooks/useAllQuiz";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Page = () => {
+  const [AllQuiz, refetch] = useAllQuiz();
+  console.log("AllQuiz", AllQuiz);
   const [allQuiz, setAllQuiz] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [deleteQuiz, setDeleteQuiz] = useState(false);
 
-  useEffect(() => {
-    const getAllMCQ = async () => {
-      try {
-        setAllQuiz([]);
-        const data = await allCustomQuiz();
-        console.log(data);
-        setAllQuiz(data);
-        setIsLoading(false);
-        // console.log(allQuestions);
-      } catch (error) {
-        console.log("data fetching error", error);
+  const handleDelete = async (id) => {
+    console.log("Delete", id);
+
+    Swal.fire({
+      title: "Are you sure?",
+      toast: true,
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(
+            `https://quizlytics.jonomukti.org/deleteCustomQuiz?qKey=${id}`
+          )
+          .then(() => {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              toast: true,
+              text: "Quiz set has been deleted.",
+              icon: "success",
+            });
+          });
       }
-    };
-    getAllMCQ();
-  }, []);
+    });
+  };
 
   return (
-    <div>
-      <main className="max-w-6xl mx-auto my-12">
+    <div className="my-12 mx-6">
+      <main className="max-w-6xl mx-auto">
         <Table>
           <TableCaption>ALL CUSTOM QUESTIONS</TableCaption>
           <TableHeader>
@@ -43,14 +76,14 @@ const Page = () => {
               <TableHead className="w-[100px]">Quiz Code</TableHead>
               <TableHead>Title</TableHead>
               <TableHead>Category</TableHead>
-              <TableHead>View Quiz</TableHead>
+              {/* <TableHead>View Quiz</TableHead> */}
               <TableHead>Quiz Creator</TableHead>
               <TableHead className="text-center">Number of Qusetions</TableHead>
               <TableHead className="text-right">Delete Quiz</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {allQuiz.map((item, idx) => (
+            {AllQuiz.map((item, idx) => (
               <TableRow key={item.quizStartKey}>
                 <TableCell className="font-medium">{idx + 1}</TableCell>
                 <TableCell className="font-medium">
@@ -58,20 +91,54 @@ const Page = () => {
                 </TableCell>
                 <TableCell>{item.quizTitle}</TableCell>
                 <TableCell>{item.quizCategory}</TableCell>
-                <TableCell>
+                {/* <TableCell>
                   <Button variant="outline" size="sm">
                     View
                   </Button>
-                </TableCell>
+                </TableCell> */}
                 <TableCell>{item.quizCreator}</TableCell>
                 <TableCell className="text-center">
                   {item.quizArr.length}
                 </TableCell>
 
                 <TableCell className="text-right">
-                  <Button variant="destructive" size="sm">
+                  <Button
+                    variant="destructive"
+                    size="sm"
+                    onClick={() => handleDelete(item.quizStartKey)}
+                  >
+                    <RiDeleteBinLine className="mr-1" />
                     Delete
                   </Button>
+                  {/* <AlertDialog>
+                    <AlertDialogTrigger>
+                      <Button variant="destructive" size="sm">
+                        <RiDeleteBinLine className="mr-1" />
+                        Delete
+                      </Button>
+                    </AlertDialogTrigger>
+                    <AlertDialogContent>
+                      <AlertDialogHeader>
+                        <AlertDialogTitle>
+                          Are you absolutely sure?
+                        </AlertDialogTitle>
+                        <AlertDialogDescription>
+                          This action cannot be undone. This will permanently
+                          delete Quiz-set{" "}
+                          <span className="font-bold">{item.quizStartKey}</span>{" "}
+                          and remove the data from our servers.
+                        </AlertDialogDescription>
+                      </AlertDialogHeader>
+                      <AlertDialogFooter>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogAction
+                          onClick={() => handleDelete(item.quizStartKey)}
+                        >
+                          Continue
+                        </AlertDialogAction>
+                      </AlertDialogFooter>
+                    </AlertDialogContent>
+                  </AlertDialog> */}
                 </TableCell>
               </TableRow>
             ))}
