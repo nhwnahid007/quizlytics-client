@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 export const getMCQ = async (category, level) => {
     console.log(category, level);
@@ -27,6 +28,7 @@ export const getCustomQuiz = async(quizKey) =>{
         return res.data;
     } catch(error){
         console.error("Error fetching Custom Quiz:", error);
+    
         return [];
     }
 }

@@ -1,4 +1,5 @@
-import React from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const CustomExam = ({ setCustomExam, setQuizKey }) => {
   const handleChange = (e) => {
@@ -8,24 +9,26 @@ const CustomExam = ({ setCustomExam, setQuizKey }) => {
     setCustomExam(false);
     console.log("exam started");
   };
+
   return (
-    <div className="h-56 flex flex-col justify-center items-center">
+    <div className="h-[300px] flex flex-col justify-center items-center">
       <div className="mb-4 text-center">
-        <label className="block text-gray-200">Enter Quiz Key to Start</label>
-        <input
+        <label className="block text-gray-700">Enter Quiz Key to Start</label>
+        <Input
           type="text"
           name="question"
           onChange={handleChange}
           className="w-full p-2 border border-gray-300 rounded mt-2"
         />
 
-        <button
+        <Button
           onClick={handleStart}
           type="submit"
-          className="btn btn-accent mt-4"
+          className="mt-4"
+          variant="default"
         >
           Start
-        </button>
+        </Button>
       </div>
     </div>
   );
