@@ -13,7 +13,7 @@ import {
 import React from "react";
 import UserFeedback from "./UserFeedback";
 
-const ExamResult = ({myMark}) => {
+const ExamResult = ({ myMark }) => {
   const router = useRouterHook();
 
   const handleGoHome = () => {
