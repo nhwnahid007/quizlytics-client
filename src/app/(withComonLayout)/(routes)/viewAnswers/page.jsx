@@ -1,7 +1,8 @@
-import React from "react";
+import LatestSubmission from "@/components/QuizPage/LatestSubmission";
 
 const page = () => {
-  return <div>View Answers here...</div>;
+  const key = "HT2344";
+  return <LatestSubmission key={key} />;
 };
 
 export default page;

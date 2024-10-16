@@ -43,4 +43,14 @@ export const allCustomQuiz = async() =>{
     }
 }
 
+export const getSubmissionByKey = async(key, email)=>{
+    try{
+        const res = await axios.get(`http://localhost:4000/historyByKey?qKey=${key}&email=${email}`)
+        return res.data;
+    } catch(error){
+        console.error("Error fetching submission by key:", error)
+        return [];
+    }
+}
+
 

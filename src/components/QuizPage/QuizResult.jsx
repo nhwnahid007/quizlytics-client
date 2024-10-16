@@ -57,6 +57,7 @@ const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
         title: "Success",
         text: "Recorded successfully!",
         icon: "success",
+        toast: true,
       });
     }
   };
@@ -112,7 +113,7 @@ const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
             variant="destructive"
             disabled={isDisabled}
           >
-            View Answers
+            View Submission
           </Button>
           <Button onClick={handleGoToHome} variant="destructive">
             Back to Home
