@@ -17,7 +17,7 @@ const Feedback = () => {
         );
         setFeedback(response.data);
       } catch (err) {
-        setError("Failed to fetch feedback.");
+        console.error(err.message); // Log the error message
       }
     };
     fetchFeedback();
