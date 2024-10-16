@@ -16,7 +16,7 @@ const Banner = () => {
 
   return (
     <div
-      className="relative h-[100vh] lg:h-[90vh] bg-cover bg-right bg-no-repeat text-black"
+      className="relative h-[130vh] lg:h-[90vh] bg-cover bg-right bg-no-repeat text-black"
       style={{
         backgroundImage: `url('https://i.ibb.co/W3FdMRj/quizlyticsbanner.png')`,
         backgroundColor: "#f3f4f6",
