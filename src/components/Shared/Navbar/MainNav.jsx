@@ -11,7 +11,7 @@ const MainNav = () => {
         <Link
           href='/'
           className={`flex items-center gap-2 ${
-            pathname === '/' ? 'text-pink-500' : 'text-white'
+            pathname === '/' ? 'text-primary-color' : 'text-secondary-color'
           }`}
         >
           <span
@@ -28,7 +28,7 @@ const MainNav = () => {
         <Link
           href='/blogs'
           className={`flex items-center gap-2 ${
-            pathname === '/blogs' ? 'text-pink-500' : 'text-white'
+            pathname === '/blogs' ? 'text-primary-color' : 'text-secondary-color'
           }`}
         >
           <span
@@ -45,7 +45,7 @@ const MainNav = () => {
         <Link
           href='/about'
           className={`flex items-center gap-2 ${
-            pathname === '/about' ? 'text-pink-500' : 'text-white'
+            pathname === '/about' ? 'text-primary-color' : 'text-secondary-color'
           }`}
         >
           <span
@@ -62,7 +62,7 @@ const MainNav = () => {
         <Link
           href='/contact'
           className={`flex items-center gap-2 ${
-            pathname === '/contact' ? 'text-pink-500' : 'text-white'
+            pathname === '/contact' ? 'text-primary-color' : 'text-secondary-color'
           }`}
         >
           <span
@@ -79,7 +79,7 @@ const MainNav = () => {
         <Link
           href='/team'
           className={`flex items-center gap-2 ${
-            pathname === '/team' ? 'text-pink-500' : 'text-white'
+            pathname === '/team' ? 'text-primary-color' : 'text-secondary-color'
           }`}
         >
           <span

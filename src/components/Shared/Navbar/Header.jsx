@@ -12,6 +12,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Button } from "@/components/ui/button";
 // import { Button } from "@/components/ui/button";
 
 const Header = () => {
@@ -57,8 +58,10 @@ const Header = () => {
               <Link href="/login" className="border border-purple-600 text-purple-600 rounded-md px-4 py-2">
                 Login
               </Link>
-              <Link href="/register" className="bg-purple-600 text-white rounded-md px-4 py-2">
-                Sign Up
+              <Link href="/register">
+                <Button variant="solid" className="bg-purple-600 text-white rounded-md px-4 py-2">
+                  Sign Up
+                </Button>
               </Link>
             </div>
           ) : (

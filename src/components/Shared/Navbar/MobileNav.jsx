@@ -12,7 +12,7 @@ const MobileNav = () => {
       <Sheet>
         {/* Icon to trigger the Sheet (side menu) */}
         <SheetTrigger>
-          <AlignJustify className='h-10 w-10 md:h-12 md:w-12 my-auto' />
+          <AlignJustify className='h-10 mt-1 w-10 md:h-12 md:w-12 my-auto text-primary-color' />
         </SheetTrigger>
 
         {/* Content inside the Sheet */}
@@ -22,7 +22,7 @@ const MobileNav = () => {
             <Link
               href='/'
               className={`py-2 ${
-                pathname === '/' ? 'text-pink-500 font-bold' : 'text-black'
+                pathname === '/' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
             >
               Home
@@ -31,7 +31,7 @@ const MobileNav = () => {
             <Link
               href='/blogs'
               className={`py-2 ${
-                pathname === '/blogs' ? 'text-pink-500 font-bold' : 'text-black'
+                pathname === '/blogs' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
             >
               Blogs
@@ -40,7 +40,7 @@ const MobileNav = () => {
             <Link
               href='/about'
               className={`py-2 ${
-                pathname === '/about' ? 'text-pink-500 font-bold' : 'text-black'
+                pathname === '/about' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
             >
               About
@@ -49,7 +49,7 @@ const MobileNav = () => {
             <Link
               href='/contact'
               className={`py-2 ${
-                pathname === '/contact' ? 'text-pink-500 font-bold' : 'text-black'
+                pathname === '/contact' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
             >
               Contact
@@ -58,7 +58,7 @@ const MobileNav = () => {
             <Link
               href='/team'
               className={`py-2 ${
-                pathname === '/team' ? 'text-pink-500 font-bold' : 'text-black'
+                pathname === '/team' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
             >
               Our Team
