@@ -13,12 +13,14 @@ const CustomExam = ({ setCustomExam, setQuizKey }) => {
   return (
     <div className="h-[300px] flex flex-col justify-center items-center">
       <div className="mb-4 text-center">
-        <label className="block text-gray-700">Enter Quiz Key to Start</label>
+        <label className="block text-gray-700 font-bold mb-2">
+          Enter Quiz Key to Start
+        </label>
         <Input
           type="text"
-          name="question"
+          name="quizKey"
           onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded mt-2"
+          className="text-center font-bold"
         />
 
         <Button

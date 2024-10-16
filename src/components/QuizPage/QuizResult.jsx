@@ -15,20 +15,24 @@ import {
   RedditIcon,
 } from "next-share";
 
-const QuizResult = ({ result, markedAnswer, allQuestions }) => {
+const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
   const [loading, setLoading] = useState(false);
   console.log("markedAnswers", markedAnswer);
   console.log("allQuestions", allQuestions);
+  console.log("quizStartKey", quizStartKey);
   // access next auth session
   const { data: session } = useSession();
   const name = session?.user?.name;
   const profile = session?.user?.profile;
   const image = session?.user?.image;
+  const email = session?.user?.email;
 
   const attemptDetails = {
+    quizStartKey,
     questions: allQuestions,
     answers: markedAnswer,
     userName: name,
+    userEmail: email,
     userProfile: profile,
     userImg: image,
     marks: result?.percentageMark,
@@ -70,7 +74,7 @@ const QuizResult = ({ result, markedAnswer, allQuestions }) => {
   if (result?.percentageMark > 70) {
     remark = "Excellent!";
     remarkColor = "text-green-600";
-  } else if (myMark >= 5) {
+  } else if (result?.percentageMark >= 50) {
     remark = "Good!";
     remarkColor = "text-orange-600";
   } else {
