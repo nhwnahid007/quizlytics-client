@@ -1,71 +1,72 @@
-import React from "react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Faq = () => {
   return (
-    <section className="dark:bg-gray-100 dark:text-gray-800 bg-black">
-      <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8 bg-black text-white">
+    <section className="bg-black">
+      <div className="container p-4 mx-auto md:p-8 bg-black text-white">
         <h2 className="text-2xl font-semibold sm:text-4xl mb-8">
-          Frequently Asked Questions
+          Frequently Asked Questions:
         </h2>
 
-        <div className="space-y-4">
-          <details className="w-full border rounded-lg">
-            <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
-              Can I retake a quiz?
-            </summary>
-            <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
+        <Accordion className="w-full space-y-4" type="single" collapsible>
+          <AccordionItem className="border rounded pl-4" value="item-1">
+            <AccordionTrigger>Can I retake a quiz?</AccordionTrigger>
+            <AccordionContent>
               Yes, you can retake quizzes as many times as you like to improve
-              your score.{" "}
-            </p>
-          </details>
-          <details className="w-full border rounded-lg">
-            <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
+              your score.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem className="border rounded pl-4" value="item-2">
+            <AccordionTrigger>
               Is there a time limit for each quiz?
-            </summary>
-            <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
+            </AccordionTrigger>
+            <AccordionContent>
               Yes, most quizzes have a time limit to add an extra challenge, but
-              it varies depending on the quiz topic.{" "}
-            </p>
-          </details>
-          <details className="w-full border rounded-lg">
-            <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
-              How is my score calculated?
-            </summary>
-            <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
+              it varies depending on the quiz topic.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem className="border rounded pl-4" value="item-3">
+            <AccordionTrigger>How is my score calculated?</AccordionTrigger>
+            <AccordionContent>
               Each correct answer earns you points, and your final score is the
               sum of all correct responses. There are no penalties for incorrect
-              answers.{" "}
-            </p>
-          </details>
-          <details className="w-full border rounded-lg">
-            <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
+              answers.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem className="border rounded pl-4" value="item-4">
+            <AccordionTrigger>
               Are there backend-focused quizzes?
-            </summary>
-            <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
+            </AccordionTrigger>
+            <AccordionContent>
               Yes! We offer quizzes on MongoDB, Firebase, and Express, covering
-              database management, authentication, and server-side logic.{" "}
-            </p>
-          </details>
-          <details className="w-full border rounded-lg">
-            <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
+              database management, authentication, and server-side logic.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem className="border rounded pl-4" value="item-5">
+            <AccordionTrigger>
               How difficult is the React quiz?
-            </summary>
-            <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
+            </AccordionTrigger>
+            <AccordionContent>
               The React quiz is designed for both beginners and intermediate
               learners, covering topics like components, state management,
-              hooks, lifecycle methods, and JSX.{" "}
-            </p>
-          </details>
-          <details className="w-full border rounded-lg">
-            <summary className="px-4 py-6 focus:outline-none focus-visible:dark:ring-violet-600">
+              hooks, lifecycle methods, and JSX.
+            </AccordionContent>
+          </AccordionItem>
+          <AccordionItem className="border rounded pl-4" value="item-6">
+            <AccordionTrigger>
               What can I expect in the CSS quiz?
-            </summary>
-            <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-600">
+            </AccordionTrigger>
+            <AccordionContent>
               The CSS quiz includes questions on selectors, layout models
-              (Flexbox, Grid), animations, responsiveness, and more.{" "}
-            </p>
-          </details>
-        </div>
+              (Flexbox, Grid), animations, responsiveness, and more.
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     </section>
   );
