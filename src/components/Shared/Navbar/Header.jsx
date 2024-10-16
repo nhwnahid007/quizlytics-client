@@ -1,6 +1,6 @@
 "use client";
 import { signOut, useSession } from "next-auth/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import MainNav from "./MainNav"; // Keep this for your main navigation
@@ -12,7 +12,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -20,16 +20,29 @@ const Header = () => {
   const profile = session?.user?.profile;
   const image = session?.user?.image;
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="py-2 bg-secondary-color text-white">
-      <div className="px-2 md:px-5 lg:px-20 mx-auto flex items-center justify-around">
+    <header className={`fixed top-0 left-0 w-full z-20 transition-all duration-300 ${isScrolled ? 'bg-white text-black shadow-md' : 'bg-transparent text-white'}`}>
+      <div className="px-2 md:px-5 lg:px-20 mx-auto flex items-center justify-between">
         <div className="block lg:hidden">
           <MobileNav />
         </div>
 
         {/* Brand Logo */}
-        <Link href="/" className=" text-3xl items-center md:ml-5 md:text-4xl text-[#ff0000] font-bold">
-          Quiz<span className="text-[#ffefd3]">lytics</span>
+        <Link href="/" className="text-3xl items-center md:ml-5 md:text-4xl text-purple-600 font-bold">
+          Quiz<span className="text-purple-400">lytics</span>
         </Link>
 
         {/* Main Navigation for larger screens */}
@@ -41,11 +54,11 @@ const Header = () => {
         <div className="relative flex items-center gap-4">
           {!session ? (
             <div className="flex gap-2">
-              <Link href="/login" className="bg-[#ffefd3] rounded-md">
-                <Button>Login</Button>
+              <Link href="/login" className="border border-purple-600 text-purple-600 rounded-md px-4 py-2">
+                Login
               </Link>
-              <Link href="/register" className="bg-[#ffefd3] rounded-md">
-                <Button>Register</Button>
+              <Link href="/register" className="bg-purple-600 text-white rounded-md px-4 py-2">
+                Sign Up
               </Link>
             </div>
           ) : (
@@ -65,17 +78,17 @@ const Header = () => {
                 </div>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                className="bg-[#ffefd3] rounded-md p-4 shadow-lg absolute right-0 mt-2 z-50 w-48"
+                className="bg-white rounded-md p-4 shadow-lg absolute right-0 mt-2 z-50 w-48"
                 sideOffset={10}
               >
                 <DropdownMenuLabel className="text-center font-bold text-sm truncate">
                   {name}
                 </DropdownMenuLabel>
-                <DropdownMenuItem className="bg-black text-[#ffefd3] p-2 rounded-md mb-2 text-center">
+                <DropdownMenuItem className="bg-purple-600 text-white p-2 rounded-md mb-2 text-center">
                   <Link href="/Dashboard">My Dashboard</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  className="bg-black text-[#ffefd3] p-2 rounded-md text-center cursor-pointer"
+                  className="bg-purple-600 text-white p-2 rounded-md text-center cursor-pointer"
                   onClick={() => signOut()}
                 >
                   Logout
