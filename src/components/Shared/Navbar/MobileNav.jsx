@@ -7,12 +7,12 @@ const MobileNav = () => {
   const pathname = usePathname(); // Hook to get current route
 
   return (
-    <div className='md:hidden'>
+    <div className='lg:hidden'>
       {/* Sheet component for mobile navigation */}
       <Sheet>
         {/* Icon to trigger the Sheet (side menu) */}
         <SheetTrigger>
-          <AlignJustify className='h-5 w-5' />
+          <AlignJustify className='h-10 w-10 md:h-12 md:w-12 my-auto' />
         </SheetTrigger>
 
         {/* Content inside the Sheet */}
