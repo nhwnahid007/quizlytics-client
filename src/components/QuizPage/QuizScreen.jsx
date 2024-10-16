@@ -4,15 +4,10 @@ import React, { useEffect, useState } from "react";
 import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
 import { useSession } from "next-auth/react";
+import Swal from "sweetalert2";
 
 const QuizScreen = ({ quizKey }) => {
-  // const [category, setCategory] = useState("react");
-  // const [skill, setSkill] = useState("primary");
-  // const [quizKey, setQuizKey] = useState("7998BL");
   const [allQuestions, setAllQuestion] = useState();
-  // console.log(allQuestions);
-  // const { data: session } = useSession();
-  // console.log(session);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,6 +18,7 @@ const QuizScreen = ({ quizKey }) => {
   );
 
   console.log(markedAnswer);
+  // console.log(quizKey);
 
   const isQuizEnded = currentQuizIndex === allQuestions?.length;
 
@@ -37,6 +33,12 @@ const QuizScreen = ({ quizKey }) => {
         // console.log(allQuestions);
       } catch (error) {
         console.log("data fetching error", error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong! Try a different Key!!",
+          toast: true,
+        });
       }
     };
     getAllMCQ();
@@ -74,6 +76,7 @@ const QuizScreen = ({ quizKey }) => {
     <div className="h-auto">
       {isQuizEnded ? (
         <QuizResult
+          quizStartKey={quizKey}
           result={calculateResult()}
           markedAnswer={markedAnswer}
           allQuestions={allQuestions}
