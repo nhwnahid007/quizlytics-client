@@ -18,6 +18,7 @@ const QuizScreen = ({ quizKey }) => {
   );
 
   console.log(markedAnswer);
+  // console.log(quizKey);
 
   const isQuizEnded = currentQuizIndex === allQuestions?.length;
 
@@ -75,6 +76,7 @@ const QuizScreen = ({ quizKey }) => {
     <div className="h-auto">
       {isQuizEnded ? (
         <QuizResult
+          quizStartKey={quizKey}
           result={calculateResult()}
           markedAnswer={markedAnswer}
           allQuestions={allQuestions}
