@@ -10,7 +10,7 @@ const MainNav = () => {
         {/* Home Link */}
         <Link
           href='/'
-          className={`flex items-center gap-2 ${
+          className={`flex items-center gap-2 font-semibold ${
             pathname === '/' ? 'text-primary-color' : 'text-secondary-color'
           }`}
         >
@@ -27,7 +27,7 @@ const MainNav = () => {
         {/* Blogs Link */}
         <Link
           href='/blogs'
-          className={`flex items-center gap-2 ${
+          className={`flex items-center gap-2 font-semibold ${
             pathname === '/blogs' ? 'text-primary-color' : 'text-secondary-color'
           }`}
         >
@@ -44,7 +44,7 @@ const MainNav = () => {
         {/* About Link */}
         <Link
           href='/about'
-          className={`flex items-center gap-2 ${
+          className={`flex items-center gap-2 font-semibold ${
             pathname === '/about' ? 'text-primary-color' : 'text-secondary-color'
           }`}
         >
@@ -61,7 +61,7 @@ const MainNav = () => {
         {/* Contact Link */}
         <Link
           href='/contact'
-          className={`flex items-center gap-2 ${
+          className={`flex items-center gap-2 font-semibold ${
             pathname === '/contact' ? 'text-primary-color' : 'text-secondary-color'
           }`}
         >
@@ -78,7 +78,7 @@ const MainNav = () => {
         {/* Our Team Link */}
         <Link
           href='/team'
-          className={`flex items-center gap-2 ${
+          className={`flex items-center gap-2 font-semibold ${
             pathname === '/team' ? 'text-primary-color' : 'text-secondary-color'
           }`}
         >

@@ -35,7 +35,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-20 transition-all duration-300 ${isScrolled ? 'bg-white text-black shadow-md' : 'bg-transparent text-white'}`}>
+    <header className={`fixed top-0 left-0 w-full py-2 z-20 transition-all duration-300 ${isScrolled ? 'bg-white text-black shadow-md' : 'bg-transparent text-white'}`}>
       <div className="px-2 md:px-5 lg:px-20 mx-auto flex items-center justify-between">
         <div className="block lg:hidden">
           <MobileNav />

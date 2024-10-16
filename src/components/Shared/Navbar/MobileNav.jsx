@@ -27,7 +27,7 @@ const MobileNav = () => {
           <nav className='flex flex-col gap-3 mt-6'>
             <Link
               href='/'
-              className={`py-2 ${
+              className={`py-2 font-semibold ${
                 pathname === '/' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
               onClick={handleLinkClick}
@@ -37,7 +37,7 @@ const MobileNav = () => {
 
             <Link
               href='/blogs'
-              className={`py-2 ${
+              className={`py-2 font-semibold ${
                 pathname === '/blogs' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
               onClick={handleLinkClick}
@@ -47,7 +47,7 @@ const MobileNav = () => {
 
             <Link
               href='/about'
-              className={`py-2 ${
+              className={`py-2 font-semibold ${
                 pathname === '/about' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
               onClick={handleLinkClick}
@@ -57,7 +57,7 @@ const MobileNav = () => {
 
             <Link
               href='/contact'
-              className={`py-2 ${
+              className={`py-2 font-semibold ${
                 pathname === '/contact' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
               onClick={handleLinkClick}
@@ -67,7 +67,7 @@ const MobileNav = () => {
 
             <Link
               href='/team'
-              className={`py-2 ${
+              className={`py-2 font-semibold ${
                 pathname === '/team' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
               onClick={handleLinkClick}
