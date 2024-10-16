@@ -2,14 +2,20 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { AlignJustify } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 const MobileNav = () => {
+  const [isOpen, setIsOpen] = useState(false); // State to manage sheet open/close
   const pathname = usePathname(); // Hook to get current route
+
+  const handleLinkClick = () => {
+    setIsOpen(false); // Close the sheet when a link is clicked
+  };
 
   return (
     <div className='lg:hidden'>
       {/* Sheet component for mobile navigation */}
-      <Sheet>
+      <Sheet open={isOpen} onOpenChange={setIsOpen}>
         {/* Icon to trigger the Sheet (side menu) */}
         <SheetTrigger>
           <AlignJustify className='h-10 mt-1 w-10 md:h-12 md:w-12 my-auto text-primary-color' />
@@ -24,6 +30,7 @@ const MobileNav = () => {
               className={`py-2 ${
                 pathname === '/' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
+              onClick={handleLinkClick}
             >
               Home
             </Link>
@@ -33,6 +40,7 @@ const MobileNav = () => {
               className={`py-2 ${
                 pathname === '/blogs' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
+              onClick={handleLinkClick}
             >
               Blogs
             </Link>
@@ -42,6 +50,7 @@ const MobileNav = () => {
               className={`py-2 ${
                 pathname === '/about' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
+              onClick={handleLinkClick}
             >
               About
             </Link>
@@ -51,6 +60,7 @@ const MobileNav = () => {
               className={`py-2 ${
                 pathname === '/contact' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
+              onClick={handleLinkClick}
             >
               Contact
             </Link>
@@ -60,6 +70,7 @@ const MobileNav = () => {
               className={`py-2 ${
                 pathname === '/team' ? 'text-primary-color font-bold' : 'text-secondary-color'
               }`}
+              onClick={handleLinkClick}
             >
               Our Team
             </Link>
