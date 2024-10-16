@@ -4,6 +4,8 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import { Button } from "@/components/ui/button";
+
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -17,6 +19,7 @@ import {
 
 const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
   const [loading, setLoading] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
   console.log("markedAnswers", markedAnswer);
   console.log("allQuestions", allQuestions);
   console.log("quizStartKey", quizStartKey);
@@ -38,7 +41,7 @@ const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
     marks: result?.percentageMark,
   };
 
-  console.log(attemptDetails);
+  // console.log(attemptDetails);
 
   const handleSaveRecord = async () => {
     setLoading(true);
@@ -49,6 +52,7 @@ const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
 
     if (res.data.insertedId) {
       setLoading(false);
+      setIsDisabled(false);
       Swal.fire({
         title: "Success",
         text: "Recorded successfully!",
@@ -61,6 +65,10 @@ const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
 
   const handleGoToHome = () => {
     router.push("/");
+  };
+
+  const handleViewAnswers = () => {
+    router.push("/viewAnswers");
   };
 
   if (loading) {
@@ -95,13 +103,20 @@ const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
         <h1 className={`mb-5 text-center text-4xl ${remarkColor}`}>
           {result?.percentageMark}%
         </h1>
-        <div className="mt-4 flex gap-4 justify-center items-center">
-          <button onClick={handleSaveRecord} className="btn btn-error mt-12">
+        <div className="my-4 flex gap-4 justify-center items-center">
+          <Button onClick={handleSaveRecord} variant="destructive">
             Save Progress
-          </button>
-          <button onClick={handleGoToHome} className="btn btn-primary mt-12">
+          </Button>
+          <Button
+            onClick={handleViewAnswers}
+            variant="destructive"
+            disabled={isDisabled}
+          >
+            View Answers
+          </Button>
+          <Button onClick={handleGoToHome} variant="destructive">
             Back to Home
-          </button>
+          </Button>
         </div>
         <h1 className="text-[#30d158] text-center text-4xl mb-10">
           Your achieved mark!
