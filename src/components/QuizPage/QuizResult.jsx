@@ -17,7 +17,13 @@ import {
   RedditIcon,
 } from "next-share";
 
-const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
+const QuizResult = ({
+  result,
+  markedAnswer,
+  allQuestions,
+  quizStartKey,
+  quizSet,
+}) => {
   const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   console.log("markedAnswers", markedAnswer);
@@ -30,8 +36,13 @@ const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
   const image = session?.user?.image;
   const email = session?.user?.email;
 
+  console.log(quizSet);
+
   const attemptDetails = {
     quizStartKey,
+    quizTitle: quizSet[0].quizTitle,
+    quizCategory: quizSet[0].quizCategory,
+    quizCreator: quizSet[0].quizCreator,
     questions: allQuestions,
     answers: markedAnswer,
     userName: name,
@@ -41,7 +52,7 @@ const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
     marks: result?.percentageMark,
   };
 
-  // console.log(attemptDetails);
+  console.log(attemptDetails);
 
   const handleSaveRecord = async () => {
     setLoading(true);

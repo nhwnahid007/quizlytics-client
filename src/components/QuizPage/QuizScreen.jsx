@@ -9,6 +9,8 @@ import Swal from "sweetalert2";
 const QuizScreen = ({ quizKey }) => {
   const [allQuestions, setAllQuestion] = useState();
 
+  const [quizSet, setQuizSet] = useState();
+
   const [isLoading, setIsLoading] = useState(true);
 
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
@@ -27,7 +29,8 @@ const QuizScreen = ({ quizKey }) => {
       try {
         setAllQuestion([]);
         const data = await getCustomQuiz(quizKey);
-        // console.log(data);
+        // console.log("data", data);
+        setQuizSet(data);
         setAllQuestion(data[0].quizArr);
         setIsLoading(false);
         // console.log(allQuestions);
@@ -75,6 +78,7 @@ const QuizScreen = ({ quizKey }) => {
     <div className="h-auto">
       {isQuizEnded ? (
         <QuizResult
+          quizSet={quizSet}
           quizStartKey={quizKey}
           result={calculateResult()}
           markedAnswer={markedAnswer}
