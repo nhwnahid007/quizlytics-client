@@ -53,6 +53,7 @@ const Exam = () => {
     if (loadData) {
       getAllMCQ(); // Fetch only if category and level are set
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loadData]);
   console.log(allMCQ.length);
   console.log(allMCQ);
@@ -165,7 +166,7 @@ const Exam = () => {
                       <span className="font-semibold text-[#f08f45]">
                         Examinee:
                       </span>{" "}
-                      Tanvir Rahman
+                      {name ? name : "Guest"}
                     </h1>
                   </div>
                   <div className="flex flex-col space-y-1">

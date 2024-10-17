@@ -1,9 +1,11 @@
+import { Clock } from "lucide-react";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { flushSync } from "react-dom";
 import { GrRadialSelected } from "react-icons/gr";
 
 const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [remainingTime, setRemainingTime] = useState(15);
   const selectedOptionRef = useRef(null);
   const timer = useRef(null);
   const progressBar = useRef(null);
@@ -16,7 +18,6 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
     if (timer.current) {
       clearTimeout(timer.current);
     }
-    //bug fixed
     flushSync(() => {
       setAnswer(selectedOptionRef.current);
     });
@@ -24,17 +25,14 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
     setSelectedOption(null);
   }, [setAnswer]);
 
-  const handleClearOption = () => {
-    setSelectedOption(null);
-  };
-
   useEffect(() => {
     if (progressBar.current) {
       progressBar.current.value = 100;
+      progressBar.current.classList.add("progress-success"); // Ensure it starts with the success class
     }
 
     const duration = 15 * 1000;
-    const stepTime = 5;
+    const stepTime = 1000; // Update every second
     const steps = duration / stepTime;
     const decrement = 100 / steps;
 
@@ -44,7 +42,14 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
       stepCount++;
       if (progressBar.current) {
         progressBar.current.value = Math.max(100 - stepCount * decrement, 0);
+        
+        // Change progress bar color to red after 5 seconds
+        if (stepCount === 5) {
+          progressBar.current.classList.remove("progress-success");
+          progressBar.current.classList.add("progress-error");
+        }
       }
+      setRemainingTime(Math.max(15 - stepCount, 0)); // Update remaining time
       if (stepCount < steps) {
         timer.current = setTimeout(updateProgressBar, stepTime);
       } else {
@@ -68,6 +73,9 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-2 sm:p-4">
       <div className="w-full max-w-3xl bg-white p-3 sm:p-4 md:p-6 shadow-2xl rounded-lg flex flex-col min-h-[400px] max-h-[90vh] overflow-auto">
+        <div className="text-center flex justify-center items-center mb-2 gap-1 sm:mb-4 text-sm sm:text-base">
+        <Clock className="text-red-600 font-bold" /> <span className="text-red-600 font-bold">Time Remaining: {remainingTime}s</span>
+        </div>
         <progress
           className="progress progress-success w-full mb-2 sm:mb-4 h-2 sm:h-3"
           max="100"
@@ -76,13 +84,12 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
 
         <div className="flex flex-col flex-grow">
           <h1 className="text-center text-sm sm:text-base md:text-lg font-light mb-2 sm:mb-4">
-            Quiz <span className="font-medium">{currentQuestion}</span> of{" "}
+            Question <span className="font-medium">{currentQuestion}</span> of{" "}
             <span className="font-medium">{totalQuestion}</span>
           </h1>
 
           <div className="mb-3 sm:mb-4">
-            <h2 className="text-justify font-semibold text-base sm:text-lg md:text-xl text-red-600">
-              <span className="text-yellow-500">Question: </span>
+            <h2 className="text-justify font-semibold text-base sm:text-lg md:text-xl text-black">
               {question?.question}
             </h2>
           </div>
@@ -93,8 +100,8 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
                 key={index}
                 className={`flex items-center p-3 sm:p-4 rounded-lg cursor-pointer transition duration-200 ${
                   index === selectedOption
-                    ? "bg-black text-white"
-                    : "bg-pink-300 text-black hover:bg-pink-400"
+                    ? "bg-green-200 text-black border-2 border-green-500"
+                    : "bg-white text-black border-2 border-gray-300 hover:bg-gray-100"
                 }`}
                 onClick={() => handleOptionClick(index)}
               >
@@ -107,29 +114,17 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
           </div>
         </div>
 
-        <div className="mt-auto pt-3 sm:pt-4 flex flex-col sm:flex-row gap-2 sm:gap-3">
+        <div className="mt-auto pt-3 sm:pt-4 flex justify-end">
           <button
-            className={`btn btn-secondary flex-1 py-2 sm:py-3 text-sm sm:text-base rounded-lg transition duration-200 ${
+            className={`btn flex-1 py-2 sm:py-3 text-sm sm:text-base rounded-lg transition duration-200 bg-green-500 text-white ${
               selectedOption === null
                 ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-gray-400"
-            }`}
-            onClick={handleClearOption}
-            disabled={selectedOption === null}
-          >
-            Clear Option
-          </button>
-
-          <button
-            className={`btn btn-error flex-1 py-2 sm:py-3 text-sm sm:text-base rounded-lg transition duration-200 ${
-              selectedOption === null
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-red-700"
+                : "hover:bg-green-600"
             }`}
             onClick={handleGoToNextQuiz}
             disabled={selectedOption === null}
           >
-            Next Quiz
+            Next Question
           </button>
         </div>
       </div>
