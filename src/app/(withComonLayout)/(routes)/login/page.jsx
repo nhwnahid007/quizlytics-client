@@ -1,75 +1,91 @@
-"use client"
-import Link from 'next/link';
-import React from 'react';
-import { signIn, useSession } from 'next-auth/react';
+"use client";
+import Link from "next/link";
+import React from "react";
+import { signIn, useSession } from "next-auth/react";
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
-import SocialAuth from '@/components/Shared/SocialAuth';
-import useShowPassState from '@/app/hooks/useShowPassState';
-import useValidationStateHook from '@/app/hooks/useValidationStateHook';
+import SocialAuth from "@/components/Shared/SocialAuth";
+import useShowPassState from "@/app/hooks/useShowPassState";
+import useValidationStateHook from "@/app/hooks/useValidationStateHook";
 
 const Login = () => {
-    const { data: session, status } = useSession();
-    const [showPass, setShowPass] = useShowPassState();
-    const [validState, setValidState] = useValidationStateHook();
+  const { data: session, status } = useSession();
+  const [showPass, setShowPass] = useShowPassState();
+  const [validState, setValidState] = useValidationStateHook();
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-        // reset state
-        setValidState("");
+    // reset state
+    setValidState("");
 
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        if (isNaN(password)) {
-            setValidState("Close Eye icon in the password field")
-        }
-
-        const response = await signIn("credentials", {
-            email,
-            password,
-            redirect: false
-        });
-
-        if (response.status === 401) {
-            setValidState("Invalid User!");
-        }
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    if (isNaN(password)) {
+      setValidState("Close Eye icon in the password field");
     }
 
+    const response = await signIn("credentials", {
+      email,
+      password,
+      redirect: false,
+    });
 
-    return (
-        <div className='relative h-[140vh] lg:h-[110vh] bg-cover bg-no-repeat bg-center m-0' style={{ backgroundImage: `url('https://i.ibb.co/hyGhyjj/pexels-gnist-706500.jpg')`, marginBottom: '0' }}>
-            {/* Gradient Overlay */}
-            <div className='absolute inset-0 bg-gradient-to-l from-black via-black/60 h-full'>
-                <div className='w-[90%] md:max-w-6xl mx-auto py-12 md:flex justify-end h-full'>
-                    <div>
-                        <h2 className='text-4xl font-bold text-center mb-6 text-[#ffefd3]'>Login Here</h2>
-                        <div className='w-full md:w-[480px] bg-[#ffefd3] py-16 px-8 rounded-xl'>
-                            <form onSubmit={handleLogin}>
-                                <div className='space-y-4'>
-                                    <div className='w-full flex flex-col'>
-                                        <input type="email" name='email' className='py-3 text-[#ffefd3] text-lg bg-black px-4 rounded-xl' placeholder='Email address' />
-                                    </div>
-                                    <div className='w-full flex flex-col relative'>
-                                        <input type={showPass ? "text" : "password"} name='password' className='py-3 text-[#ffefd3] text-lg bg-black px-4 rounded-xl' placeholder='Your password' />
-                                        <span onClick={() => setShowPass(!showPass)} className='absolute top-4 right-6 text-xl text-[#ffefd3]  cursor-pointer'>{showPass ? <IoEyeOff /> : <IoEye />}</span>
-                                    </div>
-                                </div>
-                                <button className='btn bg-black text-[#ffefd3] hover:text-black text-lg mt-6 w-full'>Login</button>
-                                {validState === "Invalid User!" && <p className='text-[#ff0000] mt-2 text-center font-semibold'>{validState}</p>}
-                                <p className='font-bold text-center py-4 border-b-2 border-black mb-4'></p>
-                            <SocialAuth />
-                            </form>
-                            <p className='font-bold text-center py-2 border-b-2 border-black mb-4'></p>
-                            <div className="flex justify-center">
-                                <Link href="/register"><button className="btn bg-black text-white">Create a new account</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    if (response.status === 401) {
+      setValidState("Invalid User!");
+    }
+  };
+
+  return (
+    <div className="flex pt-10 min-h-screen justify-center items-center h-screen bg-white">
+      <div className="w-full max-w-md bg-white p-4 rounded-lg shadow-md">
+        <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">Login</h2>
+        <SocialAuth />
+        <p className="text-center my-4 text-gray-500">or</p>
+        <form onSubmit={handleLogin}>
+          <div className="space-y-4">
+            <div className="w-full flex flex-col">
+              <label className="text-sm font-semibold text-gray-600">Email</label>
+              <input
+                type="email"
+                name="email"
+                className="py-2 px-4 border rounded-lg"
+                placeholder="Email"
+              />
             </div>
+            <div className="w-full flex flex-col relative">
+              <label className="text-sm font-semibold text-gray-600">Password</label>
+              <input
+                type={showPass ? "text" : "password"}
+                name="password"
+                className="py-2 px-4 border rounded-lg"
+                placeholder="Password"
+              />
+              <span
+                onClick={() => setShowPass(!showPass)}
+                className="absolute mt-4 inset-y-0 right-4 flex items-center text-xl cursor-pointer"
+              >
+                {showPass ? <IoEyeOff /> : <IoEye />}
+              </span>
+            </div>
+          </div>
+          <button className="btn bg-purple-500 text-white text-lg mt-6 w-full py-2 rounded-lg">
+            Login
+          </button>
+          {validState === "Invalid User!" && (
+            <p className="text-red-500 mt-2 text-center font-semibold">
+              {validState}
+            </p>
+          )}
+        </form>
+        <div className="flex justify-center mt-4">
+          <Link href="/register">
+            <button className="btn text-purple-500">Create a new account</button>
+          </Link>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Login;
