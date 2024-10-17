@@ -1,9 +1,12 @@
 "use client"
-import useMakeExam from '@/app/hooks/useMakeExam';
+// import useMakeExam from '@/app/hooks/useMakeExam';
+import { X } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const MakeExam = ({ setShowMakeExam, setSearchCategory, setSearchLavel, setLoadData }) => {
+    const router = useRouter();
     const [searchError, setSearchError] = useState("");
     const [levelError, setLevelError] = useState("");
     const [search, setSearch] = useState();
@@ -40,7 +43,13 @@ const MakeExam = ({ setShowMakeExam, setSearchCategory, setSearchLavel, setLoadD
 
     return (
         <div className='fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center'>
-            <div className='bg-[#ffefd3] w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg'>
+            <div className='bg-[#ffefd3] w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg relative'>
+                <button 
+                    onClick={() => router.push('/')} 
+                    className='absolute top-4 right-4 text-black'
+                >
+                    <X size={24} />
+                </button>
                 <h1 className='text-[#008000] font-bold text-center text-3xl'>Quick Exam</h1>
                 <div className='w-full md:w-[480px] mx-auto mt-8 flex justify-between'>
                     <div className='flex flex-col space-y-1'>

@@ -17,7 +17,7 @@ const Feedback = () => {
         );
         setFeedback(response.data);
       } catch (err) {
-        setError("Failed to fetch feedback.");
+        console.error(err.message); // Log the error message
       }
     };
     fetchFeedback();
@@ -28,8 +28,8 @@ const Feedback = () => {
       <h1 className="text-4xl font-bold text-black text-center mb-12">
         Feedback & Reviews
       </h1>
-      <div className="w-[90%] md:max-w-6xl mx-auto flex justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="w-[90%] mx-auto flex items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {feedback?.map((item) => (
             <div key={item.name} className="w-full bg-black p-6 rounded-xl">
               <Image
