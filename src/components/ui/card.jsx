@@ -1,7 +1,5 @@
 import * as React from "react";
-import {cn} from "@/lib/utils"; // Assuming you have a utility function for class names
-
-// Card Component
+import {cn} from "@/lib/utils";
 
 const Card = React.forwardRef(function Card({className, ...props}, ref) {
   return (
@@ -12,9 +10,6 @@ const Card = React.forwardRef(function Card({className, ...props}, ref) {
     />
   );
 });
-// Card.displayName = "Card";
-
-// CardHeader Component
 
 const CardHeader = React.forwardRef(function CardHeader(
   {className, ...props},
@@ -28,9 +23,7 @@ const CardHeader = React.forwardRef(function CardHeader(
     />
   );
 });
-// CardHeader.displayName = "CardHeader";
 
-// CardTitle Component
 const CardTitle = React.forwardRef(function CardTitle(
   {className, ...props},
   ref
@@ -43,9 +36,7 @@ const CardTitle = React.forwardRef(function CardTitle(
     />
   );
 });
-// CardTitle.displayName = "CardTitle";
 
-// CardDescription Component
 const CardDescription = React.forwardRef(function CardDescription(
   {className, ...props},
   ref
@@ -58,9 +49,7 @@ const CardDescription = React.forwardRef(function CardDescription(
     />
   );
 });
-// CardDescription.displayName = "CardDescription";
 
-// CardContent Component
 const CardContent = React.forwardRef(function CardContent(
   {className, ...props},
   ref
@@ -73,9 +62,7 @@ const CardContent = React.forwardRef(function CardContent(
     />
   );
 });
-// CardContent.displayName = "CardContent";
 
-// CardFooter Component
 const CardFooter = React.forwardRef(function CardFooter(
   {className, ...props},
   ref
@@ -88,7 +75,5 @@ const CardFooter = React.forwardRef(function CardFooter(
     />
   );
 });
-// CardFooter.displayName = "CardFooter";
 
-// Export all components
 export {Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent};

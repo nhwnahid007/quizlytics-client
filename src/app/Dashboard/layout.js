@@ -1,6 +1,7 @@
 "use client"
 import "../globals.css";
-import Footer from "@/components/Shared/Footer";
+// import Footer from "@/components/Shared/Footer";
+
 import AuthProviders from "@/providers/AuthProviders";
 import Sidebar from "@/components/Shared/Sidebar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
