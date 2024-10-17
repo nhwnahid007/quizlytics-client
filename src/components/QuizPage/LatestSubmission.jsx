@@ -31,7 +31,9 @@ const LatestSubmission = ({ quizKey }) => {
   }, [quizKey, email]);
 
   console.log("Latest submission", latestSubmission);
-  return <div>LatestSubmission key is {quizKey}</div>;
+  return (
+    <div className="h-screen pt-20">LatestSubmission key is {quizKey}</div>
+  );
 };
 
 export default LatestSubmission;

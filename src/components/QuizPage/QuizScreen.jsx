@@ -67,7 +67,6 @@ const QuizScreen = ({ quizKey }) => {
         <h1 className="text-4xl font-semibold my-20">
           Quiz is loading. Please wait...
         </h1>
-        <span className="loading loading-bars loading-lg"></span>
       </div>
     );
   }
@@ -76,7 +75,6 @@ const QuizScreen = ({ quizKey }) => {
     <div className="h-auto">
       {isQuizEnded ? (
         <QuizResult
-          
           quizStartKey={quizKey}
           result={calculateResult()}
           markedAnswer={markedAnswer}
