@@ -1,13 +1,24 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import {FaQuoteLeft} from "react-icons/fa";
+import {FaQuoteLeft, FaQuoteRight} from "react-icons/fa";
 import {useState, useEffect} from "react";
 import axios from "axios";
 import {FaStar} from "react-icons/fa";
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {Card, CardContent} from "../ui/card";
+import {Slice} from "lucide-react";
 
 const Feedback = () => {
   const [feedback, setFeedback] = useState([]);
+  const autoplay = Autoplay({delay: 3000});
 
   useEffect(() => {
     const fetchFeedback = async () => {
@@ -28,39 +39,60 @@ const Feedback = () => {
       <h1 className="text-4xl font-bold text-black text-center mb-12">
         Feedback & Reviews
       </h1>
-      <div className="w-[90%] mx-auto flex items-center justify-center">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {feedback?.map((item) => (
-            <div key={item.name} className="w-full bg-black p-6 rounded-xl">
-              <Image
-                src={item.image}
-                alt="feedback"
-                width={140}
-                height={140}
-                className="rounded-full mx-auto mt-4"
-              />
-              <div>
-                <h2 className="text-xl font-semibold text-white text-center mt-4">
-                  {item.name}
-                </h2>
-                <div className="flex mt-2">
-                  <p className="flex items-center mx-auto">
-                    <span className="text-white mr-2">Rating:</span>
-                    {Array.from({length: item.rating}).map((_, index) => (
-                      <FaStar key={index} style={{color: "gold"}} />
-                    ))}
-                  </p>
+
+      <div className="container mx-auto">
+        <Carousel
+          opts={{
+            align: "start",
+          }}
+          plugins={[autoplay]}
+        >
+          <CarouselContent>
+            {feedback.map((item, index) => (
+              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-1">
+                  <Card className="w-full bg-black p-6 rounded-xl">
+                    <CardContent className="flex flex-col aspect-square items-center justify-center p-6">
+                      <Image
+                        src={item.image}
+                        alt="feedback"
+                        width={140}
+                        height={140}
+                        className="rounded-full mx-auto mt-4"
+                      />
+                      <div className="flex flex-col mx-auto text-center items-center justify-center">
+                        <h2 className="text-xl font-semibold text-white text-center mt-4">
+                          {item.name}
+                        </h2>
+                        <div className="flex mt-2">
+                          <p className="flex items-center mx-auto">
+                            <span className="text-white mr-2">Rating:</span>
+                            {Array.from({length: item.rating}).map(
+                              (_, index) => (
+                                <FaStar key={index} style={{color: "gold"}} />
+                              )
+                            )}
+                          </p>
+                        </div>
+                        <p className="text-white my-4 italic flex gap-2 text-center mx-auto">
+                          <span>
+                            <FaQuoteLeft />
+                          </span>
+                          {item.message}
+                          <span>
+                            <FaQuoteRight />
+                          </span>
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
-                <p className="text-white my-4 italic flex gap-2">
-                  <span>
-                    <FaQuoteLeft />
-                  </span>
-                  {item.message}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </div>
   );
