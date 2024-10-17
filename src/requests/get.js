@@ -53,4 +53,14 @@ export const getSubmissionByKey = async (key, email)=>{
     }
 }
 
+export const getLeaders = async()=>{
+    try{
+        const res = await axios.get(`https://quizlytics.jonomukti.org/leaderboard`)
+        return res.data;
+    } catch(error){
+        console.log("Error fetching leaderboard:", error);
+        return [];
+    }
+}
+
 
