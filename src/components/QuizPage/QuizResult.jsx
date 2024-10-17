@@ -69,7 +69,7 @@ const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
   };
 
   const handleViewAnswers = () => {
-    router.push("/viewAnswers");
+    router.push(`/viewSubmission/${quizStartKey}`);
   };
 
   if (loading) {
@@ -120,7 +120,7 @@ const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
           </Button>
         </div>
         <h1 className="text-[#30d158] text-center text-4xl mb-10">
-          Your achieved mark!
+          You achieved {result?.percentageMark}% mark!
         </h1>
         {/* <div>
           <UserFeedback />

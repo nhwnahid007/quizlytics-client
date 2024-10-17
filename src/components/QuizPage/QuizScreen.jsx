@@ -76,6 +76,7 @@ const QuizScreen = ({ quizKey }) => {
     <div className="h-auto">
       {isQuizEnded ? (
         <QuizResult
+          
           quizStartKey={quizKey}
           result={calculateResult()}
           markedAnswer={markedAnswer}

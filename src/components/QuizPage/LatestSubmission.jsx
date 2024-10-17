@@ -13,11 +13,11 @@ const LatestSubmission = () => {
   const key = "HT2344";
 
   useEffect(() => {
-    const getLatestSubmission = async (key, email) => {
+    const getLatestSubmission = async () => {
       try {
         setLatestSubmission([]);
         const data = await getSubmissionByKey(key, email);
-        setLatestSubmission(data);
+        setLatestSubmission(data.at(-1));
       } catch (error) {
         console.log("data fetching error", error);
         Swal.fire({
