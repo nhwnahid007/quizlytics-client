@@ -4,19 +4,18 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-const LatestSubmission = () => {
+const LatestSubmission = ({ quizKey }) => {
+  // console.log(quizKey);
   const [latestSubmission, setLatestSubmission] = useState();
 
   const { data: session } = useSession();
   const email = session?.user?.email;
 
-  const key = "HT2344";
-
   useEffect(() => {
     const getLatestSubmission = async () => {
       try {
         setLatestSubmission([]);
-        const data = await getSubmissionByKey(key, email);
+        const data = await getSubmissionByKey(quizKey, email);
         setLatestSubmission(data.at(-1));
       } catch (error) {
         console.log("data fetching error", error);
@@ -29,10 +28,10 @@ const LatestSubmission = () => {
       }
     };
     getLatestSubmission();
-  }, [key, email]);
+  }, [quizKey, email]);
 
-  console.log("Latest submittion", latestSubmission);
-  return <div>LatestSubmission here...</div>;
+  console.log("Latest submission", latestSubmission);
+  return <div>LatestSubmission key is {quizKey}</div>;
 };
 
 export default LatestSubmission;
