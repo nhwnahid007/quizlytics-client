@@ -15,6 +15,7 @@ const MakeExam = ({ setShowMakeExam, setSearchCategory, setSearchLavel, setLoadD
     // user session 
     const { data: session } = useSession();
     const name = session?.user?.name;
+    console.log(name)
 
     const handleStart = () => {
         let hasError = false;
@@ -54,7 +55,7 @@ const MakeExam = ({ setShowMakeExam, setSearchCategory, setSearchLavel, setLoadD
                 <div className='w-full md:w-[480px] mx-auto mt-8 flex justify-between'>
                     <div className='flex flex-col space-y-1'>
                         <h1 className='font-medium'><span className='font-bold'>Duration:</span> 100 Seconds</h1>
-                        <h1 className='font-medium'><span className='font-bold'>Examinee:</span> {name}</h1>
+                        <h1 className='font-medium'><span className='font-bold'>Examinee:</span> {name ? name : "Guest"}</h1>
                     </div>
                     <div className='flex flex-col space-y-1'>
                         <h1 className='font-medium'><span className='font-bold'>MCQ:</span> 10</h1>
