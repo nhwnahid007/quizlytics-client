@@ -25,7 +25,7 @@ const Banner = () => {
       }}
     >
       {/* Gradient overlay */}
-      <div className="absolute pt-20 inset-0 bg-gradient-to-r from-white/70 to-[#f0f4ff]/80">
+      <div className="absolute pt-2 md:pt-10 lg:pt-20 inset-0 bg-gradient-to-r from-white/70 to-[#f0f4ff]/80">
         <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-8 md:px-20 pt-20">
           <div className="w-full lg:w-[70%] md:pr-32">
             <div className="w-full md:w-[683px]">
