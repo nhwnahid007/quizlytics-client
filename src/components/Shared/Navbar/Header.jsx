@@ -13,7 +13,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-// import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -35,15 +34,22 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full py-2 z-20 transition-all duration-300 ${isScrolled ? 'bg-white text-black shadow-md' : 'bg-transparent text-white'}`}>
+    <header
+      className={`fixed top-0 left-0 w-full py-2 z-20 transition-all duration-300 ${
+        isScrolled ? "bg-white text-black shadow-md" : "bg-transparent text-white"
+      }`}
+    >
       <div className="px-2 md:px-5 lg:px-20 mx-auto flex items-center justify-between">
         <div className="block lg:hidden">
           <MobileNav />
         </div>
 
         {/* Brand Logo */}
-        <Link href="/" className="text-3xl items-center md:ml-5 md:text-4xl text-purple-600 font-bold">
-          Quiz<span className="text-purple-400">lytics</span>
+        <Link
+          href="/"
+          className="text-3xl items-center md:ml-5 md:text-4xl text-purple-600 font-bold"
+        >
+          Quiz<span className="text-secondary-color">lytics</span>
         </Link>
 
         {/* Main Navigation for larger screens */}
@@ -52,16 +58,20 @@ const Header = () => {
         </div>
 
         {/* Profile or Login/Register */}
-        <div className="relative flex items-center gap-4">
+        <div className="relative flex items-center justify-center gap-4">
           {!session ? (
             <div className="flex gap-2">
-              <Link href="/login" className="border border-purple-600 text-purple-600 rounded-md px-4 py-2">
+              <Link
+                href="/login"
+                className="border border-purple-600 text-primary-color font-bold rounded-md px-4 py-2 text-center hover:bg-purple-600 hover:text-white transition-colors duration-300"
+              >
                 Login
               </Link>
-              <Link href="/register">
-                <Button variant="solid" className="bg-purple-600 text-white rounded-md px-4 py-2">
-                  Sign Up
-                </Button>
+              <Link
+                href="/register"
+                className="border border-purple-600 text-secondary-color font-bold rounded-md px-4 py-2 text-center hover:bg-purple-600 hover:text-white transition-colors duration-300"
+              >
+                Sign Up
               </Link>
             </div>
           ) : (
