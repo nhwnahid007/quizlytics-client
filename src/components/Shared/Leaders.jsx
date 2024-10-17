@@ -51,7 +51,9 @@ const Leaders = () => {
               <TableHead>Quiz Title</TableHead>
               <TableHead>Quiz Key</TableHead>
               <TableHead>% Marks</TableHead>
-              <TableHead className="text-right">Examiner's Email</TableHead>
+              <TableHead className="text-right">
+                Examiner&apos;s Email
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
