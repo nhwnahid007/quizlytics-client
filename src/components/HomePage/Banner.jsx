@@ -25,7 +25,7 @@ const Banner = () => {
       }}
     >
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-white/70 to-[#f0f4ff]/80">
+      <div className="absolute pt-20 inset-0 bg-gradient-to-r from-white/70 to-[#f0f4ff]/80">
         <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-8 md:px-20 pt-20">
           <div className="w-full lg:w-[70%] md:pr-32">
             <div className="w-full md:w-[683px]">
@@ -43,13 +43,13 @@ const Banner = () => {
               <div className="flex gap-4 mt-8">
                 <button
                   onClick={handleQuicktExam}
-                  className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#7b61ff] hover:bg-[#af87ff] text-white"
+                  className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient"
                 >
                   Quick Exam
                 </button>
                 <button
                   onClick={handleCustomExam}
-                  className="px-6 md:px-12 py-4 rounded-xl font-semibold bg-[#ffefd3] hover:bg-[#ffefd3] text-black"
+                  className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-secondary-color hover:bg-transparent hover:text-secondary-color transition-colors duration-300 border-gradient"
                 >
                   Custom Exam
                 </button>
@@ -123,6 +123,22 @@ const Banner = () => {
 
         .flip {
           transform: scaleX(-1);
+        }
+
+        @keyframes gradient-border {
+          0% {
+            border-color: #ff7e5f;
+          }
+          50% {
+            border-color: #feb47b;
+          }
+          100% {
+            border-color: #ff7e5f;
+          }
+        }
+
+        .border-gradient {
+          animation: gradient-border 3s infinite;
         }
       `}</style>
     </div>
