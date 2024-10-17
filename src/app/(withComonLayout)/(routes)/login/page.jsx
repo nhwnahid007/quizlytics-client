@@ -37,7 +37,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex pt-10 min-h-screen justify-center items-center h-screen bg-white">
+    <div className="flex pt-10 lg:min-h-screen mt-10 lg:mt-0 justify-center lg:items-center h-screen bg-white">
       <div className="w-full max-w-md bg-white p-4 rounded-lg shadow-md">
         <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">Login</h2>
         <SocialAuth />
