@@ -1,13 +1,14 @@
-import Navbar from "@/components/Shared/Navbar";
+"use client"
 import "../globals.css";
 import Footer from "@/components/Shared/Footer";
 import AuthProviders from "@/providers/AuthProviders";
+import Header from "@/components/Shared/Navbar/Header";
 
 export default function RootLayout({ children }) {
     return (
         <div>
             <AuthProviders>
-                <Navbar />
+                <Header />
                 <div>
                     {children}
                 </div>

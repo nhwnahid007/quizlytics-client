@@ -4,18 +4,37 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  PinterestIcon,
+  PinterestShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+  RedditShareButton,
+  RedditIcon,
+} from "next-share";
 
-const QuizResult = ({ result, markedAnswer, allQuestions }) => {
+const QuizResult = ({ result, markedAnswer, allQuestions, quizStartKey }) => {
   const [loading, setLoading] = useState(false);
   console.log("markedAnswers", markedAnswer);
   console.log("allQuestions", allQuestions);
+  console.log("quizStartKey", quizStartKey);
+  // access next auth session
   const { data: session } = useSession();
-  console.log(session);
+  const name = session?.user?.name;
+  const profile = session?.user?.profile;
+  const image = session?.user?.image;
+  const email = session?.user?.email;
 
   const attemptDetails = {
+    quizStartKey,
     questions: allQuestions,
     answers: markedAnswer,
-    user: session,
+    userName: name,
+    userEmail: email,
+    userProfile: profile,
+    userImg: image,
     marks: result?.percentageMark,
   };
 
@@ -48,23 +67,83 @@ const QuizResult = ({ result, markedAnswer, allQuestions }) => {
     return "Progress is being saved in database! Please Wait!!";
   }
 
-  return (
-    <div className="text-center max-w-3xl mx-auto py-12 border my-10">
-      <h1 className="text-red-700 font-bold text-3xl my-20">
-        Your skill is {result?.percentageMark}%
-      </h1>
-      <h1 className="text-green-700 font-semibold text-xl">
-        You have marked {result?.correctAnswers} correct answers out of{" "}
-        {result?.totalQuiz}
-      </h1>
+  // Determine the remark based on the score
+  let remark = "";
+  let remarkColor = "";
 
-      <div className="flex gap-4 justify-center items-center">
-        <button onClick={handleSaveRecord} className="btn btn-error mt-12">
-          Save Progress
-        </button>
-        <button onClick={handleGoToHome} className="btn btn-primary mt-12">
-          Back to Home
-        </button>
+  if (result?.percentageMark > 70) {
+    remark = "Excellent!";
+    remarkColor = "text-green-600";
+  } else if (result?.percentageMark >= 50) {
+    remark = "Good!";
+    remarkColor = "text-orange-600";
+  } else {
+    remark = "Needs Improvement";
+    remarkColor = "text-red-600";
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
+      <div className="bg-[#ffefd3] w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg">
+        <div
+          className={`w-[200px] h-[200px] mx-auto my-8 border-8 p-8 rounded-full flex justify-center items-center ${remarkColor}`}
+        >
+          <h1 className={`text-4xl font-bold ${remarkColor}`}>
+            {result?.correctAnswers} / {result?.totalQuiz}
+          </h1>
+        </div>
+        <h1 className={`mb-5 text-center text-4xl ${remarkColor}`}>
+          {result?.percentageMark}%
+        </h1>
+        <div className="mt-4 flex gap-4 justify-center items-center">
+          <button onClick={handleSaveRecord} className="btn btn-error mt-12">
+            Save Progress
+          </button>
+          <button onClick={handleGoToHome} className="btn btn-primary mt-12">
+            Back to Home
+          </button>
+        </div>
+        <h1 className="text-[#30d158] text-center text-4xl mb-10">
+          Your achieved mark!
+        </h1>
+        {/* <div>
+          <UserFeedback />
+        </div> */}
+        <div className="mt-4 flex justify-center gap-4 w-full">
+          <div className="font-medium py-1 px-8 border border-red-600 rounded-md">
+            <h2 className="text-xl mb-5 text-center">Share Social Media:</h2>
+            <FacebookShareButton
+              url={"https://quizlytics.vercel.app/"}
+              quote={`I scored ${result?.percentageMark}% on my exam! Check it out on Quizlytics.`}
+              hashtag={"#Quizlytics"}
+            >
+              <FacebookIcon className="animate-bounce" size={32} round />
+            </FacebookShareButton>
+
+            <PinterestShareButton
+              url={"https://quizlytics.vercel.app/"}
+              media={`I scored ${result?.percentageMark}% on my exam! Check it out on Quizlytics.`}
+            >
+              <PinterestIcon className="mx-5 animate-bounce" size={32} round />
+            </PinterestShareButton>
+
+            <TwitterShareButton
+              url={"https://quizlytics.vercel.app/"}
+              title={`I scored ${result?.percentageMark}% on my exam! Check it out on Quizlytics.`}
+            >
+              <TwitterIcon className="animate-bounce" size={32} round />
+            </TwitterShareButton>
+
+            <RedditShareButton
+              url={"https://github.com/next-share"}
+              title={
+                "next-share is a social share buttons for your next React apps."
+              }
+            >
+              <RedditIcon className="animate-bounce ml-5" size={32} round />
+            </RedditShareButton>
+          </div>
+        </div>
       </div>
     </div>
   );

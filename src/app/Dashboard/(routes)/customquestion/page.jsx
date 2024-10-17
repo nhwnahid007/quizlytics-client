@@ -1,9 +1,18 @@
 "use client";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useSession } from "next-auth/react";
+import Swal from "sweetalert2";
 
 const Page = () => {
   const [quizKey, setQuizKey] = useState(1234);
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+
+  const { data: session } = useSession();
+  const email = session?.user?.email;
 
   function generateRandomKey() {
     const numbers = "0123456789";
@@ -40,7 +49,15 @@ const Page = () => {
 
   const [questions, setQuestions] = useState([]);
 
-  console.log(questions);
+  // console.log(questions);
+
+  const handleChangeTitle = (e) => {
+    setTitle(e.target.value);
+  };
+
+  const handleChangeCategory = (e) => {
+    setCategory(e.target.value);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -87,9 +104,11 @@ const Page = () => {
   };
 
   const quizSet = {
-    quizTitle: "customQuiz",
+    quizTitle: title,
+    quizCategory: category,
     quizStartKey: quizKey,
     quizArr: questions,
+    quizCreator: email,
   };
 
   const submitQuestions = async () => {
@@ -99,6 +118,13 @@ const Page = () => {
         "https://quizlytics.jonomukti.org/saveManualQuiz",
         quizSet
       );
+      Swal.fire({
+        title: "Success!",
+        toast: true,
+        text: "Quiz saved successfully",
+        icon: "success",
+        timer: 2000,
+      });
       console.log("Questions submitted successfully:", response.data);
       console.log(questions);
       // Clear the questions array after submission
@@ -110,89 +136,116 @@ const Page = () => {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Create Custom Questions</h1>
+    <div className="my-12">
+      <main className="max-w-6xl mx-auto">
+        <div className="p-6">
+          <h1 className="text-2xl font-bold mb-4">Create Custom Questions</h1>
 
-      <div className="mb-4">
-        <label className="block text-gray-700">Quiz Start Key:</label>
-        <input
-          type="text"
-          name="quizTitle"
-          value={quizKey}
-          className="w-full p-2 border border-gray-300 rounded mt-2"
-        />
-      </div>
-
-      <div className="mb-4">
-        <label className="block text-gray-700">Question:</label>
-        <input
-          type="text"
-          name="question"
-          value={questionData.question}
-          onChange={handleChange}
-          className="w-full p-2 border border-gray-300 rounded mt-2"
-        />
-      </div>
-
-      <div className="mb-4">
-        <label className="block text-gray-700">Options:</label>
-        {questionData.options.map((option, index) => (
-          <input
-            key={index}
-            type="text"
-            value={option}
-            onChange={(e) => handleOptionChange(index, e.target.value)}
-            placeholder={`Option ${index + 1}`}
-            className="w-full p-2 border border-gray-300 rounded mt-2"
-          />
-        ))}
-      </div>
-
-      <div className="mb-4">
-        <label className="block text-gray-700">Correct Answer (0-3):</label>
-        <input
-          type="number"
-          name="correct_answer"
-          value={questionData.correct_answer}
-          onChange={handleChange}
-          min="0"
-          max="3"
-          className="w-full p-2 border border-gray-300 rounded mt-2"
-        />
-      </div>
-
-      <button
-        onClick={addQuestion}
-        className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-      >
-        Add Question
-      </button>
-
-      <div className="mt-8">
-        <h2 className="text-xl font-semibold mb-4">Questions Preview</h2>
-        {questions.map((q) => (
-          <div key={q.id} className="mb-4 p-4 border border-gray-300 rounded">
-            <h3 className="font-semibold">{q.question}</h3>
-            <ul className="list-disc list-inside">
-              {q.options.map((option, index) => (
-                <li key={index}>
-                  {index}: {option}
-                </li>
-              ))}
-            </ul>
-            <p>Correct Answer: {q.correct_answer}</p>
+          <div className="mb-4">
+            <label className="block text-gray-700">Quiz Start Key:</label>
+            <Input
+              type="text"
+              value={quizKey}
+              className="w-full p-2 border border-gray-300 rounded mt-2"
+            />
           </div>
-        ))}
+          <div className="mb-4">
+            <label className="block text-gray-700">Quiz Title</label>
+            <Input
+              type="text"
+              name="quizTitle"
+              onChange={handleChangeTitle}
+              className="w-full p-2 border border-gray-300 rounded mt-2"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700">Category</label>
+            <Input
+              type="text"
+              onChange={handleChangeCategory}
+              className="w-full p-2 border border-gray-300 rounded mt-2"
+            />
+          </div>
 
-        {questions.length > 0 && (
-          <button
-            onClick={submitQuestions}
-            className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 mt-4"
+          <div className="mb-4">
+            <label className="block text-gray-700">Question:</label>
+            <Input
+              type="text"
+              name="question"
+              value={questionData.question}
+              onChange={handleChange}
+              className="w-full p-2 border border-gray-300 rounded mt-2"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700">Options:</label>
+            {questionData.options.map((option, index) => (
+              <Input
+                key={index}
+                type="text"
+                value={option}
+                onChange={(e) => handleOptionChange(index, e.target.value)}
+                placeholder={`Option ${index + 1}`}
+                className="w-full p-2 border border-gray-300 rounded mt-2"
+              />
+            ))}
+          </div>
+
+          <div className="mb-4">
+            <label className="block text-gray-700">Correct Answer (0-3):</label>
+            <Input
+              type="number"
+              name="correct_answer"
+              value={questionData.correct_answer}
+              onChange={handleChange}
+              min="0"
+              max="3"
+              className="w-full p-2 border border-gray-300 rounded mt-2"
+            />
+          </div>
+
+          <Button
+            variant="secondary"
+            onClick={addQuestion}
+            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
           >
-            Submit Questions
-          </button>
-        )}
-      </div>
+            Add Question
+          </Button>
+
+          <div className="mt-8">
+            {questions.length > 0 && (
+              <h2 className="text-xl font-semibold mb-4">Questions Preview</h2>
+            )}
+            {questions.map((q) => (
+              <div
+                key={q.id}
+                className="mb-4 p-4 border border-gray-300 rounded"
+              >
+                <h3 className="font-semibold">{q.question}</h3>
+                <ul className="list-disc list-inside">
+                  {q.options.map((option, index) => (
+                    <li key={index}>
+                      {index}: {option}
+                    </li>
+                  ))}
+                </ul>
+                <p>Correct Answer: {q.correct_answer}</p>
+              </div>
+            ))}
+
+            {questions.length > 0 && (
+              <Button
+                variant="secondary"
+                onClick={submitQuestions}
+                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 mt-4"
+              >
+                Submit Questions
+              </Button>
+            )}
+          </div>
+        </div>
+      </main>
     </div>
   );
 };
