@@ -3,15 +3,12 @@ import React, {useState, useEffect} from "react";
 import {FaStar} from "react-icons/fa";
 import {RxCross1} from "react-icons/rx";
 import axios from "axios";
-import Image from "next/image";
 import {useSession} from "next-auth/react";
 
 const DropDown = () => {
   const [isModalOpen, setisModalOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [message, setMessage] = useState("");
-  // const [userName, setUserName] = useState("");
-  // const [userImage, setUserImage] = useState("");
   const [feedback, setFeedback] = useState([]);
   const [error, setError] = useState("");
   const {data: session} = useSession();
@@ -53,8 +50,6 @@ const DropDown = () => {
       });
       setMessage("");
       setRating(0);
-      // setUserName("");
-      // setUserImage("");
       setError("");
       setisModalOpen(false);
 
@@ -73,7 +68,7 @@ const DropDown = () => {
       <div className="p-8 mb-4 flex items-center gap-5 justify-center">
         <div className="w-full flex items-center justify-center">
           <button
-            className="px-4 py-2 bg-[#3B9DF8] text-[#fff] rounded"
+            className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient text-xl"
             onClick={() => setisModalOpen(true)}
           >
             User Feedback
@@ -96,7 +91,7 @@ const DropDown = () => {
                 Your Feedback about Quizlytics
               </h1>
               <RxCross1
-                className="p-2 text-[2.5rem] hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                className="p-2 text-[2.5rem] text-white bg-primary-color hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
                 onClick={() => setisModalOpen(false)}
               />
             </div>
@@ -104,36 +99,6 @@ const DropDown = () => {
             {/* Feedback form */}
             <div className="p-4 border-b border-[#d1d1d1]">
               {error && <p className="text-red-500 mb-2">{error}</p>}
-              {/* <div className="w-[100%] mb-4">
-                <label htmlFor="userName" className="font-[400] text-[15px]">
-                  Name <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="userName"
-                  id="userName"
-                  placeholder="Your name"
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                  className="border-[#e5eaf2] border rounded-md outline-none mt-1 px-4 w-full py-3 focus:border-[#3B9DF8] transition-colors duration-300"
-                />
-              </div> */}
-
-              {/* <div className="w-[100%] mb-4">
-                <label htmlFor="userImage" className="font-[400] text-[15px]">
-                  Image URL <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="userImage"
-                  id="userImage"
-                  placeholder="Image URL"
-                  value={userImage}
-                  onChange={(e) => setUserImage(e.target.value)}
-                  className="border-[#e5eaf2] border rounded-md outline-none mt-1 px-4 w-full py-3 focus:border-[#3B9DF8] transition-colors duration-300"
-                />
-              </div> */}
-
               <div className="w-[100%] mb-4">
                 <label htmlFor="message" className="font-[400] text-[15px]">
                   Message <span className="text-red-500">*</span>
@@ -172,13 +137,13 @@ const DropDown = () => {
             {/* Action buttons */}
             <div className="flex items-center gap-4 p-4">
               <button
-                className="py-2 px-4 rounded-md outline-none bg-[#3B9DF8] text-[#fff]"
+                className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient text-xl"
                 onClick={() => setisModalOpen(false)}
               >
                 Cancel
               </button>
               <button
-                className="py-2 px-4 border border-[#d1d1d1] rounded-md outline-none text-[#353535]"
+                className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-secondary-color hover:bg-transparent hover:text-secondary-color transition-colors duration-300 border-gradient text-xl"
                 onClick={handleSubmit}
               >
                 Submit
