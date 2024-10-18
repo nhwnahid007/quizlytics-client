@@ -1,6 +1,7 @@
 "use client";
 import { useSession } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
+import { Button } from '../ui/button';
 
 const MCQ = ({ currentMCQ, setCurrentMCQ, exactMCQ, userExamData, setUserExamData, examId, setExamId, setShowResult }) => {
     const { id, question, options = [] } = exactMCQ || {};
@@ -128,9 +129,9 @@ const MCQ = ({ currentMCQ, setCurrentMCQ, exactMCQ, userExamData, setUserExamDat
 
             {/* Bottom section with Next button */}
             <div className='flex justify-end items-center mt-6'>
-                <button onClick={handleNext} className='btn bg-[#3db828] px-6 text-white'>
+                <Button onClick={handleNext} className='btn bg-[#3db828] px-6 text-white'>
                     Next
-                </button>
+                </Button>
             </div>
         </div>
     );
