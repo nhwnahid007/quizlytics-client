@@ -5,9 +5,9 @@ import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 const ServicesPage = () => {
   return (
     <div className="">
-      <section className="relative bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364] dark:bg-gray-900 py-10">
+      <section className="relative bg-gray-100 py-10 ">
         <div className="container px-6   mx-auto">
-          <h2 className="text-2xl mb-8 font-semibold text-center text-[#ffefd3] capitalize lg:text-5xl  ">
+          <h2 className="text-2xl my-8 font-semibold text-center text-black capitalize lg:text-5xl  ">
             Our Team
           </h2>
 
@@ -38,7 +38,7 @@ const ServicesPage = () => {
               </div>
               <div className="mt-2">
                 <h3 className="text-lg font-medium text-[#ff0000]">Md. Nahidul Islam</h3>
-                <span className="mt-1 font-medium text-red-600 dark:text-gray-300">Team Leader</span>
+                <span className="mt-1 font-medium  dark:text-gray-300">Team Leader</span>
               </div>
             </div>
 
@@ -85,7 +85,7 @@ const ServicesPage = () => {
                 <h3 className="text-lg font-medium text-[#ff0000]">
                   Musa Akram Saleh
                 </h3>
-                <span className="mt-1 font-medium text-red-600 dark:text-gray-300">
+                <span className="mt-1 font-medium  dark:text-gray-300">
                   Team Member
                 </span>
               </div>
@@ -134,7 +134,7 @@ const ServicesPage = () => {
                 <h3 className="text-lg font-medium text-[#ff0000]">
                   Rafiul Habib Razib
                 </h3>
-                <span className="mt-1 font-medium text-red-600 dark:text-gray-300">
+                <span className="mt-1 font-medium dark:text-gray-300">
                   Team Member
                 </span>
               </div>
@@ -182,7 +182,7 @@ const ServicesPage = () => {
                 <h3 className="text-lg font-medium text-[#ff0000]">
                   Sayed Rana
                 </h3>
-                <span className="mt-1 font-medium text-red-600 dark:text-gray-300">
+                <span className="mt-1 font-medium  dark:text-gray-300">
                   Team Member
                 </span>
               </div>
@@ -231,7 +231,7 @@ const ServicesPage = () => {
                 <h3 className="text-lg font-medium text-[#ff0000]">
                   Tanvir Rahman Saim
                 </h3>
-                <span className="mt-1 font-medium text-red-600 dark:text-gray-300">
+                <span className="mt-1 font-medium  dark:text-gray-300">
                   Team Member
                 </span>
               </div>
@@ -280,7 +280,7 @@ const ServicesPage = () => {
                 <h3 className="text-lg font-medium text-[#ff0000]">
                   Ashim Kumar Sarker
                 </h3>
-                <span className="mt-1 font-medium text-red-600 dark:text-gray-300">
+                <span className="mt-1 font-medium  dark:text-gray-300">
                   Team Member
                 </span>
               </div>
@@ -288,6 +288,7 @@ const ServicesPage = () => {
           </div>
         </div>
       </section>
+      <hr className="border-4" />
     </div>
   );
 };
