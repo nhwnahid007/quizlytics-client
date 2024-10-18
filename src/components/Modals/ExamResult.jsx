@@ -13,7 +13,7 @@ import {
 import React from "react";
 import UserFeedback from "./UserFeedback";
 
-const ExamResult = ({ myMark }) => {
+const ExamResult = ({myMark}) => {
   const router = useRouterHook();
 
   const handleGoHome = () => {
@@ -57,11 +57,11 @@ const ExamResult = ({ myMark }) => {
         <h1 className="text-[#30d158] text-center text-4xl mb-10">
           Your achieved mark!
         </h1>
-        <div>
+        <div className="flex flex-1 mx-auto items-center justify-center">
           <UserFeedback />
         </div>
         <div className="mt-4 flex justify-center gap-4 w-full">
-          <div className="font-medium py-1 px-8 border border-red-600 rounded-md">
+          <div className="text-red-600 hover:bg-secondary-color hover:text-[#ffefd3] font-medium py-2 px-10 text-xl border border-red-600 rounded-md hover:border-none">
             <h2 className="text-xl mb-5 text-center">Share Social Media:</h2>
             <FacebookShareButton
               url={"https://quizlytics.vercel.app/"}
