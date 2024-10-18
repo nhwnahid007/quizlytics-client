@@ -27,7 +27,7 @@ const CustomExam = ({ setCustomExam, setQuizKey }) => {
           <Button
             onClick={handleStart}
             type="submit"
-            className="mt-4"
+            className="mt-4 bg-primary-color text-white"
             variant="default"
           >
             Start
