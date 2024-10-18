@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardContent,
@@ -6,23 +7,37 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useState } from "react";
 
-const SubmitCard = ({ item }) => {
+const SubmitCard = ({ item, markedAnswer }) => {
+  const isCorrect = item.correct_answer == markedAnswer;
+
   return (
     <div className="mb-4">
       <Card>
         <CardHeader>
-          <CardTitle>{item.question}</CardTitle>
+          <CardTitle>Question : {item.question}</CardTitle>
           <CardDescription>Options:</CardDescription>
         </CardHeader>
         <CardContent>
-          {item.options?.map((option) => (
-            <li key={option[0]}>{option}</li>
+          {item.options.map((option, index) => (
+            <li
+              className={
+                markedAnswer === index
+                  ? isCorrect
+                    ? "bg-green-500"
+                    : "bg-red-500"
+                  : ""
+              }
+              key={index}
+            >
+              {option}
+            </li>
           ))}
         </CardContent>
         <CardFooter>
           <p>
-            Correct Answer:{" "}
+            Correct Answer :{" "}
             {item.options.find(
               (answer) => answer == item.options[item.correct_answer]
             )}

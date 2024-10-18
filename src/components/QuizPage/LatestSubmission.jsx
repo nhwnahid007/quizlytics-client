@@ -16,10 +16,7 @@ const LatestSubmission = ({ quizKey }) => {
     const getLatestSubmission = async () => {
       try {
         setLatestSubmission([]);
-        const data = await getSubmissionByKey(
-          "HT2344",
-          "rafiul.razib@gmail.com"
-        );
+        const data = await getSubmissionByKey(quizKey, email);
         setLatestSubmission(data.at(-1));
       } catch (error) {
         console.log("data fetching error", error);
@@ -37,10 +34,14 @@ const LatestSubmission = ({ quizKey }) => {
   console.log("Latest submission", latestSubmission);
   return (
     <div className="h-auto max-w-6xl pt-20 mx-auto">
-      <h2 className="text-center">YOUR SUBMISSION</h2>
+      <h2 className="text-center">YOUR LATEST SUBMISSION</h2>
 
-      {latestSubmission.questions?.map((item) => (
-        <SubmitCard key={item._id} item={item} />
+      {latestSubmission.questions?.map((item, idx) => (
+        <SubmitCard
+          key={item._id}
+          item={item}
+          markedAnswer={latestSubmission.answers[idx]}
+        />
       ))}
     </div>
   );
