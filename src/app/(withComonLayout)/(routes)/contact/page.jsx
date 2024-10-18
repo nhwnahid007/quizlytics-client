@@ -6,6 +6,7 @@ import emailjs from "@emailjs/browser";
 import {ToastContainer, toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -44,8 +45,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-black">
-      <div className="bg-[#FFEFD3] opacity-90 shadow-md rounded-lg p-8 flex flex-col md:flex-row">
+    <div className="flex justify-center items-center min-h-screen bg-gray-50">
+      <div className="mt-12 bg-gray-100 opacity-90 shadow-md rounded-lg p-2 flex flex-col md:flex-row">
         <div className="md:w-1/2 flex justify-center items-center p-4 order-1 md:order-2 relative">
           {!imageLoaded && (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -83,7 +84,7 @@ const Contact = () => {
           />
         </div>
         <div className="md:w-1/2 p-4 order-2 md:order-1">
-          <h2 className="text-3xl font-bold mb-6 text-[#ff0000]">Contact us</h2>
+          <h2 className="text-3xl font-bold mb-6 text-primary-color">Contact us</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label
@@ -146,8 +147,8 @@ const Contact = () => {
               )}
             </div>
             <div className="flex items-center justify-between">
-              <button
-                className="bg-[#ff0000] hover:bg-[#cc0000] text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center"
+              <Button
+                className="bg-primary-color hover:bg-secondary-color text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center"
                 type="submit"
                 disabled={isLoading}
               >
@@ -178,7 +179,7 @@ const Contact = () => {
                 ) : (
                   "Send Message"
                 )}
-              </button>
+              </Button>
             </div>
           </form>
         </div>
