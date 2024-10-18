@@ -3,10 +3,13 @@ import {getSubmissionByKey} from "@/requests/get";
 import {useSession} from "next-auth/react";
 import React, {useEffect, useState} from "react";
 import Swal from "sweetalert2";
+import SubmitCard from "./SubmitCard";
 
-const LatestSubmission = ({quizKey}) => {
-  const [latestSubmission, setLatestSubmission] = useState();
-  const {data: session} = useSession();
+const LatestSubmission = ({ quizKey }) => {
+  // console.log(quizKey);
+  const [latestSubmission, setLatestSubmission] = useState([]);
+
+  const { data: session } = useSession();
   const email = session?.user?.email;
   const name = session?.user?.name;
 
@@ -72,17 +75,16 @@ const LatestSubmission = ({quizKey}) => {
   };
 
   return (
-    <div>
-      <div className="pt-20 pb-5 container mx-auto items-center justify-center text-center space-y-3">
-        <h1 className="text-4xl">
-          Latest Submission key is:{" "}
-          <span className="text-green-600 font-semibold">{quizKey}</span>
-        </h1>
-        <p className="text-2xl">
-          User Name: <span className="text-green-600 font-bold">{name}</span>
-        </p>
-      </div>
-      <div className="container mx-auto px-4">{renderQuestions()}</div>
+    <div className="h-auto max-w-6xl pt-20 mx-auto">
+      <h2 className="text-center">YOUR LATEST SUBMISSION</h2>
+
+      {latestSubmission.questions?.map((item, idx) => (
+        <SubmitCard
+          key={item._id}
+          item={item}
+          markedAnswer={latestSubmission.answers[idx]}
+        />
+      ))}
     </div>
   );
 };

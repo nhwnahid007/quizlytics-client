@@ -24,6 +24,12 @@ const Sidebar = () => {
       route: "/Dashboard/examinersDashboard",
       icon: <FaFileCircleQuestion />,
     },
+    {
+      title: "Leaderboard",
+      route: "/Dashboard/leaderboard",
+      icon: <FaCommentDots />,
+    },
+    { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
     { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
   ];
 
@@ -62,7 +68,11 @@ const Sidebar = () => {
                   isActive(Menu.route) ? "bg-gray-700 text-secondary-color" : ""
                 }`}
               >
-                <span className={`text-lg ${isActive(Menu.route) ? "text-secondary-color" : ""}`}>
+                <span
+                  className={`text-lg ${
+                    isActive(Menu.route) ? "text-secondary-color" : ""
+                  }`}
+                >
                   {Menu.icon}
                 </span>
                 <Link
@@ -78,7 +88,11 @@ const Sidebar = () => {
           ))}
           <Link href="/">
             <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4">
-              <span className={`text-lg ${pathname === "/" ? "text-secondary-color" : ""}`}>
+              <span
+                className={`text-lg ${
+                  pathname === "/" ? "text-secondary-color" : ""
+                }`}
+              >
                 🏠
               </span>
               <Link
