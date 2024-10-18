@@ -35,7 +35,7 @@ const Feedback = () => {
   }, []);
 
   return (
-    <div className="bg-[#ffefd3] py-16">
+    <div className="bg-gray-100 py-16">
       <h1 className="text-4xl font-bold text-black text-center mb-12">
         Feedback & Reviews
       </h1>
@@ -51,7 +51,7 @@ const Feedback = () => {
             {feedback.map((item, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-1">
-                  <Card className="w-full bg-black p-6 rounded-xl">
+                  <Card className="w-full h-[480px] bg-white shadow-md p-6 rounded-xl">
                     <CardContent className="flex flex-col aspect-square items-center justify-center p-6">
                       <Image
                         src={item.image}
@@ -61,12 +61,12 @@ const Feedback = () => {
                         className="rounded-full mx-auto mt-4"
                       />
                       <div className="flex flex-col mx-auto text-center items-center justify-center">
-                        <h2 className="text-xl font-semibold text-white text-center mt-4">
+                        <h2 className="text-xl text-primary-color text-opacity-80 font-bold text-center mt-4">
                           {item.name}
                         </h2>
                         <div className="flex mt-2">
                           <p className="flex items-center mx-auto">
-                            <span className="text-white mr-2">Rating:</span>
+                            <span className="mr-2">Rating:</span>
                             {Array.from({length: item.rating}).map(
                               (_, index) => (
                                 <FaStar key={index} style={{color: "gold"}} />
@@ -74,14 +74,14 @@ const Feedback = () => {
                             )}
                           </p>
                         </div>
-                        <p className="text-white my-4 italic flex gap-2 text-center mx-auto">
+                        <p className="my-4 italic flex gap-2 text-center mx-auto">
                           <span>
-                            <FaQuoteLeft />
+                            <FaQuoteLeft className="text-2xl" />
                           </span>
                           {item.message}
-                          <span>
+                          {/* <span>
                             <FaQuoteRight />
-                          </span>
+                          </span> */}
                         </p>
                       </div>
                     </CardContent>
