@@ -4,6 +4,7 @@ import { X } from 'lucide-react';
 import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Button } from '../ui/button';
 
 const MakeExam = ({ setShowMakeExam, setSearchCategory, setSearchLavel, setLoadData }) => {
     const router = useRouter();
@@ -78,7 +79,7 @@ const MakeExam = ({ setShowMakeExam, setSearchCategory, setSearchLavel, setLoadD
                     </div>
                 </div>
                 <div className='flex justify-center mt-6'>
-                    <button onClick={handleStart} className='btn bg-[#22b322] text-white text-lg px-12'>Start</button>
+                    <Button onClick={handleStart} className='btn bg-[#22b322] text-white text-lg px-12'>Start</Button>
                 </div>
             </div>
         </div>

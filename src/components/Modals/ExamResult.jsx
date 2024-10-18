@@ -12,8 +12,9 @@ import {
 } from "next-share";
 import React from "react";
 import UserFeedback from "./UserFeedback";
+import { CornerDownLeft } from "lucide-react";
 
-const ExamResult = ({myMark}) => {
+const ExamResult = ({ myMark }) => {
   const router = useRouterHook();
 
   const handleGoHome = () => {
@@ -31,68 +32,70 @@ const ExamResult = ({myMark}) => {
     remark = "Good!";
     remarkColor = "text-orange-600";
   } else {
-    remark = "Needs Improvement";
+    remark = "Needs Improvement!";
     remarkColor = "text-red-600";
   }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
-      <div className="bg-[#ffefd3] w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg">
+      <div className="bg-primary-color bg-opacity-60 w-[90%] max-w-md p-4 md:p-6 rounded-md shadow-lg">
         <div
-          className={`w-[200px] h-[200px] mx-auto my-8 border-8 p-8 rounded-full flex justify-center items-center ${remarkColor}`}
+          className={`w-[150px] h-[150px] md:w-[180px] md:h-[180px] mx-auto my-4 md:my-6 border-8 p-3 md:p-5 rounded-full flex justify-center items-center ${remarkColor}`}
         >
           <h1
-            className={`text-4xl font-bold ${remarkColor}`}
+            className={`text-3xl md:text-4xl font-bold ${remarkColor}`}
           >{`${myMark} / 10`}</h1>
         </div>
-        <h1 className={`mb-5 text-center text-4xl ${remarkColor}`}>{remark}</h1>
-        <div className="mt-4 flex justify-center gap-4">
+        <h1 className={`mb-3 md:mb-4 text-center text-3xl md:text-4xl ${remarkColor}`}>{remark}</h1>
+        
+        <div className="flex flex-1 mx-auto items-center justify-center">
+          <UserFeedback />
+        </div>
+
+        <div className="my-2 flex justify-center gap-2 md:gap-3">
           <button
             onClick={handleGoHome}
-            className="text-red-600 hover:bg-red-600 hover:text-[#ffefd3] font-medium py-2 px-10 text-xl border border-red-600 rounded-md"
+            className="bg-red-600 text-[#ffefd3] hover:bg-red-700 font-medium py-1 px-6 md:px-8 text-lg md:text-xl border border-red-600 rounded-sm"
           >
             Exit
           </button>
         </div>
-        <h1 className="text-[#30d158] text-center text-4xl mb-10">
-          Your achieved mark!
-        </h1>
-        <div className="flex flex-1 mx-auto items-center justify-center">
-          <UserFeedback />
-        </div>
-        <div className="mt-4 flex justify-center gap-4 w-full">
-          <div className="text-red-600 hover:bg-secondary-color hover:text-[#ffefd3] font-medium py-2 px-10 text-xl border border-red-600 rounded-md hover:border-none">
-            <h2 className="text-xl mb-5 text-center">Share Social Media:</h2>
-            <FacebookShareButton
-              url={"https://quizlytics.vercel.app/"}
-              quote={`I scored ${myMark} / 10 on my exam! Check it out on Quizlytics.`}
-              hashtag={"#Quizlytics"}
-            >
-              <FacebookIcon className="animate-bounce" size={32} round />
-            </FacebookShareButton>
 
-            <PinterestShareButton
-              url={"https://quizlytics.vercel.app/"}
-              media={`I scored ${myMark} / 10 on my exam! Check it out on Quizlytics.`}
-            >
-              <PinterestIcon className="mx-5 animate-bounce" size={32} round />
-            </PinterestShareButton>
-
-            <TwitterShareButton
-              url={"https://quizlytics.vercel.app/"}
-              title={`I scored ${myMark} / 10 on my exam! Check it out on Quizlytics.`}
-            >
-              <TwitterIcon className="animate-bounce" size={32} round />
-            </TwitterShareButton>
-
-            <RedditShareButton
-              url={"https://github.com/next-share"}
-              title={
-                "next-share is a social share buttons for your next React apps."
-              }
-            >
-              <RedditIcon className="animate-bounce ml-5" size={32} round />
-            </RedditShareButton>
+        <div className=" flex justify-center gap-2 md:gap-3 w-full">
+          <div className="text-red-600 hover:bg-secondary-color hover:text-[#ffefd3] font-medium py-1 px-6 md:px-8 text-lg md:text-xl rounded-sm hover:border-none">
+            <div className="flex justify-center text-gray-300 gap-1"><h2 className="text-lg  md:text-xl mb-3 md:mb-4 text-center">Share Result In Social Media </h2> <CornerDownLeft className="text-gray-300" /></div>
+            <div className="mx-auto flex justify-center">
+              <FacebookShareButton
+                url={"https://quizlytics.vercel.app/"}
+                quote={`I scored ${myMark} / 10 on my exam! Check it out on Quizlytics.`}
+                hashtag={"#Quizlytics"}
+              >
+                <FacebookIcon className="animate-bounce" size={32} round />
+              </FacebookShareButton>
+  
+              <PinterestShareButton
+                url={"https://quizlytics.vercel.app/"}
+                media={`I scored ${myMark} / 10 on my exam! Check it out on Quizlytics.`}
+              >
+                <PinterestIcon className="mx-2 md:mx-4 animate-bounce" size={32} round />
+              </PinterestShareButton>
+  
+              <TwitterShareButton
+                url={"https://quizlytics.vercel.app/"}
+                title={`I scored ${myMark} / 10 on my exam! Check it out on Quizlytics.`}
+              >
+                <TwitterIcon className="animate-bounce" size={32} round />
+              </TwitterShareButton>
+  
+              <RedditShareButton
+                url={"https://github.com/next-share"}
+                title={
+                  "next-share is a social share buttons for your next React apps."
+                }
+              >
+                <RedditIcon className="animate-bounce ml-2 md:ml-4" size={32} round />
+              </RedditShareButton>
+            </div>
           </div>
         </div>
       </div>
