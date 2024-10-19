@@ -9,16 +9,18 @@ const Payments = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <section className="w-full rounded-xl p-[20px] mt-[55px] bg-gray-100">
+    <section className="max-w-full p-[20px] mt-[55px] bg-gray-100">
       <h1 className="text-[30px] font-[500] leading-[40px] text-center">
-      Find the Perfect Plan for Your Growth!
+        Find the Perfect Plan for Your Growth!
       </h1>
-      <p className="text-[18px] font-[400] text-gray-400 w-full sm:w-[50%] text-center mx-auto mt-2">
-      <span className="font-bold text-black">Quizlytics</span> is more than just a quiz platform; it’s a tool to empower learning, track growth, and drive success in knowledge enhancement and skill development.
+      <p className="text-[18px] font-[400] text-gray-400 w-full sm:w-[50%] text-center mx-auto mt-2 text">
+        <span className="font-bold text-black">Quizlytics</span> is more than
+        just a quiz platform; it’s a tool to empower learning, track growth, and
+        drive success in knowledge enhancement and skill development.
       </p>
 
       {/*  pricing cards  */}
-      <div className="flex justify-center items-center flex-wrap bg-white py-[30px] gap-[200px] sm:px-[40px] rounded-xl mt-10 mx-48">
+      <div className="flex flex-wrap justify-center items-center bg-white md:py-[30px] gap-5 py-2 lg:gap-[150px] sm:px-[40px] rounded-xl mt-10 mx-5 md:mx-48">
         {/* Base */}
         <div className="w-full flex flex-col max-w-[280px] justify-between h-full bg-white toastshadow rounded-xl p-[20px] border">
           <div>
