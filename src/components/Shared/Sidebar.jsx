@@ -62,12 +62,13 @@ const Sidebar = () => {
         </div>
         <ul className="pt-6">
           {Menus.map((Menu, index) => (
-            <Link href={Menu.route} key={index}>
-              <li
-                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4 ${
-                  isActive(Menu.route) ? "bg-gray-700 text-secondary-color" : ""
-                }`}
-              >
+            <li
+              key={index}
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4 ${
+                isActive(Menu.route) ? "bg-gray-700 text-secondary-color" : ""
+              }`}
+            >
+              <Link href={Menu.route} className="flex items-center gap-x-4">
                 <span
                   className={`text-lg ${
                     isActive(Menu.route) ? "text-secondary-color" : ""
@@ -75,19 +76,18 @@ const Sidebar = () => {
                 >
                   {Menu.icon}
                 </span>
-                <Link
-                  href={Menu.route}
+                <span
                   className={`origin-left duration-200 ${
                     !isSidebarOpen ? "hidden" : "block"
                   }`}
                 >
                   {Menu.title}
-                </Link>
-              </li>
-            </Link>
+                </span>
+              </Link>
+            </li>
           ))}
-          <Link href="/">
-            <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4">
+          <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4">
+            <Link href="/" className="flex items-center gap-x-4">
               <span
                 className={`text-lg ${
                   pathname === "/" ? "text-secondary-color" : ""
@@ -95,16 +95,15 @@ const Sidebar = () => {
               >
                 🏠
               </span>
-              <Link
-                href="/"
+              <span
                 className={`origin-left duration-200 ${
                   !isSidebarOpen ? "hidden" : "block"
                 }`}
               >
                 Go to Homepage
-              </Link>
-            </li>
-          </Link>
+              </span>
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
