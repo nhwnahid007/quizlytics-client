@@ -74,6 +74,16 @@ const MobileNav = () => {
             >
               Our Team
             </Link>
+
+            <Link
+              href='/payment'
+              className={`py-2 font-semibold ${
+                pathname === '/payment' ? 'text-primary-color font-bold' : 'text-secondary-color'
+              }`}
+              onClick={handleLinkClick}
+            >
+              Payment
+            </Link>
           </nav>
         </SheetContent>
       </Sheet>
