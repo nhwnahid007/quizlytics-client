@@ -39,6 +39,7 @@ const Page = () => {
 
   useEffect(() => {
     setQuizKey(newKey);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [questionData, setQuestionData] = useState({

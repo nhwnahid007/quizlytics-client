@@ -18,9 +18,10 @@ const Footer = () => {
           <div className="footer-start mb-8">
             <Image
               src="https://i.ibb.co.com/Pt6bk27/ash.jpg"
-              height={50}
-              width={50}
+              height={100}
+              width={100}
               alt="icon"
+              className="rounded-full"
             />
             <p className="mt-2 text-black">
               Quizlytics Ltd.

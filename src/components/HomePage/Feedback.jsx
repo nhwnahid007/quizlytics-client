@@ -34,7 +34,7 @@ const Feedback = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 py-16">
+    <div className="bg-gray-100 py-16 overflow-hidden">
       <h1 className="text-4xl font-bold text-black text-center mb-12">
         Feedback & Reviews
       </h1>
@@ -45,8 +45,9 @@ const Feedback = () => {
             align: "start",
           }}
           plugins={[autoplay]}
+          className="relative"
         >
-          <CarouselContent className=''>
+          <CarouselContent className="">
             {feedback.map((item, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-1">
@@ -86,8 +87,8 @@ const Feedback = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:hidden lg:flex" />
-          <CarouselNext className="hidden md:hidden lg:flex" />
+          <CarouselPrevious className="hidden md:hidden lg:flex absolute left-0" />
+          <CarouselNext className="hidden md:hidden lg:flex absolute right-0" />
         </Carousel>
       </div>
     </div>
