@@ -39,14 +39,14 @@ const Feedback = () => {
         Feedback & Reviews
       </h1>
 
-      <div className="container mx-auto">
+      <div className="container mx-auto relative">
         <Carousel
           opts={{
             align: "start",
           }}
           plugins={[autoplay]}
         >
-          <CarouselContent>
+          <CarouselContent className=''>
             {feedback.map((item, index) => (
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <div className="p-1">
@@ -86,8 +86,8 @@ const Feedback = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex" />
-          <CarouselNext className="hidden md:flex" />
+          <CarouselPrevious className="hidden md:hidden lg:flex" />
+          <CarouselNext className="hidden md:hidden lg:flex" />
         </Carousel>
       </div>
     </div>
