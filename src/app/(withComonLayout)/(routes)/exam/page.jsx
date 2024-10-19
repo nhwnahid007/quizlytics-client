@@ -165,7 +165,7 @@ const Exam = () => {
                       <span className="font-semibold text-[#f08f45]">
                         Examinee:
                       </span>{" "}
-                      Tanvir Rahman
+                      {name ? name : "Guest"}
                     </h1>
                   </div>
                   <div className="flex flex-col space-y-1">

@@ -65,13 +65,13 @@ const DropDown = () => {
 
   return (
     <>
-      <div className="p-8 mb-4 flex items-center gap-5 justify-center">
+      <div className=" mb-4 flex items-center gap-5 justify-center">
         <div className="w-full flex items-center justify-center">
           <button
             className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient text-xl"
             onClick={() => setisModalOpen(true)}
           >
-            User Feedback
+            Give Us Feedback
           </button>
         </div>
 

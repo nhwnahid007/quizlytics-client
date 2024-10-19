@@ -2,23 +2,15 @@ import React from "react";
 
 const page = () => {
   return (
-    // about us
     <div
-      className="bg-cover bg-right bg-no-repeat text-center text-white"
-      style={{
-        backgroundImage: `url('https://i.ibb.co/X4fQqDn/question-mark-1872634-1920.jpg')`,
-      }}
+      className="bg-gray-50 bg-right bg-no-repeat text-center text-black"
     >
-      {/* Gradient Overlay */}
-      <div className="inset-0 bg-gradient-to-r from-black via-black/60 to-transparent">
-        <div className="w-full lg:w-[70%]  mx-auto py-8">
-          {/* Heading */}
-          <h1 className="text-4xl md:text-6xl text-center font-bold text-[#ff0000] mb-8">
+      <div className="inset-0">
+        <div className="w-full lg:w-[70%] mx-auto py-8">
+          <h1 className=" mt-10 text-4xl md:text-6xl text-center font-bold text-primary-color mb-8">
             About Quizlytics
           </h1>
-
-          {/* Introduction Paragraph */}
-          <p className="text-white text-lg md:text-xl md:mx-auto mx-4 leading-relaxed mb-8">
+          <p className="text-black text-lg md:text-xl md:mx-auto mx-4 leading-relaxed mb-8">
             Welcome to <span className="font-bold">Quizlytics</span>—your
             ultimate platform for mastering multiple-choice questions (MCQs)
             tailored specifically for students and job seekers in Bangladesh.
@@ -29,14 +21,11 @@ const page = () => {
             offering a wide range of quiz categories, timed tests, and features
             that help you track your progress and enhance your knowledge.
           </p>
-
-          {/* Detailed Features Section */}
-          <h2 className="text-2xl font-semibold  text-[#ff0000] mb-4">
-            Key Features
+          <h2 className="text-3xl font-bold text-primary-color mb-4">
+            Key Features:
           </h2>
-
-          <ul className=" text-white my-7 grid md:grid-cols-2 grid-cols-1 gap-5 md:mx-auto mx-4 text-lg md:text-xl">
-            <li className="p-4 rounded-md" style={{backgroundColor: "#1E293B"}}>
+          <ul className="text-black my-7 grid md:grid-cols-2 grid-cols-1 gap-5 md:mx-auto mx-4 text-lg md:text-xl">
+            <li className="p-4 rounded-md bg-gray-200">
               <strong>🗂️ Quiz Categories:</strong>
               <p className="mt-2">
                 Explore a wide range of quiz categories such as Science,
@@ -47,8 +36,7 @@ const page = () => {
                 through quizzes with just a click of a button or tab.
               </p>
             </li>
-
-            <li className="p-4 rounded-md" style={{backgroundColor: "#4B5563"}}>
+            <li className="p-4 rounded-md bg-gray-200">
               <strong>⏳ Timed Quizzes:</strong>
               <p className="mt-2">
                 Every quiz on Quizlytics comes with a configurable time limit,
@@ -60,8 +48,7 @@ const page = () => {
                 the results page.
               </p>
             </li>
-
-            <li className="p-4 rounded-md" style={{backgroundColor: "#9CA3AF"}}>
+            <li className="p-4 rounded-md bg-gray-200">
               <strong>🔄 Limited Quiz Attempts:</strong>
               <p className="mt-2">
                 To ensure fairness and maintain the challenge, each quiz has a
@@ -72,8 +59,7 @@ const page = () => {
                 inaccessible, helping ensure a balanced competition.
               </p>
             </li>
-
-            <li className="p-4 rounded-md" style={{backgroundColor: "#6B7280"}}>
+            <li className="p-4 rounded-md bg-gray-200">
               <strong>📊 Quiz History:</strong>
               <p className="mt-2">
                 Track your progress over time with our comprehensive quiz
@@ -83,8 +69,7 @@ const page = () => {
                 and provides an insightful overview of your learning journey.
               </p>
             </li>
-
-            <li className="p-4 rounded-md" style={{backgroundColor: "#111827"}}>
+            <li className="p-4 rounded-md bg-gray-200">
               <strong>📈 Instant Results & Detailed Feedback:</strong>
               <p className="mt-2">
                 Get instant results as soon as you complete a quiz. You&apos;ll
@@ -94,8 +79,7 @@ const page = () => {
                 and understand the correct solutions.
               </p>
             </li>
-
-            <li className="p-4 rounded-md" style={{backgroundColor: "#374151"}}>
+            <li className="p-4 rounded-md bg-gray-200">
               <strong>🏅 Badges & Achievements:</strong>
               <p className="mt-2">
                 Motivate yourself with our badge and achievement system! Earn
@@ -106,8 +90,7 @@ const page = () => {
                 quiz master.
               </p>
             </li>
-
-            <li className="p-4 rounded-md" style={{backgroundColor: "#1F2937"}}>
+            <li className="p-4 rounded-md bg-gray-200">
               <strong>📤 Social Sharing:</strong>
               <p className="mt-2">
                 Share your quiz results and achievements with friends and family
@@ -118,8 +101,7 @@ const page = () => {
                 boosts community engagement.
               </p>
             </li>
-
-            <li className="p-4 rounded-md" style={{backgroundColor: "#9CA3AF"}}>
+            <li className="p-4 rounded-md bg-gray-200">
               <strong>🗣️ Quiz Community Forum:</strong>
               <p className="mt-2">
                 Engage with fellow quiz enthusiasts in our community forum.
@@ -129,8 +111,7 @@ const page = () => {
                 motivated throughout their learning journey.
               </p>
             </li>
-
-            <li className="p-4 rounded-md" style={{backgroundColor: "#1E293B"}}>
+            <li className="p-4 rounded-md bg-gray-200">
               <strong>📝 Articles & Resources:</strong>
               <p className="mt-2">
                 Our platform also features a section dedicated to articles and
@@ -141,8 +122,7 @@ const page = () => {
                 knowledge, this section offers valuable guidance and support.
               </p>
             </li>
-
-            <li className="p-4 rounded-md" style={{backgroundColor: "#374151"}}>
+            <li className="p-4 rounded-md bg-gray-200">
               <strong>📥 User Feedback:</strong>
               <p className="mt-2">
                 We value user feedback at Quizlytics. You can easily share your

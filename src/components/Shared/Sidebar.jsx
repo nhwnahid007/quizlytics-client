@@ -29,8 +29,8 @@ const Sidebar = () => {
       route: "/Dashboard/leaderboard",
       icon: <FaCommentDots />,
     },
-    { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
-    { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
+    // { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
+    // { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
   ];
 
   return (
