@@ -5,8 +5,6 @@ import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { Button } from "@/components/ui/button";
-import useSearchCategory from "@/app/hooks/useSearchCategory";
-import useSearchLevel from "@/app/hooks/useSearchLevel";
 
 import {
   FacebookIcon,
@@ -40,10 +38,6 @@ const QuizResult = ({
   const image = session?.user?.image;
   const email = session?.user?.email;
 
-  // console.log(quizSet);
-
-  // console.log("searchCategory", searchCategory);
-
   const attemptDetails = {
     quizStartKey,
     quizTitle: quizSet ? quizSet[0].quizTitle : searchCategory,
@@ -60,12 +54,16 @@ const QuizResult = ({
 
   console.log(attemptDetails);
 
+  let postUrl = "";
+  if (quizStartKey) {
+    postUrl = "https://quizlytics.jonomukti.org/saveHistory";
+  } else {
+    postUrl = "https://quizlytics.jonomukti.org/saveAiQuiz";
+  }
+
   const handleSaveRecord = async () => {
     setLoading(true);
-    const res = await axios.post(
-      "https://quizlytics.jonomukti.org/saveHistory",
-      attemptDetails
-    );
+    const res = await axios.post(postUrl, attemptDetails);
 
     if (res.data.insertedId) {
       setLoading(false);
@@ -85,8 +83,16 @@ const QuizResult = ({
     router.push("/");
   };
 
+  let viewSubmission = ``;
+
+  if (quizStartKey) {
+    viewSubmission = `/viewSubmission/${quizStartKey}`;
+  } else {
+    viewSubmission = `/viewSubmissionAi/${searchCategory}`;
+  }
+
   const handleViewAnswers = () => {
-    router.push(`/viewSubmission/${quizStartKey}`);
+    router.push(viewSubmission);
   };
 
   if (loading) {

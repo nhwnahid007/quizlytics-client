@@ -20,7 +20,7 @@ const Page = () => {
         const data = await getCustomQuiz(quizKey);
         // console.log("data", data);
         setQuizSet(data);
-        setAllQuestion(data[0].quizArr);
+        setAllQuestion(data[0]?.quizArr);
         setIsLoading(false);
         // console.log(allQuestions);
       } catch (error) {

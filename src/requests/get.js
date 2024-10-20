@@ -52,6 +52,15 @@ export const getSubmissionByKey = async (key, email)=>{
         return [];
     }
 }
+export const getSubmissionByQuizTitle = async (searchCategory, email)=>{
+    try{
+        const res = await axios.get(`https://quizlytics.jonomukti.org/historyByUserAi?qTitle=${searchCategory}&email=${email}`)
+        return res.data;
+    } catch(error){
+        console.error("Error fetching submissions by key:", error)
+        return [];
+    }
+}
 
 export const getLeaders = async()=>{
     try{
