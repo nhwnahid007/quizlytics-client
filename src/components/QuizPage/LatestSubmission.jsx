@@ -21,12 +21,10 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
           setLatestSubmission([]);
           const data = await getSubmissionByKey(quizKey, email);
           setLatestSubmission(data.at(-1));
+          setIsLoading(false);
         } else {
           setLatestSubmission([]);
-          const data = await getSubmissionByQuizTitle(
-            "math",
-            "rafiul.razib@gmail.com"
-          );
+          const data = await getSubmissionByQuizTitle(searchCategory, email);
           console.log("quick data", data);
           setLatestSubmission(data.at(-1));
           setIsLoading(false);
