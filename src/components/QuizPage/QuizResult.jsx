@@ -1,10 +1,12 @@
+"use client";
 import useRouterHook from "@/app/hooks/useRouterHook";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { Button } from "@/components/ui/button";
+import useSearchCategory from "@/app/hooks/useSearchCategory";
+import useSearchLevel from "@/app/hooks/useSearchLevel";
 
 import {
   FacebookIcon,
@@ -23,6 +25,8 @@ const QuizResult = ({
   allQuestions,
   quizStartKey,
   quizSet,
+  searchCategory,
+  searchLavel,
 }) => {
   const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -36,13 +40,15 @@ const QuizResult = ({
   const image = session?.user?.image;
   const email = session?.user?.email;
 
-  console.log(quizSet);
+  // console.log(quizSet);
+
+  // console.log("searchCategory", searchCategory);
 
   const attemptDetails = {
     quizStartKey,
-    quizTitle: quizSet[0].quizTitle,
-    quizCategory: quizSet[0].quizCategory,
-    quizCreator: quizSet[0].quizCreator,
+    quizTitle: quizSet ? quizSet[0].quizTitle : searchCategory,
+    quizCategory: quizSet ? quizSet[0].quizCategory : searchLavel,
+    quizCreator: quizSet ? quizSet[0].quizCreator : "AI",
     questions: allQuestions,
     answers: markedAnswer,
     userName: name,

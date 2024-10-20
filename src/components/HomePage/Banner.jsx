@@ -7,7 +7,7 @@ const Banner = () => {
   const router = useRouterHook();
 
   const handleQuicktExam = () => {
-    router.push("/exam");
+    router.push("/quickExam");
   };
 
   const handleCustomExam = () => {
