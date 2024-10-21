@@ -1,8 +1,8 @@
 import LatestSubmission from "@/components/QuizPage/LatestSubmission";
 import React from "react";
 
-const page = ({ params }) => {
+const Page = ({ params }) => {
   return <LatestSubmission searchCategory={params.searchCategory} />;
 };
 
-export default page;
+export default Page;
