@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 const Overview = () => {
+  const [selectedOption, setSelectedOption] = useState("");
+
   return (
     <div className="py-14 bg-gray-100">
       <div className="w-[90%] md:max-w-6xl mx-auto">
@@ -66,11 +69,29 @@ const Overview = () => {
               What is the capital city of France?
             </h3>
             <ul className="mt-3 space-y-2">
-              <li className="bg-primary-color bg-opacity-60 py-2 px-4 rounded-xl shadow-sm shadow-gray-500 text-semibold">{`A) Berlin`}</li>
-              <li className="bg-primary-color bg-opacity-70 py-2 px-4 rounded-xl shadow-sm shadow-gray-500 text-semibold">{`B) Madrid`}</li>
-              <li className="bg-primary-color bg-opacity-60 py-2 px-4 rounded-xl shadow-sm shadow-gray-500 text-semibold">{`C) Paris`}</li>
-              <li className="bg-primary-color bg-opacity-60 py-2 px-4 rounded-xl shadow-sm shadow-gray-500 text-semibold">{`D) Rome`}</li>
+              {["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"].map((option, index) => (
+                <li
+                  key={index}
+                  className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl ${
+                    selectedOption === option ? "bg-[#BBF7D0]" : ""
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    id={`option${index}`}
+                    name="question"
+                    className="mr-2"
+                    onChange={() => setSelectedOption(option)}
+                  />
+                  <label htmlFor={`option${index}`} className="text-semibold">
+                    {option}
+                  </label>
+                </li>
+              ))}
             </ul>
+            <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded">
+              Next Question
+            </button>
           </div>
         </div>
 
