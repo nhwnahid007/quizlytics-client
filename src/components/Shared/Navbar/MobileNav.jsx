@@ -1,8 +1,8 @@
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { AlignJustify } from 'lucide-react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import {Sheet, SheetContent, SheetTrigger} from "@/components/ui/sheet";
+import {AlignJustify} from "lucide-react";
+import Link from "next/link";
+import {usePathname} from "next/navigation";
+import {useState} from "react";
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false); // State to manage sheet open/close
@@ -13,22 +13,24 @@ const MobileNav = () => {
   };
 
   return (
-    <div className='lg:hidden'>
+    <div className="lg:hidden">
       {/* Sheet component for mobile navigation */}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         {/* Icon to trigger the Sheet (side menu) */}
         <SheetTrigger>
-          <AlignJustify className='h-10 mt-1 w-10 md:h-12 md:w-12 my-auto text-primary-color' />
+          <AlignJustify className="h-10 mt-1 w-10 md:h-12 md:w-12 my-auto text-primary-color" />
         </SheetTrigger>
 
         {/* Content inside the Sheet */}
-        <SheetContent side='left'>
+        <SheetContent side="left">
           {/* Navigation links in the mobile menu */}
-          <nav className='flex flex-col gap-3 mt-6'>
+          <nav className="flex flex-col gap-3 mt-6">
             <Link
-              href='/'
+              href="/"
               className={`py-2 font-semibold ${
-                pathname === '/' ? 'text-primary-color font-bold' : 'text-secondary-color'
+                pathname === "/"
+                  ? "text-primary-color font-bold"
+                  : "text-secondary-color"
               }`}
               onClick={handleLinkClick}
             >
@@ -36,9 +38,11 @@ const MobileNav = () => {
             </Link>
 
             <Link
-              href='/blogs'
+              href="/blogs"
               className={`py-2 font-semibold ${
-                pathname === '/blogs' ? 'text-primary-color font-bold' : 'text-secondary-color'
+                pathname === "/blogs"
+                  ? "text-primary-color font-bold"
+                  : "text-secondary-color"
               }`}
               onClick={handleLinkClick}
             >
@@ -46,9 +50,11 @@ const MobileNav = () => {
             </Link>
 
             <Link
-              href='/about'
+              href="/about"
               className={`py-2 font-semibold ${
-                pathname === '/about' ? 'text-primary-color font-bold' : 'text-secondary-color'
+                pathname === "/about"
+                  ? "text-primary-color font-bold"
+                  : "text-secondary-color"
               }`}
               onClick={handleLinkClick}
             >
@@ -56,9 +62,11 @@ const MobileNav = () => {
             </Link>
 
             <Link
-              href='/contact'
+              href="/contact"
               className={`py-2 font-semibold ${
-                pathname === '/contact' ? 'text-primary-color font-bold' : 'text-secondary-color'
+                pathname === "/contact"
+                  ? "text-primary-color font-bold"
+                  : "text-secondary-color"
               }`}
               onClick={handleLinkClick}
             >
@@ -66,9 +74,11 @@ const MobileNav = () => {
             </Link>
 
             <Link
-              href='/team'
+              href="/team"
               className={`py-2 font-semibold ${
-                pathname === '/team' ? 'text-primary-color font-bold' : 'text-secondary-color'
+                pathname === "/team"
+                  ? "text-primary-color font-bold"
+                  : "text-secondary-color"
               }`}
               onClick={handleLinkClick}
             >
