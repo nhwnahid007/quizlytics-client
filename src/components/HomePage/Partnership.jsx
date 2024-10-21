@@ -9,7 +9,7 @@ const Partnership = () => {
         Quiz Rules & Partnerships
       </h1>
       <div className="w-[90%] md:max-w-6xl mx-auto text">
-        <div className="w-full bg-blue-100 text-black rounded-2xl p-8 flex flex-col lg:flex-row gap-8 lg:gap-12 mb-8">
+        <div className="w-full bg-[#F0E6F3] text-black rounded-2xl p-8 flex flex-col lg:flex-row gap-8 lg:gap-12 mb-8">
           <div className="relative w-full lg:w-[40%] h-[370px] md:h-[420px]">
             <Image
               src={"https://i.ibb.co.com/3dqN05S/2121601-prev-ui.png"}
@@ -20,7 +20,7 @@ const Partnership = () => {
             />
           </div>
           <div className="w-full lg:w-[60%]">
-            <h3 className="text-3xl font-semibold mb-4 text-[#f6bd60]">
+            <h3 className="text-3xl font-bold mb-4 text-primary-color">
               Quiz Mastery Tricks & Tips
             </h3>
             <p>
@@ -73,7 +73,7 @@ const Partnership = () => {
           </div>
         </div>
         <div className="w-full text-black rounded-2xl flex flex-col lg:flex-row gap-6">
-          <div className="w-full lg:w-1/2 bg-blue-100 text-black rounded-2xl p-8 flex flex-col md:flex-row gap-8">
+          <div className="w-full lg:w-1/2 bg-[#F0E6F3] text-black rounded-2xl p-8 flex flex-col md:flex-row gap-8">
             <div className="relative w-[220px] md:w-[280px] lg:w-[40%] h-[220px]">
               <Image
                 src={"https://i.ibb.co.com/zV5bJxR/bid-3815739.png"}
@@ -95,7 +95,7 @@ const Partnership = () => {
               </p>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 bg-blue-100 text-black rounded-2xl p-8 flex flex-col md:flex-row gap-8">
+          <div className="w-full lg:w-1/2 bg-[#F0E6F3] text-black rounded-2xl p-8 flex flex-col md:flex-row gap-8">
             <div className="relative w-[220px] md:w-[280px] lg:w-[40%] h-[220px]">
               <Image
                 src={"https://i.ibb.co.com/njH26SB/bid-3815750.png"}
