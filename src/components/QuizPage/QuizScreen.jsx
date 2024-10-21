@@ -19,7 +19,7 @@ const QuizScreen = ({
     new Array(allQuestions?.length)
   );
 
-  console.log("all questions", allQuestions);
+  // console.log("all questions", allQuestions);
   // console.log(quizKey);
 
   const isQuizEnded = currentQuizIndex === allQuestions?.length;

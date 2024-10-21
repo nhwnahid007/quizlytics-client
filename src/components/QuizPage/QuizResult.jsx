@@ -40,6 +40,7 @@ const QuizResult = ({
 
   const attemptDetails = {
     quizStartKey,
+    date: new Date(),
     quizTitle: quizSet ? quizSet[0].quizTitle : searchCategory,
     quizCategory: quizSet ? quizSet[0].quizCategory : searchLavel,
     quizCreator: quizSet ? quizSet[0].quizCreator : "AI",

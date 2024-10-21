@@ -1,10 +1,21 @@
 import axios from 'axios';
-import Swal from 'sweetalert2';
+
 
 export const getMCQ = async (category, level) => {
     console.log(category, level);
     try {
         const res = await axios.get(`https://quizlytics.jonomukti.org/quiz?category=${category}&skill=${level}`);
+        return res.data;
+    } catch (error) {   
+        console.error("Error fetching MCQ:", error);
+        return [];
+    }
+
+}
+export const getQuizByLink = async (artLink) => {
+    
+    try {
+        const res = await axios.get(`http://localhost:4000/testByLink?link=${artLink}`);
         return res.data;
     } catch (error) {   
         console.error("Error fetching MCQ:", error);

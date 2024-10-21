@@ -7,7 +7,7 @@ import QuizScreen from "@/components/QuizPage/QuizScreen";
 import { getMCQ } from "@/requests/get";
 import React, { useEffect, useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [searchCategory, setSearchCategory] = useSearchCategory();
   const [searchLavel, setSearchLavel] = useSearchLevel();
   const [loadData, setLoadData] = useState(false);
@@ -54,4 +54,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

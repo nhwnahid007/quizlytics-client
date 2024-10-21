@@ -14,6 +14,10 @@ const Banner = () => {
     router.push("/customQuiz");
   };
 
+  const handleQuizByLink = () => {
+    router.push("/quizByLink");
+  };
+
   return (
     <div
       className="relative min-h-screen lg:h-[90vh] bg-cover bg-right bg-no-repeat text-black"
@@ -52,6 +56,12 @@ const Banner = () => {
                   className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-secondary-color hover:bg-transparent hover:text-secondary-color transition-colors duration-300 border-gradient"
                 >
                   Custom Exam
+                </button>
+                <button
+                  onClick={handleQuizByLink}
+                  className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient"
+                >
+                  Give Test on Article
                 </button>
               </div>
             </div>
