@@ -42,54 +42,12 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
     getLatestSubmission();
   }, [quizKey, email, searchCategory]);
 
-  const renderQuestions = () => {
-    if (!latestSubmission || !latestSubmission.questions) {
-      return <p>No submission found.</p>;
-    }
-
-    return latestSubmission.questions.map((question, index) => {
-      const userAnswer = latestSubmission.answers[index];
-      const isCorrect = userAnswer === question.correctAnswers;
-
-      return (
-        <div key={index} className="my-4 p-4 border rounded">
-          <h2 className="text-xl font-bold">{`Q${index + 1}: ${
-            question.questions
-          }`}</h2>
-          <div className="space-y-2 mt-2">
-            {question.options.map((option, optIndex) => {
-              let optionClass = "p-2 rounded text-white ";
-              if (userAnswer === option) {
-                optionClass === isCorrect ? "bg-green-500" : "bg-red-500";
-              } else if (option === question.correctAnswer) {
-                optionClass += "bg-green-500";
-              } else {
-                optionClass += "bg-gray-300";
-              }
-
-              return (
-                <div key={optIndex} className={optionClass}>
-                  {option}
-                </div>
-              );
-            })}
-          </div>
-          {!isCorrect && (
-            <p className="text-red-600 mt-2">
-              The correct answer is: {question.correctAnswer}
-            </p>
-          )}
-        </div>
-      );
-    });
-  };
-
   return (
     <div className="h-auto max-w-6xl pt-20 mx-auto">
       <h2 className="text-center">YOUR LATEST SUBMISSION</h2>
 
       {!isLoading &&
-        latestSubmission.questions.map((item, idx) => (
+        latestSubmission?.questions?.map((item, idx) => (
           <SubmitCard
             key={item._id}
             item={item}
