@@ -2,9 +2,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaChartLine, FaCommentDots, FaDatabase, FaUser } from "react-icons/fa";
+import { FaChartLine, FaCommentDots, FaDatabase, FaPeopleArrows, FaUser } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { FaFileCircleQuestion } from "react-icons/fa6";
+import { FaFileCircleQuestion, FaPeopleGroup } from "react-icons/fa6";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -33,6 +33,11 @@ const Sidebar = () => {
       title: "My Progress",
       route: "/Dashboard/statistics",
       icon: <FaDatabase />,
+    },
+    {
+      title: "All Examinee",
+      route: "/Dashboard/allExaminee",
+      icon: <FaPeopleGroup/>,
     },
     // { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
     // { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },

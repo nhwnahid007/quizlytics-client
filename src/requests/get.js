@@ -62,6 +62,15 @@ export const getLeaders = async()=>{
         return [];
     }
 }
+export const getExaminees = async () => {
+    try {
+      const res = await axios.get("https://quizlytics.jonomukti.org/allExaminee");
+      return res.data; 
+    } catch (error) {
+      console.error("Error fetching allExaminee:", error);
+      return [];
+    }
+  };
 export const getMarks = async(email)=>{
     try{
         const res = await axios.get(`https://quizlytics.jonomukti.org/userHistory?email=${email}`)
