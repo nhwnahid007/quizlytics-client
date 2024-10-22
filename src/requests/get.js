@@ -62,5 +62,14 @@ export const getLeaders = async()=>{
         return [];
     }
 }
+export const getMarks = async(email)=>{
+    try{
+        const res = await axios.get(`https://quizlytics.jonomukti.org/userHistory?email=${email}`)
+        return res.data;
+    } catch(error){
+        console.log("Error fetching leaderboard:", error);
+        return [];
+    }
+}
 
 
