@@ -1,9 +1,8 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import {FaQuoteLeft} from "react-icons/fa";
 import {useState, useEffect} from "react";
-import axios from "axios";
+import axios from 'axios'
 import {FaStar} from "react-icons/fa";
 import Autoplay from "embla-carousel-autoplay";
 import {

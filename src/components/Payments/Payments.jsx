@@ -1,12 +1,13 @@
 "use client";
-import React, {useState} from "react";
+import React from "react";
+import { Button } from "../ui/button";
 
 // react icons
-import {MdOutlineDone} from "react-icons/md";
-import {RxCross1} from "react-icons/rx";
+import { MdOutlineDone } from "react-icons/md";
+import { RxCross1 } from "react-icons/rx";
+import Link from "next/link";
 
 const Payments = () => {
-  const [toggle, setToggle] = useState(false);
 
   return (
     <section className="max-w-full p-[20px] mt-[55px] bg-gray-100">
@@ -19,9 +20,9 @@ const Payments = () => {
         drive success in knowledge enhancement and skill development.
       </p>
 
-      {/*  pricing cards  */}
-      <div className="flex flex-wrap justify-center items-center bg-white md:py-[30px] gap-5 py-2 lg:gap-[150px] sm:px-[40px] rounded-xl mt-10 mx-5 md:mx-48">
-        {/* Base */}
+      {/* pricing cards */}
+      <div className="flex flex-wrap justify-center items-center bg-white md:py-[30px] gap-5 py-2 lg:gap-[150px] sm:px-[40px] rounded-xl mt-10 mx-5 md:mx-48 shadow-lg">
+        {/* Basic Plan */}
         <div className="w-full flex flex-col max-w-[280px] justify-between h-full bg-white toastshadow rounded-xl p-[20px] border">
           <div>
             <h3 className="text-[1.5rem] font-[600] mt-3">Basic</h3>
@@ -56,13 +57,20 @@ const Payments = () => {
               <span className="text-[1rem] text-gray-400 mb-2">/month</span>
             </div>
 
-            <button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
-              Choose
-            </button>
+            <Link
+              href={{
+                pathname: "/paymentCard",
+                query: { plan: "Basic", price: 19 },
+              }}
+            >
+              <Button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
+                Choose
+              </Button>
+            </Link>
           </div>
         </div>
 
-        {/* Pro */}
+        {/* Standard Plan */}
         <div className="w-full flex flex-col max-w-[280px] justify-between h-full bg-white toastshadow rounded-xl p-[20px] border">
           <div>
             <h3 className="text-[1.5rem] font-[600] mt-3">Standard</h3>
@@ -97,13 +105,20 @@ const Payments = () => {
               <span className="text-[1rem] text-gray-400 mb-2">/month</span>
             </div>
 
-            <button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
-              Choose
-            </button>
+            <Link
+              href={{
+                pathname: "/paymentCard",
+                query: { plan: "Standard", price: 123 },
+              }}
+            >
+              <Button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
+                Choose
+              </Button>
+            </Link>
           </div>
         </div>
 
-        {/* Business */}
+        {/* Premium Plan */}
         <div className="w-full flex flex-col max-w-[280px] justify-between h-full bg-white toastshadow rounded-xl p-[20px] border">
           <div>
             <h3 className="text-[1.5rem] font-[600] mt-3">Premium</h3>
@@ -138,9 +153,16 @@ const Payments = () => {
               <span className="text-[1rem] text-gray-400 mb-2">/month</span>
             </div>
 
-            <button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
-              Choose
-            </button>
+            <Link
+              href={{
+                pathname: "/paymentCard",
+                query: { plan: "Premium", price: 189 },
+              }}
+            >
+              <Button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
+                Choose
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
