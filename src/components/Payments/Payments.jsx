@@ -1,12 +1,14 @@
 "use client";
-import React, {useState} from "react";
+import React from "react";
+import {Button} from "../ui/button";
+import Link from "next/link";
 
 // react icons
 import {MdOutlineDone} from "react-icons/md";
 import {RxCross1} from "react-icons/rx";
 
 const Payments = () => {
-  const [toggle, setToggle] = useState(false);
+  // const [toggle, setToggle] = useState(false);
 
   return (
     <section className="max-w-full p-[20px] mt-[55px] bg-gray-100">
@@ -56,9 +58,16 @@ const Payments = () => {
               <span className="text-[1rem] text-gray-400 mb-2">/month</span>
             </div>
 
-            <button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
-              Choose
-            </button>
+            <Link
+              href={{
+                pathname: "/paymentCard",
+                query: {plan: "Basic", price: 19},
+              }}
+            >
+              <Button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
+                Choose
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -97,9 +106,16 @@ const Payments = () => {
               <span className="text-[1rem] text-gray-400 mb-2">/month</span>
             </div>
 
-            <button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
-              Choose
-            </button>
+            <Link
+              href={{
+                pathname: "/paymentCard",
+                query: {plan: "Standard", price: 123},
+              }}
+            >
+              <Button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
+                Choose
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -138,9 +154,16 @@ const Payments = () => {
               <span className="text-[1rem] text-gray-400 mb-2">/month</span>
             </div>
 
-            <button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
-              Choose
-            </button>
+            <Link
+              href={{
+                pathname: "/paymentCard",
+                query: {plan: "Premium", price: 189},
+              }}
+            >
+              <Button className="py-[14px] px-4 w-full bg-primary-color text-white rounded-md mt-3 hover:bg-secondary-color hover:text-black hover:font-bold">
+                Choose
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
