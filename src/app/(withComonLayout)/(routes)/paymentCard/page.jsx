@@ -1,7 +1,6 @@
 "use client";
 import {useSearchParams} from "next/navigation";
 
-<<<<<<< HEAD
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import {loadStripe} from "@stripe/stripe-js";
 import {Elements} from "@stripe/react-stripe-js";
@@ -13,8 +12,6 @@ if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
-=======
->>>>>>> origin/sayedrana
 const PaymentCard = () => {
   const searchParams = useSearchParams();
   const prices = searchParams.get("price");
@@ -35,7 +32,6 @@ const PaymentCard = () => {
       ) : (
         <p className="text-center">Loading price...</p>
       )}
-<<<<<<< HEAD
       {/*  */}
       <Elements
         stripe={stripePromise}
@@ -47,8 +43,6 @@ const PaymentCard = () => {
       >
         <CheckoutPage prices={prices} />
       </Elements>
-=======
->>>>>>> origin/sayedrana
     </div>
   );
 };
