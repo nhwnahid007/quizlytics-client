@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaChartLine, FaCommentDots, FaUser } from "react-icons/fa";
+import { FaChartLine, FaCommentDots, FaDatabase, FaUser } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaFileCircleQuestion } from "react-icons/fa6";
 
@@ -28,6 +28,11 @@ const Sidebar = () => {
       title: "Leaderboard",
       route: "/Dashboard/leaderboard",
       icon: <FaCommentDots />,
+    },
+    {
+      title: "My Progress",
+      route: "/Dashboard/statistics",
+      icon: <FaDatabase />,
     },
     // { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
     // { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
