@@ -30,9 +30,9 @@ const Page = () => {
     if (loadData) {
       getAllMCQ(); // Fetch only if category and level are set
     }
-  }, [loadData, searchCategory, searchLavel]);
-  console.log(allMCQ.length);
-  console.log(allMCQ);
+  }, [loadData, searchCategory, searchLavel, setAllMCQ]);
+  // console.log(allMCQ.length);
+  // console.log(allMCQ);
   return (
     <div>
       {showMakeExam ? (

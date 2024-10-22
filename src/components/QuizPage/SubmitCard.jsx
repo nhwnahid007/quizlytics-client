@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const SubmitCard = ({ item, markedAnswer }) => {
+const SubmitCard = ({ item, markedAnswer, idx }) => {
   const isCorrect = item.correct_answer == markedAnswer;
 
   return (
