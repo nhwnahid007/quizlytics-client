@@ -1,9 +1,18 @@
 "use client";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Overview = () => {
   const [selectedOption, setSelectedOption] = useState("");
+
+  useEffect(()=>{
+AOS.init({
+  duration: 1000, 
+  once: true,
+})
+  },[])
 
   return (
     <div className="py-14 bg-gray-100">
@@ -68,11 +77,12 @@ const Overview = () => {
             <h3 className="text-xl font-semibold text-semibold">
               What is the capital city of France?
             </h3>
+            <div data-aos="fade-left">
             <ul className="mt-3 space-y-2">
               {["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"].map((option, index) => (
                 <li
                   key={index}
-                  className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl ${
+                  className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl  data-aos="fade-left" ${
                     selectedOption === option ? "bg-[#BBF7D0]" : ""
                   }`}
                 >
@@ -89,6 +99,7 @@ const Overview = () => {
                 </li>
               ))}
             </ul>
+            </div>
             <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded">
               Next Question
             </button>
