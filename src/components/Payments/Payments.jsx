@@ -4,8 +4,9 @@ import {Button} from "../ui/button";
 import Link from "next/link";
 
 // react icons
-import {MdOutlineDone} from "react-icons/md";
-import {RxCross1} from "react-icons/rx";
+import { MdOutlineDone } from "react-icons/md";
+import { RxCross1 } from "react-icons/rx";
+
 
 const Payments = () => {
   // const [toggle, setToggle] = useState(false);
@@ -21,9 +22,9 @@ const Payments = () => {
         drive success in knowledge enhancement and skill development.
       </p>
 
-      {/*  pricing cards  */}
-      <div className="flex flex-wrap justify-center items-center bg-white md:py-[30px] gap-5 py-2 lg:gap-[150px] sm:px-[40px] rounded-xl mt-10 mx-5 md:mx-48">
-        {/* Base */}
+      {/* pricing cards */}
+      <div className="flex flex-wrap justify-center items-center bg-white md:py-[30px] gap-5 py-2 lg:gap-[150px] sm:px-[40px] rounded-xl mt-10 mx-5 md:mx-48 shadow-lg">
+        {/* Basic Plan */}
         <div className="w-full flex flex-col max-w-[280px] justify-between h-full bg-white toastshadow rounded-xl p-[20px] border">
           <div>
             <h3 className="text-[1.5rem] font-[600] mt-3">Basic</h3>
@@ -71,7 +72,7 @@ const Payments = () => {
           </div>
         </div>
 
-        {/* Pro */}
+        {/* Standard Plan */}
         <div className="w-full flex flex-col max-w-[280px] justify-between h-full bg-white toastshadow rounded-xl p-[20px] border">
           <div>
             <h3 className="text-[1.5rem] font-[600] mt-3">Standard</h3>
@@ -119,7 +120,7 @@ const Payments = () => {
           </div>
         </div>
 
-        {/* Business */}
+        {/* Premium Plan */}
         <div className="w-full flex flex-col max-w-[280px] justify-between h-full bg-white toastshadow rounded-xl p-[20px] border">
           <div>
             <h3 className="text-[1.5rem] font-[600] mt-3">Premium</h3>
