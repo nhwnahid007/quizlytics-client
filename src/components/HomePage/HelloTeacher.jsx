@@ -1,7 +1,12 @@
+
+
+
 import Image from "next/image";
 import React from "react";
 
 const HelloTeacher = () => {
+
+
   return (
     <div className="text-center my-auto mt-10 flex flex-col md:flex-row p-4 md:p-8">
       <div className="flex-1">
