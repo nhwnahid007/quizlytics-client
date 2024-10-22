@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 import {useState, useEffect} from "react";
 import axios from 'axios'
-import {FaStar} from "react-icons/fa";
+import {FaQuoteLeft, FaStar} from "react-icons/fa";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
