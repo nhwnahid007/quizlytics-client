@@ -73,7 +73,7 @@ const Register = () => {
             console.log(profile);
 
             // new user info 
-            const newUser = { name, email, password, profile };
+            const newUser = { name, email, password, profile, role: "user" }; // Set role here
             let successfull = false;
 
             // sending request with newUser data to backend and then to Database if condition satisfy  

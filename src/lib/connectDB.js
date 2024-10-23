@@ -2,6 +2,7 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 
 let db;
 export const connectDB = async () => {
+   
     if(db) return db;
     const uri = process.env.NEXT_PUBLIC_MONGODB_URI;
     try {
@@ -12,7 +13,7 @@ export const connectDB = async () => {
                 deprecationErrors: true
             },
         });
-        db = client.db('quiz_lytics_database');
+        db = client.db("quizlyticsDb")
         return db;
     } catch (error) {
         console.log(error);

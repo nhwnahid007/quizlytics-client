@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const Page = () => {
   const [artLink, setArtLink] = useState();
-  const [allQuestions, setAllQuestion] = useState();
+  const [allQuestions, setAllQuestion] = useState([]); // Initialize as an empty array
   const [quizByLink, setQuizByLink] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -21,7 +21,7 @@ const Page = () => {
       try {
         const data = await getQuizByLink(artLink);
         console.log(data);
-        setAllQuestion(data);
+        setAllQuestion(data || []); // Ensure allQuestions is always an array
         setIsLoading(false);
       } catch (error) {
         console.log("data fetching error", error);
@@ -44,7 +44,7 @@ const Page = () => {
           setIsLoading={setIsLoading}
         />
       ) : isLoading ? (
-        <div>Loading...</div> // Placeholder for loading spinner
+        <div>Loading...</div> 
       ) : (
         <QuizScreen
           allQuestions={allQuestions}
