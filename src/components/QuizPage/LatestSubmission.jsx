@@ -59,15 +59,6 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
         YOUR LATEST SUBMISSION
       </h2>
 
-      {/* {!isLoading &&
-        latestSubmission?.questions?.map((item, idx) => (
-          <SubmitCard
-            key={item._id}
-            item={item}
-            markedAnswer={latestSubmission.answers[idx]}
-          />
-        ))} */}
-
       {isLoading ? (
         <div className="text-center">Loading your latest submission...</div>
       ) : latestSubmission?.questions?.length > 0 ? (
