@@ -61,7 +61,7 @@ const Banner = () => {
                   onClick={handleQuizByLink}
                   className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient"
                 >
-                  Give Test on Article
+                  Test on Article
                 </button>
               </div>
             </div>

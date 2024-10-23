@@ -5,7 +5,7 @@ import { getQuizByLink } from "@/requests/get";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-const page = () => {
+const Page = () => {
   const [artLink, setArtLink] = useState();
   const [allQuestions, setAllQuestion] = useState();
   const [quizByLink, setQuizByLink] = useState(true);
@@ -16,6 +16,8 @@ const page = () => {
 
   useEffect(() => {
     const getLinkQuiz = async () => {
+      if (!artLink) return;
+      setIsLoading(true);
       try {
         const data = await getQuizByLink(artLink);
         console.log(data);
@@ -41,11 +43,17 @@ const page = () => {
           setArtLink={setArtLink}
           setIsLoading={setIsLoading}
         />
+      ) : isLoading ? (
+        <div>Loading...</div> // Placeholder for loading spinner
       ) : (
-        <QuizScreen allQuestions={allQuestions} isLoading={isLoading} />
+        <QuizScreen
+          allQuestions={allQuestions}
+          isLoading={isLoading}
+          artLink={artLink}
+        />
       )}
     </div>
   );
 };
 
-export default page;
+export default Page;

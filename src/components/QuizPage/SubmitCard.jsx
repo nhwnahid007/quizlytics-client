@@ -42,7 +42,7 @@ const SubmitCard = ({ item, markedAnswer, idx }) => {
                 (answer) => answer == item.options[item.correct_answer]
               )}
             </p>
-            {item.explain && <p>Explantion: {item.explain}</p>}
+            {item.explain && <p>Explanation: {item.explain}</p>}
           </div>
         </CardFooter>
       </Card>

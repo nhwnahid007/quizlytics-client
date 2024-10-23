@@ -1,8 +1,8 @@
 import Leaders from "@/components/Shared/Leaders";
 import React from "react";
 
-const leaderboard = () => {
+const Leaderboard = () => {
   return <Leaders />;
 };
 
-export default leaderboard;
+export default Leaderboard;

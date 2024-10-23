@@ -25,6 +25,7 @@ const QuizResult = ({
   quizSet,
   searchCategory,
   searchLavel,
+  artLink,
 }) => {
   const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -41,6 +42,7 @@ const QuizResult = ({
   const attemptDetails = {
     quizStartKey,
     date: new Date(),
+    linkId: "1001",
     quizTitle: quizSet ? quizSet[0].quizTitle : searchCategory,
     quizCategory: quizSet ? quizSet[0].quizCategory : searchLavel,
     quizCreator: quizSet ? quizSet[0].quizCreator : "AI",
@@ -58,21 +60,32 @@ const QuizResult = ({
   let postUrl = "";
   if (quizStartKey) {
     postUrl = "https://quizlytics.jonomukti.org/saveHistory";
-  } else {
+  } else if (searchCategory) {
     postUrl = "https://quizlytics.jonomukti.org/saveAiQuiz";
+  } else {
+    postUrl = "https://quizlytics.jonomukti.org/linkQuiz";
   }
 
   const handleSaveRecord = async () => {
     setLoading(true);
-    const res = await axios.post(postUrl, attemptDetails);
-
-    if (res.data.insertedId) {
+    try {
+      const res = await axios.post(postUrl, attemptDetails);
+      if (res.data.insertedId) {
+        setLoading(false);
+        setIsDisabled(false);
+        Swal.fire({
+          title: "Success",
+          text: "Recorded successfully!",
+          icon: "success",
+          toast: true,
+        });
+      }
+    } catch (error) {
       setLoading(false);
-      setIsDisabled(false);
       Swal.fire({
-        title: "Success",
-        text: "Recorded successfully!",
-        icon: "success",
+        title: "Error",
+        text: "Failed to save record. Please try again.",
+        icon: "error",
         toast: true,
       });
     }
@@ -88,8 +101,10 @@ const QuizResult = ({
 
   if (quizStartKey) {
     viewSubmission = `/viewSubmission/${quizStartKey}`;
-  } else {
+  } else if (searchCategory) {
     viewSubmission = `/viewSubmissionAi/${searchCategory}`;
+  } else {
+    viewSubmission = `viewSubmissionByLink/${email}`;
   }
 
   const handleViewAnswers = () => {

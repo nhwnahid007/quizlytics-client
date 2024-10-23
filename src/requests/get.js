@@ -15,7 +15,7 @@ export const getMCQ = async (category, level) => {
 export const getQuizByLink = async (artLink) => {
     
     try {
-        const res = await axios.get(`http://localhost:4000/testByLink?link=${artLink}`);
+        const res = await axios.get(`https://quizlytics.jonomukti.org/testByLink?link=${artLink}`);
         return res.data;
     } catch (error) {   
         console.error("Error fetching MCQ:", error);
@@ -69,6 +69,18 @@ export const getSubmissionByQuizTitle = async (searchCategory, email)=>{
         return res.data;
     } catch(error){
         console.error("Error fetching submissions by key:", error)
+        return [];
+    }
+}
+
+
+export const getLinkHistoryByUser = async(email)=>{
+    try{
+        const res = await axios.get(`https://quizlytics.jonomukti.org/linkHistoryByUser?email=${email}`)
+        return res.data
+    }
+    catch(error){
+        console.log("Error Fetching Data", error)
         return [];
     }
 }

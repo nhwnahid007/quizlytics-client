@@ -1,5 +1,9 @@
 "use client";
-import { getSubmissionByKey, getSubmissionByQuizTitle } from "@/requests/get";
+import {
+  getLinkHistoryByUser,
+  getSubmissionByKey,
+  getSubmissionByQuizTitle,
+} from "@/requests/get";
 import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
@@ -16,17 +20,24 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
 
   useEffect(() => {
     const getLatestSubmission = async () => {
+      // setIsLoading(true);
       try {
         if (quizKey) {
           setLatestSubmission([]);
           const data = await getSubmissionByKey(quizKey, email);
           setLatestSubmission(data.at(-1));
           setIsLoading(false);
-        } else {
+        } else if (searchCategory) {
           setLatestSubmission([]);
           const data = await getSubmissionByQuizTitle(searchCategory, email);
           console.log("quick data", data);
           setLatestSubmission(data.at(-1));
+          setIsLoading(false);
+        } else {
+          setLatestSubmission([]);
+          const data = await getLinkHistoryByUser(email);
+          console.log("quick data", data);
+          setLatestSubmission(data?.at(-1));
           setIsLoading(false);
         }
       } catch (error) {
@@ -44,16 +55,32 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
 
   return (
     <div className="h-auto max-w-6xl pt-20 mx-auto">
-      <h2 className="text-center">YOUR LATEST SUBMISSION</h2>
+      <h2 className="text-center text-2xl font-bold my-2">
+        YOUR LATEST SUBMISSION
+      </h2>
 
-      {!isLoading &&
+      {/* {!isLoading &&
         latestSubmission?.questions?.map((item, idx) => (
           <SubmitCard
             key={item._id}
             item={item}
             markedAnswer={latestSubmission.answers[idx]}
           />
-        ))}
+        ))} */}
+
+      {isLoading ? (
+        <div className="text-center">Loading your latest submission...</div>
+      ) : latestSubmission?.questions?.length > 0 ? (
+        latestSubmission.questions.map((item, idx) => (
+          <SubmitCard
+            key={item._id}
+            item={item}
+            markedAnswer={latestSubmission.answers[idx]}
+          />
+        ))
+      ) : (
+        <div className="text-center text-gray-500">No submissions found.</div>
+      )}
     </div>
   );
 };

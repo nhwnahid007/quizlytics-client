@@ -12,6 +12,7 @@ const QuizScreen = ({
   isLoading,
   searchCategory,
   searchLavel,
+  artLink,
 }) => {
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
 
@@ -62,6 +63,7 @@ const QuizScreen = ({
           allQuestions={allQuestions}
           searchLavel={searchLavel}
           searchCategory={searchCategory}
+          artLink={artLink}
           isQuizEnded
         />
       ) : (
