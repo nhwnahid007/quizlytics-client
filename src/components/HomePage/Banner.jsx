@@ -2,6 +2,7 @@
 import useRouterHook from "@/app/hooks/useRouterHook";
 import Image from "next/image";
 import React from "react";
+import Typewriter from 'typewriter-effect'
 
 const Banner = () => {
   const router = useRouterHook();
@@ -34,7 +35,15 @@ const Banner = () => {
           <div className="w-full lg:w-[70%] md:pr-32">
             <div className="w-full md:w-[683px]">
               <h1 className="text-3xl md:text-5xl font-bold text-[#333333] mb-4 md:pr-20">
-                Challenge Your Mind with Fun Quizzes
+                <Typewriter
+                options={{
+                  strings:"Challenge Your Mind with Fun Quizzes",
+                  autoStart:true,
+                  loop:true
+                }}
+                
+                ></Typewriter>
+                {/* Challenge Your Mind with Fun Quizzes */}
               </h1>
               <p className="text-[#555555] bg-[#FCFAF9] bg-opacity-50">
                 Explore a wide range of engaging and interactive quizzes
