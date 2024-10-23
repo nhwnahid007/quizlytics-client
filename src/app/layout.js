@@ -1,5 +1,6 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AuthProviders from "@/providers/AuthProviders";
 import "./globals.css";
+import { ReactQueryClientProvider } from "@/components/ReactQuery/ReactQueryClientProvider";
 
 export const metadata = {
   title: "Quizlytics",
@@ -10,7 +11,11 @@ export const metadata = {
 export default function RootLayout({children}) {
   return (
     <html lang="en">
-      <body>{children}</body>
+
+        <ReactQueryClientProvider>
+          <body>{children}</body>
+        </ReactQueryClientProvider>
+
     </html>
   );
 }

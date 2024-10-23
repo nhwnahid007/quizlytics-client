@@ -5,10 +5,32 @@ import { usePathname } from "next/navigation";
 import { FaChartLine, FaCommentDots, FaDatabase, FaPeopleArrows, FaUser } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaFileCircleQuestion, FaPeopleGroup } from "react-icons/fa6";
+import { useSession } from "next-auth/react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { CreditCard, UserCog } from "lucide-react";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
   const pathname = usePathname();
+
+  const { data: session, error: sessionError, isLoading: sessionLoading } = useSession();
+  const user = session?.user;
+
+  const { data: role, error: roleError, isLoading: roleLoading } = useQuery({
+    queryKey: ["role", user?.email],
+    enabled: !!user?.email,
+    queryFn: async () => {
+      const { data } = await axios(`https://quizlytics.jonomukti.org/user/role?email=${user?.email}`);
+      return data.role;
+    },
+  });
+
+  // Handle loading and error states if necessary
+  if (sessionLoading || roleLoading) return <div>Loading...</div>;
+  if (sessionError || roleError) return <div>Error loading data</div>;
+  console.log(role);
 
   const isActive = (route) => pathname === route;
 
@@ -37,11 +59,23 @@ const Sidebar = () => {
     {
       title: "All Examinee",
       route: "/Dashboard/allExaminee",
-      icon: <FaPeopleGroup/>,
+      icon: <FaPeopleGroup />,
     },
-    // { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
-    // { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
-  ];
+    {
+      title: "User Management",
+      route: "/Dashboard/allUser",
+      icon: <UserCog />,
+    },
+    {
+      title: "Payment",
+      route: "/Dashboard/payment",
+      icon: <CreditCard />,
+    },
+  ].filter(menu => 
+    role === 'admin' || 
+    (role === 'user' && ['Leaderboard', 'My Progress', 'Home'].includes(menu.title)) || 
+    (role === 'teacher' && !['User Management', 'Payment'].includes(menu.title))
+  );
 
   return (
     <div className="flex">
