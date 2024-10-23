@@ -18,6 +18,7 @@ import {
 const Page = () => {
   const { data: session } = useSession();
   const [marks, setMarks] = useState([]);
+  
 
   useEffect(() => {
     const fetchMarks = async () => {
