@@ -55,7 +55,7 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
 
   return (
     <div className="h-auto max-w-6xl pt-20 mx-auto">
-      <h2 className="text-center text-2xl font-bold my-2">
+      <h2 className="text-center text-3xl  font-extrabold mb-8">
         YOUR LATEST SUBMISSION
       </h2>
 
