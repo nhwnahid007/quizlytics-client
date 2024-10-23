@@ -1,10 +1,21 @@
 import axios from 'axios';
-import Swal from 'sweetalert2';
+
 
 export const getMCQ = async (category, level) => {
     console.log(category, level);
     try {
         const res = await axios.get(`https://quizlytics.jonomukti.org/quiz?category=${category}&skill=${level}`);
+        return res.data;
+    } catch (error) {   
+        console.error("Error fetching MCQ:", error);
+        return [];
+    }
+
+}
+export const getQuizByLink = async (artLink) => {
+    
+    try {
+        const res = await axios.get(`https://quizlytics.jonomukti.org/testByLink?link=${artLink}`);
         return res.data;
     } catch (error) {   
         console.error("Error fetching MCQ:", error);
@@ -49,6 +60,27 @@ export const getSubmissionByKey = async (key, email)=>{
         return res.data;
     } catch(error){
         console.error("Error fetching submissions by key:", error)
+        return [];
+    }
+}
+export const getSubmissionByQuizTitle = async (searchCategory, email)=>{
+    try{
+        const res = await axios.get(`https://quizlytics.jonomukti.org/historyByUserAi?qTitle=${searchCategory}&email=${email}`)
+        return res.data;
+    } catch(error){
+        console.error("Error fetching submissions by key:", error)
+        return [];
+    }
+}
+
+
+export const getLinkHistoryByUser = async(email)=>{
+    try{
+        const res = await axios.get(`https://quizlytics.jonomukti.org/linkHistoryByUser?email=${email}`)
+        return res.data
+    }
+    catch(error){
+        console.log("Error Fetching Data", error)
         return [];
     }
 }

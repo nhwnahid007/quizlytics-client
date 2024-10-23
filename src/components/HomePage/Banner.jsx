@@ -7,11 +7,15 @@ const Banner = () => {
   const router = useRouterHook();
 
   const handleQuicktExam = () => {
-    router.push("/exam");
+    router.push("/quickExam");
   };
 
   const handleCustomExam = () => {
     router.push("/customQuiz");
+  };
+
+  const handleQuizByLink = () => {
+    router.push("/quizByLink");
   };
 
   return (
@@ -52,6 +56,12 @@ const Banner = () => {
                   className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-secondary-color hover:bg-transparent hover:text-secondary-color transition-colors duration-300 border-gradient"
                 >
                   Custom Exam
+                </button>
+                <button
+                  onClick={handleQuizByLink}
+                  className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient"
+                >
+                  Test on Article
                 </button>
               </div>
             </div>

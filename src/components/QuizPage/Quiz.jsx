@@ -42,7 +42,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
       stepCount++;
       if (progressBar.current) {
         progressBar.current.value = Math.max(100 - stepCount * decrement, 0);
-        
+
         // Change progress bar color to red after 5 seconds
         if (stepCount === 5) {
           progressBar.current.classList.remove("progress-success");
@@ -74,8 +74,10 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-2 sm:p-4">
       <div className="w-full max-w-3xl bg-white p-3 sm:p-4 md:p-6 shadow-2xl rounded-lg flex flex-col min-h-[400px] max-h-[90vh] overflow-auto">
         <div className="text-center flex justify-center items-center mb-2 gap-1 sm:mb-4 text-sm sm:text-base">
-          <Clock className="text-red-600 font-bold" /> 
-          <span className="text-red-600 font-bold">Time Remaining: {remainingTime}s</span>
+          <Clock className="text-red-600 font-bold" />
+          <span className="text-red-600 font-bold">
+            Time Remaining: {remainingTime}s
+          </span>
         </div>
         <progress
           className="progress progress-success w-full mb-2 sm:mb-4 h-2 sm:h-3"

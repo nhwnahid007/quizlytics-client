@@ -7,9 +7,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { useState } from "react";
 
-const SubmitCard = ({ item, markedAnswer }) => {
+const SubmitCard = ({ item, markedAnswer, idx }) => {
   const isCorrect = item.correct_answer == markedAnswer;
 
   return (
@@ -36,12 +35,15 @@ const SubmitCard = ({ item, markedAnswer }) => {
           ))}
         </CardContent>
         <CardFooter>
-          <p>
-            Correct Answer :{" "}
-            {item.options.find(
-              (answer) => answer == item.options[item.correct_answer]
-            )}
-          </p>
+          <div className="flex flex-col justify-start">
+            <p>
+              Correct Answer :{" "}
+              {item.options.find(
+                (answer) => answer == item.options[item.correct_answer]
+              )}
+            </p>
+            {item.explain && <p>Explanation: {item.explain}</p>}
+          </div>
         </CardFooter>
       </Card>
     </div>

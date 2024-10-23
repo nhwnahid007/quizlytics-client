@@ -1,7 +1,7 @@
+"use client";
 import useRouterHook from "@/app/hooks/useRouterHook";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { Button } from "@/components/ui/button";
@@ -23,6 +23,9 @@ const QuizResult = ({
   allQuestions,
   quizStartKey,
   quizSet,
+  searchCategory,
+  searchLavel,
+  artLink,
 }) => {
   const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -36,13 +39,13 @@ const QuizResult = ({
   const image = session?.user?.image;
   const email = session?.user?.email;
 
-  console.log(quizSet);
-
   const attemptDetails = {
     quizStartKey,
-    quizTitle: quizSet[0].quizTitle,
-    quizCategory: quizSet[0].quizCategory,
-    quizCreator: quizSet[0].quizCreator,
+    date: new Date(),
+    linkId: "1001",
+    quizTitle: quizSet ? quizSet[0].quizTitle : searchCategory,
+    quizCategory: quizSet ? quizSet[0].quizCategory : searchLavel,
+    quizCreator: quizSet ? quizSet[0].quizCreator : "AI",
     questions: allQuestions,
     answers: markedAnswer,
     userName: name,
@@ -54,20 +57,35 @@ const QuizResult = ({
 
   console.log(attemptDetails);
 
+  let postUrl = "";
+  if (quizStartKey) {
+    postUrl = "https://quizlytics.jonomukti.org/saveHistory";
+  } else if (searchCategory) {
+    postUrl = "https://quizlytics.jonomukti.org/saveAiQuiz";
+  } else {
+    postUrl = "https://quizlytics.jonomukti.org/linkQuiz";
+  }
+
   const handleSaveRecord = async () => {
     setLoading(true);
-    const res = await axios.post(
-      "https://quizlytics.jonomukti.org/saveHistory",
-      attemptDetails
-    );
-
-    if (res.data.insertedId) {
+    try {
+      const res = await axios.post(postUrl, attemptDetails);
+      if (res.data.insertedId) {
+        setLoading(false);
+        setIsDisabled(false);
+        Swal.fire({
+          title: "Success",
+          text: "Recorded successfully!",
+          icon: "success",
+          toast: true,
+        });
+      }
+    } catch (error) {
       setLoading(false);
-      setIsDisabled(false);
       Swal.fire({
-        title: "Success",
-        text: "Recorded successfully!",
-        icon: "success",
+        title: "Error",
+        text: "Failed to save record. Please try again.",
+        icon: "error",
         toast: true,
       });
     }
@@ -79,8 +97,18 @@ const QuizResult = ({
     router.push("/");
   };
 
+  let viewSubmission = ``;
+
+  if (quizStartKey) {
+    viewSubmission = `/viewSubmission/${quizStartKey}`;
+  } else if (searchCategory) {
+    viewSubmission = `/viewSubmissionAi/${searchCategory}`;
+  } else {
+    viewSubmission = `viewSubmissionByLink/${email}`;
+  }
+
   const handleViewAnswers = () => {
-    router.push(`/viewSubmission/${quizStartKey}`);
+    router.push(viewSubmission);
   };
 
   if (loading) {
