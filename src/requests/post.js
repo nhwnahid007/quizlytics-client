@@ -1,44 +1,41 @@
+import axios from 'axios';
 
 export const postNewUser = async (newUser) => {
-  const response = await fetch('https://quizlytics-server-gamma.vercel.app/registered_users', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(newUser)
-  });
-  return response;
+  try {
+    const response = await axios.post('https://quizlytics.jonomukti.org/registered_users', newUser);
+    return response;
+  } catch (error) {
+    console.error("Error posting new user:", error);
+    throw error; 
+  }
 }
 
 export const postUserWithProvider = async (newUser) => {
-  const response = await fetch('https://quizlytics-server-gamma.vercel.app/authenticating_with_providers', {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(newUser)
-  })
-  return response;
+  try {
+    const response = await axios.post('https://quizlytics.jonomukti.org/authenticating_with_providers', newUser);
+    return response;
+  } catch (error) {
+    console.error("Error posting user with provider:", error);
+    throw error; // 
+  }
 }
 
 export const postUserExamData = async (userExamData) => {
-  const response = await fetch("https://quizlytics-server-gamma.vercel.app/user_exam_data", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(userExamData)
-  })
-  return response;
+  try {
+    const response = await axios.post("https://quizlytics-server-gamma.vercel.app/user_exam_data", userExamData);
+    return response;
+  } catch (error) {
+    console.error("Error posting user exam data:", error);
+    throw error; // Rethrow the error after logging it
+  }
 }
 
 export const postOnlyMark = async (userMark) => {
-  const response = await fetch("https://quizlytics-server-gamma.vercel.app/only_user_mark", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(userMark)
-  })
-  return response;
+  try {
+    const response = await axios.post("https://quizlytics-server-gamma.vercel.app/only_user_mark", userMark);
+    return response;
+  } catch (error) {
+    console.error("Error posting only mark:", error);
+    throw error; // Rethrow the error after logging it
+  }
 }
