@@ -9,19 +9,16 @@ import { useState } from "react";
 
 export default function RootLayout({ children }) {
   const [queryClient] = useState(() => new QueryClient());
-    return (
-            <div className="flex min-h-screen">
-              <Sidebar />
-              <div className="flex-grow">
-                <AuthProviders>
-                  <div>
-                  <QueryClientProvider client={queryClient}>
-                    {children}
-                  </QueryClientProvider>
-                  </div>
-                </AuthProviders>
-              </div>
-            </div>
-         
-    )
+  return (
+    <div className="flex min-h-screen">
+      <AuthProviders>
+        <Sidebar />
+        <div className="flex-grow">
+          <QueryClientProvider client={queryClient}>
+            {children}
+          </QueryClientProvider>
+        </div>
+      </AuthProviders>
+    </div>
+  );
 }
