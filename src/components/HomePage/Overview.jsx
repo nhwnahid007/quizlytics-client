@@ -107,7 +107,7 @@ AOS.init({
         </div>
 
         {/* Achievement */}
-        <div className="flex flex-col lg:flex-row gap-8 mt-8 pr-8">
+        <div className="flex flex-col lg:flex-row gap-8 mt-8 lg:pr-8">
           <div data-aos="fade-right"
             className="w-full lg:w-1/2 bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
