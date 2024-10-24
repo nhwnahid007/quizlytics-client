@@ -41,19 +41,6 @@ const Login = () => {
 const LoginForm = ({ showPass, setShowPass, validState, setValidState }) => {
   return (
     <Suspense fallback={<div>Loading form...</div>}>
-      <LoginFormContent 
-        showPass={showPass} 
-        setShowPass={setShowPass} 
-        validState={validState} 
-        setValidState={setValidState} 
-      />
-    </Suspense>
-  );
-};
-
-const LoginFormContent = ({ showPass, setShowPass, validState, setValidState }) => {
-  return (
-    <Suspense fallback={<div>Loading search params...</div>}>
       <LoginFormWithSearchParams 
         showPass={showPass} 
         setShowPass={setShowPass} 
