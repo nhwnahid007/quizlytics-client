@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import SocialAuth from "@/components/Shared/SocialAuth";
@@ -9,6 +9,7 @@ import useShowPassState from "@/app/hooks/useShowPassState";
 import useValidationStateHook from "@/app/hooks/useValidationStateHook";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { ImSpinner3 } from "react-icons/im";
 
 // Loading component
 const LoadingSpinner = () => (
@@ -24,9 +25,11 @@ const ClientWrapper = () => {
   const [showPass, setShowPass] = useShowPassState();
   const [validState, setValidState] = useValidationStateHook();
   const { data: session, status } = useSession();
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     setValidState("");
 
@@ -35,14 +38,17 @@ const ClientWrapper = () => {
 
     if (!email || !password) {
       setValidState("Please fill in both fields.");
+      setLoading(false);
       return;
     }
     if (!/\S+@\S+\.\S+/.test(email)) {
       setValidState("Please enter a valid email.");
+      setLoading(false);
       return;
     }
     if (password.length < 6) {
       setValidState("Password must be at least 6 characters long.");
+      setLoading(false);
       return;
     }
 
@@ -56,6 +62,7 @@ const ClientWrapper = () => {
     if (response?.status === 401) {
       setValidState("Invalid User!");
     }
+    setLoading(false);
   };
 
   return (
@@ -92,8 +99,11 @@ const ClientWrapper = () => {
             </span>
           </div>
         </div>
-        <button className="btn bg-purple-500 text-white text-lg mt-4 w-full py-2 rounded-lg">
-          Login
+        <button
+          className="btn bg-purple-500 text-white text-lg mt-4 w-full py-2 rounded-lg flex justify-center items-center"
+          disabled={loading}
+        >
+          {loading ? <ImSpinner3 className="animate-spin" /> : "Login"}
         </button>
         {validState && (
           <p className={`mt-2 text-center font-semibold ${validState === "Invalid User!" ? "text-red-500" : "text-gray-500"}`}>
