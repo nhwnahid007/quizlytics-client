@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Swal from "sweetalert2";
-import Typewriter from "typewriter-effect"; // Make sure to install typewriter-effect package
 
 const Page = () => {
   const [quizKey, setQuizKey] = useState(1234);
@@ -15,6 +14,7 @@ const Page = () => {
   const { data: session } = useSession();
   const email = session?.user?.email;
 
+  // Function to generate random key
   function generateRandomKey() {
     const numbers = "0123456789";
     const alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -38,6 +38,7 @@ const Page = () => {
 
   useEffect(() => {
     setQuizKey(newKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [questionData, setQuestionData] = useState({
@@ -109,6 +110,7 @@ const Page = () => {
 
   const submitQuestions = async () => {
     try {
+      // Replace with your backend API endpoint
       const response = await axios.post(
         "https://quizlytics.jonomukti.org/saveManualQuiz",
         quizSet
@@ -120,7 +122,8 @@ const Page = () => {
         icon: "success",
         timer: 2000,
       });
-      console.log("Questions submitted successfully:", response.data);
+
+      // Clear the questions array after submission
       setQuestions([]);
       setQuizKey(newKey);
     } catch (error) {
@@ -129,62 +132,67 @@ const Page = () => {
   };
 
   return (
-    <div className="my-12 px-4 md:px-8 lg:px-12">
+    <div className="">
       <main className="max-w-6xl mx-auto">
-        <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
-          <h1 className="text-3xl font-bold mb-4 text-center text-purple-600">
-            <Typewriter
-              options={{
-                strings: ["Create Custom Questions"],
-                autoStart: true,
-                loop: true,
-              }}
-            />
+        <div className="p-6">
+          <h1 className="text-3xl font-extrabold mb-6 text-gray-800 text-center">
+            Create Custom Questions
           </h1>
 
-          <div className="mb-4">
-            <label className="block text-gray-700 font-semibold">Quiz Start Key:</label>
-            <Input
-              type="text"
-              value={quizKey}
-              className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
-              readOnly
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-semibold">Quiz Title</label>
-            <Input
-              type="text"
-              name="quizTitle"
-              onChange={handleChangeTitle}
-              className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
-              placeholder="Enter quiz title"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-semibold">Category</label>
-            <Input
-              type="text"
-              onChange={handleChangeCategory}
-              className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
-              placeholder="Enter category"
-            />
+          <div className="grid gap-6 md:grid-cols-2 mb-8">
+            <div className="relative">
+              <label className="block text-sm font-medium text-gray-700">
+                Quiz Start Key
+              </label>
+              <Input
+                type="text"
+                value={quizKey}
+                readOnly
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-gray-100 hover:bg-gray-50"
+              />
+            </div>
+            <div className="relative">
+              <label className="block text-sm font-medium text-gray-700">
+                Quiz Title
+              </label>
+              <Input
+                type="text"
+                name="quizTitle"
+                onChange={handleChangeTitle}
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50"
+              />
+            </div>
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-700 font-semibold">Question:</label>
-            <Input
-              type="text"
-              name="question"
-              value={questionData.question}
-              onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
-              placeholder="Enter question"
-            />
+          <div className="grid gap-6 md:grid-cols-2 mb-8">
+            <div className="relative">
+              <label className="block text-sm font-medium text-gray-700">
+                Category
+              </label>
+              <Input
+                type="text"
+                onChange={handleChangeCategory}
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50"
+              />
+            </div>
+            <div className="relative">
+              <label className="block text-sm font-medium text-gray-700">
+                Question
+              </label>
+              <Input
+                type="text"
+                name="question"
+                value={questionData.question}
+                onChange={handleChange}
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-green-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50"
+              />
+            </div>
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-700 font-semibold">Options:</label>
+          <div className="relative mb-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Options
+            </label>
             {questionData.options.map((option, index) => (
               <Input
                 key={index}
@@ -192,13 +200,15 @@ const Page = () => {
                 value={option}
                 onChange={(e) => handleOptionChange(index, e.target.value)}
                 placeholder={`Option ${index + 1}`}
-                className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-2"
               />
             ))}
           </div>
 
-          <div className="mb-4">
-            <label className="block text-gray-700 font-semibold">Correct Answer (0-3):</label>
+          <div className="relative mb-4">
+            <label className="block text-sm font-medium text-gray-700">
+              Correct Answer (0-3)
+            </label>
             <Input
               type="number"
               name="correct_answer"
@@ -206,37 +216,40 @@ const Page = () => {
               onChange={handleChange}
               min="0"
               max="3"
-              className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
-              placeholder="Enter index of the correct answer"
+              className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-red-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50"
             />
           </div>
 
           <Button
             variant="secondary"
             onClick={addQuestion}
-            className="bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition duration-300"
+            className="w-full bg-primary-color text-white mt-5 px-4 rounded-md shadow-md hover:bg-primary-color transition duration-200"
           >
             Add Question
           </Button>
 
           <div className="mt-8">
             {questions.length > 0 && (
-              <h2 className="text-xl font-semibold mb-4">Questions Preview</h2>
+              <h2 className="text-2xl font-bold mb-4 text-gray-800">
+                Questions Preview
+              </h2>
             )}
             {questions.map((q) => (
               <div
                 key={q.id}
-                className="mb-4 p-4 border border-gray-300 rounded-lg bg-white shadow-sm"
+                className="mb-4 p-4 border border-gray-300 rounded-md shadow-md"
               >
-                <h3 className="font-semibold text-gray-800">{q.question}</h3>
-                <ul className="list-disc list-inside">
+                <h3 className="font-semibold text-lg">{q.question}</h3>
+                <ul className="list-disc list-inside text-gray-700">
                   {q.options.map((option, index) => (
                     <li key={index}>
                       {index}: {option}
                     </li>
                   ))}
                 </ul>
-                <p className="font-bold text-gray-700">Correct Answer: {q.correct_answer}</p>
+                <p className="text-gray-500">
+                  Correct Answer: {q.correct_answer}
+                </p>
               </div>
             ))}
 
@@ -244,7 +257,7 @@ const Page = () => {
               <Button
                 variant="secondary"
                 onClick={submitQuestions}
-                className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300 mt-4"
+                className="w-full bg-secondary-color text-white py-3 px-4 rounded-md shadow-md hover:bg-secondary-color transition duration-200 mt-4"
               >
                 Submit Questions
               </Button>

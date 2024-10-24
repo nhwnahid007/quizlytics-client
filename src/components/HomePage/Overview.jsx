@@ -45,7 +45,7 @@ const Overview = () => {
   }, []);
 
   return (
-    <div className="py-14 bg-gray-100">
+    <div className=" py-8 bg-gray-100">
       <div className="w-[90%] md:max-w-6xl mx-auto">
         <h1
           className="text-4xl font-bold text-center text-semibold"

@@ -53,7 +53,7 @@ const Banner = () => {
                 a quiz for everyone. Dive in and discover how much you really
                 know!
               </p>
-              <div className="flex gap-4 mt-8">
+              <div className="flex flex-col lg:flex-row gap-4 mt-8">
                 <button
                   onClick={handleQuicktExam}
                   className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient"
@@ -75,7 +75,7 @@ const Banner = () => {
               </div>
             </div>
           </div>
-          <div className="w-full lg:w-[30%] flex lg:justify-center items-center">
+          <div className="w-full mt-12 lg:mt-0 lg:w-[30%] flex lg:justify-center items-center">
             <div className="grid grid-cols-2 gap-4">
               {/* Image 1 */}
               <div className="relative w-[140px] h-[130px] bg-[#dcdcdc] text-black flex justify-center items-center rounded-2xl pulse flip">
