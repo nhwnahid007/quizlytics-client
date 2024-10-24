@@ -32,7 +32,7 @@ AOS.init({
             <h2 className="text-3xl font-bold pb-2 mb-4 text-semibold">
               Trending Topics
             </h2>
-            <div className="flex gap-2 items-end overflow-x-auto">
+            {/* <div className="flex gap-2 items-end overflow-x-auto">
               <div className="w-20 flex flex-col items-center">
                 <div className="bg-primary-color w-14 h-[140px] rounded-xl"></div>
                 <span className="text-center text-semibold">Geo</span>
@@ -65,7 +65,7 @@ AOS.init({
                 <div className="bg-primary-color w-14 h-[210px] rounded-xl"></div>
                 <span className="text-center text-semibold">Eng</span>
               </div>
-            </div>
+            </div> */}
           </div>
           <div
             className="w-full md:w-[35%] bg-white bg-opacity-90 rounded-2xl p-8"
