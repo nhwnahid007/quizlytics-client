@@ -73,7 +73,7 @@ const Partnership = () => {
           </div>
         </div>
         <div className="w-full text-black rounded-2xl flex flex-col lg:flex-row gap-6">
-          <div className="w-full lg:w-1/2 bg-[#F0E6F3] text-black rounded-2xl p-8 flex flex-col md:flex-row gap-8">
+          <div  data-aos="flip-left" className="w-full lg:w-1/2 bg-[#F0E6F3] text-black rounded-2xl p-8 flex flex-col md:flex-row gap-8">
             <div className="relative w-[220px] md:w-[280px] lg:w-[40%] h-[220px]">
               <Image
                 src={"https://i.ibb.co.com/zV5bJxR/bid-3815739.png"}
@@ -95,7 +95,7 @@ const Partnership = () => {
               </p>
             </div>
           </div>
-          <div className="w-full lg:w-1/2 bg-[#F0E6F3] text-black rounded-2xl p-8 flex flex-col md:flex-row gap-8">
+          <div data-aos="flip-right" className="w-full lg:w-1/2 bg-[#F0E6F3] text-black rounded-2xl p-8 flex flex-col md:flex-row gap-8">
             <div className="relative w-[220px] md:w-[280px] lg:w-[40%] h-[220px]">
               <Image
                 src={"https://i.ibb.co.com/njH26SB/bid-3815750.png"}

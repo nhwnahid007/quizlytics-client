@@ -3,7 +3,6 @@ import useRouterHook from "@/app/hooks/useRouterHook";
 import { postUserWithProvider } from "@/requests/post";
 import { signIn, useSession } from "next-auth/react";
 import React, { useEffect } from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import "./CustomCSS/style.css";
 import { Button } from "../ui/button";
@@ -23,7 +22,12 @@ const SocialAuth = () => {
         const name = session?.user?.name;
         const email = session?.user?.email;
         const image = session?.user?.image;
-        const newUser = { name, email, image };
+        const newUser = { 
+          name, 
+          email, 
+          image,
+          role: "user" // Added the default role
+        };
 
         try {
           const respon = await postUserWithProvider(newUser);

@@ -4,6 +4,7 @@ const stripe = require('stripe')(process.env.NEXT_STRIPE_SECRET_KEY);
 export async function POST(request) {
   try {
     const body = await request.json();
+    console.log("Request Body:", body); 
     const {prices} = body;
 
     const paymentIntent = await stripe.paymentIntents.create({

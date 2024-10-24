@@ -3,11 +3,11 @@ import getMCQ, { getCustomQuiz } from "@/requests/get";
 import React, { useEffect, useState } from "react";
 import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
-import Swal from "sweetalert2";
+
 
 const QuizScreen = ({
   quizKey,
-  allQuestions,
+  allQuestions = [], // Default to an empty array
   quizSet,
   isLoading,
   searchCategory,
@@ -41,6 +41,12 @@ const QuizScreen = ({
       percentageMark: Math.trunc((correctAnswers / allQuestions.length) * 100),
     };
   };
+
+  // Check if allQuestions is an array
+  if (!Array.isArray(allQuestions)) {
+    console.error("allQuestions is not an array:", allQuestions);
+    return <div>Error: Questions data is not available.</div>;
+  }
 
   if (isLoading) {
     return (

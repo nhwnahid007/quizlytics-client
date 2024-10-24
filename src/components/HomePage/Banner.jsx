@@ -2,6 +2,7 @@
 import useRouterHook from "@/app/hooks/useRouterHook";
 import Image from "next/image";
 import React from "react";
+import Typewriter from 'typewriter-effect'
 
 const Banner = () => {
   const router = useRouterHook();
@@ -29,12 +30,20 @@ const Banner = () => {
       }}
     >
       {/* Gradient overlay */}
-      <div className="absolute pt-2 md:pt-10 lg:pt-20 inset-0 bg-gradient-to-r from-white/70 to-[#f0f4ff]/80">
-        <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-8 md:px-20 pt-20">
+      <div className="absolute pt-2  md:pt-10 lg:pt-20 inset-0 bg-gradient-to-r from-white/70 to-[#f0f4ff]/80">
+        <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-8 md:px-20 pt-16">
           <div className="w-full lg:w-[70%] md:pr-32">
             <div className="w-full md:w-[683px]">
-              <h1 className="text-3xl md:text-5xl font-bold text-[#333333] mb-4 md:pr-20">
-                Challenge Your Mind with Fun Quizzes
+              <h1 className="text-3xl md:text-5xl font-bold text-[#333333] mb-14 h-12  md:pr-20">
+                <Typewriter
+                options={{
+                  strings:"Challenge Your Mind with Fun Quizzes",
+                  autoStart:true,
+                  loop:true
+                }}
+                
+                ></Typewriter>
+                {/* Challenge Your Mind with Fun Quizzes */}
               </h1>
               <p className="text-[#555555] bg-[#FCFAF9] bg-opacity-50">
                 Explore a wide range of engaging and interactive quizzes

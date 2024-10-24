@@ -31,25 +31,30 @@ const Page = () => {
       getAllMCQ(); // Fetch only if category and level are set
     }
   }, [loadData, searchCategory, searchLavel, setAllMCQ]);
-  // console.log(allMCQ.length);
-  // console.log(allMCQ);
+
   return (
-    <div>
-      {showMakeExam ? (
-        <MakeExam
-          setShowMakeExam={setShowMakeExam}
-          setSearchLavel={setSearchLavel}
-          setSearchCategory={setSearchCategory}
-          setLoadData={setLoadData}
-        />
-      ) : (
-        <QuizScreen
-          allQuestions={allMCQ}
-          isLoading={isLoading}
-          searchLavel={searchLavel}
-          searchCategory={searchCategory}
-        />
-      )}
+    <div className="flex flex-col min-h-screen">
+      {/* Content section */}
+      <div className="flex-grow">
+        {showMakeExam ? (
+          <MakeExam
+            setShowMakeExam={setShowMakeExam}
+            setSearchLavel={setSearchLavel}
+            setSearchCategory={setSearchCategory}
+            setLoadData={setLoadData}
+          />
+        ) : (
+          <QuizScreen
+            allQuestions={allMCQ}
+            isLoading={isLoading}
+            searchLavel={searchLavel}
+            searchCategory={searchCategory}
+          />
+        )}
+      </div>
+      
+      {/* Footer */}
+     
     </div>
   );
 };
