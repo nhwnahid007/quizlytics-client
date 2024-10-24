@@ -1,10 +1,10 @@
 import useRouterHook from "@/app/hooks/useRouterHook";
 import axios from "axios";
-import { useSession } from "next-auth/react";
+import {useSession} from "next-auth/react";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, {useState} from "react";
 import Swal from "sweetalert2";
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 
 import {
   FacebookIcon,
@@ -16,6 +16,7 @@ import {
   RedditShareButton,
   RedditIcon,
 } from "next-share";
+import UserFeedback from "../Modals/UserFeedback";
 
 const QuizResult = ({
   result,
@@ -30,7 +31,7 @@ const QuizResult = ({
   console.log("allQuestions", allQuestions);
   console.log("quizStartKey", quizStartKey);
   // access next auth session
-  const { data: session } = useSession();
+  const {data: session} = useSession();
   const name = session?.user?.name;
   const profile = session?.user?.profile;
   const image = session?.user?.image;
@@ -133,9 +134,9 @@ const QuizResult = ({
         <h1 className="text-[#30d158] text-center text-4xl mb-10">
           You achieved {result?.percentageMark}% mark!
         </h1>
-        {/* <div>
+        <div>
           <UserFeedback />
-        </div> */}
+        </div>
         <div className="mt-4 flex justify-center gap-4 w-full">
           <div className="font-medium py-1 px-8 border border-red-600 rounded-md">
             <h2 className="text-xl mb-5 text-center">Share Social Media:</h2>

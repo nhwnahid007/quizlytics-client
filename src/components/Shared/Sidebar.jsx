@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
+import {useState} from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { FaChartLine, FaCommentDots, FaDatabase, FaUser } from "react-icons/fa";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { FaFileCircleQuestion } from "react-icons/fa6";
+import {usePathname} from "next/navigation";
+import {FaChartLine, FaCommentDots, FaDatabase, FaUser} from "react-icons/fa";
+import {FiChevronLeft, FiChevronRight} from "react-icons/fi";
+import {FaFileCircleQuestion} from "react-icons/fa6";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -13,7 +13,7 @@ const Sidebar = () => {
   const isActive = (route) => pathname === route;
 
   const Menus = [
-    { title: "Home", route: "/Dashboard", icon: <FaChartLine /> },
+    {title: "Home", route: "/Dashboard", icon: <FaChartLine />},
     {
       title: "Make custom questions",
       route: "/Dashboard/customquestion",
@@ -34,7 +34,11 @@ const Sidebar = () => {
       route: "/Dashboard/statistics",
       icon: <FaDatabase />,
     },
-    // { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
+    {
+      title: "User Management",
+      route: "/Dashboard/userManagement",
+      icon: <FaUser />,
+    },
     // { title: "Reports", route: "/dashboard/reports", icon: <FaUser /> },
   ];
 

@@ -5,7 +5,7 @@ import {RxCross1} from "react-icons/rx";
 import axios from "axios";
 import {useSession} from "next-auth/react";
 
-const DropDown = () => {
+const UserFeedback = () => {
   const [isModalOpen, setisModalOpen] = useState(false);
   const [rating, setRating] = useState(0);
   const [message, setMessage] = useState("");
@@ -156,4 +156,4 @@ const DropDown = () => {
   );
 };
 
-export default DropDown;
+export default UserFeedback;
