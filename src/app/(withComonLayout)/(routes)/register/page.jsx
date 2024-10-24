@@ -11,6 +11,7 @@ import { IoEye, IoEyeOff } from "react-icons/io5";
 import '../../../../components/Shared/CustomCSS/style.css';
 import useShowPassState from '@/app/hooks/useShowPassState';
 import useShowConfimPass from '@/app/hooks/useShowConfimPass';
+import { Suspense } from 'react';
 
 const img_hosting_key = process.env.NEXT_PUBLIC_IMG_HOSTING_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
@@ -118,43 +119,45 @@ const Register = () => {
         <div className='flex pt-10 min-h-screen justify-center items-center h-screen bg-white'>
             <div className='w-full max-w-md bg-white p-4 rounded-lg shadow-md'>
                 <h2 className='text-3xl font-bold text-center mb-6 text-gray-800'>Register Now!</h2>
-                <form onSubmit={handleRegister}>
-                    <div className="space-y-4">
-                        <div className='flex flex-col md:flex-row gap-4'>
-                            <div className='w-full md:w-1/2 flex flex-col'>
-                                <label className='text-sm font-semibold text-gray-600'>Name</label>
-                                <input type="text" name="name" className='py-2 px-4 border rounded-lg' placeholder="Your full name" />
-                                {validState === nameErr && <p className='text-red-500 font-semibold'>{validState}</p>}
+                <Suspense fallback={<div>Loading...</div>}>
+                    <form onSubmit={handleRegister}>
+                        <div className="space-y-4">
+                            <div className='flex flex-col md:flex-row gap-4'>
+                                <div className='w-full md:w-1/2 flex flex-col'>
+                                    <label className='text-sm font-semibold text-gray-600'>Name</label>
+                                    <input type="text" name="name" className='py-2 px-4 border rounded-lg' placeholder="Your full name" />
+                                    {validState === nameErr && <p className='text-red-500 font-semibold'>{validState}</p>}
+                                </div>
+                                <div className='w-full md:w-1/2 flex flex-col'>
+                                    <label className='text-sm font-semibold text-gray-600'>Email</label>
+                                    <input type="email" name="email" className='py-2 px-4 border rounded-lg' placeholder="Your email" />
+                                    {validState === emailErr && <p className='text-red-500 font-semibold'>{validState}</p>}
+                                </div>
                             </div>
-                            <div className='w-full md:w-1/2 flex flex-col'>
-                                <label className='text-sm font-semibold text-gray-600'>Email</label>
-                                <input type="email" name="email" className='py-2 px-4 border rounded-lg' placeholder="Your email" />
-                                {validState === emailErr && <p className='text-red-500 font-semibold'>{validState}</p>}
+                            <div className='flex flex-col md:flex-row gap-4'>
+                                <div className='w-full md:w-1/2 flex flex-col relative'>
+                                    <label className='text-sm font-semibold text-gray-600'>Password</label>
+                                    <input type={showPass ? "text" : "password"} name="password" className='py-2 px-4 border rounded-lg' placeholder="Password" />
+                                    <span onClick={() => setShowPass(!showPass)} className='absolute mt-4 inset-y-0 right-4 flex items-center text-xl cursor-pointer'>{showPass ? <IoEyeOff /> : <IoEye />}</span>
+                                    {validState === passErr && <p className='text-red-500 font-semibold'>{validState}</p>}
+                                </div>
+                                <div className='w-full md:w-1/2 flex flex-col relative'>
+                                    <label className='text-sm font-semibold text-gray-600'>Confirm Password</label>
+                                    <input type={showConfirmPass ? "text" : "password"} name="confirm_password" className='py-2 px-4 border rounded-lg' placeholder="Confirm password" />
+                                    <span onClick={() => setShowConfirmPass(!showConfirmPass)} className='absolute mt-4 inset-y-0 right-4 flex items-center text-xl cursor-pointer'>{showConfirmPass ? <IoEyeOff /> : <IoEye />}</span>
+                                    {validState === matchedPassErr && <p className='text-red-500 font-semibold'>{validState}</p>}
+                                </div>
                             </div>
+                            <div className='w-full flex flex-col mb-6'>
+                                <label className='text-sm font-semibold text-gray-600'>Upload Profile</label>
+                                <input type="file" name="my_profile" className='py-2 px-4 border rounded-lg' />
+                                {validState === fillErr && <p className='text-red-500 font-semibold'>{validState}</p>}
+                            </div>
+                            <button className='btn bg-purple-500 text-white text-lg mt-6  w-full py-2 rounded-lg'>Register</button>
+                            {validState === "Please fill out all fields!" && <p className='text-red-500 mt-2 text-center font-semibold'>{validState}</p>}
                         </div>
-                        <div className='flex flex-col md:flex-row gap-4'>
-                            <div className='w-full md:w-1/2 flex flex-col relative'>
-                                <label className='text-sm font-semibold text-gray-600'>Password</label>
-                                <input type={showPass ? "text" : "password"} name="password" className='py-2 px-4 border rounded-lg' placeholder="Password" />
-                                <span onClick={() => setShowPass(!showPass)} className='absolute mt-4 inset-y-0 right-4 flex items-center text-xl cursor-pointer'>{showPass ? <IoEyeOff /> : <IoEye />}</span>
-                                {validState === passErr && <p className='text-red-500 font-semibold'>{validState}</p>}
-                            </div>
-                            <div className='w-full md:w-1/2 flex flex-col relative'>
-                                <label className='text-sm font-semibold text-gray-600'>Confirm Password</label>
-                                <input type={showConfirmPass ? "text" : "password"} name="confirm_password" className='py-2 px-4 border rounded-lg' placeholder="Confirm password" />
-                                <span onClick={() => setShowConfirmPass(!showConfirmPass)} className='absolute mt-4 inset-y-0 right-4 flex items-center text-xl cursor-pointer'>{showConfirmPass ? <IoEyeOff /> : <IoEye />}</span>
-                                {validState === matchedPassErr && <p className='text-red-500 font-semibold'>{validState}</p>}
-                            </div>
-                        </div>
-                        <div className='w-full flex flex-col mb-6'>
-                            <label className='text-sm font-semibold text-gray-600'>Upload Profile</label>
-                            <input type="file" name="my_profile" className='py-2 px-4 border rounded-lg' />
-                            {validState === fillErr && <p className='text-red-500 font-semibold'>{validState}</p>}
-                        </div>
-                        <button className='btn bg-purple-500 text-white text-lg mt-6  w-full py-2 rounded-lg'>Register</button>
-                        {validState === "Please fill out all fields!" && <p className='text-red-500 mt-2 text-center font-semibold'>{validState}</p>}
-                    </div>
-                </form>
+                    </form>
+                </Suspense>
                 <div className='mt-2'><SocialAuth /></div>
                 <p className='mt-4 font-medium text-center'>Already have an account? <Link href={'/login'} className='text-purple-500'>Please Login</Link></p>
             </div>

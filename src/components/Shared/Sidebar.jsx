@@ -22,8 +22,18 @@ const Sidebar = () => {
     queryKey: ["role", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      const { data } = await axios(`https://quizlytics.jonomukti.org/user/role?email=${user?.email}`);
-      return data.role;
+      if (!user?.email) {
+        return null; // Return null if email is not available
+      }
+      try {
+        const { data } = await axios(`https://quizlytics.jonomukti.org/user/role?email=${user.email}`);
+        console.log(data);
+
+        return data.role || "user"; // Ensure a valid return value
+      } catch (error) {
+        console.error("Error fetching user role:", error);
+        return null; // Return null in case of an error
+      }
     },
   });
 
