@@ -1,6 +1,6 @@
 
 export const postNewUser = async (newUser) => {
-  const response = await fetch('https://quizlytics-server-gamma.vercel.app/registered_users', {
+  const response = await fetch('https://quizlytics.jonomukti.org/registered_users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -11,7 +11,7 @@ export const postNewUser = async (newUser) => {
 }
 
 export const postUserWithProvider = async (newUser) => {
-  const response = await fetch('https://quizlytics-server-gamma.vercel.app/authenticating_with_providers', {
+  const response = await fetch('https://quizlytics.jonomukti.org/authenticating_with_providers', {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
