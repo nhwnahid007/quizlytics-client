@@ -1,18 +1,48 @@
-"use client";
+'use client'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
+import axios from 'axios';
 
 const Overview = () => {
   const [selectedOption, setSelectedOption] = useState("");
+  const [chartData, setChartData] = useState([]);
 
-  useEffect(()=>{
-AOS.init({
-  duration: 1000, 
-  once: true,
-})
-  },[])
+  // Fetch examinee data
+  const fetchExaminees = async () => {
+    try {
+      const res = await axios.get("https://quizlytics.jonomukti.org/allExaminee");
+      const data = res.data;
+
+      // Process data to count quizzes per category
+      const quizCategoryCounts = data.reduce((acc, item) => {
+        acc[item.quizCategory] = (acc[item.quizCategory] || 0) + 1;
+        return acc;
+      }, {});
+
+      // Format the data for the BarChart
+      const formattedData = Object.keys(quizCategoryCounts).map((category) => ({
+        quizCategory: category,
+        count: quizCategoryCounts[category],
+      }));
+
+      setChartData(formattedData);
+    } catch (error) {
+      console.error("Error fetching examinees:", error);
+    }
+  };
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+
+    // Call the function to fetch examinee data when the component mounts
+    fetchExaminees();
+  }, []);
 
   return (
     <div className="py-14 bg-gray-100">
@@ -23,6 +53,7 @@ AOS.init({
         >
           Activities Overview
         </h1>
+
         {/* Trending Topics & Question Type */}
         <div className="flex flex-col md:flex-row gap-12 mt-12">
           <div
@@ -32,41 +63,18 @@ AOS.init({
             <h2 className="text-3xl font-bold pb-2 mb-4 text-semibold">
               Trending Topics
             </h2>
-            {/* <div className="flex gap-2 items-end overflow-x-auto">
-              <div className="w-20 flex flex-col items-center">
-                <div className="bg-primary-color w-14 h-[140px] rounded-xl"></div>
-                <span className="text-center text-semibold">Geo</span>
-              </div>
-              <div className="w-20 flex flex-col items-center">
-                <div className="bg-primary-color w-14 h-[180px] rounded-xl"></div>
-                <span className="text-center text-semibold">Math</span>
-              </div>
-              <div className="w-20 flex flex-col items-center">
-                <div className="bg-primary-color w-14 h-[220px] rounded-xl"></div>
-                <span className="text-center text-semibold">Hist</span>
-              </div>
-              <div className="w-20 flex flex-col items-center">
-                <div className="bg-primary-color w-14 h-[200px] rounded-xl"></div>
-                <span className="text-center text-semibold">Chem</span>
-              </div>
-              <div className="w-20 flex flex-col items-center">
-                <div className="bg-primary-color w-14 h-[160px] rounded-xl"></div>
-                <span className="text-center text-semibold">Phys</span>
-              </div>
-              <div className="w-20 flex flex-col items-center">
-                <div className="bg-primary-color w-14 h-[180px] rounded-xl"></div>
-                <span className="text-center text-semibold">CSE</span>
-              </div>
-              <div className="w-20 flex flex-col items-center">
-                <div className="bg-primary-color w-14 h-[170px] rounded-xl"></div>
-                <span className="text-center text-semibold">Art</span>
-              </div>
-              <div className="w-20 flex flex-col items-center">
-                <div className="bg-primary-color w-14 h-[210px] rounded-xl"></div>
-                <span className="text-center text-semibold">Eng</span>
-              </div>
-            </div> */}
+            <div className="flex justify-center">
+              <BarChart width={600} height={300} data={chartData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="quizCategory" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="count" fill="#8884d8" />
+              </BarChart>
+            </div>
           </div>
+          {/* The rest of your code remains unchanged */}
           <div
             className="w-full md:w-[35%] bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
@@ -78,27 +86,27 @@ AOS.init({
               What is the capital city of France?
             </h3>
             <div data-aos="fade-left">
-            <ul className="mt-3 space-y-2">
-              {["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"].map((option, index) => (
-                <li
-                  key={index}
-                  className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl  data-aos="fade-left" ${
-                    selectedOption === option ? "bg-[#BBF7D0]" : ""
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    id={`option${index}`}
-                    name="question"
-                    className="mr-2"
-                    onChange={() => setSelectedOption(option)}
-                  />
-                  <label htmlFor={`option${index}`} className="text-semibold">
-                    {option}
-                  </label>
-                </li>
-              ))}
-            </ul>
+              <ul className="mt-3 space-y-2">
+                {["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"].map((option, index) => (
+                  <li
+                    key={index}
+                    className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl data-aos="fade-left" ${
+                      selectedOption === option ? "bg-[#BBF7D0]" : ""
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      id={`option${index}`}
+                      name="question"
+                      className="mr-2"
+                      onChange={() => setSelectedOption(option)}
+                    />
+                    <label htmlFor={`option${index}`} className="text-semibold">
+                      {option}
+                    </label>
+                  </li>
+                ))}
+              </ul>
             </div>
             <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded">
               Next Question
@@ -108,7 +116,8 @@ AOS.init({
 
         {/* Achievement */}
         <div className="flex flex-col lg:flex-row gap-8 mt-8 lg:pr-8">
-          <div data-aos="fade-right"
+          <div
+            data-aos="fade-right"
             className="w-full lg:w-1/2 bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
@@ -134,8 +143,7 @@ AOS.init({
             </div>
           </div>
           <div
-         data-aos="fade-left"
-          
+            data-aos="fade-left"
             className="w-full lg:w-1/2 bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
