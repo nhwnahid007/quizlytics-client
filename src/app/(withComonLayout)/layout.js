@@ -1,4 +1,3 @@
-"use client"
 import "../globals.css";
 import Footer from "@/components/Shared/Footer";
 import AuthProviders from "@/providers/AuthProviders";

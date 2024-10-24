@@ -6,13 +6,17 @@ import React, { useEffect } from "react";
 import Swal from "sweetalert2";
 import "./CustomCSS/style.css";
 import { Button } from "../ui/button";
+import { useSearchParams } from "next/navigation";
 
 const SocialAuth = () => {
   const router = useRouterHook();
   const { data: session, status } = useSession();
-
+  const SearchParams = useSearchParams()
+  const path = SearchParams.get('redirect')
   const handleSocialLogin = async (provider) => {
-    const resp = await signIn(provider, { redirect: false });
+    const resp = await signIn(provider, { 
+      redirect: true,
+      callbackUrl: path? path: '/' });
     console.log(resp);
   };
 
@@ -43,7 +47,7 @@ const SocialAuth = () => {
                 popup: "popup-successfull",
               },
             });
-            router.push("/");
+            router.push(path);
           } else if (respon.status === 409) {
             Swal.fire({
               position: "top-center",
@@ -55,7 +59,7 @@ const SocialAuth = () => {
                 popup: "popup-successfull",
               },
             });
-            router.push("/");
+            router.push();
           }
         } catch (error) {
           console.error("social login error", error);
