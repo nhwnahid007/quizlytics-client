@@ -65,7 +65,7 @@ const Overview = () => {
             </h2>
             <div className="flex justify-center">
               <BarChart width={600} height={300} data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" />
+                {/* <CartesianGrid strokeDasharray="3 3" /> */}
                 <XAxis dataKey="quizCategory" />
                 <YAxis />
                 <Tooltip />
@@ -74,7 +74,7 @@ const Overview = () => {
               </BarChart>
             </div>
           </div>
-          {/* The rest of your code remains unchanged */}
+     
           <div
             className="w-full md:w-[35%] bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
