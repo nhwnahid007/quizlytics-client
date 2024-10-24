@@ -2,36 +2,50 @@
 import Link from "next/link";
 import React from "react";
 import { signIn, useSession } from "next-auth/react";
-import { IoEye } from "react-icons/io5";
-import { IoEyeOff } from "react-icons/io5";
+import { IoEye, IoEyeOff } from "react-icons/io5";
 import SocialAuth from "@/components/Shared/SocialAuth";
 import useShowPassState from "@/app/hooks/useShowPassState";
 import useValidationStateHook from "@/app/hooks/useValidationStateHook";
+import { useSearchParams } from "next/navigation";
 
 const Login = () => {
   const { data: session, status } = useSession();
   const [showPass, setShowPass] = useShowPassState();
   const [validState, setValidState] = useValidationStateHook();
+  const searchParams = useSearchParams();
+  const path = searchParams.get('redirect'); // Get the redirect path
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    // reset state
+    // Reset state
     setValidState("");
 
-    const email = e.target.email.value;
+    const email = e.target.email.value.trim();
     const password = e.target.password.value;
-    if (isNaN(password)) {
-      setValidState("Close Eye icon in the password field");
+
+    // Simple validation
+    if (!email || !password) {
+      setValidState("Please fill in both fields.");
+      return;
+    }
+    if (!/\S+@\S+\.\S+/.test(email)) {
+      setValidState("Please enter a valid email.");
+      return;
+    }
+    if (password.length < 6) {
+      setValidState("Password must be at least 6 characters long.");
+      return;
     }
 
     const response = await signIn("credentials", {
       email,
       password,
-      redirect: false,
+      redirect: true,
+      callbackUrl: path || '/',
     });
 
-    if (response.status === 401) {
+    if (response?.status === 401) {
       setValidState("Invalid User!");
     }
   };
@@ -51,6 +65,7 @@ const Login = () => {
                 name="email"
                 className="py-2 px-3 border rounded-lg"
                 placeholder="Email"
+                required
               />
             </div>
             <div className="w-full flex flex-col relative">
@@ -60,6 +75,7 @@ const Login = () => {
                 name="password"
                 className="py-2 px-3 border rounded-lg"
                 placeholder="Password"
+                required
               />
               <span
                 onClick={() => setShowPass(!showPass)}
@@ -72,8 +88,8 @@ const Login = () => {
           <button className="btn bg-purple-500 text-white text-lg mt-4 w-full py-2 rounded-lg">
             Login
           </button>
-          {validState === "Invalid User!" && (
-            <p className="text-red-500 mt-2 text-center font-semibold">
+          {validState && (
+            <p className={`mt-2 text-center font-semibold ${validState === "Invalid User!" ? "text-red-500" : "text-gray-500"}`}>
               {validState}
             </p>
           )}

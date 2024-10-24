@@ -82,7 +82,7 @@ const Sidebar = () => {
       <div
         className={`${
           isSidebarOpen ? "w-72" : "w-20"
-        } bg-primary-color bg-opacity-60 h-auto p-5 pt-8 relative duration-300 text-white`}
+        } bg-purple-600 bg-opacity-60 h-auto p-5 pt-8 relative duration-300 text-white`}
       >
         <button
           className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color"
@@ -97,7 +97,7 @@ const Sidebar = () => {
         <div className="flex gap-x-4 items-center">
           <Link
             href="/Dashboard"
-            className={`text-white origin-left font-medium text-xl duration-200 ${
+            className={`text-white origin-left font-bold text-2xl duration-200 ${
               !isSidebarOpen && "scale-0"
             }`}
           >
@@ -108,7 +108,7 @@ const Sidebar = () => {
           {Menus.map((Menu, index) => (
             <li
               key={index}
-              className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4 ${
+              className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-white text-sm font-semibold items-center gap-x-4 ${
                 isActive(Menu.route) ? "bg-gray-700 text-secondary-color" : ""
               }`}
             >
@@ -130,7 +130,7 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
-          <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-gray-300 text-sm items-center gap-x-4">
+          <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-white text-sm font-semibold items-center gap-x-4">
             <Link href="/" className="flex items-center gap-x-4">
               <span
                 className={`text-lg ${
