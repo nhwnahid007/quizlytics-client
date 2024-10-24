@@ -13,7 +13,7 @@ const HowItWorks = () => {
     }, []);
 
     return (
-        <div className="flex flex-col md:flex-row justify-between p-4 mt-96 md:mt-0 md:p-8 gap-6 bg-gray-100">
+        <div className="flex flex-col md:flex-row justify-between my-10 p-4 mt-80 md:mt-0 md:p-8 gap-4  bg-gray-100">
             <div data-aos="zoom-in" className="bg-white rounded-lg shadow-md p-6 text-center w-full md:w-1/3">
                 <PenTool className="w-12 h-12 mx-auto mb-4 text-blue-500" />
                 <h3 className="text-xl font-semibold mb-2">Create</h3>

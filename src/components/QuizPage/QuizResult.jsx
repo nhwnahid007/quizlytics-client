@@ -146,8 +146,8 @@ const QuizResult = ({
           {result?.percentageMark}%
         </h1>
         <div className="my-4 flex gap-4 justify-center items-center">
-          <Button onClick={handleSaveRecord} variant="destructive">
-            Save Progress
+          <Button className="px-10" onClick={handleSaveRecord} variant="destructive">
+            Submit
           </Button>
           <Button
             onClick={handleViewAnswers}
