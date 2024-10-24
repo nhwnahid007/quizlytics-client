@@ -38,6 +38,7 @@ const QuizResult = ({
   const profile = session?.user?.profile;
   const image = session?.user?.image;
   const email = session?.user?.email;
+  console.log(session);
 
   const attemptDetails = {
     quizStartKey,

@@ -1,18 +1,27 @@
 "use client";
+import useRouterHook from "@/app/hooks/useRouterHook";
 import QuizLink from "@/components/Modals/QuizLink";
 import QuizScreen from "@/components/QuizPage/QuizScreen";
+// import Spinner from "@/components/Shared/spinner";
+import { Button } from "@/components/ui/button";
 import { getQuizByLink } from "@/requests/get";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const Page = () => {
-  const [artLink, setArtLink] = useState();
+  const [artLink, setArtLink] = useState("");
   const [allQuestions, setAllQuestion] = useState([]); // Initialize as an empty array
   const [quizByLink, setQuizByLink] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
 
   console.log("artlink", artLink);
   console.log("allQuestion", allQuestions);
+
+  const router = useRouterHook();
+
+  const handleReturn = () => {
+    router.push("/");
+  };
 
   useEffect(() => {
     const getLinkQuiz = async () => {
@@ -44,7 +53,19 @@ const Page = () => {
           setIsLoading={setIsLoading}
         />
       ) : isLoading ? (
-        <div>Loading...</div> 
+        <div className="h-screen flex justify-center items-center">
+          {/* <Spinner /> */}
+          Loading....
+        </div>
+      ) : !allQuestions.length ? (
+        <div className="h-screen flex flex-col justify-center items-center">
+          <h1 className="text-red-500 font-bold">
+            No question loaded due to AI is Busy. Try again...
+          </h1>
+          <Button onClick={handleReturn} className="mt-4 bg-primary-color">
+            Back to Home
+          </Button>
+        </div>
       ) : (
         <QuizScreen
           allQuestions={allQuestions}
