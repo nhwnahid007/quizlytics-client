@@ -70,42 +70,25 @@ const ExamineeList = () => {
 
   return (
     <div>
-      <div className="text-center mt-4 text-3xl font-bold">All Examinees</div>
+      <div className="text-center my-6 text-3xl font-bold">All Examinees</div>
 
-      {/* Filter by Quiz Start Key and Examinee Name on the same line */}
-      <div className="flex my-3 mx-6 space-x-4">
-        {/* Filter by Quiz Start Key */}
-        <div className="flex-1">
-          <label htmlFor="quizStartKey" className="block text-xl mb-2">
-            Filter by Quiz Start Key:
-          </label>
-          <input
-            type="text"
-            id="quizStartKey"
-            value={quizStartKey}
-            onChange={handleQuizStartKeyChange}
-            placeholder="Enter Quiz Start Key"
-            className="w-full px-4 py-2 border rounded-md"
-          />
-        </div>
-
-        {/* Filter by Examinee Name */}
-        <div className="flex-1">
-          <label htmlFor="nameFilter" className="block text-xl mb-2">
-            Filter by Examinee Name:
-          </label>
-          <input
-            type="text"
-            id="nameFilter"
-            value={nameFilter}
-            onChange={handleNameFilterChange}
-            placeholder="Enter Examinee Name"
-            className="w-full px-4 py-2 border rounded-md"
-          />
-        </div>
+      <div className="flex justify-between mb-4 my-3 mx-6 gap-3">
+        <input
+          type="text"
+          value={quizStartKey}
+          onChange={handleQuizStartKeyChange}
+          placeholder="Filter by Quiz Start Key"
+          className="w-1/2 px-4 py-2 border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring focus:ring-primary transition duration-300"
+        />
+        <input
+          type="text"
+          value={nameFilter}
+          onChange={handleNameFilterChange}
+          placeholder="Filter by Examinee Name"
+          className="w-1/2 px-4 py-2 border border-gray-300 rounded-md shadow-md focus:outline-none focus:ring focus:ring-primary transition duration-300"
+        />
       </div>
 
-      {/* Examinees Table */}
       <div className="my-5 mx-6">
         <main className="max-w-6xl mx-auto">
           <Table>
@@ -131,7 +114,7 @@ const ExamineeList = () => {
                   </TableCell>
                   <TableCell className="text-center">
                     <Image
-                      src={examinee.userImg || "/default-avatar.png"} // Fallback image if userImg is undefined
+                      src={examinee.userImg || "/default-avatar.png"} 
                       alt={examinee.userName}
                       width={64}
                       height={64}
@@ -150,7 +133,6 @@ const ExamineeList = () => {
             </TableBody>
           </Table>
 
-          {/* Pagination */}
           <div className="flex justify-center mt-4 space-x-2">
             <button
               onClick={() => handlePageChange(currentPage - 1)}
