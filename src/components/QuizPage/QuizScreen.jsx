@@ -50,7 +50,7 @@ const QuizScreen = ({
 
   if (isLoading) {
     return (
-      <div className="max-w-6xl mx-auto text-center py-30">
+      <div className="max-w-6xl mx-auto text-center  py-30">
         <h1 className="text-4xl font-semibold my-20">
           Quiz is loading. Please wait...
         </h1>

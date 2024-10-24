@@ -132,7 +132,7 @@ const Page = () => {
   };
 
   return (
-    <div className="my-6">
+    <div className="">
       <main className="max-w-6xl mx-auto">
         <div className="p-6">
           <h1 className="text-3xl font-extrabold mb-6 text-gray-800 text-center">
@@ -223,7 +223,7 @@ const Page = () => {
           <Button
             variant="secondary"
             onClick={addQuestion}
-            className="w-full bg-blue-500 text-white py-3 px-4 rounded-md shadow-md hover:bg-blue-600 transition duration-200"
+            className="w-full bg-primary-color text-white mt-5 px-4 rounded-md shadow-md hover:bg-primary-color transition duration-200"
           >
             Add Question
           </Button>
@@ -257,7 +257,7 @@ const Page = () => {
               <Button
                 variant="secondary"
                 onClick={submitQuestions}
-                className="w-full bg-green-500 text-white py-3 px-4 rounded-md shadow-md hover:bg-green-600 transition duration-200 mt-4"
+                className="w-full bg-secondary-color text-white py-3 px-4 rounded-md shadow-md hover:bg-secondary-color transition duration-200 mt-4"
               >
                 Submit Questions
               </Button>
