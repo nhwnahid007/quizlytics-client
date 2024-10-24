@@ -103,7 +103,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
                 key={index}
                 className={`flex items-center p-3 sm:p-4 rounded-lg cursor-pointer transition duration-200 ${
                   index === selectedOption
-                    ? "bg-green-200 text-black border-2 border-green-500"
+                    ? "bg-secondary-color text-black border-2 border-primary-color"
                     : "bg-white text-black border-2 border-gray-300 hover:bg-gray-100"
                 }`}
                 onClick={() => handleOptionClick(index)}
@@ -119,10 +119,10 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
 
         <div className="mt-auto pt-3 sm:pt-4 flex justify-end">
           <button
-            className={`btn flex-1 py-2 sm:py-3 text-sm sm:text-base rounded-lg transition duration-200 bg-green-500 text-white ${
+            className={`btn flex-1 py-2 sm:py-3 text-sm sm:text-base rounded-lg transition duration-200 bg-purple-400 text-white ${
               selectedOption === null
                 ? "opacity-50 cursor-not-allowed"
-                : "hover:bg-green-600"
+                : "hover:bg-primary-color"
             }`}
             onClick={handleGoToNextQuiz}
             disabled={selectedOption === null}

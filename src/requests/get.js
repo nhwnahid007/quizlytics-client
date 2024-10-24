@@ -85,15 +85,15 @@ export const getLinkHistoryByUser = async(email)=>{
     }
 }
 
-export const getLeaders = async()=>{
-    try{
-        const res = await axios.get(`https://quizlytics.jonomukti.org/leaderboard`)
-        return res.data;
-    } catch(error){
-        console.log("Error fetching leaderboard:", error);
-        return [];
-    }
-}
+// export const getLeaders = async()=>{
+//     try{
+//         const res = await axios.get(`https://quizlytics.jonomukti.org/leaderboard`)
+//         return res.data;
+//     } catch(error){
+//         console.log("Error fetching leaderboard:", error);
+//         return [];
+//     }
+// }
 export const getExaminees = async () => {
     try {
       const res = await axios.get("https://quizlytics.jonomukti.org/allExaminee");
