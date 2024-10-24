@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import {useState} from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaChartLine, FaCommentDots, FaDatabase, FaPeopleArrows, FaUser } from "react-icons/fa";
@@ -35,7 +35,7 @@ const Sidebar = () => {
   const isActive = (route) => pathname === route;
 
   const Menus = [
-    { title: "Home", route: "/Dashboard", icon: <FaChartLine /> },
+    {title: "Home", route: "/Dashboard", icon: <FaChartLine />},
     {
       title: "Make custom questions",
       route: "/Dashboard/customquestion",
