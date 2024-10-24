@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Swal from "sweetalert2";
+import Typewriter from "typewriter-effect"; // Make sure to install typewriter-effect package
 
 const Page = () => {
   const [quizKey, setQuizKey] = useState(1234);
@@ -33,13 +34,10 @@ const Page = () => {
     return key;
   }
 
-  // console.log("random key", generateRandomKey());
-
   const newKey = generateRandomKey();
 
   useEffect(() => {
     setQuizKey(newKey);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [questionData, setQuestionData] = useState({
@@ -49,8 +47,6 @@ const Page = () => {
   });
 
   const [questions, setQuestions] = useState([]);
-
-  // console.log(questions);
 
   const handleChangeTitle = (e) => {
     setTitle(e.target.value);
@@ -98,7 +94,6 @@ const Page = () => {
         options: ["", "", "", ""],
         correct_answer: "",
       });
-      // console.log(questionData);
     } else {
       alert("Please fill in all fields before adding the question.");
     }
@@ -114,7 +109,6 @@ const Page = () => {
 
   const submitQuestions = async () => {
     try {
-      // Replace with your backend API endpoint
       const response = await axios.post(
         "https://quizlytics.jonomukti.org/saveManualQuiz",
         quizSet
@@ -127,8 +121,6 @@ const Page = () => {
         timer: 2000,
       });
       console.log("Questions submitted successfully:", response.data);
-      console.log(questions);
-      // Clear the questions array after submission
       setQuestions([]);
       setQuizKey(newKey);
     } catch (error) {
@@ -137,50 +129,62 @@ const Page = () => {
   };
 
   return (
-    <div className="my-12">
+    <div className="my-12 px-4 md:px-8 lg:px-12">
       <main className="max-w-6xl mx-auto">
-        <div className="p-6">
-          <h1 className="text-2xl font-bold mb-4">Create Custom Questions</h1>
+        <div className="p-6 bg-gray-50 rounded-lg shadow-lg">
+          <h1 className="text-3xl font-bold mb-4 text-center text-purple-600">
+            <Typewriter
+              options={{
+                strings: ["Create Custom Questions"],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </h1>
 
           <div className="mb-4">
-            <label className="block text-gray-700">Quiz Start Key:</label>
+            <label className="block text-gray-700 font-semibold">Quiz Start Key:</label>
             <Input
               type="text"
               value={quizKey}
-              className="w-full p-2 border border-gray-300 rounded mt-2"
+              className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
+              readOnly
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Quiz Title</label>
+            <label className="block text-gray-700 font-semibold">Quiz Title</label>
             <Input
               type="text"
               name="quizTitle"
               onChange={handleChangeTitle}
-              className="w-full p-2 border border-gray-300 rounded mt-2"
+              className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
+              placeholder="Enter quiz title"
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700">Category</label>
+            <label className="block text-gray-700 font-semibold">Category</label>
             <Input
               type="text"
               onChange={handleChangeCategory}
-              className="w-full p-2 border border-gray-300 rounded mt-2"
+              className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
+              placeholder="Enter category"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700">Question:</label>
+            <label className="block text-gray-700 font-semibold">Question:</label>
             <Input
               type="text"
               name="question"
               value={questionData.question}
               onChange={handleChange}
-              className="w-full p-2 border border-gray-300 rounded mt-2"
+              className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
+              placeholder="Enter question"
             />
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700">Options:</label>
+            <label className="block text-gray-700 font-semibold">Options:</label>
             {questionData.options.map((option, index) => (
               <Input
                 key={index}
@@ -188,13 +192,13 @@ const Page = () => {
                 value={option}
                 onChange={(e) => handleOptionChange(index, e.target.value)}
                 placeholder={`Option ${index + 1}`}
-                className="w-full p-2 border border-gray-300 rounded mt-2"
+                className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
               />
             ))}
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-700">Correct Answer (0-3):</label>
+            <label className="block text-gray-700 font-semibold">Correct Answer (0-3):</label>
             <Input
               type="number"
               name="correct_answer"
@@ -202,14 +206,15 @@ const Page = () => {
               onChange={handleChange}
               min="0"
               max="3"
-              className="w-full p-2 border border-gray-300 rounded mt-2"
+              className="w-full p-2 border border-gray-300 rounded-lg mt-2 focus:outline-none focus:ring-2 focus:ring-purple-400 transition duration-300"
+              placeholder="Enter index of the correct answer"
             />
           </div>
 
           <Button
             variant="secondary"
             onClick={addQuestion}
-            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            className="bg-purple-500 text-white py-2 px-4 rounded-lg hover:bg-purple-600 transition duration-300"
           >
             Add Question
           </Button>
@@ -221,9 +226,9 @@ const Page = () => {
             {questions.map((q) => (
               <div
                 key={q.id}
-                className="mb-4 p-4 border border-gray-300 rounded"
+                className="mb-4 p-4 border border-gray-300 rounded-lg bg-white shadow-sm"
               >
-                <h3 className="font-semibold">{q.question}</h3>
+                <h3 className="font-semibold text-gray-800">{q.question}</h3>
                 <ul className="list-disc list-inside">
                   {q.options.map((option, index) => (
                     <li key={index}>
@@ -231,7 +236,7 @@ const Page = () => {
                     </li>
                   ))}
                 </ul>
-                <p>Correct Answer: {q.correct_answer}</p>
+                <p className="font-bold text-gray-700">Correct Answer: {q.correct_answer}</p>
               </div>
             ))}
 
@@ -239,7 +244,7 @@ const Page = () => {
               <Button
                 variant="secondary"
                 onClick={submitQuestions}
-                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 mt-4"
+                className="bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-300 mt-4"
               >
                 Submit Questions
               </Button>
