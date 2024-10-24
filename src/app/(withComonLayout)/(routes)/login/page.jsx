@@ -1,5 +1,4 @@
 'use client'
-
 import Image from "next/image";
 import React, { Suspense } from "react";
 import { signIn, useSession } from "next-auth/react";
@@ -10,12 +9,38 @@ import useValidationStateHook from "@/app/hooks/useValidationStateHook";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-// Separate component for the login form to handle search params
-const LoginForm = () => {
+const Login = () => {
+  const { data: session, status } = useSession();
   const [showPass, setShowPass] = useShowPassState();
   const [validState, setValidState] = useValidationStateHook();
+
+  return (
+    <div className="flex pt-6 lg:min-h-screen mt-6 lg:mt-0 justify-center lg:items-center h-screen bg-white">
+      <div className="w-full max-w-md bg-white p-3 rounded-lg shadow-md">
+        <h2 className="text-3xl font-bold text-center mb-4 text-gray-800">Login</h2>
+        <SocialAuth />
+        <p className="text-center my-3 text-gray-500">or</p>
+        <Suspense fallback={<div>Loading...</div>}>
+          <LoginForm 
+            showPass={showPass} 
+            setShowPass={setShowPass} 
+            validState={validState} 
+            setValidState={setValidState} 
+          />
+        </Suspense>
+        <div className="flex justify-center mt-3">
+          <Link href="/register">
+            <button className="btn text-purple-500">Create a new account</button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const LoginForm = ({ showPass, setShowPass, validState, setValidState }) => {
   const searchParams = useSearchParams();
-  const path = searchParams.get('redirect');
+  const path = searchParams.get('redirect'); // Get the redirect path
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -91,29 +116,6 @@ const LoginForm = () => {
         </p>
       )}
     </form>
-  );
-};
-
-// Main Login component
-const Login = () => {
-  const { data: session, status } = useSession();
-
-  return (
-    <div className="flex pt-6 lg:min-h-screen mt-6 lg:mt-0 justify-center lg:items-center h-screen bg-white">
-      <div className="w-full max-w-md bg-white p-3 rounded-lg shadow-md">
-        <h2 className="text-3xl font-bold text-center mb-4 text-gray-800">Login</h2>
-        <SocialAuth />
-        <p className="text-center my-3 text-gray-500">or</p>
-        <Suspense fallback={<div>Loading...</div>}>
-          <LoginForm />
-        </Suspense>
-        <div className="flex justify-center mt-3">
-          <Link href="/register">
-            <button className="btn text-purple-500">Create a new account</button>
-          </Link>
-        </div>
-      </div>
-    </div>
   );
 };
 
