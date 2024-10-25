@@ -102,7 +102,7 @@ const QuizlyticsDashboard = () => {
         <h1 className="text-2xl font-semibold">Quizlytics Dashboard</h1>
       </div>
 
-      {/* Dashboard Cards */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div className="bg-white p-4 rounded-lg shadow-md flex items-center">
           <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
