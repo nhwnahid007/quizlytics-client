@@ -13,12 +13,16 @@ import {
   Legend,
   LineChart,
   Line,
+  PieChart,
+  Pie,
+  Cell,
 } from 'recharts';
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const Page = () => {
   const { data: session } = useSession();
   const [marks, setMarks] = useState([]);
-  
 
   useEffect(() => {
     const fetchMarks = async () => {
@@ -63,73 +67,19 @@ const Page = () => {
     marks: quiz.marks,
   }));
 
-  // Function to determine performance trend
-  const getPerformanceTrend = () => {
-    if (marks.length < 2) return 'neutral'; // Not enough data for trend
-
-    let isImproving = true;
-    let isDecreasing = true;
-    let isAlwaysHigh = true;
-
-    for (let i = 1; i < marks.length; i++) {
-      if (marks[i].marks > marks[i - 1].marks) isDecreasing = false;
-      if (marks[i].marks < marks[i - 1].marks) isImproving = false;
-      if (marks[i].marks < 80) isAlwaysHigh = false;
-    }
-
-    if (isAlwaysHigh) return 'alwaysHigh';
-    if (isImproving) return 'improving';
-    if (isDecreasing) return 'decreasing';
-    return 'neutral'; // Marks neither consistently increasing nor decreasing
-  };
-
-  // Get the performance trend
-  const performanceTrend = getPerformanceTrend();
-
-  // Define styles based on performance trend
-  const getProgressBarStyle = () => {
-    switch (performanceTrend) {
-      case 'improving':
-        return 'bg-green-400'; // Green for improving performance
-      case 'decreasing':
-        return 'bg-red-400'; // Red for decreasing performance
-      case 'neutral':
-        return 'bg-yellow-400'; // Yellow for stable performance
-      case 'alwaysHigh':
-        return 'bg-blue-400'; // Blue for consistently high performance
-      default:
-        return 'bg-gray-400'; // Default to gray
-    }
-  };
-
-  // Function to get performance remark
-  const getPerformanceRemark = () => {
-    switch (performanceTrend) {
-      case 'improving':
-        return 'Great job! Keep up the improvement!';
-      case 'decreasing':
-        return 'Don\'t be discouraged. Analyze and improve!';
-      case 'alwaysHigh':
-        return 'Excellent performance! Keep it up!';
-      case 'neutral':
-        return 'Stable performance. Consider ways to improve!';
-      default:
-        return '';
-    }
-  };
+  const pieChartData = [
+    { name: 'Low (0-40)', value: marks.filter((item) => item.marks <= 40).length },
+    { name: 'Medium (41-70)', value: marks.filter((item) => item.marks > 40 && item.marks <= 70).length },
+    { name: 'High (71-100)', value: marks.filter((item) => item.marks > 70).length },
+  ];
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
-      {/* Background section for performance remark */}
-      <div className={`w-full text-center py-4 mb-4 ${getProgressBarStyle()} relative`}>
-        <p className="md:text-5xl text-sm font-bold text-primary-color">{getPerformanceRemark()}</p>
-      </div>
-
       {marks.length === 0 ? (
         <p className=" md:text-5xl text-sm font-semibold text-gray-600">No exam given yet.</p>
       ) : (
         <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl w-full">
-          <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
+          <h2 className="text-2xl font-bold text-primary-color mb-4 text-center">
             Exam Statistics
           </h2>
           <div className="grid grid-cols-2 gap-6 mb-8">
@@ -163,13 +113,13 @@ const Page = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="marks" fill="#d192b7" />
+                <Bar dataKey="marks" fill="#8e49b6" />
               </BarChart>
             </div>
           </div>
 
           {/* Line Chart for progress over time */}
-          <div>
+          <div className="mb-8">
             <h3 className="text-xl font-semibold text-gray-700 mb-4 hover:text-primary-color">
               Progress Over Time
             </h3>
@@ -182,6 +132,32 @@ const Page = () => {
                 <Legend />
                 <Line type="monotone" dataKey="marks" stroke="#8e49b6" />
               </LineChart>
+            </div>
+          </div>
+
+          {/* Pie Chart for marks distribution */}
+          <div>
+            <h3 className="text-xl font-semibold text-gray-700 mb-4 hover:text-primary-color">
+              Marks Distribution
+            </h3>
+            <div className="flex justify-center">
+              <PieChart width={400} height={400}>
+                <Pie
+                  data={pieChartData}
+                  cx={200}
+                  cy={200}
+                  labelLine={false}
+                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                  outerRadius={150}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {pieChartData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
             </div>
           </div>
         </div>

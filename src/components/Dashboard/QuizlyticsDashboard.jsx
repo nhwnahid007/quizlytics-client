@@ -3,6 +3,7 @@ import { getMarks } from '@/requests/get';
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { useSession } from 'next-auth/react';
+
 import {
   BarChart,
   Bar,
@@ -13,12 +14,20 @@ import {
   Legend,
   LineChart,
   Line,
+  PieChart,
+  Pie,
+  Cell,
 } from 'recharts';
 import { FiUsers, FiCheckCircle, FiBarChart, FiClock } from 'react-icons/fi';
+import Spinner from '../Shared/Spinner';
+import Link from 'next/link';
+
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
 
 const QuizlyticsDashboard = () => {
   const { data: session } = useSession();
   const [marks, setMarks] = useState([]);
+  const [loading, setLoading] = useState(true); // New loading state
 
   useEffect(() => {
     const fetchMarks = async () => {
@@ -35,6 +44,8 @@ const QuizlyticsDashboard = () => {
           text: 'Something went wrong while fetching leaderboard data!',
           toast: true,
         });
+      } finally {
+        setLoading(false); // Set loading to false after fetching
       }
     };
     fetchMarks();
@@ -44,10 +55,24 @@ const QuizlyticsDashboard = () => {
     const totalExams = marks.length;
     const totalMarks = marks.reduce((acc, item) => acc + item.marks, 0);
     const averageMarks = (totalMarks / totalExams).toFixed(2);
-    const highestMarks = Math.max(...marks.map((item) => item.marks));
-    const lowestMarks = Math.min(...marks.map((item) => item.marks));
+    const highestMarks = totalExams > 0 ? Math.max(...marks.map((item) => item.marks)) : 0;
+  const lowestMarks = totalExams > 0 ? Math.min(...marks.map((item) => item.marks)) : 0;
 
     return { totalExams, averageMarks, highestMarks, lowestMarks };
+  };
+
+  const categorizeMarks = () => {
+    const ranges = { low: 0, mid: 0, high: 0 };
+    marks.forEach((quiz) => {
+      if (quiz.marks <= 50) ranges.low += 1;
+      else if (quiz.marks <= 70) ranges.mid += 1;
+      else ranges.high += 1;
+    });
+    return [
+      { name: '0-50%', value: ranges.low },
+      { name: '51-70%', value: ranges.mid },
+      { name: '71-100%', value: ranges.high },
+    ];
   };
 
   const { totalExams, averageMarks, highestMarks, lowestMarks } = getStatistics();
@@ -63,70 +88,12 @@ const QuizlyticsDashboard = () => {
     marks: quiz.marks,
   }));
 
-  // Function to determine a more dynamic performance trend
-  const getPerformanceTrend = () => {
-    if (marks.length < 2) return 'neutral'; // Not enough data for trend
+  const pieChartData = categorizeMarks();
 
-    let recentImprovement = false;
-    let recentDecline = false;
-    let isFluctuating = false;
-
-    // Analyzing only the last 3 attempts for more dynamic feedback
-    const recentMarks = marks.slice(-3);
-
-    // Check recent trend by comparing the last three results
-    for (let i = 1; i < recentMarks.length; i++) {
-      if (recentMarks[i].marks > recentMarks[i - 1].marks) {
-        recentImprovement = true;
-      } else if (recentMarks[i].marks < recentMarks[i - 1].marks) {
-        recentDecline = true;
-      }
-    }
-
-    // Check if the performance is fluctuating
-    if (recentImprovement && recentDecline) {
-      isFluctuating = true;
-    }
-
-    // Determine performance trend based on analysis
-    if (isFluctuating) return 'fluctuating';
-    if (recentImprovement) return 'improving';
-    if (recentDecline) return 'decreasing';
-
-    return 'neutral'; // Marks neither consistently increasing nor decreasing
-  };
-
-  const performanceTrend = getPerformanceTrend();
-
-  const getProgressBarStyle = () => {
-    switch (performanceTrend) {
-      case 'improving':
-        return 'bg-green-400';
-      case 'decreasing':
-        return 'bg-red-400';
-      case 'fluctuating':
-        return 'bg-orange-400'; // New color for fluctuating trend
-      case 'neutral':
-        return 'bg-yellow-400';
-      default:
-        return 'bg-gray-400';
-    }
-  };
-
-  const getPerformanceRemark = () => {
-    switch (performanceTrend) {
-      case 'improving':
-        return 'Great job! You are showing consistent improvement.';
-      case 'decreasing':
-        return 'Your performance has declined. Try reviewing your previous mistakes.';
-      case 'fluctuating':
-        return 'Your results are fluctuating. Focus on consistency!';
-      case 'neutral':
-        return 'Your performance is stable. Keep striving for improvement!';
-      default:
-        return '';
-    }
-  };
+  // Show loading spinner while data is being fetched
+  if (loading) {
+    return <Spinner />;
+  }
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -153,7 +120,7 @@ const QuizlyticsDashboard = () => {
           </div>
           <div>
             <p className="text-sm text-gray-500">Best Performance</p>
-            <p className="text-xl font-bold">{highestMarks}%</p>
+            <p className="text-xl font-bold">{highestMarks <= 100? highestMarks: 0}%</p>
           </div>
         </div>
 
@@ -178,16 +145,17 @@ const QuizlyticsDashboard = () => {
         </div>
       </div>
 
-      {/* Performance remark section */}
-      <div className={`w-full text-center py-4 mb-4 ${getProgressBarStyle()} relative`}>
-        <p className="text-2xl font-bold text-white">
-          {getPerformanceRemark()}
-        </p>
-      </div>
-
       {/* Charts and Statistics section */}
       {marks.length === 0 ? (
-        <p className="text-lg font-semibold text-gray-600">No exam given yet.</p>
+        <div className="text-center mt-12">
+          <h2 className="text-2xl font-semibold mb-4">No Quizzes Attempted Yet</h2>
+          <p className="text-gray-600 mb-6">It seems like you haven't taken any quizzes yet. Start your learning journey by taking your first quiz now!</p>
+          <Link href="/customQuiz">
+  <button className="bg-primary-color font-semibold text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-200">
+    Attempt Your First Quiz
+  </button>
+</Link>
+        </div>
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Bar Chart for individual topic marks */}
@@ -200,7 +168,7 @@ const QuizlyticsDashboard = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="marks" fill="#d192b7" />
+                <Bar dataKey="marks" fill="#8e49b6" />
               </BarChart>
             </div>
           </div>
@@ -215,32 +183,35 @@ const QuizlyticsDashboard = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="marks" stroke="#d192b7" activeDot={{ r: 8 }} />
+                <Line type="monotone" dataKey="marks" stroke="#8e49b6" activeDot={{ r: 8 }} />
               </LineChart>
+            </div>
+          </div>
+
+          {/* Pie Chart for marks distribution */}
+          <div className="bg-white shadow-lg rounded-lg p-6">
+            <h3 className="text-xl font-semibold text-gray-700 mb-4">Marks Distribution</h3>
+            <div className="flex justify-center">
+              <PieChart width={400} height={300}>
+                <Pie
+                  data={pieChartData}
+                  cx={200}
+                  cy={150}
+                  labelLine={false}
+                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
+                  outerRadius={120}
+                  fill="#8884d8"
+                  dataKey="value"
+                >
+                  {pieChartData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+              </PieChart>
             </div>
           </div>
         </div>
       )}
-
-      {/* Additional statistics section */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
-          <p className="text-lg font-medium text-gray-700">Total Exams Attempted</p>
-          <p className="text-2xl font-bold">{totalExams}</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
-          <p className="text-lg font-medium text-gray-700">Average Marks</p>
-          <p className="text-2xl font-bold">{averageMarks}%</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
-          <p className="text-lg font-medium text-gray-700">Best Marks</p>
-          <p className="text-2xl font-bold">{highestMarks}%</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md text-center">
-          <p className="text-lg font-medium text-gray-700">Lowest Marks</p>
-          <p className="text-2xl font-bold">{lowestMarks}%</p>
-        </div>
-      </div>
     </div>
   );
 };
