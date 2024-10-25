@@ -49,14 +49,14 @@ const MakeExam = ({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
-      <div className="bg-[#ffefd3] w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg relative">
+      <div className="bg-orange-400 bg-opacity-70 w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg relative">
         <button
           onClick={() => router.push("/")}
           className="absolute top-4 right-4 text-black"
         >
           <X size={24} />
         </button>
-        <h1 className="text-[#008000] font-bold text-center text-3xl">
+        <h1 className="text-black font-bold text-center text-3xl">
           Quick Exam
         </h1>
         <div className="w-full md:w-[480px] mx-auto mt-8 flex justify-between">
@@ -106,7 +106,8 @@ const MakeExam = ({
         <div className="flex justify-center mt-6">
           <Button
             onClick={handleStart}
-            className="btn bg-[#22b322] text-white text-lg px-12"
+            className="btn bg-primary-color text-white text-lg px-12"
+            className="btn bg-primary-color text-white text-lg px-12"
           >
             Start
           </Button>

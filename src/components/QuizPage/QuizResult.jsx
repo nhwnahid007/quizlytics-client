@@ -16,7 +16,7 @@ import {
   RedditShareButton,
   RedditIcon,
 } from "next-share";
-import UserFeedback from "../Modals/UserFeedback";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 const QuizResult = ({
   result,
@@ -114,7 +114,7 @@ const QuizResult = ({
   };
 
   if (loading) {
-    return "Progress is being saved in database! Please Wait!!";
+    <LoadingSpinner></LoadingSpinner>;
   }
 
   // Determine the remark based on the score
@@ -133,39 +133,39 @@ const QuizResult = ({
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
-      <div className="bg-[#ffefd3] w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg">
+    <div className="fixed h-screen inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
+      <div className="bg-orange-400 bg-opacity-70 w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg">
         <div
           className={`w-[200px] h-[200px] mx-auto my-8 border-8 p-8 rounded-full flex justify-center items-center ${remarkColor}`}
         >
-          <h1 className={`text-4xl font-bold ${remarkColor}`}>
+          <h1 className={`text-4xl font-bold text-primary-color`}>
             {result?.correctAnswers} / {result?.totalQuiz}
           </h1>
         </div>
         <h1 className={`mb-5 text-center text-4xl ${remarkColor}`}>
-          {result?.percentageMark}%
+          {/* {result?.percentageMark}% */}
         </h1>
         <div className="my-4 flex gap-4 justify-center items-center">
-          <Button className="px-10" onClick={handleSaveRecord} variant="destructive">
+          <Button className="px-10 bg-primary-color" onClick={handleSaveRecord}>
             Submit
           </Button>
           <Button
             onClick={handleViewAnswers}
-            variant="destructive"
+            className="bg-primary-color"
             disabled={isDisabled}
           >
             View Submission
           </Button>
-          <Button onClick={handleGoToHome} variant="destructive">
+          <Button onClick={handleGoToHome} className="bg-primary-color">
             Back to Home
           </Button>
         </div>
-        <h1 className="text-[#30d158] text-center text-4xl mb-10">
+        <h1 className="text-white text-center text-4xl mb-10">
           You achieved {result?.percentageMark}% mark!
         </h1>
-        <div>
+        {/* <div>
           <UserFeedback />
-        </div>
+        </div> */}
         <div className="mt-4 flex justify-center gap-4 w-full">
           <div className="font-medium py-1 px-8 border border-red-600 rounded-md">
             <h2 className="text-xl mb-5 text-center">Share Social Media:</h2>

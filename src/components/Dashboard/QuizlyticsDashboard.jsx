@@ -102,7 +102,7 @@ const QuizlyticsDashboard = () => {
         <h1 className="text-2xl font-semibold">Quizlytics Dashboard</h1>
       </div>
 
-      {/* Dashboard Cards */}
+      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div className="bg-white p-4 rounded-lg shadow-md flex items-center">
           <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
@@ -149,7 +149,7 @@ const QuizlyticsDashboard = () => {
       {marks.length === 0 ? (
         <div className="text-center mt-12">
           <h2 className="text-2xl font-semibold mb-4">No Quizzes Attempted Yet</h2>
-          <p className="text-gray-600 mb-6">It seems like you haven't taken any quizzes yet. Start your learning journey by taking your first quiz now!</p>
+          <p className="text-gray-600 mb-6">It seems like you haven&apos;t taken any quizzes yet. Start your learning journey by taking your first quiz now!</p>
           <Link href="/customQuiz">
   <button className="bg-primary-color font-semibold text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-200">
     Attempt Your First Quiz
