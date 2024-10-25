@@ -16,6 +16,7 @@ import {
   RedditShareButton,
   RedditIcon,
 } from "next-share";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 const QuizResult = ({
   result,
@@ -113,11 +114,7 @@ const QuizResult = ({
   };
 
   if (loading) {
-    return (
-      <div className="h-screen flex justify-center items-center">
-        Progress is being saved in database! Please Wait!!
-      </div>
-    );
+    <LoadingSpinner></LoadingSpinner>;
   }
 
   // Determine the remark based on the score

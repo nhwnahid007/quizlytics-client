@@ -2,6 +2,7 @@
 import useRouterHook from "@/app/hooks/useRouterHook";
 import QuizLink from "@/components/Modals/QuizLink";
 import QuizScreen from "@/components/QuizPage/QuizScreen";
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 // import Spinner from "@/components/Shared/spinner";
 import { Button } from "@/components/ui/button";
 import { getQuizByLink } from "@/requests/get";
@@ -55,7 +56,7 @@ const Page = () => {
       ) : isLoading ? (
         <div className="h-screen flex justify-center items-center">
           {/* <Spinner /> */}
-          Loading....
+          <LoadingSpinner />
         </div>
       ) : !allQuestions.length ? (
         <div className="h-screen flex flex-col justify-center items-center">
