@@ -34,7 +34,7 @@ const Banner = () => {
         <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-8 lg:px-20 pt-16">
           <div className="w-full lg:w-[70%] md:pr-32">
             <div className="w-full md:pl-5 md:w-[683px]">
-              <h1 className="  md:text-3xl   lg:text-5xl font-bold text-[#333333] mb-5 lg:mb-14 md:h-7 lg:h-12">
+              <h1 className="  md:text-3xl   lg:text-5xl font-bold text-[#333333] mb-2 lg:mb-14 md:h-7 lg:h-12">
                 <Typewriter
                 options={{
                   strings:"Challenge Your Mind with Fun Quizzes",
@@ -48,7 +48,7 @@ const Banner = () => {
               <p className="text-[#555555]  lg:font-semibold p-2  lg:pt-5 rounded-sm bg-[#FCFAF9] bg-opacity-20">
               Explore our interactive quiz platform to test your knowledge on diverse topics! Track your progress, compete with others, and climb the leaderboards. Join now and discover what you really know!
               </p>
-              <div className="flex flex-col md:justify-center md:mt-5 md:flex-row lg:flex-row mt-4 gap-3 md:gap-5 lg:gap-4  lg:mt-8">
+              <div className="flex flex-col md:justify-center md:mt-5 md:flex-row lg:flex-row mt-3 gap-3 md:gap-5 lg:gap-4  lg:mt-8">
                 <button
                   onClick={handleQuicktExam}
                   className="px-6 md:px-14 py-2 md:py-4 lg:py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient"
