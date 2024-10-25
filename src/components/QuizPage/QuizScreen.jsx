@@ -5,7 +5,6 @@ import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 
-
 const QuizScreen = ({
   quizKey,
   allQuestions = [], // Default to an empty array
@@ -52,15 +51,13 @@ const QuizScreen = ({
   if (isLoading) {
     return (
       <div className="max-w-6xl mx-auto text-center  py-30">
-        
-          <LoadingSpinner />
-       
+        <LoadingSpinner />
       </div>
     );
   }
 
   return (
-    <div className="h-auto">
+    <div className="h-screen">
       {isQuizEnded ? (
         <QuizResult
           quizSet={quizSet}

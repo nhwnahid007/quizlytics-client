@@ -8,6 +8,7 @@ import { useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import SubmitCard from "./SubmitCard";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 const LatestSubmission = ({ quizKey, searchCategory }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -60,7 +61,7 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
       </h2>
 
       {isLoading ? (
-        <div className="text-center">Loading your latest submission...</div>
+        <LoadingSpinner />
       ) : latestSubmission?.questions?.length > 0 ? (
         latestSubmission.questions.map((item, idx) => (
           <SubmitCard
