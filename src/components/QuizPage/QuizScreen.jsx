@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
 
-
 const QuizScreen = ({
   quizKey,
   allQuestions = [], // Default to an empty array
@@ -50,8 +49,8 @@ const QuizScreen = ({
 
   if (isLoading) {
     return (
-      <div className="max-w-6xl mx-auto text-center  py-30">
-        <h1 className="text-4xl font-semibold my-20">
+      <div className="h-screen flex justify-center items-center">
+        <h1 className="text-4xl font-semibold">
           Quiz is loading. Please wait...
         </h1>
       </div>
@@ -59,7 +58,7 @@ const QuizScreen = ({
   }
 
   return (
-    <div className="h-auto">
+    <div className="h-screen">
       {isQuizEnded ? (
         <QuizResult
           quizSet={quizSet}

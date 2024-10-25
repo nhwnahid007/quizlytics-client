@@ -45,7 +45,7 @@ const Page = () => {
     getLinkQuiz();
   }, [artLink]);
   return (
-    <div>
+    <div className="h-screen">
       {quizByLink ? (
         <QuizLink
           setQuizByLink={setQuizByLink}
