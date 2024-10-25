@@ -1,4 +1,5 @@
 "use client";
+
 import React, {useState, useEffect, Suspense} from "react";
 import {useSearchParams} from "next/navigation";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
@@ -34,31 +35,37 @@ const PaymentCard = () => {
     }
   }, [prices]);
 
-  return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <div className="max-w-full mx-auto p-6 bg-white shadow-md rounded-lg mt-10 md:mt-20 min-h-[calc(100vh-360px)]">
-        <h1 className="text-4xl font-bold text-center mb-4">Payment Summary</h1>
-        {prices ? (
-          <div className="text-center">
-            <p className="text-2xl font-bold text-secondary-color">
-              <span className="text-primary-color">Plan:</span> {plans}
-            </p>
-            <p className="text-2xl font-bold text-red-500">
-              <span className="text-green-500">Pay:</span> ${prices}
-            </p>
-          </div>
-        ) : (
-          <p className="text-center"><LoadingSpinner /></p>
-        )}
+  const content = (
+    <>
+      {prices ? (
+        <div className="text-center">
+          <p className="text-2xl font-bold text-secondary-color">
+            <span className="text-primary-color">Plan:</span> {plans}
+          </p>
+          <p className="text-2xl font-bold text-red-500">
+            <span className="text-green-500">Pay:</span> ${prices}
+          </p>
+        </div>
+      ) : (
+        <p className="text-center"><LoadingSpinner /></p>
+      )}
 
-        {/* Only render the Elements component when clientSecret is available */}
-        {clientSecret && (
-          <Elements stripe={stripePromise} options={{clientSecret}}>
-            <CheckoutPage clientSecret={clientSecret} prices={prices} />
-          </Elements>
-        )}
-      </div>
-    </Suspense>
+      {/* Only render the Elements component when clientSecret is available */}
+      {clientSecret && (
+        <Elements stripe={stripePromise} options={{clientSecret}}>
+          <CheckoutPage clientSecret={clientSecret} prices={prices} />
+        </Elements>
+      )}
+    </>
+  );
+
+  return (
+    <div className="max-w-full mx-auto p-6 bg-white shadow-md rounded-lg mt-10 md:mt-20 min-h-[calc(100vh-360px)]">
+      <h1 className="text-4xl font-bold text-center mb-4">Payment Summary</h1>
+      <Suspense fallback={<LoadingSpinner />}>
+        {content}
+      </Suspense>
+    </div>
   );
 };
 
