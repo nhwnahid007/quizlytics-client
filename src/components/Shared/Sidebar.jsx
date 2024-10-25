@@ -8,7 +8,7 @@ import { FaFileCircleQuestion, FaPeopleGroup } from "react-icons/fa6";
 import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { CreditCard, UserCog } from "lucide-react";
+import { ChartSpline, CreditCard, FileQuestion, House, ShieldEllipsis, ShieldQuestion, UserCog, Users } from "lucide-react";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -22,8 +22,18 @@ const Sidebar = () => {
     queryKey: ["role", user?.email],
     enabled: !!user?.email,
     queryFn: async () => {
-      const { data } = await axios(`https://quizlytics.jonomukti.org/user/role?email=${user?.email}`);
-      return data.role;
+      if (!user?.email) {
+        return null; // Return null if email is not available
+      }
+      try {
+        const { data } = await axios(`https://quizlytics.jonomukti.org/user/role?email=${user.email}`);
+        console.log(data);
+
+        return data.role || "user"; // Ensure a valid return value
+      } catch (error) {
+        console.error("Error fetching user role:", error);
+        return null; // Return null in case of an error
+      }
     },
   });
 
@@ -35,21 +45,21 @@ const Sidebar = () => {
   const isActive = (route) => pathname === route;
 
   const Menus = [
-    {title: "Home", route: "/Dashboard", icon: <FaChartLine />},
+    { title: "Home", route: "/Dashboard", icon: <ChartSpline/> },
     {
       title: "Make custom questions",
       route: "/Dashboard/customquestion",
-      icon: <FaCommentDots />,
+      icon: <FileQuestion />,
     },
     {
       title: "All Custom questions",
       route: "/Dashboard/examinersDashboard",
-      icon: <FaFileCircleQuestion />,
+      icon: <ShieldQuestion/>,
     },
     {
       title: "Leaderboard",
       route: "/Dashboard/leaderboard",
-      icon: <FaCommentDots />,
+      icon: <ShieldEllipsis />,
     },
     {
       title: "My Progress",
@@ -59,7 +69,7 @@ const Sidebar = () => {
     {
       title: "All Examinee",
       route: "/Dashboard/allExaminee",
-      icon: <FaPeopleGroup />,
+      icon: <Users />,
     },
     {
       title: "User Management",
@@ -81,8 +91,8 @@ const Sidebar = () => {
     <div className="flex">
       <div
         className={`${
-          isSidebarOpen ? "w-72" : "w-20"
-        } bg-purple-600 bg-opacity-60 h-auto p-5 pt-8 relative duration-300 text-white`}
+          isSidebarOpen ? "w-72 p-3" : "w-10 p-[6]"
+        } bg-purple-600 bg-opacity-60 h-auto  pt-8 relative duration-300 text-white`}
       >
         <button
           className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color"
@@ -114,7 +124,7 @@ const Sidebar = () => {
             >
               <Link href={Menu.route} className="flex items-center gap-x-4">
                 <span
-                  className={`text-lg ${
+                  className={`text-md ${
                     isActive(Menu.route) ? "text-secondary-color" : ""
                   }`}
                 >
@@ -137,7 +147,7 @@ const Sidebar = () => {
                   pathname === "/" ? "text-secondary-color" : ""
                 }`}
               >
-                🏠
+               <House />
               </span>
               <span
                 className={`origin-left duration-200 ${

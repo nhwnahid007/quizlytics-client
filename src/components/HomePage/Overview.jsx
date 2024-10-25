@@ -80,18 +80,18 @@ const Overview = () => {
             style={{ color: "#2C2F33" }}
           >
             <h2 className="text-3xl font-bold border-b-2 border-gray-300 pb-2 mb-8 text-semibold">
-              Question Type
+              DemoQuestion Type
             </h2>
             <h3 className="text-xl font-semibold text-semibold">
               What is the capital city of France?
             </h3>
-            <div data-aos="fade-left">
+            <div >
               <ul className="mt-3 space-y-2">
                 {["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"].map((option, index) => (
                   <li
                     key={index}
                     className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl data-aos="fade-left" ${
-                      selectedOption === option ? "bg-[#BBF7D0]" : ""
+                      selectedOption === option ? "bg-secondary-color opacity-80" : ""
                     }`}
                   >
                     <input
@@ -108,7 +108,7 @@ const Overview = () => {
                 ))}
               </ul>
             </div>
-            <button className="mt-4 bg-green-500 text-white py-2 px-4 rounded">
+            <button className="mt-4 bg-primary-color text-white py-2 px-4 rounded">
               Next Question
             </button>
           </div>
@@ -117,7 +117,7 @@ const Overview = () => {
         {/* Achievement */}
         <div className="flex flex-col lg:flex-row gap-8 mt-8 lg:pr-8">
           <div
-            data-aos="fade-right"
+            
             className="w-full lg:w-1/2 bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
@@ -143,7 +143,7 @@ const Overview = () => {
             </div>
           </div>
           <div
-            data-aos="fade-left"
+            
             className="w-full lg:w-1/2 bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >

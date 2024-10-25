@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import Image from "next/image";
-import { getLeaders } from "@/requests/get";
+import { getExaminees } from "@/requests/get";
 
 const Leaders = () => {
   const [leaders, setLeaders] = useState([]);
@@ -16,10 +16,31 @@ const Leaders = () => {
   const currentYear = currentDate.getFullYear();
 
   useEffect(() => {
-    const getAllLeaders = async () => {
+    const getAllExaminees = async () => {
       try {
-        const data = await getLeaders();
-        setLeaders(data);
+        const data = await getExaminees();
+
+        // Aggregate marks by userEmail and calculate average
+        const examineeMap = data.reduce((acc, examinee) => {
+          const { userEmail, marks } = examinee;
+          if (!acc[userEmail]) {
+            acc[userEmail] = { userEmail, marks: 0, count: 0, userName: examinee.userName, userImg: examinee.userImg };
+          }
+          acc[userEmail].marks += marks;
+          acc[userEmail].count += 1;
+          return acc;
+        }, {});
+
+        // Calculate average and get the top 5
+        const averagedLeaders = Object.values(examineeMap)
+          .map(examinee => ({
+            ...examinee,
+            marks: (examinee.marks / examinee.count).toFixed(2), // Calculate average and keep 2 decimals
+          }))
+          .sort((a, b) => b.marks - a.marks) // Sort by average marks in descending order
+          .slice(0, 5); // Top 5
+
+        setLeaders(averagedLeaders);
       } catch (error) {
         console.log("Data fetching error", error);
         Swal.fire({
@@ -30,17 +51,17 @@ const Leaders = () => {
         });
       }
     };
-    getAllLeaders();
+    getAllExaminees();
   }, []);
 
   return (
     <div className="leaderboard-container mb-8 mt-7 mx-5">
       <main className="max-w-4xl mx-auto">
-        <h1 className="text-center text-blue-600 text-3xl font-bold mb-6">
+        <h1 className="text-center  text-3xl font-bold mb-6">
           Leaderboard
         </h1>
 
-        <div className="leaderboard bg-[#ADD8E6] p-6 rounded-lg shadow-lg">
+        <div className="leaderboard bg-opacity-70 bg-secondary-color p-6 rounded-lg shadow-lg">
           <div className="flex justify-between mb-4">
             <h2 className=" text-xl font-semibold">
               {currentMonth} {currentYear}
@@ -48,22 +69,21 @@ const Leaders = () => {
           </div>
 
           {/* Leaderboard Top 3 */}
-          <div className="leaderboard-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-end ">
-            {/* 1st place */}
+          <div className="leaderboard-grid grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
             {leaders.slice(0, 3).map((leader, index) => (
-              <div key={leader._id} className="flex flex-col items-center justify-center">
+              <div key={leader.userEmail} className="flex flex-col items-center justify-center">
                 <div className="flex flex-col items-center">
                   <Image
-                    src={leader.userImg || "/default-user.png"} 
+                    src={leader.userImg || "/default-user.png"}
                     alt="user"
                     width={64}
                     height={64}
                     className="rounded-full"
                   />
                   <h3 className="text-lg font-semibold mt-2">
-                    {leader.userName || "No Name show"}
+                    {leader.userName || "No Name"}
                   </h3>
-                  <p className="">QP: {leader.marks || 0}%</p>
+                  <p className="">Average Marks: {leader.marks || 0}%</p>
                 </div>
                 <div className={`w-16 h-16 rounded-t-lg mt-4 flex justify-center items-center ${index === 0 ? 'bg-[#FFD700]' : index === 1 ? 'bg-[#C0C0C0]' : 'bg-[#CD7F32]'}`}>
                   <span className={`text-${index === 0 ? '2xl' : 'xl'} font-bold`}>{index + 1}</span>
@@ -72,12 +92,12 @@ const Leaders = () => {
             ))}
           </div>
 
-          {/* Other ranks */}
+          {/* Leaderboard 4th to 5th places */}
           <div className="mt-6">
             {leaders.slice(3).map((leader, idx) => (
               <div
-                key={leader._id}
-                className="flex items-center justify-between bg-blue-500 p-4 rounded-lg mb-4"
+                key={leader.userEmail}
+                className="flex items-center justify-between bg-primary-color p-4 rounded-lg mb-4"
               >
                 <div className="flex items-center space-x-4">
                   <Image
@@ -89,7 +109,7 @@ const Leaders = () => {
                   />
                   <div>
                     <h4 className=" font-bold">{leader.userName}</h4>
-                    <p className="">QP: {leader.marks || 0}%</p>
+                    <p className="">Average Marks: {leader.marks || 0}%</p>
                   </div>
                 </div>
                 <span className="font-bold text-lg">

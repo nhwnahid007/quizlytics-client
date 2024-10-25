@@ -5,19 +5,20 @@ import { NextResponse } from "next/server";
 export async function middleware(req) {
   // Retrieve the token from the request
   const token = await getToken({ req, secret: process.env.NEXT_PUBLIC_AUTH_SECRET });
-  const pathname = req.nextUrl.pathname
+
+  // If the token exists, the user is authenticated
   if (token) {
-    return NextResponse.next(); 
+    return NextResponse.next(); // Allow the request
   }
 
-  
-  return NextResponse.redirect(new URL(`/login?redirect=${pathname}`, req.url));
+  // If no token is found, redirect the user to the login page
+  return NextResponse.redirect(new URL('/login', req.url));
 }
 
-
+// Define the paths that require authentication
 export const config = {
   matcher: [
-    "/quickExam",
+    "/quickExam*",
     "/Dashboard/:path*",
     '/customQuiz',
     '/quizByLink'
