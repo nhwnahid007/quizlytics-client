@@ -240,14 +240,14 @@ const Page = () => {
                 className="mb-4 p-4 border border-gray-300 rounded-md shadow-md"
               >
                 <h3 className="font-semibold text-lg">{q.question}</h3>
-                <ul className="list-disc list-inside text-gray-700">
+                <ul className="list-disc list-inside ">
                   {q.options.map((option, index) => (
                     <li key={index}>
                       {index}: {option}
                     </li>
                   ))}
                 </ul>
-                <p className="text-gray-500">
+                <p>
                   Correct Answer: {q.correct_answer}
                 </p>
               </div>

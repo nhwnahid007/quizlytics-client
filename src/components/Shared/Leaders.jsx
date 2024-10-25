@@ -57,7 +57,7 @@ const Leaders = () => {
   return (
     <div className="leaderboard-container mb-8 mt-7 mx-5">
       <main className="max-w-4xl mx-auto">
-        <h1 className="text-center  text-3xl font-bold mb-6">
+        <h1 className="text-3xl font-extrabold text-gray-800 text-center mb-6">
           Leaderboard
         </h1>
 
@@ -83,7 +83,7 @@ const Leaders = () => {
                   <h3 className="text-lg font-semibold mt-2">
                     {leader.userName || "No Name"}
                   </h3>
-                  <p className="">Average Marks: {leader.marks || 0}%</p>
+                  <p>Average Marks: {leader.marks || 0}%</p>
                 </div>
                 <div className={`w-16 h-16 rounded-t-lg mt-4 flex justify-center items-center ${index === 0 ? 'bg-[#FFD700]' : index === 1 ? 'bg-[#C0C0C0]' : 'bg-[#CD7F32]'}`}>
                   <span className={`text-${index === 0 ? '2xl' : 'xl'} font-bold`}>{index + 1}</span>
