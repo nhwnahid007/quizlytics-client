@@ -49,14 +49,14 @@ const MakeExam = ({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
-      <div className="bg-secondary-color opacity-75 w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg relative">
-        <Button
+      <div className="bg-orange-400 bg-opacity-70 w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg relative">
+        <button
           onClick={() => router.push("/")}
           className="absolute top-4 right-4 text-black"
         >
           <X size={24} />
-        </Button>
-        <h1 className="text-primary-color font-bold text-center text-3xl">
+        </button>
+        <h1 className="text-black font-bold text-center text-3xl">
           Quick Exam
         </h1>
         <div className="w-full md:w-[480px] mx-auto mt-8 flex justify-between">

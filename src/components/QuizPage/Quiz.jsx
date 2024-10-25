@@ -80,7 +80,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
           </span>
         </div>
         <progress
-          className="progress progress-success w-full mb-2 sm:mb-4 h-2 sm:h-3"
+          className="progres progress-success* w-full mb-2 sm:mb-4 h-2 sm:h-3"
           max="100"
           ref={progressBar}
         ></progress>

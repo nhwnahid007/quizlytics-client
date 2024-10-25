@@ -12,12 +12,12 @@ import Swal from "sweetalert2";
 import useShowResult from "@/app/hooks/useShowResult";
 import { useSession } from "next-auth/react";
 import useExamId from "@/app/hooks/useExamId";
-import Loading from "@/components/Modals/Loading";
 import useAllMCQ from "@/app/hooks/useAllMCQ";
 import { getMCQ } from "@/requests/get";
 import ExamResult from "@/components/Modals/ExamResult";
 import useSearchCategory from "@/app/hooks/useSearchCategory";
 import useSearchLevel from "@/app/hooks/useSearchLevel";
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 
 const Exam = () => {
   const [showMakeExam, setShowMakeExam] = useMakeExam();
@@ -140,7 +140,7 @@ const Exam = () => {
       ) : (
         <>
           {allMCQ.length !== 10 ? (
-            <Loading />
+            <LoadingSpinner />
           ) : !showResult ? (
             <>
               <div className="w-[580px] mx-auto bg-black text-[#ffefd3] rounded-lg mb-3 p-1">
