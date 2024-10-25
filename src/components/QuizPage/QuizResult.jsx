@@ -4,7 +4,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import { Button } from "@/components/ui/button";
+import {Button} from "@/components/ui/button";
 
 import {
   FacebookIcon,
@@ -34,7 +34,7 @@ const QuizResult = ({
   console.log("allQuestions", allQuestions);
   console.log("quizStartKey", quizStartKey);
   // access next auth session
-  const { data: session } = useSession();
+  const {data: session} = useSession();
   const name = session?.user?.name;
   const profile = session?.user?.profile;
   const image = session?.user?.image;
