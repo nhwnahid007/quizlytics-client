@@ -1,17 +1,13 @@
 "use client";
 import React from "react";
 import {Button} from "../ui/button";
-import Link from "next/link";
 
 // react icons
-import { MdOutlineDone } from "react-icons/md";
-import { RxCross1 } from "react-icons/rx";
-
+import {MdOutlineDone} from "react-icons/md";
+import {RxCross1} from "react-icons/rx";
+import Link from "next/link";
 
 const Payments = () => {
-  // const [toggle, setToggle] = useState(false);
-  console.log("process.env.STRIPE_SECRET_KEY",process.env.STRIPE_SECRET_KEY);
-
   return (
     <section className="max-w-full p-[20px] mt-[55px] bg-gray-100">
       <h1 className="text-[30px] font-[500] leading-[40px] text-center">
