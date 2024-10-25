@@ -5,19 +5,40 @@ import "../globals.css";
 import AuthProviders from "@/providers/AuthProviders";
 import Sidebar from "@/components/Shared/Sidebar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
+
 
 export default function RootLayout({ children }) {
   const [queryClient] = useState(() => new QueryClient());
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a loading delay
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 700); // Adjust the delay as needed
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="flex min-h-screen">
       <AuthProviders>
-        <Sidebar />
-        <div className="flex-grow">
-          <QueryClientProvider client={queryClient}>
-            {children}
-          </QueryClientProvider>
-        </div>
+        <QueryClientProvider client={queryClient}>
+          {isLoading ? (
+            <div className="flex justify-center items-center w-full h-full">
+              <LoadingSpinner /> {/* Replace with your actual loading spinner component */}
+            </div>
+          ) : (
+            <>
+              <Sidebar />
+              <div className="flex-grow">
+                {children}
+              </div>
+            </>
+          )}
+        </QueryClientProvider>
       </AuthProviders>
     </div>
   );
