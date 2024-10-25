@@ -3,6 +3,7 @@ import getMCQ, { getCustomQuiz } from "@/requests/get";
 import React, { useEffect, useState } from "react";
 import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 
 const QuizScreen = ({
@@ -51,9 +52,9 @@ const QuizScreen = ({
   if (isLoading) {
     return (
       <div className="max-w-6xl mx-auto text-center  py-30">
-        <h1 className="text-4xl font-semibold my-20">
-          Quiz is loading. Please wait...
-        </h1>
+        
+          <LoadingSpinner />
+       
       </div>
     );
   }
