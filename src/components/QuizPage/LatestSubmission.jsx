@@ -61,7 +61,7 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
       </h2>
 
       {isLoading ? (
-        <LoadingSpinner />
+        <div className="text-center"><LoadingSpinner></LoadingSpinner>   </div>
       ) : latestSubmission?.questions?.length > 0 ? (
         latestSubmission.questions.map((item, idx) => (
           <SubmitCard

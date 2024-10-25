@@ -5,6 +5,7 @@ import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import {loadStripe} from "@stripe/stripe-js";
 import {Elements} from "@stripe/react-stripe-js";
 import CheckoutPage from "@/components/CheckoutPage/CheckoutPage";
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
@@ -46,7 +47,7 @@ const PaymentCard = () => {
           </p>
         </div>
       ) : (
-        <p className="text-center">Loading price...</p>
+        <p className="text-center"><LoadingSpinner /></p>
       )}
 
       {/* Only render the Elements component when clientSecret is available */}
