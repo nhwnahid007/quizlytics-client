@@ -8,7 +8,6 @@ import {RxCross1} from "react-icons/rx";
 import Link from "next/link";
 
 const Payments = () => {
-  console.log(process.env.STRIPE_SECRET_KEY);
   return (
     <section className="max-w-full p-[20px] mt-[55px] bg-gray-100">
       <h1 className="text-[30px] font-[500] leading-[40px] text-center">
