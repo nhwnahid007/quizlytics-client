@@ -10,6 +10,7 @@ import { RxCross1 } from "react-icons/rx";
 
 const Payments = () => {
   // const [toggle, setToggle] = useState(false);
+  console.log("process.env.STRIPE_SECRET_KEY",process.env.STRIPE_SECRET_KEY);
 
   return (
     <section className="max-w-full p-[20px] mt-[55px] bg-gray-100">
