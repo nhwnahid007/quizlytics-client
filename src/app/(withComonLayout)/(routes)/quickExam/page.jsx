@@ -52,9 +52,8 @@ const Page = () => {
           />
         )}
       </div>
-      
+
       {/* Footer */}
-     
     </div>
   );
 };

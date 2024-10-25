@@ -21,9 +21,9 @@ const CustomExam = ({ setCustomExam, setQuizKey }) => {
             type="text"
             name="quizKey"
             onChange={handleChange}
-            className="text-center font-bold"
+            className="text-center font-bold bg-black text-gray-300"
           />
-  
+
           <Button
             onClick={handleStart}
             type="submit"
