@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -9,10 +9,7 @@ import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
-const PaymentCard = () => {
-  const searchParams = useSearchParams();
-  const prices = searchParams.get("price");
-  const plans = searchParams.get("plan");
+const PaymentCardContent = ({ prices, plans }) => {
   const [clientSecret, setClientSecret] = useState(null);
 
   useEffect(() => {
@@ -52,6 +49,18 @@ const PaymentCard = () => {
         </Elements>
       )}
     </div>
+  );
+};
+
+const PaymentCard = () => {
+  const searchParams = useSearchParams();
+  const prices = searchParams.get("price");
+  const plans = searchParams.get("plan");
+
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <PaymentCardContent prices={prices} plans={plans} />
+    </Suspense>
   );
 };
 
