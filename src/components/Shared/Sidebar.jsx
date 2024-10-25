@@ -38,9 +38,7 @@ const Sidebar = () => {
   });
 
   // Handle loading and error states if necessary
-  if (sessionLoading || roleLoading) return <div>Loading...</div>;
-  if (sessionError || roleError) return <div>Error loading data</div>;
-  console.log(role);
+
 
   const isActive = (route) => pathname === route;
 
