@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
@@ -9,11 +9,16 @@ import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
-const PaymentCardContent = ({ prices, plans }) => {
+const PaymentCard = () => {
+  const searchParams = useSearchParams();
+  const prices = searchParams.get("price");
+  const plans = searchParams.get("plan");
   const [clientSecret, setClientSecret] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (prices) {
+      // Fetch clientSecret from the server
       fetch("/api/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -24,14 +29,25 @@ const PaymentCardContent = ({ prices, plans }) => {
         }),
       })
         .then((res) => res.json())
-        .then((data) => setClientSecret(data.clientSecret));
+        .then((data) => {
+          setClientSecret(data.clientSecret);
+          setLoading(false); // Set loading to false after fetching clientSecret
+        })
+        .catch((error) => {
+          console.error("Error fetching client secret:", error);
+          setLoading(false);
+        });
+    } else {
+      setLoading(false); // If no prices, stop loading
     }
   }, [prices]);
 
   return (
     <div className="max-w-full mx-auto p-6 bg-white shadow-md rounded-lg mt-10 md:mt-20 min-h-[calc(100vh-360px)]">
       <h1 className="text-4xl font-bold text-center mb-4">Payment Summary</h1>
-      {prices ? (
+      {loading ? (
+        <LoadingSpinner />
+      ) : prices ? (
         <div className="text-center">
           <p className="text-2xl font-bold text-secondary-color">
             <span className="text-primary-color">Plan:</span> {plans}
@@ -39,28 +55,16 @@ const PaymentCardContent = ({ prices, plans }) => {
           <p className="text-2xl font-bold text-red-500">
             <span className="text-green-500">Pay:</span> ${prices}
           </p>
+          {clientSecret && (
+            <Elements stripe={stripePromise} options={{ clientSecret }}>
+              <CheckoutPage clientSecret={clientSecret} prices={prices} />
+            </Elements>
+          )}
         </div>
       ) : (
-        <p className="text-center"><LoadingSpinner /></p>
-      )}
-      {clientSecret && (
-        <Elements stripe={stripePromise} options={{ clientSecret }}>
-          <CheckoutPage clientSecret={clientSecret} prices={prices} />
-        </Elements>
+        <p className="text-center">Invalid price. Please check your input.</p>
       )}
     </div>
-  );
-};
-
-const PaymentCard = () => {
-  const searchParams = useSearchParams();
-  const prices = searchParams.get("price");
-  const plans = searchParams.get("plan");
-
-  return (
-    <Suspense fallback={<LoadingSpinner />}>
-      <PaymentCardContent prices={prices} plans={plans} />
-    </Suspense>
   );
 };
 
