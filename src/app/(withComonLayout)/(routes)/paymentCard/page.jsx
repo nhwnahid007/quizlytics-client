@@ -10,37 +10,46 @@ import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
 const PaymentCard = () => {
-  const searchParams = useSearchParams();
-  const prices = searchParams.get("price");
-  const plans = searchParams.get("plan");
+  const [prices, setPrices] = useState(null);
+  const [plans, setPlans] = useState(null);
   const [clientSecret, setClientSecret] = useState(null);
   const [loading, setLoading] = useState(true);
+  
+  const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (prices) {
-      // Fetch clientSecret from the server
-      fetch("/api/create-payment-intent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          prices: convertToSubcurrency(prices),
-          email: "user@example.com", // Replace with actual user email
-          userName: "John Doe", // Replace with actual user name
-        }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setClientSecret(data.clientSecret);
-          setLoading(false); // Set loading to false after fetching clientSecret
+    // Ensure this code only runs on the client
+    if (typeof window !== "undefined") {
+      const price = searchParams.get("price");
+      const plan = searchParams.get("plan");
+      setPrices(price);
+      setPlans(plan);
+
+      if (price) {
+        // Fetch clientSecret from the server
+        fetch("/api/create-payment-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            prices: convertToSubcurrency(price),
+            email: "user@example.com", // Replace with actual user email
+            userName: "John Doe", // Replace with actual user name
+          }),
         })
-        .catch((error) => {
-          console.error("Error fetching client secret:", error);
-          setLoading(false);
-        });
-    } else {
-      setLoading(false); // If no prices, stop loading
+          .then((res) => res.json())
+          .then((data) => {
+            setClientSecret(data.clientSecret);
+            setLoading(false); // Set loading to false after fetching clientSecret
+          })
+          .catch((error) => {
+            console.error("Error fetching client secret:", error);
+            setLoading(false);
+          });
+      } else {
+        setLoading(false); // If no prices, stop loading
+      }
     }
-  }, [prices]);
+  }, [searchParams]);
 
   return (
     <div className="max-w-full mx-auto p-6 bg-white shadow-md rounded-lg mt-10 md:mt-20 min-h-[calc(100vh-360px)]">
