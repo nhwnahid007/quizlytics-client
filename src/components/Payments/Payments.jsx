@@ -10,7 +10,6 @@ import { RxCross1 } from "react-icons/rx";
 
 const Payments = () => {
   // const [toggle, setToggle] = useState(false);
-
   return (
     <section className="max-w-full p-[20px] mt-[55px] bg-gray-100">
       <h1 className="text-[30px] font-[500] leading-[40px] text-center">
