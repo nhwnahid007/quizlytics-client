@@ -18,7 +18,7 @@ const MobileNav = () => {
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         {/* Icon to trigger the Sheet (side menu) */}
         <SheetTrigger>
-          <AlignJustify className="h-10 mt-1 w-10 md:h-12 md:w-12 my-auto text-primary-color" />
+          <AlignJustify className="h-6 mt-2 w-8 md:h-10 md:w-10 my-auto text-primary-color" />
         </SheetTrigger>
 
         {/* Content inside the Sheet */}
