@@ -17,7 +17,7 @@ const Footer = () => {
           {/* Footer background set to black and text to white */}
           <div className="footer-start mb-8">
             <Image
-              src="https://i.ibb.co.com/Pt6bk27/ash.jpg"
+              src="https://i.ibb.co.com/dW1jRgp/quizlytics-logo-removebg-preview.png"
               height={100}
               width={100}
               alt="icon"

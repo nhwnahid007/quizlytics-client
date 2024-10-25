@@ -9,7 +9,7 @@ import HowItWorks from "@/components/HomePage/HowItWorks";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <Banner />
       <HowItWorks />
       <HelloTeacher></HelloTeacher>

@@ -47,9 +47,9 @@ const Header = () => {
         {/* Brand Logo */}
         <Link
           href="/"
-          className="text-3xl items-center md:ml-5 md:text-4xl text-purple-600 font-bold"
+          className="text-3xl items-center md:ml-5 md:text-4xl text-primary-color font-bold"
         >
-          Quiz<span className="text-secondary-color">lytics</span>
+          Quiz<span className="text-[#FF7303]">lytics</span>
         </Link>
 
         {/* Main Navigation for larger screens */}

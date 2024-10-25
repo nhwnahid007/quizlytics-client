@@ -1,10 +1,9 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import {FaQuoteLeft} from "react-icons/fa";
 import {useState, useEffect} from "react";
-import axios from "axios";
-import {FaStar} from "react-icons/fa";
+import axios from 'axios'
+import {FaQuoteLeft, FaStar} from "react-icons/fa";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -34,8 +33,8 @@ const Feedback = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 py-16 overflow-hidden">
-      <h1 className="text-4xl font-bold text-black text-center mb-12">
+    <div className="bg-gray-100 p-10 overflow-hidden">
+      <h1 className="text-4xl font-bold text-black text-center mb-8">
         Feedback & Reviews
       </h1>
 

@@ -3,17 +3,20 @@ import useRouterHook from "@/app/hooks/useRouterHook";
 import { postUserWithProvider } from "@/requests/post";
 import { signIn, useSession } from "next-auth/react";
 import React, { useEffect } from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 import "./CustomCSS/style.css";
 import { Button } from "../ui/button";
+import { useSearchParams } from "next/navigation";
 
 const SocialAuth = () => {
   const router = useRouterHook();
   const { data: session, status } = useSession();
-
+  const SearchParams = useSearchParams()
+  const path = SearchParams.get('redirect')
   const handleSocialLogin = async (provider) => {
-    const resp = await signIn(provider, { redirect: false });
+    const resp = await signIn(provider, { 
+      redirect: true,
+      callbackUrl: path? path: '/' });
     console.log(resp);
   };
 
@@ -23,7 +26,12 @@ const SocialAuth = () => {
         const name = session?.user?.name;
         const email = session?.user?.email;
         const image = session?.user?.image;
-        const newUser = { name, email, image };
+        const newUser = { 
+          name, 
+          email, 
+          image,
+          role: "user" // Added the default role
+        };
 
         try {
           const respon = await postUserWithProvider(newUser);
@@ -39,7 +47,7 @@ const SocialAuth = () => {
                 popup: "popup-successfull",
               },
             });
-            router.push("/");
+            router.push(path);
           } else if (respon.status === 409) {
             Swal.fire({
               position: "top-center",
@@ -51,7 +59,7 @@ const SocialAuth = () => {
                 popup: "popup-successfull",
               },
             });
-            router.push("/");
+            router.push();
           }
         } catch (error) {
           console.error("social login error", error);

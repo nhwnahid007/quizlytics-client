@@ -3,55 +3,33 @@ import getMCQ, { getCustomQuiz } from "@/requests/get";
 import React, { useEffect, useState } from "react";
 import QuizResult from "./QuizResult";
 import Quiz from "./Quiz";
-import { useSession } from "next-auth/react";
-import Swal from "sweetalert2";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 
-const QuizScreen = ({ quizKey }) => {
-  const [allQuestions, setAllQuestion] = useState();
-
-  const [quizSet, setQuizSet] = useState();
-
-  const [isLoading, setIsLoading] = useState(true);
-
+const QuizScreen = ({
+  quizKey,
+  allQuestions = [], // Default to an empty array
+  quizSet,
+  isLoading,
+  searchCategory,
+  searchLavel,
+  artLink,
+}) => {
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
 
   const [markedAnswer, setMarkedAnswer] = useState(
     new Array(allQuestions?.length)
   );
 
-  console.log(markedAnswer);
+  // console.log("all questions", allQuestions);
   // console.log(quizKey);
 
   const isQuizEnded = currentQuizIndex === allQuestions?.length;
 
-  useEffect(() => {
-    const getAllMCQ = async () => {
-      try {
-        setAllQuestion([]);
-        const data = await getCustomQuiz(quizKey);
-        // console.log("data", data);
-        setQuizSet(data);
-        setAllQuestion(data[0].quizArr);
-        setIsLoading(false);
-        // console.log(allQuestions);
-      } catch (error) {
-        console.log("data fetching error", error);
-        Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: "Something went wrong! Try a different Key!!",
-          toast: true,
-        });
-      }
-    };
-    getAllMCQ();
-  }, [quizKey]);
-
-  console.log(allQuestions);
+  // console.log(allQuestions);
 
   const calculateResult = () => {
     let correctAnswers = 0;
-    allQuestions.forEach((element, index) => {
+    allQuestions?.forEach((element, index) => {
       if (element.correct_answer == markedAnswer[index]) {
         correctAnswers++;
       }
@@ -64,18 +42,22 @@ const QuizScreen = ({ quizKey }) => {
     };
   };
 
+  // Check if allQuestions is an array
+  if (!Array.isArray(allQuestions)) {
+    console.error("allQuestions is not an array:", allQuestions);
+    return <div>Error: Questions data is not available.</div>;
+  }
+
   if (isLoading) {
     return (
-      <div className="max-w-6xl mx-auto text-center py-30">
-        <h1 className="text-4xl font-semibold my-20">
-          Quiz is loading. Please wait...
-        </h1>
+      <div className="max-w-6xl mx-auto text-center  py-30">
+        <LoadingSpinner />
       </div>
     );
   }
 
   return (
-    <div className="h-auto">
+    <div className="h-screen">
       {isQuizEnded ? (
         <QuizResult
           quizSet={quizSet}
@@ -83,6 +65,9 @@ const QuizScreen = ({ quizKey }) => {
           result={calculateResult()}
           markedAnswer={markedAnswer}
           allQuestions={allQuestions}
+          searchLavel={searchLavel}
+          searchCategory={searchCategory}
+          artLink={artLink}
           isQuizEnded
         />
       ) : (

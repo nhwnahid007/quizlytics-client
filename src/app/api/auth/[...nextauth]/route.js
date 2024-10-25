@@ -3,7 +3,6 @@ import NextAuth from "next-auth/next"
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
-import bcrypt from 'bcrypt';
 import { signIn } from "next-auth/react";
 
 export const authOption = {
@@ -29,8 +28,13 @@ export const authOption = {
                 if (!currentUser) {
                     return null;
                 }
-                const passwordMatched = bcrypt.compareSync(password, currentUser.password);
-                if (!passwordMatched) {
+                // bcrypt password check
+                // const passwordMatched = bcrypt.compareSync(password, currentUser.password);
+                // if (!passwordMatched) {
+                //     return null;
+                // }
+                // Want to validate the password directly
+                if (currentUser.password !== password) { 
                     return null;
                 }
                 return currentUser;
@@ -65,4 +69,3 @@ export const authOption = {
 const handler = NextAuth(authOption);
 
 export { handler as GET, handler as POST };
-

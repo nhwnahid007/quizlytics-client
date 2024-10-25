@@ -1,7 +1,7 @@
+"use client";
 import useRouterHook from "@/app/hooks/useRouterHook";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import Link from "next/link";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { Button } from "@/components/ui/button";
@@ -16,6 +16,7 @@ import {
   RedditShareButton,
   RedditIcon,
 } from "next-share";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 const QuizResult = ({
   result,
@@ -23,6 +24,9 @@ const QuizResult = ({
   allQuestions,
   quizStartKey,
   quizSet,
+  searchCategory,
+  searchLavel,
+  artLink,
 }) => {
   const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -35,14 +39,15 @@ const QuizResult = ({
   const profile = session?.user?.profile;
   const image = session?.user?.image;
   const email = session?.user?.email;
-
-  console.log(quizSet);
+  console.log(session);
 
   const attemptDetails = {
     quizStartKey,
-    quizTitle: quizSet[0].quizTitle,
-    quizCategory: quizSet[0].quizCategory,
-    quizCreator: quizSet[0].quizCreator,
+    date: new Date(),
+    linkId: "1001",
+    quizTitle: quizSet ? quizSet[0].quizTitle : searchCategory,
+    quizCategory: quizSet ? quizSet[0].quizCategory : searchLavel,
+    quizCreator: quizSet ? quizSet[0].quizCreator : "AI",
     questions: allQuestions,
     answers: markedAnswer,
     userName: name,
@@ -54,20 +59,35 @@ const QuizResult = ({
 
   console.log(attemptDetails);
 
+  let postUrl = "";
+  if (quizStartKey) {
+    postUrl = "https://quizlytics.jonomukti.org/saveHistory";
+  } else if (searchCategory) {
+    postUrl = "https://quizlytics.jonomukti.org/saveAiQuiz";
+  } else {
+    postUrl = "https://quizlytics.jonomukti.org/linkQuiz";
+  }
+
   const handleSaveRecord = async () => {
     setLoading(true);
-    const res = await axios.post(
-      "https://quizlytics.jonomukti.org/saveHistory",
-      attemptDetails
-    );
-
-    if (res.data.insertedId) {
+    try {
+      const res = await axios.post(postUrl, attemptDetails);
+      if (res.data.insertedId) {
+        setLoading(false);
+        setIsDisabled(false);
+        Swal.fire({
+          title: "Success",
+          text: "Recorded successfully!",
+          icon: "success",
+          toast: true,
+        });
+      }
+    } catch (error) {
       setLoading(false);
-      setIsDisabled(false);
       Swal.fire({
-        title: "Success",
-        text: "Recorded successfully!",
-        icon: "success",
+        title: "Error",
+        text: "Failed to save record. Please try again.",
+        icon: "error",
         toast: true,
       });
     }
@@ -79,12 +99,22 @@ const QuizResult = ({
     router.push("/");
   };
 
+  let viewSubmission = ``;
+
+  if (quizStartKey) {
+    viewSubmission = `/viewSubmission/${quizStartKey}`;
+  } else if (searchCategory) {
+    viewSubmission = `/viewSubmissionAi/${searchCategory}`;
+  } else {
+    viewSubmission = `viewSubmissionByLink/${email}`;
+  }
+
   const handleViewAnswers = () => {
-    router.push(`/viewSubmission/${quizStartKey}`);
+    router.push(viewSubmission);
   };
 
   if (loading) {
-    return "Progress is being saved in database! Please Wait!!";
+    <LoadingSpinner></LoadingSpinner>;
   }
 
   // Determine the remark based on the score
@@ -103,34 +133,34 @@ const QuizResult = ({
   }
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
-      <div className="bg-[#ffefd3] w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg">
+    <div className="fixed h-screen inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
+      <div className="bg-orange-400 bg-opacity-70 w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg">
         <div
           className={`w-[200px] h-[200px] mx-auto my-8 border-8 p-8 rounded-full flex justify-center items-center ${remarkColor}`}
         >
-          <h1 className={`text-4xl font-bold ${remarkColor}`}>
+          <h1 className={`text-4xl font-bold text-primary-color`}>
             {result?.correctAnswers} / {result?.totalQuiz}
           </h1>
         </div>
         <h1 className={`mb-5 text-center text-4xl ${remarkColor}`}>
-          {result?.percentageMark}%
+          {/* {result?.percentageMark}% */}
         </h1>
         <div className="my-4 flex gap-4 justify-center items-center">
-          <Button onClick={handleSaveRecord} variant="destructive">
-            Save Progress
+          <Button className="px-10 bg-primary-color" onClick={handleSaveRecord}>
+            Submit
           </Button>
           <Button
             onClick={handleViewAnswers}
-            variant="destructive"
+            className="bg-primary-color"
             disabled={isDisabled}
           >
             View Submission
           </Button>
-          <Button onClick={handleGoToHome} variant="destructive">
+          <Button onClick={handleGoToHome} className="bg-primary-color">
             Back to Home
           </Button>
         </div>
-        <h1 className="text-[#30d158] text-center text-4xl mb-10">
+        <h1 className="text-white text-center text-4xl mb-10">
           You achieved {result?.percentageMark}% mark!
         </h1>
         {/* <div>

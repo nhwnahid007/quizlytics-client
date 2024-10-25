@@ -2,133 +2,91 @@ import React from "react";
 
 const page = () => {
   return (
-    <div
-      className="bg-gray-50 bg-right bg-no-repeat text-center text-black"
-    >
+    <div className="bg-gray-50 bg-right bg-no-repeat text-center text-black">
       <div className="inset-0">
         <div className="w-full lg:w-[70%] mx-auto py-8">
-          <h1 className=" mt-10 text-4xl md:text-6xl text-center font-bold text-primary-color mb-8">
+          <h1 className="mt-10 text-4xl md:text-6xl text-center font-bold text-primary-color mb-8">
             About Quizlytics
           </h1>
           <p className="text-black text-lg md:text-xl md:mx-auto mx-4 leading-relaxed mb-8">
             Welcome to <span className="font-bold">Quizlytics</span>—your
-            ultimate platform for mastering multiple-choice questions (MCQs)
-            tailored specifically for students and job seekers in Bangladesh.
-            Whether you&apos;re preparing for board exams or aiming for success
-            in job recruitment tests, Quizlytics is here to provide an engaging
-            and effective learning environment. Our platform is designed with
-            the needs of students and competitive exam aspirants in mind,
-            offering a wide range of quiz categories, timed tests, and features
-            that help you track your progress and enhance your knowledge.
+            ultimate platform for mastering MCQs tailored for students and job
+            seekers in Bangladesh. Whether for board exams or recruitment
+            tests, Quizlytics offers an engaging and effective learning
+            environment. Track your progress and enhance your knowledge with our
+            timed tests and detailed feedback.
           </p>
-          <h2 className="text-3xl font-bold text-primary-color mb-4">
-            Key Features:
-          </h2>
+          <h2 className="text-4xl font-bold text-primary-color mb-4">Key Features</h2>
           <ul className="text-black my-7 grid md:grid-cols-2 grid-cols-1 gap-5 md:mx-auto mx-4 text-lg md:text-xl">
             <li className="p-4 rounded-md bg-gray-200">
-              <strong>🗂️ Quiz Categories:</strong>
-              <p className="mt-2">
-                Explore a wide range of quiz categories such as Science,
-                History, Math, and more, all dynamically fetched from the
-                backend. Our quizzes are designed to cover the key subjects
-                relevant to both academic and professional exams in Bangladesh.
-                Each category is easily accessible, allowing you to filter
-                through quizzes with just a click of a button or tab.
+              <strong className="text-2xl">🗂️ Quiz Categories</strong>
+              <p className="mt-2 text-base">
+                Access a variety of quiz categories like Science, History, and
+                Math, designed to cover key academic and professional exam
+                topics.
               </p>
             </li>
             <li className="p-4 rounded-md bg-gray-200">
-              <strong>⏳ Timed Quizzes:</strong>
-              <p className="mt-2">
-                Every quiz on Quizlytics comes with a configurable time limit,
-                ensuring you get a real exam-like experience. A countdown timer
-                is prominently displayed to keep you aware of the remaining
-                time. As the time nears the end (under 30 seconds), the timer
-                turns red to create a sense of urgency. Once the time runs out,
-                the quiz is automatically submitted, and you are redirected to
-                the results page.
+              <strong className="text-2xl">⏳ Timed Quizzes</strong>
+              <p className="mt-2 text-base">
+                Experience real exam scenarios with timed quizzes and a
+                countdown that turns red in the last 30 seconds.
               </p>
             </li>
             <li className="p-4 rounded-md bg-gray-200">
-              <strong>🔄 Limited Quiz Attempts:</strong>
-              <p className="mt-2">
-                To ensure fairness and maintain the challenge, each quiz has a
-                limit on the number of attempts. This feature encourages users
-                to thoroughly prepare before attempting quizzes and adds an
-                element of strategy to the learning process. Once you&apos;ve
-                reached the maximum allowed attempts, the quiz becomes
-                inaccessible, helping ensure a balanced competition.
+              <strong className="text-2xl">🔄 Limited Attempts</strong>
+              <p className="mt-2 text-base">
+                Each quiz comes with limited attempts, encouraging you to
+                prepare thoroughly and adding strategic value to your learning.
               </p>
             </li>
             <li className="p-4 rounded-md bg-gray-200">
-              <strong>📊 Quiz History:</strong>
-              <p className="mt-2">
-                Track your progress over time with our comprehensive quiz
-                history feature. Each quiz attempt is stored, allowing you to
-                view key details such as your score, time taken, and answers
-                submitted. This feature helps you identify areas for improvement
-                and provides an insightful overview of your learning journey.
+              <strong className="text-2xl">📊 Quiz History</strong>
+              <p className="mt-2 text-base">
+                Track your progress over time with detailed quiz history,
+                showing scores, time taken, and submitted answers.
               </p>
             </li>
             <li className="p-4 rounded-md bg-gray-200">
-              <strong>📈 Instant Results & Detailed Feedback:</strong>
-              <p className="mt-2">
-                Get instant results as soon as you complete a quiz. You&apos;ll
-                receive a detailed summary of your performance, including a
-                breakdown of the correct answers and a comparison with your own
-                selections. This immediate feedback helps you identify mistakes
-                and understand the correct solutions.
+              <strong className="text-2xl">📈 Instant Results</strong>
+              <p className="mt-2 text-base">
+                Get instant feedback with detailed result breakdowns to help you
+                learn from mistakes and improve.
               </p>
             </li>
             <li className="p-4 rounded-md bg-gray-200">
-              <strong>🏅 Badges & Achievements:</strong>
-              <p className="mt-2">
-                Motivate yourself with our badge and achievement system! Earn
-                badges for mastering specific quiz topics, achieving top ranks,
-                or completing challenges. All earned badges are proudly
-                displayed in your user profile, encouraging you to strive for
-                new accomplishments and track your progress toward becoming a
-                quiz master.
+              <strong className="text-2xl">🏅 Badges & Achievements</strong>
+              <p className="mt-2 text-base">
+                Earn badges for mastering topics and completing challenges, and
+                showcase them on your profile.
               </p>
             </li>
             <li className="p-4 rounded-md bg-gray-200">
-              <strong>📤 Social Sharing:</strong>
-              <p className="mt-2">
-                Share your quiz results and achievements with friends and family
-                on popular social media platforms like Facebook, Twitter, and
-                Instagram. This feature promotes friendly competition and
-                encourages others to join the platform and test their knowledge.
-                Social sharing also helps spread the word about Quizlytics and
-                boosts community engagement.
+              <strong className="text-2xl">📤 Social Sharing</strong>
+              <p className="mt-2 text-base">
+                Share your achievements on social media platforms to inspire
+                others and boost engagement.
               </p>
             </li>
             <li className="p-4 rounded-md bg-gray-200">
-              <strong>🗣️ Quiz Community Forum:</strong>
-              <p className="mt-2">
-                Engage with fellow quiz enthusiasts in our community forum.
-                Here, you can discuss quiz topics, share tips and strategies,
-                and ask questions. The forum fosters a sense of community,
-                allowing users to connect with like-minded individuals and stay
-                motivated throughout their learning journey.
+              <strong className="text-2xl">🗣️ Community Forum</strong>
+              <p className="mt-2 text-base">
+                Join the community to discuss quizzes, share strategies, and
+                connect with fellow learners.
               </p>
             </li>
             <li className="p-4 rounded-md bg-gray-200">
-              <strong>📝 Articles & Resources:</strong>
-              <p className="mt-2">
-                Our platform also features a section dedicated to articles and
-                resources on a wide range of topics. From study tips and exam
-                strategies to insights into quiz trends, our regularly updated
-                content keeps users informed and engaged. Whether you&apos;re
-                preparing for a specific exam or looking to expand your general
-                knowledge, this section offers valuable guidance and support.
+              <strong className="text-2xl">📝 Articles & Resources</strong>
+              <p className="mt-2 text-base">
+                Access valuable articles and resources to stay informed and
+                improve your exam preparation.
               </p>
             </li>
             <li className="p-4 rounded-md bg-gray-200">
-              <strong>📥 User Feedback:</strong>
-              <p className="mt-2">
-                We value user feedback at Quizlytics. You can easily share your
-                thoughts, rate quizzes, and provide suggestions to help us
-                improve the platform. Your input is essential in making
-                Quizlytics the best possible tool for your exam preparation.
+              <strong className="text-2xl">📥 User Feedback</strong>
+              <p className="mt-2 text-base">
+                Share your feedback to help us improve Quizlytics and make it
+                even better for exam preparation.
               </p>
             </li>
           </ul>
