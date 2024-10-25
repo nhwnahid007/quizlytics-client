@@ -34,7 +34,7 @@ const Banner = () => {
         <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-8 lg:px-20 pt-16">
           <div className="w-full lg:w-[70%] md:pr-32">
             <div className="w-full md:pl-5 md:w-[683px]">
-              <h1 className="  md:text-3xl   lg:text-5xl font-bold text-[#333333] mb-2 lg:mb-14 md:h-7 lg:h-12">
+              <h1 className="  md:text-3xl   lg:text-5xl font-bold text-[#333333] mb-2 md:mb-5 lg:mb-14 md:h-7 lg:h-12">
                 <Typewriter
                 options={{
                   strings:"Challenge Your Mind with Fun Quizzes",
