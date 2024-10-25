@@ -4,6 +4,7 @@ import React from "react";
 import {FaFacebook, FaTwitter, FaLinkedin, FaInstagram} from "react-icons/fa";
 
 const Footer = () => {
+  // new update date
   const currentYear = new Date().getFullYear();
 
   return (
