@@ -107,7 +107,6 @@ const MakeExam = ({
           <Button
             onClick={handleStart}
             className="btn bg-primary-color text-white text-lg px-12"
-            className="btn bg-primary-color text-white text-lg px-12"
           >
             Start
           </Button>
