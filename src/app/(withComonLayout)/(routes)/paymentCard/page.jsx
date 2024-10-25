@@ -5,6 +5,7 @@ import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutPage from "@/components/CheckoutPage/CheckoutPage";
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY === undefined) {
   throw new Error("NEXT_PUBLIC_STRIPE_PUBLIC_KEY is not defined");
@@ -30,7 +31,7 @@ const PaymentCard = () => {
           </p>
         </div>
       ) : (
-        <p className="text-center">Loading price...</p>
+        <p className="text-center"><LoadingSpinner /></p>
       )}
       <Elements
         stripe={stripePromise}
