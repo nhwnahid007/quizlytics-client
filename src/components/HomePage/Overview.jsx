@@ -85,7 +85,7 @@ const Overview = () => {
             <h3 className="text-xl font-semibold text-semibold">
               What is the capital city of France?
             </h3>
-            <div data-aos="fade-left">
+            <div >
               <ul className="mt-3 space-y-2">
                 {["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"].map((option, index) => (
                   <li
@@ -117,7 +117,7 @@ const Overview = () => {
         {/* Achievement */}
         <div className="flex flex-col lg:flex-row gap-8 mt-8 lg:pr-8">
           <div
-            data-aos="fade-right"
+            
             className="w-full lg:w-1/2 bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
@@ -143,7 +143,7 @@ const Overview = () => {
             </div>
           </div>
           <div
-            data-aos="fade-left"
+            
             className="w-full lg:w-1/2 bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
