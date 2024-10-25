@@ -69,7 +69,7 @@ const ExamineeList = () => {
 
   return (
     <div className="p-4 max-w-7xl mx-auto">
-      <div className="text-center my-5 text-3xl font-bold">All Examinees</div>
+      <div className="text-3xl font-extrabold my-5 text-gray-800 text-center">All Examinees</div>
 
       <div className="flex flex-col sm:flex-row justify-between mb-4 gap-3">
         <input

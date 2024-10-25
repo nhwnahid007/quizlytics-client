@@ -46,7 +46,7 @@ const Overview = () => {
 
   return (
     <div className=" py-8 bg-gray-100">
-      <div className="w-[90%] md:max-w-6xl mx-auto">
+      <div className="w-[90%]  max-w-6xl mx-auto">
         <h1
           className="text-4xl font-bold text-center text-semibold"
           style={{ color: "#2C2F33" }}
@@ -55,9 +55,9 @@ const Overview = () => {
         </h1>
 
         {/* Trending Topics & Question Type */}
-        <div className="flex flex-col md:flex-row gap-12 mt-12">
+        <div className="flex flex-col lg:flex-row gap-8 mt-12">
           <div
-            className="w-full md:w-[65%] bg-white bg-opacity-90 rounded-2xl p-8"
+            className="w-full lg:w-[65%] bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
             <h2 className="text-3xl font-bold pb-2 mb-4 text-semibold">
@@ -76,7 +76,7 @@ const Overview = () => {
           </div>
      
           <div
-            className="w-full md:w-[35%] bg-white bg-opacity-90 rounded-2xl p-8"
+            className="w-full lg:w-[35%] bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
             <h2 className="text-3xl font-bold border-b-2 border-gray-300 pb-2 mb-8 text-semibold">
