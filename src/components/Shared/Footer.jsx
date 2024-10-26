@@ -4,6 +4,7 @@ import React from "react";
 import {FaFacebook, FaTwitter, FaLinkedin, FaInstagram} from "react-icons/fa";
 
 const Footer = () => {
+  // new update date
   const currentYear = new Date().getFullYear();
 
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
       <div className="absolute bottom-0 right-0 bg-pink-300 opacity-10 rounded-full blur-3xl animate-pulse"></div>
 
       <div className="mx-auto">
-        <div className="text-black p-10 bg-gray-100 shadow-lg flex flex-col md:flex-row justify-between">
+        <div className="text-black p-10 bg-gray-100 shadow-lg flex flex-col lg:flex-row justify-between">
           {/* Footer background set to black and text to white */}
           <div className="footer-start mb-8">
             <Image
