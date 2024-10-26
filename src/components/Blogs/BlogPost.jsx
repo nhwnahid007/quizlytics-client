@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { Router } from 'next/router';
 
 export default function BlogPost() {
   const posts = [
@@ -42,19 +43,15 @@ export default function BlogPost() {
 
   // Create unique slugs only for posts that match the search term
   const relevantSlugs = [...new Set(filteredPosts.map((post) => post.slug))];
-
+  const handleclick = ()=>{
+    Router.push("/quickExam");
+  }
   return (
     <div className="container mx-auto mt-10 px-4 py-12 min-h-screen">
       <h1 className="text-4xl font-bold text-center mb-8 text-primary-color">Our Blog</h1>
 
       {/* New AI Exam Section Link */}
-      <div className="flex justify-center mb-8">
-        <Link href="/quickExam">
-          <button className="px-4 py-2 bg-primary-color text-white rounded-lg hover:bg-primary-dark transition duration-300">
-            Test Your Skills on AI-Generated Questions
-          </button>
-        </Link>
-      </div>
+      
 
       {/* Search Input */}
       <div className="flex justify-center mb-4">
@@ -125,15 +122,21 @@ export default function BlogPost() {
             </div>
           ))
         ) : (
-          <p className="text-center text-gray-500">No posts found.</p>
+          <p className="text-center text-primary-color font-bold text-2xl">No posts found.</p>
         )}
       </div>
-      <div className="flex justify-center mb-8">
-        <Link href="/quickExam">
-          <button className="px-4 py-2 bg-primary-color text-white rounded-lg hover:bg-primary-dark transition duration-300">
+      <div className="">
+          <h1 className='text-stone-900 font-bold text-[16px]'>Test Your Skills on AI-Generated Questions:</h1>
+          <Image 
+                    src={'https://i.ibb.co.com/JFnCqLH/EC-Artificial-Intelligence-AI-750.jpg'} 
+                    alt={'ai image'} 
+                    width={400} 
+                    height={250} 
+                    className="w-full h-52 object-cover rounded-lg" 
+                  />
+          <button onClick={handleclick} className="px-2 py-2 bg-primary-color text-white rounded-lg hover:bg-primary-dark transition duration-300">
             Test Your Skills on AI-Generated Questions
           </button>
-        </Link>
       </div>
       </div>
     </div>
