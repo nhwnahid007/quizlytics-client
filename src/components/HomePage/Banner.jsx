@@ -25,28 +25,26 @@ const Banner = () => {
       style={{
         backgroundImage: `url('https://i.ibb.co.com/5KnXW7M/Untitled-design.png')`,
         backgroundColor: "#f3f4f6",
-        backgroundSize: "cover", // Ensures the background image covers the entire area
-        backgroundPosition: "center", // Centers the background image
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
       {/* Gradient overlay */}
-      <div className="absolute pt-2  lg:pt-20 inset-0 bg-gradient-to-r from-white/70 to-[#f0f4ff]/80">
-        <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-8 lg:px-20 pt-16">
-          <div className="w-full lg:w-[70%] md:pr-32">
-            <div className="w-full md:pl-5 md:w-[683px]">
-              <h1 className="  md:text-3xl   lg:text-5xl font-bold text-[#333333] mb-2 md:mb-5 lg:mb-14 md:h-7 lg:h-12">
+      <div className="absolute pt-2 md:pt-10 lg:pt-20 inset-0 bg-gradient-to-r from-white/70 to-[#f0f4ff]/80">
+        <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-4 md:px-10 lg:px-20 pt-16">
+          <div className="w-full lg:w-[70%] md:pr-8 lg:pr-32">
+            <div className="w-full md:w-[683px]">
+              <h1 className="text-3xl md:text-5xl font-bold text-[#333333] mb-6 md:mb-14 h-12 md:pr-20">
                 <Typewriter
-                options={{
-                  strings:"Challenge Your Mind with Fun Quizzes",
-                  autoStart:true,
-                  loop:true
-                }}
-                
-                ></Typewriter>
-                {/* Challenge Your Mind with Fun Quizzes */}
+                  options={{
+                    strings: "Challenge Your Mind with Fun Quizzes",
+                    autoStart: true,
+                    loop: true
+                  }}
+                />
               </h1>
-              <p className="text-[#555555]  lg:font-semibold p-2  lg:pt-5 rounded-sm bg-[#FCFAF9] bg-opacity-20">
-              Explore our interactive quiz platform to test your knowledge on diverse topics! Track your progress, compete with others, and climb the leaderboards. Join now and discover what you really know!
+              <p className="text-[#555555] font-semibold p-2 pt-5 rounded-sm bg-[#FCFAF9] bg-opacity-20">
+                Explore our interactive quiz platform to test your knowledge on diverse topics! Track your progress, compete with others, and climb the leaderboards. Join now and discover what you really know!
               </p>
               <div className="flex flex-col md:justify-center md:mt-5 md:flex-row lg:flex-row mt-3 gap-3 md:gap-5 lg:gap-4  lg:mt-8">
                 <button
