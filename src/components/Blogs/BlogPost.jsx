@@ -11,12 +11,11 @@ export default function BlogPost() {
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouterHook();
 
-  // Fetch blog posts from the API using axios
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get('https://quizlytics.jonomukti.org/allBlogs');
-        setPosts(response.data); // assuming the response data is in the correct format
+        setPosts(response.data);
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
@@ -24,14 +23,12 @@ export default function BlogPost() {
     fetchPosts();
   }, []);
 
-  // Filter posts based on search term and selected slug
   const filteredPosts = posts.filter((post) => {
     const matchesSlug = selectedSlug ? post.slug === selectedSlug : true;
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesSlug && matchesSearch;
   });
 
-  // Create unique slugs only for posts that match the search term
   const relevantSlugs = [...new Set(filteredPosts.map((post) => post.slug))];
 
   const handleclick = () => {
@@ -42,7 +39,6 @@ export default function BlogPost() {
     <div className="container mx-auto mt-10 px-4 py-12 min-h-screen">
       <h1 className="text-4xl font-bold text-center mb-8 text-primary-color">Our Blog</h1>
 
-      {/* Search Input */}
       <div className="flex justify-center mb-4">
         <input
           type="text"
@@ -53,8 +49,7 @@ export default function BlogPost() {
         />
       </div>
 
-      {/* Filter Buttons */}
-      <div className="flex flex-wrap justify-center mb-8 space-x-4">
+      <div className="flex flex-wrap gap-4 justify-center mb-8 space-x-4">
         <button
           onClick={() => setSelectedSlug(null)}
           className={`px-4 py-2 rounded-lg font-semibold transition ${
@@ -76,19 +71,17 @@ export default function BlogPost() {
         ))}
       </div>
 
-      {/* Main Content: Blog Posts and AI Card */}
       <div className="flex flex-wrap lg:flex-nowrap lg:space-x-8 justify-around">
         
-        {/* Blog Posts Section */}
         <div className="w-full lg:w-7/10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post) => (
               <div
                 key={post.id}
-                className="flex p-4 border border-gray-300 rounded-lg bg-white shadow-md hover:shadow-xl transition duration-300"
+                className="flex flex-col md:flex-row p-4 border border-gray-300 rounded-lg bg-white shadow-md hover:shadow-xl transition duration-300"
               >
-                <Link href={`/blogs/${post.slug}`} className="flex w-full">
-                  <div className="flex-shrink-0 w-1/3 mr-4">
+                <Link href={`/blogs/${post.slug}`} className="w-full">
+                  <div className="w-full md:w-1/3 mb-4 md:mb-0 md:mr-4">
                     <Image 
                       src={post.photo} 
                       alt={post.title} 
@@ -97,10 +90,10 @@ export default function BlogPost() {
                       className="w-full h-52 object-cover rounded-lg" 
                     />
                   </div>
-                  <div className="flex-grow">
-                    <div className="justify-start mb-2"> 
-                      <span className="text-gray-700 mr-2 font-medium">{post.postOwner}</span>
-                      <span className="ml-auto text-gray-400 text-sm">Released on {post.releaseDate}</span>
+                  <div className="flex flex-col w-full">
+                    <div className="flex justify-between mb-2"> 
+                      <span className="text-gray-700 font-medium">{post.postOwner}</span>
+                      <span className="text-gray-400 text-sm">Released on {post.releaseDate}</span>
                     </div>
                     <h2 className="text-2xl font-semibold mb-1 text-secondary-color">{post.title}</h2>
                     <p className="text-gray-700 mb-2">{post.summary}</p>
@@ -117,7 +110,6 @@ export default function BlogPost() {
           )}
         </div>
 
-        {/* AI Challenge Card */}
         <div className="bg-white p-6 rounded-xl w-full lg:w-[500px] h-[580px] shadow-lg hover:shadow-xl transition-shadow duration-300">
           <h1 className="text-stone-900 font-bold text-lg mb-4">
             Test Your Skills on AI-Generated Questions:
