@@ -8,7 +8,7 @@ import { FaFileCircleQuestion, FaPeopleGroup } from "react-icons/fa6";
 import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { ChartSpline, CreditCard, FileQuestion, House, ShieldEllipsis, ShieldQuestion, UserCog, Users } from "lucide-react";
+import { ChartSpline, CreditCard, Database, FileQuestion, House, ShieldEllipsis, ShieldQuestion, UserCog, Users } from "lucide-react";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -62,7 +62,7 @@ const Sidebar = () => {
     {
       title: "My Progress",
       route: "/Dashboard/statistics",
-      icon: <FaDatabase />,
+      icon: <Database />,
     },
     {
       title: "All Examinee",
