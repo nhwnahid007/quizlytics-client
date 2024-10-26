@@ -1,105 +1,141 @@
-import React from "react";
-import Image from "next/image"; // Use Next.js Image component for optimization
+'use client';
+import Link from 'next/link';
+import Image from 'next/image';
+import { useState } from 'react';
 
-const BlogPost = () => {
+export default function BlogPost() {
+  const posts = [
+    {
+      id: 1,
+      title: 'Effective Study Tips',
+      slug: 'study-tips',
+      summary: 'Learn tips for effective studying.',
+      description: 'Explore various study methods and time management techniques to boost your academic performance.',
+      photo: 'https://i.ibb.co/g95Gd68/photo-2024-07-06-13-14-23.jpg',
+      releaseDate: '2024-10-20',
+      postOwner: 'Ahmed Junaed',
+      postOwnerPic: 'https://i.ibb.co/g95Gd68/photo-2024-07-06-13-14-23.jpg',
+    },
+    {
+      id: 2,
+      title: 'Time Management for Students',
+      slug: 'productivity',
+      summary: 'Master time management skills to excel.',
+      description: 'This article discusses key strategies for students to manage time effectively.',
+      photo: 'https://i.ibb.co/g95Gd68/photo-2024-07-06-13-14-23.jpg',
+      releaseDate: '2024-10-10',
+      postOwner: 'Ahmed Junaed',
+      postOwnerPic: 'https://i.ibb.co/g95Gd68/photo-2024-07-06-13-14-23.jpg',
+    },
+    // Add more dummy posts as needed
+  ];
+
+  const [selectedSlug, setSelectedSlug] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Filter posts based on search term and selected slug
+  const filteredPosts = posts.filter((post) => {
+    const matchesSlug = selectedSlug ? post.slug === selectedSlug : true;
+    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesSlug && matchesSearch;
+  });
+
+  // Create unique slugs only for posts that match the search term
+  const relevantSlugs = [...new Set(filteredPosts.map((post) => post.slug))];
+
   return (
-    <div className="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md dark:bg-gray-900 dark:text-gray-100">
-      {/* Blog header with title, author info, and date */}
-      <div className="flex flex-col items-start justify-between">
-        <h2 className="text-3xl font-bold leading-tight mb-2 text-gray-800 dark:text-gray-100">
-          Why Interactive Quizzes Are the Future of Learning
-        </h2>
-        <div className="flex items-center mb-4">
-          {/* Replace img with next/image */}
-          <Image
-            src="https://i.ibb.co.com/5RtZVqP/ashim.jpg"
-            alt="author"
-            width={40} // Specify image width
-            height={40} // Specify image height
-            className="rounded-full mr-3"
-          />
-          
-          <div>
-            <span className="block text-sm font-semibold">Ashim</span>
-            <span className="text-sm text-gray-600 dark:text-gray-400">
-              10 October 2024 | 08 min read | 10 comments
-            </span>
-          </div>
-        </div>
+    <div className="container mx-auto mt-10 px-4 py-12 min-h-screen">
+      <h1 className="text-4xl font-bold text-center mb-8 text-primary-color">Our Blog</h1>
+
+      {/* New AI Exam Section Link */}
+      <div className="flex justify-center mb-8">
+        <Link href="/quickExam">
+          <button className="px-4 py-2 bg-primary-color text-white rounded-lg hover:bg-primary-dark transition duration-300">
+            Test Your Skills on AI-Generated Questions
+          </button>
+        </Link>
       </div>
 
-      {/* Blog image */}
-      <div className="mb-6 ">
-        <Image
-          src="https://i.ibb.co.com/HpXLZVj/quiz-1373314-1280.jpg"
-          alt="Blog visual"
-          width={200} // Specify image width
-          height={100} // Specify image height
-          className="w-full h-72 rounded-lg"
+      {/* Search Input */}
+      <div className="flex justify-center mb-4">
+        <input
+          type="text"
+          placeholder="Search posts..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full md:w-1/2 p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-color"
         />
       </div>
 
-      {/* Blog content */}
-      <div className="text-gray-700 dark:text-gray-300">
-        <p className="mb-4">
-          Consider this: interactive quizzes are 60% more effective in enhancing
-          learning retention compared to passive methods. With numbers like
-          these, it&#39;s clear that integrating quizzes in education and corporate
-          training can transform the learning experience.
-        </p>
-        <p className="mb-4">
-          In recent years, quizzes have evolved beyond simple assessments and
-          transformed into dynamic tools for engagement. Platforms like
-          Quizlytics allow educators and trainers to create interactive quizzes
-          that adapt to different learning styles. With features like timed
-          quizzes, limited attempts, and instant feedback, Quizlytics is leading
-          the way in personalized learning.
-        </p>
-        <p className="mb-4">
-          Interactive quizzes offer an active learning process, encouraging
-          participation and allowing learners to test their knowledge in real
-          time. They also provide valuable analytics that can help educators
-          understand students&#39; weaknesses and strengths.
-        </p>
-
-        <h3 className="text-xl font-semibold my-4">How Quizlytics Can Help</h3>
-
-        <p className="mb-4">
-          Quizlytics is more than just a quiz platform. It&#39;s an
-          analytics-driven solution designed to enhance learning outcomes. It
-          tracks quiz performance, time spent on questions, and even provides
-          insights into which areas need improvement. Features like social
-          sharing, quiz history, and community forums foster a collaborative
-          learning environment, making it perfect for educational institutions
-          and corporate training programs.
-        </p>
-
-        <p className="mb-4">
-          Ready to make learning more interactive and effective? With
-          Quizlytics, you can create quizzes tailored to your audience&#39;s needs,
-          helping them achieve better results.
-        </p>
+      {/* Filter Buttons */}
+      <div className="flex justify-center mb-8 space-x-4">
+        <button
+          onClick={() => setSelectedSlug(null)}
+          className={`px-4 py-2 rounded-lg font-semibold transition ${
+            selectedSlug === null ? 'bg-primary-color text-white' : 'bg-gray-200'
+          }`}
+        >
+          All
+        </button>
+        {relevantSlugs.map((slug) => (
+          <button
+            key={slug}
+            onClick={() => setSelectedSlug(slug)}
+            className={`px-4 py-2 rounded-lg font-semibold transition ${
+              selectedSlug === slug ? 'bg-primary-color text-white' : 'bg-gray-200'
+            }`}
+          >
+            {slug.replace('-', ' ')}
+          </button>
+        ))}
       </div>
 
-      {/* Footer with tags */}
-      <div className="mt-6 flex items-center justify-between">
-        <div className="flex items-center">
-          <span className="bg-purple-600 text-white text-xs font-semibold px-2 py-1 rounded-full mr-2">
-            Education
-          </span>
-          <span className="bg-purple-600 text-white text-xs font-semibold px-2 py-1 rounded-full mr-2">
-            eLearning
-          </span>
-          <span className="bg-purple-600 text-white text-xs font-semibold px-2 py-1 rounded-full">
-            Training
-          </span>
-        </div>
-        <div className="text-xs text-gray-500 dark:text-gray-400">
-          Published in Quizlytics Blog
-        </div>
+      {/* Blog Posts */}
+      <div className='flex justify-around'>
+      <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
+        {filteredPosts.length > 0 ? (
+          filteredPosts.map((post) => (
+            <div
+              key={post.id}
+              className="flex p-4 border border-gray-300 rounded-lg bg-white shadow-md hover:shadow-xl transition duration-300"
+            >
+              <Link href={`/blogs/${post.slug}`} className="flex w-full">
+                <div className="flex-shrink-0 w-1/3 mr-4">
+                  <Image 
+                    src={post.photo} 
+                    alt={post.title} 
+                    width={400} 
+                    height={250} 
+                    className="w-full h-52 object-cover rounded-lg" 
+                  />
+                </div>
+                <div className="flex-grow">
+                  <div className="justify-start mb-2"> 
+                    <span className="text-gray-700 mr-2 font-medium">{post.postOwner}</span>
+                    <span className="ml-auto text-gray-400 text-sm">Released on {post.releaseDate}</span>
+                  </div>
+                  <h2 className="text-2xl font-semibold mb-1 text-secondary-color">{post.title}</h2>
+                  <p className="text-gray-700 mb-2">{post.summary}</p>
+                  <p className="text-gray-500 text-sm mb-4">{post.description}</p>
+                  <button className="inline-block px-4 py-2 text-white bg-primary-color hover:bg-primary-dark rounded-lg shadow-sm transition duration-300">
+                    Read More
+                  </button>
+                </div>
+              </Link>
+            </div>
+          ))
+        ) : (
+          <p className="text-center text-gray-500">No posts found.</p>
+        )}
+      </div>
+      <div className="flex justify-center mb-8">
+        <Link href="/quickExam">
+          <button className="px-4 py-2 bg-primary-color text-white rounded-lg hover:bg-primary-dark transition duration-300">
+            Test Your Skills on AI-Generated Questions
+          </button>
+        </Link>
+      </div>
       </div>
     </div>
   );
-};
-
-export default BlogPost;
+}
