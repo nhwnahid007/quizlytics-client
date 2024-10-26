@@ -53,6 +53,22 @@ const AllUser = () => {
     }
   };
 
+  const handleRoleChange = async (email, newRole) => {
+    try {
+      const response = await axios.patch(`https://quizlytics.jonomukti.org/updateUserRole`, {
+        email,
+        role: newRole,
+      });
+      if (response.data) {
+        toast.success("Role updated successfully");
+        refetch();
+      }
+    } catch (error) {
+      console.error("Error updating role:", error);
+      toast.error("Failed to update role");
+    }
+  };
+
   const renderUsers = (role) => {
     return users
       .filter((user) => user.role === role)
@@ -65,7 +81,11 @@ const AllUser = () => {
             <span className="bg-transparent">{user.email}</span>
           </TableCell>
           <TableCell className="p-3 px-5">
-            <select defaultValue={user.role} className="bg-transparent border-b border-gray-300 focus:outline-none">
+            <select
+              defaultValue={user.role}
+              className="bg-transparent border-b border-gray-300 focus:outline-none"
+              onChange={(e) => handleRoleChange(user.email, e.target.value)}
+            >
               <option value="user">user</option>
               <option value="teacher">teacher</option>
               <option value="admin">admin</option>
