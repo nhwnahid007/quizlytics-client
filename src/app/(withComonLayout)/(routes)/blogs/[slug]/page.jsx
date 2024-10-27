@@ -1,80 +1,151 @@
-// src/app/(withComonLayout)/(routes)/blogs/[slug]/page.jsx
-
 "use client"; // Ensure it's treated as a Client Component
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import useRouterHook from '@/app/hooks/useRouterHook';
 
 export default function Post({ params }) {
   const { slug } = params;
+  const [post, setPost] = useState(null);
+  const [otherPosts, setOtherPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const router = useRouterHook();
 
-  // Sample post content with additional fields
-  const postContent = {
-    'study-tips': {
-      title: 'Effective Study Tips',
-      content: 'Here are some effective study tips to maximize learning potential and efficiency...',
-      description: 'Explore methods and techniques for successful studying.',
-      photo: 'https://i.ibb.co.com/g95Gd68/photo-2024-07-06-13-14-23.jpg', // Ensure these images are in the public folder
-      releaseDate: '2024-10-20',
-      postOwner: 'Ahmed Junaed',
-      postOwnerPic: 'https://i.ibb.co.com/g95Gd68/photo-2024-07-06-13-14-23.jpg', // Ensure these images are in the public folder
-    },
-    'ace-exams': {
-      title: 'How to Ace Exams',
-      content: 'Discover various exam strategies that can enhance performance...',
-      description: 'Effective strategies to prepare well for exams.',
-      photo: 'https://i.ibb.co.com/g95Gd68/photo-2024-07-06-13-14-23.jpg', // Ensure these images are in the public folder
-      releaseDate: '2024-10-22',
-      postOwner: 'Ahmed Junaed',
-      postOwnerPic: 'https://i.ibb.co.com/g95Gd68/photo-2024-07-06-13-14-23.jpg', // Ensure these images are in the public folder
-    },
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get('https://quizlytics.jonomukti.org/allBlogs');
+        const posts = response.data;
+        const foundPost = posts.find(p => p.slug === slug);
+
+        if (foundPost) {
+          setPost(foundPost);
+          setOtherPosts(posts.filter(p => p.slug !== slug).slice(0, 3));
+        } else {
+          setError('Post not found');
+        }
+      } catch (err) {
+        setError('Failed to load posts');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, [slug]);
+
+  const handleclick = () => {
+    router.push("/quizByLink");
   };
 
-  const post = postContent[slug];
-
-  if (!post) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+  if (!post) return <p>Post not found.</p>;
 
   return (
-    <div className="container mx-auto mt-10 px-4 py-8 bg-white rounded-lg shadow-lg max-w-4xl">
-      {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-4xl font-extrabold text-primary-color">{post.title}</h1>
-        <p className="text-lg text-gray-500 mt-2">{post.description}</p>
-      </div>
+    <div className="flex flex-col lg:flex-row justify-around items-start mt-10 container mx-auto gap-10 px-4">
+      <div className="container mx-auto mt-10 px-4 py-8 bg-white rounded-lg shadow-lg max-w-4xl">
+        <div className="mb-6">
+          <h1 className="text-4xl font-extrabold text-primary-color">{post.title}</h1>
+          <p className="text-lg text-gray-500 mt-2">{post.summary}</p>
+        </div>
 
-      {/* Main Image */}
-      <Image 
-        src={post.photo} 
-        alt={post.title} 
-        width={800} 
-        height={600} 
-        className="w-full h-96 object-cover rounded-lg shadow-md mb-6" 
-      />
-
-      {/* Author and Date */}
-      <div className="flex items-center mb-8">
         <Image 
-          src={post.postOwnerPic} 
-          alt={post.postOwner} 
-          width={45} 
-          height={45} 
-          className="rounded-full w-11 h-11 mr-3" 
+          src={post.photo} 
+          alt={post.title} 
+          width={800} 
+          height={600} 
+          className="w-full h-96 object-cover rounded-lg shadow-md mb-6" 
         />
-        <div>
-          <p className="text-gray-700 font-medium">{post.postOwner}</p>
-          <span className="text-gray-400 text-sm">{post.releaseDate}</span>
+
+        <div className="flex items-center mb-8">
+          <Image 
+            src={post.postOwnerPic} 
+            alt={post.postOwner} 
+            width={45} 
+            height={45} 
+            className="rounded-full w-11 h-11 mr-3" 
+          />
+          <div>
+            <p className="text-gray-700 font-medium">{post.postOwner}</p>
+            <span className="text-gray-400 text-sm">{post.releaseDate}</span>
+          </div>
+        </div>
+
+        <div className="text-gray-800 text-lg leading-relaxed space-y-4">
+          <p>{post.description}</p>
+        </div>
+
+        <div className="mt-10">
+          <Link href="/blogs" className="text-primary-color hover:underline">← Back to Blog</Link>
+        </div>
+
+        <div className="mt-10 w-full">
+          <h2 className="text-2xl font-bold text-primary-color mb-6">Other Posts:</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {otherPosts.map((otherPost) => (
+              <div key={otherPost.slug} className="bg-white p-4 rounded-lg shadow-lg flex flex-col items-center md:items-start">
+                <Image 
+                  src={otherPost.photo} 
+                  alt={otherPost.title} 
+                  width={400} 
+                  height={300} 
+                  className="w-full h-48 object-cover rounded-md mb-4" 
+                />
+                <h3 className="text-lg font-semibold text-primary-color text-center md:text-left">{otherPost.title}</h3>
+                <p className="text-sm text-gray-500 text-center md:text-left">{otherPost.summary}</p>
+                <Link href={`/blogs/${otherPost.slug}`} className="text-primary-color hover:underline mt-2 inline-block">
+                  Read More →
+                </Link>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/blogs">
+              <button className="px-4 py-2 bg-primary-color text-white font-medium rounded-lg hover:bg-primary-dark transition duration-300">
+                See More
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="text-gray-800 text-lg leading-relaxed space-y-4">
-        <p>{post.content}</p>
-        {/* Add more paragraphs or sections as needed */}
-      </div>
-
-      {/* Back Link */}
-      <div className="mt-10">
-        <Link href="/blogs" className="text-primary-color hover:underline">← Back to Blog</Link>
+      <div className="mt-10 lg:mt-32">
+        <div className="bg-white p-6 rounded-xl w-full lg:w-[350px] h-[420px] shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <h1 className="text-stone-900 font-bold text-lg mb-4">
+            Generate AI Questions from Top Articles:
+          </h1>
+          <ul className="text-gray-700 text-sm leading-relaxed mb-4 space-y-2">
+            <li>
+              <Link href="https://www.example.com/ai-article-1" target="_blank" className="text-primary-color hover:underline">
+                Understanding AI Basics: Concepts & Applications
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.example.com/ai-article-2" target="_blank" className="text-primary-color hover:underline">
+                Exploring AI Algorithms: Machine Learning & Beyond
+              </Link>
+            </li>
+            <li>
+              <Link href="https://www.example.com/ai-article-3" target="_blank" className="text-primary-color hover:underline">
+                Real-World Uses of AI Across Industries
+              </Link>
+            </li>
+          </ul>
+          <p className="text-gray-700 text-sm leading-relaxed mb-4">
+            Delve into these articles to build a solid foundation in AI concepts, algorithms, and real-world applications. Use these resources to frame your AI-related questions and test your knowledge.
+          </p>
+          <button 
+            onClick={handleclick} 
+            className="px-4 py-2 bg-primary-color text-white font-medium rounded-lg hover:bg-primary-dark transition duration-300"
+          >
+            Start Your AI Challenge
+          </button>
+        </div>
       </div>
     </div>
   );
