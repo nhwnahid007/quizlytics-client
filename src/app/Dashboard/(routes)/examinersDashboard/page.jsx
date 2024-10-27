@@ -17,6 +17,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import NotFound from "@/app/not-found";
 import useRole from "@/app/hooks/useRole";
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 
 const Page = () => {
   const [AllQuiz, refetch] = useAllQuiz();
@@ -29,7 +30,7 @@ const Page = () => {
     currentPage * itemsPerPage
   );
 
-  const [role] = useRole();
+  const [role, roleError, roleLoading] = useRole();
   // Function to handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -63,6 +64,10 @@ const Page = () => {
       }
     });
   };
+  if (roleLoading) return <div>
+      <LoadingSpinner />
+    </div>
+  if (roleError) return <NotFound />
 
   if (role !== "teacher" && role !== "admin") {
     return <NotFound />; // Return NotFound component

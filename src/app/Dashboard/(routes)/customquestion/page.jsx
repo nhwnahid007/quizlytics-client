@@ -7,9 +7,10 @@ import { useSession } from "next-auth/react";
 import Swal from "sweetalert2";
 import useRole from "@/app/hooks/useRole";
 import NotFound from "@/app/not-found";
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 
 const Page = () => {
-  const [role] = useRole();
+  const [role, roleError, roleLoading] = useRole();
   const [quizKey, setQuizKey] = useState(1234);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -43,8 +44,11 @@ const Page = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  
-
+  useEffect(() => {
+    console.log("Role loading:", roleLoading);
+    console.log("Role error:", roleError);
+    console.log("User role:", role);
+  }, [role, roleError, roleLoading]);
 
   const [questionData, setQuestionData] = useState({
     question: "",
@@ -70,8 +74,15 @@ const Page = () => {
     });
   };
 
-   // Check if the role is not 'admin' or 'teacher'
-   if (role !== "admin" && role !== "teacher") {
+  if (roleLoading) {
+    return <div><LoadingSpinner/></div>;
+  }
+
+  if (roleError) {
+    return <NotFound/>;
+  }
+
+  if (role !== "admin" && role !== "teacher") {
     return <NotFound />;
   }
 

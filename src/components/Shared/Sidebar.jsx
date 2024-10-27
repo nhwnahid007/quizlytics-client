@@ -10,6 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { ChartSpline, CreditCard, Database, FileQuestion, House, ShieldEllipsis, ShieldQuestion, UserCog, Users } from "lucide-react";
 import useRole from "@/app/hooks/useRole";
+import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 const Sidebar = () => {
 
@@ -18,8 +19,8 @@ const Sidebar = () => {
   const pathname = usePathname();
 
 
-  const [role]=useRole();
-  console.log(role);
+  const [ role, roleLoading ] = useRole(); 
+
 
 
   const isActive = (route) => pathname === route;
