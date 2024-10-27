@@ -22,12 +22,15 @@ import NotFound from "@/app/not-found";
 
 const AllUser = () => {
   const [selectedUser, setSelectedUser] = useState(null);
-  const [role] = useRole();
+  const [role, roleError, roleLoading] = useRole();
+  console.log("Role:", role);
+  console.log("Role Loading:", roleLoading);
+  console.log("Role Error:", roleError);
 
   const {
     data: users,
-    error: roleError,
-    isLoading: roleLoading,
+    error: userRoleError,
+    isLoading: userRoleLoading,
     refetch,
   } = useQuery({
     queryKey: ["allUsers"],
@@ -38,14 +41,17 @@ const AllUser = () => {
     enabled: role === 'admin', // Only fetch if the role is 'admin'
   });
 
+
+  if (roleLoading || userRoleLoading) return <div>
+  <LoadingSpinner />  
+</div>;
+if (roleError || userRoleError) return <div>Error loading data</div>;
+
   if (role !== 'admin') {
      return <NotFound />; 
   }
 
-  if (roleLoading) return <div>
-    <LoadingSpinner />  
-  </div>;
-  if (roleError) return <div>Error loading data</div>;
+
 
   const handleDelete = async (email) => {
     try {

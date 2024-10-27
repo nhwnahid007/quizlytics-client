@@ -15,12 +15,13 @@ import {
 import { Button } from "@/components/ui/button";
 
 const Header = () => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const name = session?.user?.name;
   const profile = session?.user?.profile;
   const image = session?.user?.image;
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +33,12 @@ const Header = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleSignOut = async () => {
+    setIsLoading(true);
+    await signOut();
+    setIsLoading(false);
+  };
 
   return (
     <header
@@ -59,21 +66,54 @@ const Header = () => {
 
         {/* Profile or Login/Register */}
         <div className="relative flex items-center justify-center gap-4">
-          {!session ? (
-            <div className="flex gap-2">
-              <Link
-                href="/login"
-                className="border border-purple-600 text-primary-color font-bold rounded-md px-4 py-2 text-center hover:bg-purple-600 hover:text-white transition-colors duration-300"
-              >
-                Login
-              </Link>
-              <Link
-                href="/register"
-                className="border border-purple-600 text-secondary-color font-bold rounded-md px-4 py-2 text-center hover:bg-purple-600 hover:text-white transition-colors duration-300"
-              >
-                Sign Up
-              </Link>
+          {status === 'loading' ? (
+            <div className="flex items-center justify-center">
+              <span>
+                <svg
+                  className="animate-spin -ml-1 mr-3 text-secondary-color"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  width="40"
+                  height="40"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+              </span>
             </div>
+          ) : !session ? (
+            <svg
+              className="animate-spin -ml-1 mr-3 h-5 w-5 text-secondary-color"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
+            </svg>
           ) : (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -102,7 +142,7 @@ const Header = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className="bg-purple-600 text-white p-2 rounded-md text-center cursor-pointer"
-                  onClick={() => signOut()}
+                  onClick={handleSignOut}
                 >
                   Logout
                 </DropdownMenuItem>
