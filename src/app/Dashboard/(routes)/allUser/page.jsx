@@ -17,9 +17,12 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; // Adjust the import path
+import useRole from "@/app/hooks/useRole";
+import NotFound from "@/app/not-found";
 
 const AllUser = () => {
   const [selectedUser, setSelectedUser] = useState(null);
+  const [role] = useRole();
 
   const {
     data: users,
@@ -32,7 +35,12 @@ const AllUser = () => {
       const { data } = await axios(`https://quizlytics.jonomukti.org/allUsers`);
       return data;
     },
+    enabled: role === 'admin', // Only fetch if the role is 'admin'
   });
+
+  if (role !== 'admin') {
+     return <NotFound />; 
+  }
 
   if (roleLoading) return <div>
     <LoadingSpinner />  
@@ -53,6 +61,22 @@ const AllUser = () => {
     }
   };
 
+  const handleRoleChange = async (email, newRole) => {
+    try {
+      const response = await axios.patch(`https://quizlytics.jonomukti.org/updateUserRole`, {
+        email,
+        role: newRole,
+      });
+      if (response.data) {
+        toast.success("Role updated successfully");
+        refetch();
+      }
+    } catch (error) {
+      console.error("Error updating role:", error);
+      toast.error("Failed to update role");
+    }
+  };
+
   const renderUsers = (role) => {
     return users
       .filter((user) => user.role === role)
@@ -65,7 +89,11 @@ const AllUser = () => {
             <span className="bg-transparent">{user.email}</span>
           </TableCell>
           <TableCell className="p-3 px-5">
-            <select defaultValue={user.role} className="bg-transparent border-b border-gray-300 focus:outline-none">
+            <select
+              defaultValue={user.role}
+              className="bg-transparent border-b border-gray-300 focus:outline-none"
+              onChange={(e) => handleRoleChange(user.email, e.target.value)}
+            >
               <option value="user">user</option>
               <option value="teacher">teacher</option>
               <option value="admin">admin</option>

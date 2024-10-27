@@ -15,6 +15,8 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import useAllQuiz from "@/app/hooks/useAllQuiz";
 import axios from "axios";
 import Swal from "sweetalert2";
+import NotFound from "@/app/not-found";
+import useRole from "@/app/hooks/useRole";
 
 const Page = () => {
   const [AllQuiz, refetch] = useAllQuiz();
@@ -27,6 +29,7 @@ const Page = () => {
     currentPage * itemsPerPage
   );
 
+  const [role] = useRole();
   // Function to handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -60,6 +63,10 @@ const Page = () => {
       }
     });
   };
+
+  if (role !== "teacher" && role !== "admin") {
+    return <NotFound />; // Return NotFound component
+  }
 
   return (
     <div className="my-8 mx-6">

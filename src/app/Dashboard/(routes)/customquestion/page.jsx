@@ -5,15 +5,17 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import Swal from "sweetalert2";
+import useRole from "@/app/hooks/useRole";
+import NotFound from "@/app/not-found";
 
 const Page = () => {
+  const [role] = useRole();
   const [quizKey, setQuizKey] = useState(1234);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
 
   const { data: session } = useSession();
   const email = session?.user?.email;
-
   // Function to generate random key
   function generateRandomKey() {
     const numbers = "0123456789";
@@ -41,6 +43,9 @@ const Page = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  
+
+
   const [questionData, setQuestionData] = useState({
     question: "",
     options: ["", "", "", ""],
@@ -64,6 +69,11 @@ const Page = () => {
       [name]: value,
     });
   };
+
+   // Check if the role is not 'admin' or 'teacher'
+   if (role !== "admin" && role !== "teacher") {
+    return <NotFound />;
+  }
 
   const handleOptionChange = (index, value) => {
     const newOptions = [...questionData.options];
@@ -107,6 +117,8 @@ const Page = () => {
     quizArr: questions,
     quizCreator: email,
   };
+
+
 
   const submitQuestions = async () => {
     try {
