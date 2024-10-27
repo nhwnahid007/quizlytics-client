@@ -1,4 +1,4 @@
-import AuthProviders from "@/providers/AuthProviders";
+
 import "./globals.css";
 import { ReactQueryClientProvider } from "@/components/ReactQuery/ReactQueryClientProvider";
 

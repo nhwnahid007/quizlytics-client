@@ -11,6 +11,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import Image from "next/image";
+import useRole from "@/app/hooks/useRole";
+import NotFound from "@/app/not-found";
 
 const ExamineeList = () => {
   const [examinees, setExaminees] = useState([]);
@@ -18,6 +20,9 @@ const ExamineeList = () => {
   const [itemsPerPage] = useState(5);
   const [quizStartKey, setQuizStartKey] = useState("");
   const [nameFilter, setNameFilter] = useState("");
+
+  const [role] = useRole();
+  
 
   // Fetch examinees data
   useEffect(() => {
@@ -66,6 +71,12 @@ const ExamineeList = () => {
     setNameFilter(event.target.value);
     setCurrentPage(1);
   };
+
+   
+   // Check if the role is not "teacher" or "admin"
+   if (role !== "teacher" && role !== "admin") {
+    return <NotFound />; // Return NotFound component
+  }
 
   return (
     <div className="p-4 max-w-7xl mx-auto">

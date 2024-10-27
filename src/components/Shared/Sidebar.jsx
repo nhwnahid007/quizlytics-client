@@ -9,35 +9,17 @@ import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { ChartSpline, CreditCard, Database, FileQuestion, House, ShieldEllipsis, ShieldQuestion, UserCog, Users } from "lucide-react";
+import useRole from "@/app/hooks/useRole";
 
 const Sidebar = () => {
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const pathname = usePathname();
 
-  const { data: session, error: sessionError, isLoading: sessionLoading } = useSession();
-  const user = session?.user;
 
-  const { data: role, error: roleError, isLoading: roleLoading } = useQuery({
-    queryKey: ["role", user?.email],
-    enabled: !!user?.email,
-    queryFn: async () => {
-      if (!user?.email) {
-        return null; // Return null if email is not available
-      }
-      try {
-        const { data } = await axios(`https://quizlytics.jonomukti.org/user/role?email=${user.email}`);
-        console.log(data);
-
-        return data.role || "user"; // Ensure a valid return value
-      } catch (error) {
-        console.error("Error fetching user role:", error);
-        return null; // Return null in case of an error
-      }
-    },
-  });
-
-  // Handle loading and error states if necessary
+  const [role]=useRole();
+  console.log(role);
 
 
   const isActive = (route) => pathname === route;

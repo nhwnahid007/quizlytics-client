@@ -122,7 +122,7 @@ export default function BlogPost() {
             className="w-full h-52 object-cover rounded-lg mb-4" 
           />
           <p className="text-gray-700 text-sm leading-relaxed mb-4">
-            Dive into the world of artificial intelligence with our specially crafted questions, designed to challenge and enhance your understanding of AI fundamentals, advanced concepts, and real-world applications. Whether you're a beginner or an enthusiast, test your knowledge and see how well you can tackle AI-driven scenarios.
+            Dive into the world of artificial intelligence with our specially crafted questions, designed to challenge and enhance your understanding of AI fundamentals, advanced concepts, and real-world applications. Whether you&apos;re a beginner or an enthusiast, test your knowledge and see how well you can tackle AI-driven scenarios.
           </p>
           <button 
             onClick={handleclick} 
