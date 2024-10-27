@@ -13,6 +13,8 @@ import {
 import Image from "next/image";
 import useRole from "@/app/hooks/useRole";
 import NotFound from "@/app/not-found";
+import { notFound } from "next/navigation";
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 
 const ExamineeList = () => {
   const [examinees, setExaminees] = useState([]);
@@ -21,9 +23,11 @@ const ExamineeList = () => {
   const [quizStartKey, setQuizStartKey] = useState("");
   const [nameFilter, setNameFilter] = useState("");
 
-  const [role] = useRole();
+  const [role, roleLoading, roleError] = useRole();
+  console.log("Role:", role);
+  console.log("Role Loading:", roleLoading);
+  console.log("Role Error:", roleError);
   
-
   // Fetch examinees data
   useEffect(() => {
     const fetchExaminees = async () => {
@@ -72,10 +76,15 @@ const ExamineeList = () => {
     setCurrentPage(1);
   };
 
-   
-   // Check if the role is not "teacher" or "admin"
-   if (role !== "teacher" && role !== "admin") {
-    return <NotFound />; // Return NotFound component
+  // Ensure role is correctly checked
+  if (roleLoading) return (
+    <div>
+      <LoadingSpinner />
+    </div>
+  );
+  if (roleError) return <NotFound />;
+  if (!roleLoading && (role !== "teacher" && role !== "admin")) {
+    return <NotFound />;
   }
 
   return (

@@ -90,10 +90,6 @@ const QuizlyticsDashboard = () => {
 
   const pieChartData = categorizeMarks();
 
-  // Show loading spinner while data is being fetched
-  if (loading) {
-    return <Spinner />;
-  }
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
