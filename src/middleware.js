@@ -20,6 +20,7 @@ export const config = {
     "/quickExam",
     "/Dashboard/:path*",
     '/customQuiz',
-    '/quizByLink'
+    '/quizByLink',
+    '/blogs/:path*'
   ],
 };
