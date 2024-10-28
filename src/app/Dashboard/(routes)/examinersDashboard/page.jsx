@@ -67,9 +67,9 @@ const Page = () => {
   if (roleLoading) return <div>
       <LoadingSpinner />
     </div>
-  if (roleError) return <NotFound />
+ 
 
-  if (role !== "teacher" && role !== "admin") {
+  if (role == "user") {
     return <NotFound />; // Return NotFound component
   }
 
