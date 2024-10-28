@@ -143,7 +143,7 @@ export default function Post({ params }) {
             onClick={handleclick} 
             className="px-4 py-2 bg-primary-color text-white font-medium rounded-lg hover:bg-primary-dark transition duration-300"
           >
-            Start Your AI Challenge
+            Post your article link to give exam
           </button>
         </div>
       </div>

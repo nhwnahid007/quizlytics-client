@@ -78,11 +78,9 @@ const Page = () => {
     return <div><LoadingSpinner/></div>;
   }
 
-  if (roleError) {
-    return <NotFound/>;
-  }
 
-  if (role !== "admin" && role !== "teacher") {
+
+  if (role == "user") {
     return <NotFound />;
   }
 
