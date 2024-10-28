@@ -39,6 +39,7 @@ export default function BlogPost() {
     <div className="container mx-auto mt-10 px-4 py-12 min-h-screen">
       <h1 className="text-4xl font-bold text-center mb-8 text-primary-color">Our Blog</h1>
 
+      {/* Search Bar */}
       <div className="flex justify-center mb-4">
         <input
           type="text"
@@ -49,7 +50,8 @@ export default function BlogPost() {
         />
       </div>
 
-      <div className="flex flex-wrap gap-4 justify-center mb-8 space-x-4">
+      {/* Slug Filter Buttons */}
+      <div className="flex flex-wrap gap-4 justify-center mb-8">
         <button
           onClick={() => setSelectedSlug(null)}
           className={`px-4 py-2 rounded-lg font-semibold transition ${
@@ -71,38 +73,43 @@ export default function BlogPost() {
         ))}
       </div>
 
+      {/* Main Content */}
       <div className="flex flex-wrap lg:flex-nowrap lg:space-x-8 justify-around">
         
-        <div className="w-full lg:w-7/10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-1">
+        {/* Blog Posts */}
+        <div className="w-full lg:w-7/10 grid gap-8 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1">
           {filteredPosts.length > 0 ? (
             filteredPosts.map((post) => (
               <div
                 key={post.id}
-                className="flex flex-col md:flex-row p-4 border border-gray-300 rounded-lg bg-white shadow-md hover:shadow-xl transition duration-300"
+                className="flex flex-col sm:flex-row items-start p-4 border border-gray-300 rounded-lg bg-white shadow-md hover:shadow-xl transition duration-300 mb-4"
               >
-                <Link href={`/blogs/${post.slug}`} className="w-full">
-                  <div className="w-full md:w-1/3 mb-4 md:mb-0 md:mr-4">
-                    <Image 
-                      src={post.photo} 
-                      alt={post.title} 
-                      width={400} 
-                      height={250} 
-                      className="w-full h-52 object-cover rounded-lg" 
-                    />
+                {/* Blog Image */}
+                <div className="w-full sm:w-1/3 sm:mr-4 mb-4 sm:mb-0">
+                  <Image 
+                    src={post.photo} 
+                    alt={post.title} 
+                    width={400} 
+                    height={250} 
+                    className="w-full h-52 object-cover rounded-lg" 
+                  />
+                </div>
+                
+                {/* Blog Text Content */}
+                <div className="w-full sm:w-2/3">
+                  <div className="justify-start mb-2">
+                    <span className="text-gray-700 font-medium mr-3">{post.postOwner}</span>
+                    <span className="text-gray-400 text-sm">Released on {post.releaseDate}</span>
                   </div>
-                  <div className="flex flex-col w-full">
-                    <div className="flex justify-between mb-2"> 
-                      <span className="text-gray-700 font-medium">{post.postOwner}</span>
-                      <span className="text-gray-400 text-sm">Released on {post.releaseDate}</span>
-                    </div>
-                    <h2 className="text-2xl font-semibold mb-1 text-secondary-color">{post.title}</h2>
-                    <p className="text-gray-700 mb-2">{post.summary}</p>
-                    <p className="text-gray-500 text-sm mb-4">{post.description}</p>
+                  <h2 className="text-2xl font-semibold mb-1 text-secondary-color">{post.title}</h2>
+                  <p className="text-gray-700 mb-2">{post.summary}</p>
+                  <p className="text-gray-500 text-sm mb-4">{post.description}</p>
+                  <Link href={`/blogs/${post.slug}`} className="inline-block px-4 py-2">
                     <button className="inline-block px-4 py-2 text-white bg-primary-color hover:bg-primary-dark rounded-lg shadow-sm transition duration-300">
                       Read More
                     </button>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               </div>
             ))
           ) : (
@@ -110,6 +117,7 @@ export default function BlogPost() {
           )}
         </div>
 
+        {/* AI Test Sidebar */}
         <div className="bg-white p-6 rounded-xl w-full lg:w-[500px] h-[580px] shadow-lg hover:shadow-xl transition-shadow duration-300">
           <h1 className="text-stone-900 font-bold text-lg mb-4">
             Test Your Skills on AI-Generated Questions:
