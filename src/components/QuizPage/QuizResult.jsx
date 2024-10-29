@@ -28,6 +28,7 @@ const QuizResult = ({
   searchLavel,
   artLink,
 }) => {
+  console.log("quizSet:", quizSet);
   const [loading, setLoading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   console.log("markedAnswers", markedAnswer);
@@ -45,9 +46,9 @@ const QuizResult = ({
     quizStartKey,
     date: new Date(),
     linkId: "1001",
-    quizTitle: quizSet ? quizSet[0].quizTitle : searchCategory,
-    quizCategory: quizSet ? quizSet[0].quizCategory : searchLavel,
-    quizCreator: quizSet ? quizSet[0].quizCreator : "AI",
+    quizTitle: (quizSet && quizSet.length > 0 && quizSet[0].quizTitle) ? quizSet[0].quizTitle : searchCategory || "Untitled Quiz",
+    quizCategory: (quizSet && quizSet.length > 0 && quizSet[0].quizCategory) ? quizSet[0].quizCategory : searchLavel || "General",
+    quizCreator: (quizSet && quizSet.length > 0 && quizSet[0].quizCreator) ? quizSet[0].quizCreator : "AI",
     questions: allQuestions,
     answers: markedAnswer,
     userName: name,
