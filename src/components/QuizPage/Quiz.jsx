@@ -1,9 +1,11 @@
-import { Clock } from "lucide-react";
+import { Clock, X } from "lucide-react";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { flushSync } from "react-dom";
 import { GrRadialSelected } from "react-icons/gr";
+import { useRouter } from "next/navigation";
 
 const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
+  const router = useRouter();
   const [selectedOption, setSelectedOption] = useState(null);
   const [remainingTime, setRemainingTime] = useState(30); // Changed from 15 to 30
   const selectedOptionRef = useRef(null);
@@ -75,7 +77,13 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-2 sm:p-4">
-      <div className="w-full max-w-3xl bg-white p-3 sm:p-4 md:p-6 shadow-2xl rounded-lg flex flex-col min-h-[400px] max-h-[90vh] overflow-auto">
+      <div className="w-full max-w-3xl bg-white p-3 sm:p-4 md:p-6 shadow-2xl rounded-lg flex flex-col min-h-[400px] max-h-[90vh] overflow-auto relative">
+        <button
+          onClick={() => router.push("/")}
+          className="absolute top-4 right-4 text-black"
+        >
+          <X size={24} />
+        </button>
         <div className="text-center flex justify-center items-center mb-4 gap-1 text-sm sm:text-base">
           <svg width="100" height="100">
             <circle
@@ -109,7 +117,6 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
             </text>
           </svg>
         </div>
-
 
         <div className="flex flex-col flex-grow">
           <h1 className="text-center text-sm sm:text-base md:text-lg font-light mb-2 sm:mb-4">
