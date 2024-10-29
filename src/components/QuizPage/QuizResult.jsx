@@ -146,7 +146,7 @@ const QuizResult = ({
           {/* {result?.percentageMark}% */}
         </h1>
         <div className="my-4 flex gap-4 justify-center items-center">
-          <Button className="px-10 bg-primary-color" onClick={handleSaveRecord}>
+          <Button className="lg:px-10 bg-primary-color" onClick={handleSaveRecord}>
             Submit
           </Button>
           <Button
@@ -157,7 +157,7 @@ const QuizResult = ({
             View Submission
           </Button>
           <Button onClick={handleGoToHome} className="bg-primary-color">
-            Back to Home
+            Home
           </Button>
         </div>
         <h1 className="text-white text-center text-4xl mb-10">
