@@ -17,17 +17,21 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import NotFound from "@/app/not-found";
 import useRole from "@/app/hooks/useRole";
-import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
+
 
 import { FaRegCopy } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+
 
 const Page = () => {
   const [AllQuiz, refetch] = useAllQuiz();
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(8);
+  const [loading, setLoading] = useState(true);
 
   const totalPages = Math.ceil(AllQuiz.length / itemsPerPage);
   const currentQuizzes = AllQuiz.slice(
@@ -36,6 +40,13 @@ const Page = () => {
   );
 
   const [role, roleError, roleLoading] = useRole();
+
+  useEffect(() => {
+    if (AllQuiz.length > 0 || roleError) {
+      setLoading(false);
+    }
+  }, [AllQuiz, roleError]);
+
   // Function to handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -76,13 +87,10 @@ const Page = () => {
     });
   };
 
-  if (roleLoading) return <div>
-      <LoadingSpinner />
-    </div>
- 
+  if (roleLoading || loading) return <LoadingSpinner />;
 
   if (role == "user") {
-    return <NotFound />; // Return NotFound component
+    return <NotFound />;
   }
 
   return (
@@ -112,10 +120,17 @@ const Page = () => {
                   </TableCell>
                   <TableCell className="font-medium flex items-center">
                     {item.quizStartKey}
-                    <FaRegCopy
-                      onClick={() => handleCopy(item.quizStartKey)}
-                      className="ml-2 cursor-pointer"
-                    />
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <FaRegCopy
+                          onClick={() => handleCopy(item.quizStartKey)}
+                          className="ml-2 cursor-pointer"
+                        />
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        Copy to clipboard
+                      </TooltipContent>
+                    </Tooltip>
                   </TableCell>
                   <TableCell>{item.quizTitle}</TableCell>
                   <TableCell>{item.quizCategory}</TableCell>

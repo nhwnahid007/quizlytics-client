@@ -17,12 +17,15 @@ import {
   Pie,
   Cell,
 } from 'recharts';
+import LoadingSpinner from '@/components/Spinner/LoadingSpinner';
+
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const Page = () => {
   const { data: session } = useSession();
   const [marks, setMarks] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMarks = async () => {
@@ -39,6 +42,8 @@ const Page = () => {
           text: 'Something went wrong while fetching leaderboard data!',
           toast: true,
         });
+      } finally {
+        setLoading(false);
       }
     };
     fetchMarks();
@@ -75,8 +80,10 @@ const Page = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
-      {marks.length === 0 ? (
-        <p className=" md:text-5xl text-sm font-semibold text-gray-600">No exam given yet.</p>
+      {loading ? (
+        <LoadingSpinner />
+      ) : marks.length === 0 ? (
+        <p className="md:text-5xl text-sm font-semibold text-gray-600">No exam given yet.</p>
       ) : (
         <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl w-full">
           <h2 className="text-2xl font-bold text-primary-color mb-4 text-center">
