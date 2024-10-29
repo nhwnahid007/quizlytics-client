@@ -99,7 +99,7 @@ const Sidebar = () => {
           {Menus.map((Menu, index) => (
             <Link href={Menu.route} key={index}>
               <li
-                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-white text-sm font-semibold items-center gap-x-4 ${
+                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-white text-sm font-semibold items-center gap-x-2 ${
                   isActive(Menu.route) ? "bg-gray-700 text-secondary-color" : ""
                 }`}
               >
