@@ -12,7 +12,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
   const timer = useRef(null);
   const progressBar = useRef(null);
 
-  const radius = 45; // Radius for the circle
+  const radius = 30; // Radius for the circle
   const circumference = 2 * Math.PI * radius;
   const offset = (1 - remainingTime / 30) * circumference; // Update calculation for 30 seconds
 
@@ -77,14 +77,14 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-2 sm:p-4">
-      <div className="w-full max-w-3xl bg-white p-3 sm:p-4 md:p-6 shadow-2xl rounded-lg flex flex-col min-h-[400px] max-h-[90vh] overflow-auto relative">
+      <div className="w-full max-w-3xl bg-white p-3 sm:p-4 md:p-6 pt-2 shadow-2xl rounded-lg flex flex-col min-h-[380px] max-h-[90vh] overflow-auto relative">
         <button
           onClick={() => router.push("/")}
           className="absolute top-4 right-4 text-black"
         >
           <X size={24} />
         </button>
-        <div className="text-center flex justify-center items-center mb-4 gap-1 text-sm sm:text-base">
+        <div className="text-center flex justify-center items-center  text-sm sm:text-base">
           <svg width="100" height="100">
             <circle
               cx="50"
