@@ -100,7 +100,7 @@ const QuizlyticsDashboard = () => {
 
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-white p-4 rounded-lg shadow-md flex items-center">
+        <div className="bg-[#E3C8FF] p-4 rounded-lg shadow-md flex items-center">
           <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
             <FiBarChart className="text-gray-500" size={24} />
           </div>
@@ -110,7 +110,7 @@ const QuizlyticsDashboard = () => {
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow-md flex items-center">
+        <div className="bg-[#F4E1FF] p-4 rounded-lg shadow-md flex items-center">
           <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
             <FiCheckCircle className="text-gray-500" size={24} />
           </div>
@@ -120,7 +120,7 @@ const QuizlyticsDashboard = () => {
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow-md flex items-center">
+        <div className="bg-[#E3F4FF] p-4 rounded-lg shadow-md flex items-center">
           <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
             <FiUsers className="text-gray-500" size={24} />
           </div>
@@ -130,7 +130,7 @@ const QuizlyticsDashboard = () => {
           </div>
         </div>
 
-        <div className="bg-white p-4 rounded-lg shadow-md flex items-center">
+        <div className="bg-[#FFE3E8] p-4 rounded-lg shadow-md flex items-center">
           <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
             <FiClock className="text-gray-500" size={24} />
           </div>
