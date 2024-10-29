@@ -143,7 +143,7 @@ const QuizlyticsDashboard = () => {
           </div>
           <div>
             <p className="text-sm text-gray-500">Quiz History</p>
-            <p className="text-xl font-bold">{getRecentQuizzes()}days</p>
+            <p className="text-xl font-bold">{getRecentQuizzes()} days</p>
           </div>
         </div>
       </div>
