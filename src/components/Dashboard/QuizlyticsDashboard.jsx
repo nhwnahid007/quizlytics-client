@@ -75,6 +75,13 @@ const QuizlyticsDashboard = () => {
     ];
   };
 
+  const getRecentQuizzes = () => {
+    const now = new Date();
+    const thirtyDaysAgo = new Date(now.setDate(now.getDate() - 30));
+
+    return marks.filter((quiz) => new Date(quiz.date) >= thirtyDaysAgo).length;
+  };
+
   const { totalExams, averageMarks, highestMarks, lowestMarks } = getStatistics();
 
   // Prepare data for charts
@@ -136,7 +143,7 @@ const QuizlyticsDashboard = () => {
           </div>
           <div>
             <p className="text-sm text-gray-500">Quiz History</p>
-            <p className="text-xl font-bold">Last 30 Days</p>
+            <p className="text-xl font-bold">{getRecentQuizzes()}days</p>
           </div>
         </div>
       </div>
