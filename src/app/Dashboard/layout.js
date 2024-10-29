@@ -7,6 +7,7 @@ import Sidebar from "@/components/Shared/Sidebar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 
 export default function RootLayout({ children }) {
@@ -26,18 +27,20 @@ export default function RootLayout({ children }) {
     <div className="flex min-h-screen">
       <AuthProviders>
         <QueryClientProvider client={queryClient}>
-          {isLoading ? (
-            <div className="flex justify-center items-center w-full h-full">
-              <LoadingSpinner /> {/* Replace with your actual loading spinner component */}
-            </div>
-          ) : (
-            <>
-              <Sidebar />
-              <div className="flex-grow">
-                {children}
+          <TooltipProvider>
+            {isLoading ? (
+              <div className="flex justify-center items-center w-full h-full">
+                <LoadingSpinner />
               </div>
-            </>
-          )}
+            ) : (
+              <>
+                <Sidebar />
+                <div className="flex-grow">
+                  {children}
+                </div>
+              </>
+            )}
+          </TooltipProvider>
         </QueryClientProvider>
       </AuthProviders>
     </div>
