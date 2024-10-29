@@ -110,11 +110,12 @@ const QuizResult = ({
   }
 
   const handleViewAnswers = () => {
+    setLoading(true);
     router.push(viewSubmission);
   };
 
   if (loading) {
-    <LoadingSpinner></LoadingSpinner>;
+    return <LoadingSpinner />;
   }
 
   // Determine the remark based on the score
