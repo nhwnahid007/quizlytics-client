@@ -160,41 +160,44 @@ const ExamineeList = () => {
           </Table>
         </div>
 
-        {/* Pagination */}
-        <div className="flex justify-center mt-4 space-x-2">
-          <button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className={`px-4 py-2 rounded-md ${
-              currentPage === 1 ? "bg-gray-300" : "bg-primary text-white"
-            }`}
-          >
-            &#8592; 
-          </button>
+{/* Pagination */}
+<div className="flex justify-center mt-4">
+  <div className="flex space-x-2 w-[300px] justify-between">
+    <button
+      onClick={() => handlePageChange(currentPage - 1)}
+      disabled={currentPage === 1}
+      className={`w-[40px] h-[40px] flex items-center justify-center rounded-md ${
+        currentPage === 1 ? "bg-gray-300" : "bg-primary text-white"
+      }`}
+    >
+      &#8592;
+    </button>
 
-         
-          {getVisiblePages().map((page) => (
-            <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={`px-4 py-2 rounded-md ${
-                currentPage === page ? "bg-primary text-white" : "bg-gray-200"
-              }`}
-            >
-              {page}
-            </button>
-          ))}
+    {getVisiblePages().map((page) => (
+      <button
+        key={page}
+        onClick={() => handlePageChange(page)}
+        className={`w-[40px] h-[40px] flex items-center justify-center rounded-md ${
+          currentPage === page ? "bg-primary text-white" : "bg-gray-200"
+        }`}
+      >
+        {page}
+      </button>
+    ))}
 
-          <button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded-md ${
-              currentPage === totalPages ? "bg-gray-300" : "bg-primary text-white"
-            }`}
-          >
-            &#8594; 
-          </button>
-        </div>
+    <button
+      onClick={() => handlePageChange(currentPage + 1)}
+      disabled={currentPage === totalPages}
+      className={`w-[40px] h-[40px] flex items-center justify-center rounded-md ${
+        currentPage === totalPages ? "bg-gray-300" : "bg-primary text-white"
+      }`}
+    >
+      &#8594;
+    </button>
+  </div>
+</div>
+
+
       </div>
     </div>
   );
