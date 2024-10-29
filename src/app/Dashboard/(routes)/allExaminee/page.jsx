@@ -13,7 +13,6 @@ import {
 import Image from "next/image";
 import useRole from "@/app/hooks/useRole";
 import NotFound from "@/app/not-found";
-import { notFound } from "next/navigation";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 
 const ExamineeList = () => {
@@ -28,7 +27,7 @@ const ExamineeList = () => {
   console.log("Role Loading:", roleLoading);
   console.log("Role Error:", roleError);
   
-  // Fetch examinees data
+
   useEffect(() => {
     const fetchExaminees = async () => {
       try {
@@ -47,7 +46,6 @@ const ExamineeList = () => {
     fetchExaminees();
   }, []);
 
-  // Filter examinees based on name and quiz start key
   const filteredExaminees = examinees.filter(
     (examinee) =>
       typeof examinee.userName === "string" &&
@@ -55,12 +53,13 @@ const ExamineeList = () => {
       examinee.quizStartKey.includes(quizStartKey)
   );
 
-  // Pagination setup
   const totalPages = Math.ceil(filteredExaminees.length / itemsPerPage);
-  const currentExaminees = filteredExaminees.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+  const pageRange = 3; 
+  const getVisiblePages = () => {
+    const startPage = Math.max(1, currentPage - pageRange);
+    const endPage = Math.min(totalPages, currentPage + pageRange);
+    return Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
+  };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -76,7 +75,6 @@ const ExamineeList = () => {
     setCurrentPage(1);
   };
 
-  // Ensure role is correctly checked
   if (roleLoading) return (
     <div>
       <LoadingSpinner />
@@ -123,39 +121,41 @@ const ExamineeList = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {currentExaminees.map((examinee, idx) => (
-                <TableRow
-                  key={examinee._id}
-                  className="hover:bg-gray-50 transition-colors duration-200"
-                >
-                  <TableCell className="font-semibold text-gray-600">
-                    {(currentPage - 1) * itemsPerPage + idx + 1}
-                  </TableCell>
-                  <TableCell className="text-center">
-                    <Image
-                      src={examinee.userImg || "/default-avatar.png"}
-                      alt={examinee.userName}
-                      width={50}
-                      height={50}
-                      className="rounded-full"
-                    />
-                  </TableCell>
-                  <TableCell className="font-medium text-gray-700">
-                    {examinee.userName}
-                  </TableCell>
-                  <TableCell className="font-light text-gray-500 truncate max-w-[200px]">
-                    {examinee.userEmail}
-                  </TableCell>
-                  <TableCell className="font-light text-gray-500">
-                    {examinee.quizTitle}
-                  </TableCell>
-                  <TableCell className="font-semibold text-gray-600">
-                    {examinee.marks}%
-                  </TableCell>
-                  <TableCell className="text-right font-light text-gray-500 truncate max-w-[200px]">
-                    {examinee.quizCreator}
-                  </TableCell>
-                </TableRow>
+              {filteredExaminees
+                .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+                .map((examinee, idx) => (
+                  <TableRow
+                    key={examinee._id}
+                    className="hover:bg-gray-50 transition-colors duration-200"
+                  >
+                    <TableCell className="font-semibold text-gray-600">
+                      {(currentPage - 1) * itemsPerPage + idx + 1}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      <Image
+                        src={examinee.userImg || "/default-avatar.png"}
+                        alt={examinee.userName}
+                        width={50}
+                        height={50}
+                        className="rounded-full"
+                      />
+                    </TableCell>
+                    <TableCell className="font-medium text-gray-700">
+                      {examinee.userName}
+                    </TableCell>
+                    <TableCell className="font-light text-gray-500 truncate max-w-[200px]">
+                      {examinee.userEmail}
+                    </TableCell>
+                    <TableCell className="font-light text-gray-500">
+                      {examinee.quizTitle}
+                    </TableCell>
+                    <TableCell className="font-semibold text-gray-600">
+                      {examinee.marks}%
+                    </TableCell>
+                    <TableCell className="text-right font-light text-gray-500 truncate max-w-[200px]">
+                      {examinee.quizCreator}
+                    </TableCell>
+                  </TableRow>
               ))}
             </TableBody>
           </Table>
@@ -170,20 +170,19 @@ const ExamineeList = () => {
               currentPage === 1 ? "bg-gray-300" : "bg-primary text-white"
             }`}
           >
-            &#8592; {/* Left arrow for previous */}
+            &#8592; 
           </button>
 
-          {Array.from({ length: totalPages }, (_, index) => (
+         
+          {getVisiblePages().map((page) => (
             <button
-              key={index + 1}
-              onClick={() => handlePageChange(index + 1)}
+              key={page}
+              onClick={() => handlePageChange(page)}
               className={`px-4 py-2 rounded-md ${
-                currentPage === index + 1
-                  ? "bg-primary text-white"
-                  : "bg-gray-200"
+                currentPage === page ? "bg-primary text-white" : "bg-gray-200"
               }`}
             >
-              {index + 1}
+              {page}
             </button>
           ))}
 
@@ -194,7 +193,7 @@ const ExamineeList = () => {
               currentPage === totalPages ? "bg-gray-300" : "bg-primary text-white"
             }`}
           >
-            &#8594; {/* Right arrow for next */}
+            &#8594; 
           </button>
         </div>
       </div>
