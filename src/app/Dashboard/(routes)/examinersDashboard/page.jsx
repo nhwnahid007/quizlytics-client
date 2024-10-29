@@ -19,6 +19,11 @@ import NotFound from "@/app/not-found";
 import useRole from "@/app/hooks/useRole";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 
+import { FaRegCopy } from "react-icons/fa";
+import { toast } from "react-toastify";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Page = () => {
   const [AllQuiz, refetch] = useAllQuiz();
   const [currentPage, setCurrentPage] = useState(1);
@@ -64,6 +69,13 @@ const Page = () => {
       }
     });
   };
+
+  const handleCopy = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+     toast.success("Quiz code has been copied to clipboard.");
+    });
+  };
+
   if (roleLoading) return <div>
       <LoadingSpinner />
     </div>
@@ -98,7 +110,13 @@ const Page = () => {
                   <TableCell className="font-medium">
                     {(currentPage - 1) * itemsPerPage + idx + 1}
                   </TableCell>
-                  <TableCell className="font-medium">{item.quizStartKey}</TableCell>
+                  <TableCell className="font-medium flex items-center">
+                    {item.quizStartKey}
+                    <FaRegCopy
+                      onClick={() => handleCopy(item.quizStartKey)}
+                      className="ml-2 cursor-pointer"
+                    />
+                  </TableCell>
                   <TableCell>{item.quizTitle}</TableCell>
                   <TableCell>{item.quizCategory}</TableCell>
                   <TableCell>{item.quizCreator}</TableCell>
@@ -156,6 +174,7 @@ const Page = () => {
           </button>
         </div>
       </main>
+      <ToastContainer />
     </div>
   );
 };

@@ -97,13 +97,12 @@ const Sidebar = () => {
         </div>
         <ul className="pt-6">
           {Menus.map((Menu, index) => (
-            <li
-              key={index}
-              className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-white text-sm font-semibold items-center gap-x-4 ${
-                isActive(Menu.route) ? "bg-gray-700 text-secondary-color" : ""
-              }`}
-            >
-              <Link href={Menu.route} className="flex items-center gap-x-4">
+            <Link href={Menu.route} key={index}>
+              <li
+                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-white text-sm font-semibold items-center gap-x-2 ${
+                  isActive(Menu.route) ? "bg-gray-700 text-secondary-color" : ""
+                }`}
+              >
                 <span
                   className={`text-md ${
                     isActive(Menu.route) ? "text-secondary-color" : ""
@@ -118,17 +117,17 @@ const Sidebar = () => {
                 >
                   {Menu.title}
                 </span>
-              </Link>
-            </li>
+              </li>
+            </Link>
           ))}
-          <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-white text-sm font-semibold items-center gap-x-4">
-            <Link href="/" className="flex items-center gap-x-4">
+          <Link href="/">
+            <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-white text-sm font-semibold items-center gap-x-4">
               <span
                 className={`text-lg ${
                   pathname === "/" ? "text-secondary-color" : ""
                 }`}
               >
-               <House />
+                <House />
               </span>
               <span
                 className={`origin-left duration-200 ${
@@ -137,8 +136,8 @@ const Sidebar = () => {
               >
                 Go to Homepage
               </span>
-            </Link>
-          </li>
+            </li>
+          </Link>
         </ul>
       </div>
     </div>
