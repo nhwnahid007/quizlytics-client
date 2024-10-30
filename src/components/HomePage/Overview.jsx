@@ -8,13 +8,14 @@ import axios from 'axios';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { CheckCircle, XCircle } from 'lucide-react'; // Import the icons
+import { toast } from 'react-toastify';
 
 const Overview = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [chartData, setChartData] = useState([]);
   const [isCorrect, setIsCorrect] = useState(false);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const correctAnswer = "C) Paris"; // Define the correct answer
+  const correctAnswer = "B) Building scalable server-side applications"; // Update the correct answer
 
   const handleCheckAnswer = () => {
     if (selectedOption) {
@@ -22,7 +23,7 @@ const Overview = () => {
       setIsCorrect(isAnswerCorrect);
       setIsDialogOpen(true);
     } else {
-      alert("Please select an option first.");
+      toast.error("Please select an option first.");
     }
   };
 
@@ -99,14 +100,19 @@ const Overview = () => {
               DemoQuestion Type
             </h2>
             <h3 className="text-xl font-semibold text-semibold">
-              What is the capital city of France?
+              What is the primary use of Node.js in the MERN stack?
             </h3>
             <div >
               <ul className="mt-3 space-y-2">
-                {["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"].map((option, index) => (
+                {[
+                  "A) Handling client-side rendering",
+                  "B) Building scalable server-side applications",
+                  "C) Managing the application's state",
+                  "D) Optimizing network performance"
+                ].map((option, index) => (
                   <li
                     key={index}
-                    className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl data-aos="fade-left" ${
+                    className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl ${
                       selectedOption === option ? "bg-secondary-color opacity-80" : ""
                     }`}
                   >

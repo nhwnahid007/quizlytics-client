@@ -249,7 +249,7 @@ const Page = () => {
             Add Question
           </Button>
 
-          <div className="mt-8">
+          <div className="mt-3">
             {questions.length > 0 && (
               <h2 className="text-2xl font-bold mb-4 text-gray-800">
                 Questions Preview
