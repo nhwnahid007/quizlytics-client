@@ -5,10 +5,27 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from 'recharts';
 import axios from 'axios';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { CheckCircle, XCircle } from 'lucide-react'; // Import the icons
+import { toast } from 'react-toastify';
 
 const Overview = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [chartData, setChartData] = useState([]);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const correctAnswer = "B) Building scalable server-side applications"; // Update the correct answer
+
+  const handleCheckAnswer = () => {
+    if (selectedOption) {
+      const isAnswerCorrect = selectedOption === correctAnswer;
+      setIsCorrect(isAnswerCorrect);
+      setIsDialogOpen(true);
+    } else {
+      toast.error("Please select an option first.");
+    }
+  };
 
   // Fetch examinee data
   const fetchExaminees = async () => {
@@ -83,14 +100,19 @@ const Overview = () => {
               DemoQuestion Type
             </h2>
             <h3 className="text-xl font-semibold text-semibold">
-              What is the capital city of France?
+              What is the primary use of Node.js in the MERN stack?
             </h3>
             <div >
               <ul className="mt-3 space-y-2">
-                {["A) Berlin", "B) Madrid", "C) Paris", "D) Rome"].map((option, index) => (
+                {[
+                  "A) Handling client-side rendering",
+                  "B) Building scalable server-side applications",
+                  "C) Managing the application's state",
+                  "D) Optimizing network performance"
+                ].map((option, index) => (
                   <li
                     key={index}
-                    className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl data-aos="fade-left" ${
+                    className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl ${
                       selectedOption === option ? "bg-secondary-color opacity-80" : ""
                     }`}
                   >
@@ -108,16 +130,54 @@ const Overview = () => {
                 ))}
               </ul>
             </div>
-            <button className="mt-4 bg-primary-color text-white py-2 px-4 rounded">
-              Next Question
+            <button onClick={handleCheckAnswer} className="mt-4 bg-primary-color text-white py-2 px-4 rounded">
+              Check
             </button>
           </div>
         </div>
 
+        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+            <button className="mt-4 bg-primary-color text-white py-2 px-4 rounded">
+              Check
+            </button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>
+                <div className="flex items-center">
+                  {isCorrect ? (
+                    <>
+                      <CheckCircle color="green" size={24} className="mr-2" />
+                      <span>Correct Answer!</span>
+                    </>
+                  ) : (
+                    <>
+                      <XCircle color="red" size={24} className="mr-2" />
+                      <span>Incorrect Answer</span>
+                    </>
+                  )}
+                </div>
+              </DialogTitle>
+              <DialogDescription>
+                {isCorrect ? (
+                  <p>Your answer is correct!</p>
+                ) : (
+                  <p>
+                    Your answer is incorrect. <br /> The correct answer is: {correctAnswer}
+                  </p>
+                )}
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button onClick={() => setIsDialogOpen(false)}>Close</Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+
         {/* Achievement */}
         <div className="flex flex-col lg:flex-row gap-8 mt-8 lg:pr-8">
           <div
-            
             className="w-full lg:w-1/2 bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
@@ -143,7 +203,6 @@ const Overview = () => {
             </div>
           </div>
           <div
-            
             className="w-full lg:w-1/2 bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >

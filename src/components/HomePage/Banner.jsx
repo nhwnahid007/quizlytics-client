@@ -43,7 +43,7 @@ const Banner = () => {
                   }}
                 />
               </h1>
-              <p className="text-[#555555] font-semibold p-2 pt-5 rounded-sm bg-[#FCFAF9] bg-opacity-20">
+              <p className="text-[#555555] font-semibold p-5 pt-5 rounded-xl bg-[#FCFAF9] bg-opacity-20">
                 Explore our interactive quiz platform to test your knowledge on diverse topics! Track your progress, compete with others, and climb the leaderboards. Join now and discover what you really know!
               </p>
               <div className="flex flex-col md:justify-center md:mt-5 md:flex-row lg:flex-row mt-3 gap-3 md:gap-5 lg:gap-4  lg:mt-8">
