@@ -56,10 +56,10 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className="text-lg font-medium text-[#ff0000]">
+                <h3 className=" font-bold text-[#ff0000]">
                   Nahidul Islam
                 </h3>
-                <span className="mt-1 font-medium  dark:text-gray-300">
+                <span className="mt-1  dark:text-gray-300">
                   Team Leader
                 </span>
               </div>
