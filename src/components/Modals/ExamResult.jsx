@@ -49,7 +49,7 @@ const ExamResult = ({ myMark }) => {
         <h1 className={`mb-3 md:mb-4 text-center text-3xl md:text-4xl ${remarkColor}`}>{remark}</h1>
         
         <div className="flex flex-1 mx-auto items-center justify-center">
-          <UserFeedback />
+          <UserFeedback className='bg-black' />
         </div>
 
         <div className="my-2 flex justify-center gap-2 md:gap-3">

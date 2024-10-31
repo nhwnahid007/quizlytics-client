@@ -2,7 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import {useState, useEffect} from "react";
-import axios from 'axios'
+import axios from "axios";
 import {FaQuoteLeft, FaStar} from "react-icons/fa";
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -52,17 +52,22 @@ const Feedback = () => {
                 <div className="p-1">
                   <Card className="w-full h-[480px] bg-white shadow-md p-6 rounded-xl">
                     <CardContent className="flex flex-col aspect-square items-center justify-center p-6">
-                      <Image
-                        src={item.image}
-                        alt="feedback"
-                        width={140}
-                        height={140}
-                        className="rounded-full mx-auto mt-4"
-                      />
-                      <div className="flex flex-col mx-auto text-center items-center justify-center">
+                      <div>
+                        <Image
+                          src={item.image}
+                          alt="feedback"
+                          width={140}
+                          height={140}
+                          className="rounded-full mx-auto mt-4"
+                        />
                         <h2 className="text-xl text-primary-color text-opacity-80 font-bold text-center mt-4">
                           {item.name}
                         </h2>
+                      </div>
+                      <div className="flex flex-col mx-auto text-center items-center justify-center">
+                        {/* <h2 className="text-xl text-primary-color text-opacity-80 font-bold text-center mt-4">
+                          {item.name}
+                        </h2> */}
                         <div className="flex mt-2">
                           <p className="flex items-center mx-auto">
                             <span className="mr-2">Rating:</span>
