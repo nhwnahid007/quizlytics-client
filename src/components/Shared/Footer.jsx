@@ -8,13 +8,13 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <div className="relative bg-white overflow-hidden">
+    <div className="relative bg-gray-100 overflow-hidden">
       {/* Set background to white */}
       <div className="absolute -top-15 left-0 bg-yellow-400 opacity-10 rounded-full blur-3xl animate-bounce-slow"></div>
       <div className="absolute bottom-0 right-0 bg-pink-300 opacity-10 rounded-full blur-3xl animate-pulse"></div>
 
       <div className="mx-auto">
-        <div className="text-black p-10 bg-gray-100 shadow-lg flex flex-col lg:flex-row justify-between">
+        <div className="text-black p-10 bg-gray-100 flex flex-col lg:flex-row justify-between">
           {/* Footer background set to black and text to white */}
           <div className="footer-start mb-8">
             <Image
@@ -120,7 +120,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="text-center text-[#333333] py-1">
+        <div className="text-center font-semibold bg-gray-100 mb-10 text-[#333333] py-1">
           <p className="hover:scale-105 transition-transform duration-500">
             &copy; {currentYear} Quizlytics Ltd. All rights reserved.
           </p>
