@@ -3,6 +3,21 @@
 import useRouterHook from "@/app/hooks/useRouterHook";
 import React, { useEffect, useState } from "react";
 import SectionTitle, { SectionTitleMinimal } from "../Shared/SectionTitle";
+import Image from "next/image";
+import Marquee from "react-fast-marquee";
+
+// Create a MarqueeItem component
+const MarqueeItem = () => (
+  <div className="flex items-center">
+    <Image
+      src="/images/trust-badge-1.png" // Replace with your badge images
+      alt="Trust Badge" 
+      width={100}
+      height={100}
+      className="h-16 w-auto mx-4"
+    />
+  </div>
+);
 
 const Banner = () => {
   const router = useRouterHook();
@@ -45,45 +60,84 @@ const Banner = () => {
       </div>
 
       {/* Main Content */}
-      <div className="absolute inset-0 pt-2 md:pt-10 lg:pt-20">
-        <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 md:px-10 lg:px-12">
-          <div className="w-full max-w-4xl text-center">
+      <div className="absolute inset-0 pt-7 md:pt-10">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-6xl text-center">
             {/* Intro Section */}
-            <div className="mb-8">
-              
-
+            <div className="md:mb-4 pt-5 sm:mb-8">
               <SectionTitleMinimal heading="Master Any Topic Through Interactive Quizzes" />
-
-
             </div>
 
             {/* Description Box */}
-            <div className="p-6 mb-5">
-              <p className="text-[#555555] font-semibold">
+            <div className="p-2 sm:p-6 mb-4 sm:mb-5">
+              <p className="text-[#555555] font-semibold text-sm">
                 Elevate your learning experience with our dynamic quiz platform! Choose custom quizzes, or generate AI-powered questions from anything, including any article link. Perfect for students, professionals, and lifelong learners seeking to test and expand their knowledge.
               </p>
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-5 lg:gap-6">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 lg:gap-6">
               <button
                 onClick={handleQuicktExam}
-                className="w-full md:w-[200px] px-6 py-3 md:py-4 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300"
+                className="w-[200px] px-4 sm:px-6 py-3 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300 text-sm sm:text-base"
               >
                 Ai Generated Quiz
               </button>
               <button
                 onClick={handleCustomExam}
-                className="w-full md:w-[200px] px-6 py-3 md:py-4 rounded-xl font-bold text-secondary-color bg-gray-200 hover:bg-transparent hover:text-gray-600 border-2 border-gray-200 transition-all duration-300"
+                className="w-[200px] px-4 sm:px-6 py-3 rounded-xl font-bold text-secondary-color bg-gray-200 hover:bg-transparent hover:text-gray-600 border-2 border-gray-200 transition-all duration-300 text-sm sm:text-base"
               >
                 Custom Quiz
               </button>
               <button
                 onClick={handleQuizByLink}
-                className="w-full md:w-[200px] px-6 py-3 md:py-4 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300"
+                className="w-[200px] px-4 sm:px-6 py-3 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300 text-sm sm:text-base"
               >
                 Quiz from Article
               </button>
+            </div>
+
+            {/* Trust Badges Marquee Section */}
+            <div className="mt-8 sm:mt-12">
+              <Marquee
+                gradient={false}
+                speed={40}
+                pauseOnHover={true}
+                className="py-2 md:py-4"
+              >
+                <Image
+                  src="/images/badge1.png"
+                  alt="Trust Badge"
+                  width={100}
+                  height={100}
+                  className="h-16 w-auto mx-4"
+                />
+                <Image
+                  src="/images/badge2.png"
+                  alt="Trust Badge"
+                  width={100}
+                  height={100}
+                  className="h-16 w-auto mx-4"
+                />
+                <Image
+                  src="/images/badge3.png"
+                  alt="Trust Badge"
+                  width={100}
+                  height={100}
+                  className="h-16 w-auto mx-4"
+                />
+                {/* Add more badges as needed */}
+              </Marquee>
+
+              {/* Trust Text */}
+              <div className="text-center mt-4">
+                <p className="text-sm sm:text-lg">
+                  <span>Trusted by teachers in </span>
+                  <span className="text-purple-600">90% of U.S. Schools</span>
+                  <span> and </span>
+                  <span className="text-purple-600">150+ countries</span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
