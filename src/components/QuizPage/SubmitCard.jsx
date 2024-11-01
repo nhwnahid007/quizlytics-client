@@ -17,9 +17,11 @@ const SubmitCard = ({ item, markedAnswer, idx }) => {
       <Card className="shadow-xl border border-gray-200 rounded-lg">
         <CardHeader className="bg-primary-color p-4 rounded-t-lg">
           <CardTitle className="text-white text-lg font-bold">
-            Question {idx + 1}: {item.question}
+            Question {idx + 1} : {item.question}
           </CardTitle>
-          <CardDescription className="text-white mt-1">Options:</CardDescription>
+          <CardDescription className="text-white mt-1">
+            Options:
+          </CardDescription>
         </CardHeader>
 
         <CardContent className="p-8">
@@ -59,7 +61,8 @@ const SubmitCard = ({ item, markedAnswer, idx }) => {
 
             {item.explain && (
               <p className=" text-gray-600">
-                <span className="font-semibold">Explanation:</span> {item.explain}
+                <span className="font-semibold">Explanation:</span>{" "}
+                {item.explain}
               </p>
             )}
           </div>

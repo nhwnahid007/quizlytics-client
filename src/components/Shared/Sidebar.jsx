@@ -1,32 +1,45 @@
 "use client";
-import {useState} from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaChartLine, FaCommentDots, FaDatabase, FaPeopleArrows, FaUser } from "react-icons/fa";
+import {
+  FaChartLine,
+  FaCommentDots,
+  FaDatabase,
+  FaPeopleArrows,
+  FaUser,
+} from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaFileCircleQuestion, FaPeopleGroup } from "react-icons/fa6";
 import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { ChartSpline, CreditCard, Database, FileQuestion, House, ShieldEllipsis, ShieldQuestion, UserCog, Users } from "lucide-react";
+import {
+  ChartSpline,
+  CreditCard,
+  Database,
+  FileQuestion,
+  FileStack,
+  House,
+  ShieldEllipsis,
+  ShieldQuestion,
+  UserCog,
+  Users,
+} from "lucide-react";
 import useRole from "@/app/hooks/useRole";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 const Sidebar = () => {
-
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const pathname = usePathname();
 
-
-  const [ role, roleLoading ] = useRole(); 
-
-
+  const [role, roleLoading] = useRole();
 
   const isActive = (route) => pathname === route;
 
   const Menus = [
-    { title: "Home", route: "/Dashboard", icon: <ChartSpline/> },
+    { title: "Home", route: "/Dashboard", icon: <ChartSpline /> },
     {
       title: "Make custom questions",
       route: "/Dashboard/customquestion",
@@ -35,7 +48,7 @@ const Sidebar = () => {
     {
       title: "All Custom questions",
       route: "/Dashboard/examinersDashboard",
-      icon: <ShieldQuestion/>,
+      icon: <ShieldQuestion />,
     },
     {
       title: "Leaderboard",
@@ -46,6 +59,11 @@ const Sidebar = () => {
       title: "My Progress",
       route: "/Dashboard/statistics",
       icon: <Database />,
+    },
+    {
+      title: "Quiz History",
+      route: "/Dashboard/quizHistory",
+      icon: <FileStack />,
     },
     {
       title: "All Examinee",
@@ -62,10 +80,13 @@ const Sidebar = () => {
       route: "/Dashboard/payment",
       icon: <CreditCard />,
     },
-  ].filter(menu => 
-    role === 'admin' || 
-    (role === 'user' && ['Leaderboard', 'My Progress', 'Home'].includes(menu.title)) || 
-    (role === 'teacher' && !['User Management', 'Payment'].includes(menu.title))
+  ].filter(
+    (menu) =>
+      role === "admin" ||
+      (role === "user" &&
+        ["Leaderboard", "My Progress", "Home"].includes(menu.title)) ||
+      (role === "teacher" &&
+        !["User Management", "Payment"].includes(menu.title))
   );
 
   return (
