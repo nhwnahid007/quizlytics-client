@@ -110,7 +110,7 @@ const QuizHistory = () => {
                   <TableCell className="text-right">
                     <Button
                       onClick={() => handleDetails(item._id)}
-                      className="bg-primary-color"
+                      className=""
                     >
                       Details
                     </Button>

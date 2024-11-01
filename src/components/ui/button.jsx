@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "relative group rounded-[12px] border-2 border-[#7A1CAC] after:content-[''] after:absolute after:bottom-0 after:left-[10%] after:w-[80%] after:h-[2px] after:bg-[#7A1CAC] after:transition-all after:duration-300 hover:after:w-0 hover:after:left-[50%] before:absolute before:transitiona-all before:duration-1000 before:-inset-px before:bg-gradient-to-r before:from-[#7A1CAC] before:via-[#9B4AC7] before:to-[#531276] before:rounded-xl before:blur-lg before:opacity-70 before:-z-10 hover:before:opacity-100 hover:before:-inset-1 hover:before:duration-200 bg-gradient-to-r from-[#7A1CAC] to-[#C68FE6] text-white hover:bg-none hover:bg-transparent hover:text-[#7A1CAC]",
+          "relative group rounded-[12px] border-2 border-[#7A1CAC] after:content-[''] after:absolute after:bottom-0 after:left-[10%] after:w-[80%] after:h-[2px] after:bg-[#7A1CAC] after:transition-all after:duration-300 hover:after:w-0 hover:after:left-[50%] before:absolute before:transitiona-all before:duration-1000 before:-inset-px before:bg-gradient-to-r before:from-[#7A1CAC] before:via-[#9B4AC7] before:to-[#531276] before:rounded-xl before:blur-lg before:opacity-70 before:-z-10 hover:before:opacity-100 hover:before:-inset-1 hover:before:duration-200 bg-gradient-to-r from-[#7A1CAC] to-[#C68FE6] text-white hover:bg-transparent hover:text-[#7A1CAC]",
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
