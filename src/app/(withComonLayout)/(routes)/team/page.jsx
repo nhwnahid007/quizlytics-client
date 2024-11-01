@@ -5,20 +5,20 @@ import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const ServicesPage = () => {
   return (
-    <div className="min-h-screen lg:h-screen">
+    <div className="my-5">
       <section className="relative bg-gray-100 py-10 ">
-        <div className="container mx-auto mt-6">
-         <SectionTitleMinimal heading={"Meet Our Team"} subHeading={"We are a passionate and dedicated team committed to delivering top-notch solutions."}>
+        <div className="container   mx-auto">
 
-         </SectionTitleMinimal>
+          <SectionTitleMinimal heading={" Meet Our Team"} subHeading={" We are a passionate and dedicated team committed to deliveringtop-notch solutions."}></SectionTitleMinimal>
           
 
-          <div className="   grid gap-7  sm:grid-cols-1 lg:grid-cols-5 mx-auto p-4 py-8 my-4  bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-            {/* Team Member 1 */}
+          <div className=" max-w-4xl  mx-auto p-4 py-5  bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+  {/* Team Member 1 */}
+            <div className="flex">
             <div className=" max-w-xs text-center mx-auto">
               <div className="relative group">
                 <Image
-                  className="object-cover object-center w-[200px] h-[200px] mx-auto rounded-full"
+                  className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
                   src="https://i.ibb.co.com/Gp2pbHR/304944883-193506636368131-6096839391558381294-n.jpg"
                   alt="Nahid"
                   width={300}
@@ -54,7 +54,7 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className=" font-bold text-primary-color">
+                <h3 className=" font-bold text-[#ff0000]">
                   Nahidul Islam
                 </h3>
                 <span className="mt-1  dark:text-gray-300">
@@ -62,12 +62,16 @@ const ServicesPage = () => {
                 </span>
               </div>
             </div>
-
+            </div>
+          
+        
+<div className="flex flex-col lg:flex-row">
+  
             {/* Team Member 2 */}
             <div className="max-w-xs text-center mx-auto relative">
               <div className="relative group">
                 <Image
-                  className="object-cover object-center w-[200px] h-[200px] mx-auto rounded-full"
+                  className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
                   src="https://i.ibb.co.com/g95Gd68/photo-2024-07-06-13-14-23.jpg"
                   alt="Musa Akram Saleh"
                   width={300}
@@ -103,7 +107,7 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className="font-bold text-primary-color">Musa Akram</h3>
+                <h3 className="font-bold text-[#ff0000]">Musa Akram</h3>
                 <span className="mt-1 dark:text-gray-300">Team Member</span>
               </div>
             </div>
@@ -112,7 +116,7 @@ const ServicesPage = () => {
             <div className="max-w-xs text-center mx-auto relative">
               <div className="relative group">
                 <Image
-                  className="object-cover object-center w-[200px] h-[200px]  mx-auto rounded-full"
+                  className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
                   src="https://i.ibb.co.com/0Bfm4Wh/rzb4.jpg"
                   alt="Rafiul"
                   width={300}
@@ -148,17 +152,19 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className="font-bold text-primary-color">Rafiul Habib</h3>
-                <span className="mt-1  ">
+                <h3 className="font-bold text-[#ff0000]">Rafiul Habib</h3>
+                <span className="mt-1 font-medium dark:text-gray-300">
                   Team Member
                 </span>
               </div>
             </div>
-            {/* Team Member 4 */}
-            <div className="max-w-xs text-center mx-auto relative">
+</div>
+           <div className="flex flex-col lg:flex-row ">
+             {/* Team Member 4 */}
+             <div className="max-w-xs text-center mx-auto relative">
               <div className="relative group">
                 <Image
-                  className="object-cover object-center w-[200px] h-[200px]  mx-auto rounded-full"
+                  className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
                   src="https://i.ibb.co.com/1RSt7QY/Sa-Rana02.jpg"
                   alt="Sayed Rana"
                   width={300}
@@ -194,7 +200,7 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className="font-bold text-primary-color">Sayed Rana</h3>
+                <h3 className="font-bold text-[#ff0000]">Sayed Rana</h3>
                 <span className="mt-1 text-sm  dark:text-gray-300">
                   Team Member
                 </span>
@@ -206,7 +212,7 @@ const ServicesPage = () => {
             <div className="max-w-xs text-center mx-auto relative">
               <div className="relative group">
                 <Image
-                  className="object-cover object-center w-[200px] h-[200px]  mx-auto rounded-full"
+                  className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
                   src="https://i.ibb.co.com/jhFdWP2/IMG-20240426-031304-893.jpg"
                   alt="Musa Akram Saleh"
                   width={300}
@@ -242,16 +248,17 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className=" font-bold text-primary-color">Ashim Sarkar</h3>
+                <h3 className=" font-bold text-[#ff0000]">Ashim Sarkar</h3>
                 <span className="mt-1 text-sm dark:text-gray-300">
                   Team Member
                 </span>
               </div>
             </div>
+           </div>
           </div>
         </div>
       </section>
-      <hr className="border-2 my-2" />
+    
     </div>
   );
 };
