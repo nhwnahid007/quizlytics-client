@@ -7,23 +7,23 @@ import axios from 'axios';
 import useRouterHook from '@/app/hooks/useRouterHook';
 
 export default function Post({ params }) {
-  const { slug } = params;
+  const { slug:id } = params;
   const [post, setPost] = useState(null);
   const [otherPosts, setOtherPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const router = useRouterHook();
-
+  console.log(params)
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get('https://quizlytics.jonomukti.org/allBlogs');
         const posts = response.data;
-        const foundPost = posts.find(p => p.slug === slug);
+        const foundPost = posts.find(p => p._id === id);
 
         if (foundPost) {
           setPost(foundPost);
-          setOtherPosts(posts.filter(p => p.slug !== slug).slice(0, 3));
+          setOtherPosts(posts.filter(p => p._id !== id).slice(0, 3));
         } else {
           setError('Post not found');
         }
@@ -36,7 +36,7 @@ export default function Post({ params }) {
     };
 
     fetchPosts();
-  }, [slug]);
+  }, [id]);
 
   const handleclick = () => {
     router.push("/quizByLink");
@@ -45,7 +45,7 @@ export default function Post({ params }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
   if (!post) return <p>Post not found.</p>;
-
+  console.log(post._id)
   return (
     <div className="flex flex-col lg:flex-row justify-around items-start mt-10 container mx-auto gap-10 px-4">
       <div className="container mx-auto mt-10 px-4 py-8 bg-white rounded-lg shadow-lg max-w-4xl">
@@ -97,8 +97,8 @@ export default function Post({ params }) {
                   className="w-full h-48 object-cover rounded-md mb-4" 
                 />
                 <h3 className="text-lg font-semibold text-primary-color text-center md:text-left">{otherPost.title}</h3>
-                <p className="text-sm text-gray-500 text-center md:text-left">{otherPost.summary}</p>
-                <Link href={`/blogs/${otherPost.slug}`} className="text-primary-color hover:underline mt-2 inline-block">
+                <p className="text-sm text-gray-500 text-center md:text-left">{otherPost.summary.slice(0,50)}</p>
+                <Link href={`/blogs/${otherPost._id}`} className="text-primary-color hover:underline mt-2 inline-block">
                   Read More →
                 </Link>
               </div>
