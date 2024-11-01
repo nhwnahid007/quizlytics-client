@@ -107,8 +107,8 @@ export default function BlogPost() {
                     <span className="text-gray-400 text-sm">Released on {post.releaseDate}</span>
                   </div>
                   <h2 className="text-2xl font-semibold mb-1 text-secondary-color">{post.title}</h2>
-                  <p className="text-gray-700 mb-2">{post.summary.slice(0,20)}</p>
-                  <p className="text-gray-500 text-sm mb-4">{post.description.slice(0,50)}</p>
+                  <p className="text-gray-700 mb-2">{post.summary.slice(0,50)}</p>
+                  <p className="text-gray-500 text-sm mb-4">{post.description.slice(0,100)}</p>
                   <Link href={`/blogs/${post._id}`} className="inline-block px-4 py-2">
                     <button className="inline-block px-4 py-2 text-white bg-primary-color hover:bg-primary-dark rounded-lg shadow-sm transition duration-300">
                       Read More
@@ -123,7 +123,7 @@ export default function BlogPost() {
         </div>
 
         {/* AI Test Sidebar */}
-        <div className="bg-white p-6 rounded-xl w-full lg:w-[500px] h-[580px] shadow-lg hover:shadow-xl transition-shadow duration-300">
+        {/* <div className="bg-white p-6 rounded-xl w-full lg:w-[500px] h-[580px] shadow-lg hover:shadow-xl transition-shadow duration-300">
           <h1 className="text-stone-900 font-bold text-lg mb-4">
             Test Your Skills on AI-Generated Questions:
           </h1>
@@ -143,7 +143,7 @@ export default function BlogPost() {
           >
             Start Your AI Challenge
           </button>
-        </div>
+        </div> */}
 
       </div>
     </div>

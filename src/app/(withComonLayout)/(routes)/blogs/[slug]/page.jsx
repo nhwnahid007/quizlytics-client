@@ -114,7 +114,7 @@ export default function Post({ params }) {
           </div>
         </div>
       </div>
-
+{/* 
       <div className="mt-10 lg:mt-32">
         <div className="bg-white p-6 rounded-xl w-full lg:w-[350px] h-[420px] shadow-lg hover:shadow-xl transition-shadow duration-300">
           <h1 className="text-stone-900 font-bold text-lg mb-4">
@@ -147,7 +147,7 @@ export default function Post({ params }) {
             Post your article link to give exam
           </button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

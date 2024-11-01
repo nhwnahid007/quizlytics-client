@@ -33,7 +33,7 @@ const page = () => {
             <Image 
               width={300}
               height={500}
-              src="https://i.ibb.co/XDY2CCG/front-view-male-student-green-checkered-shirt-wearing-black-backpack-holding-files-blue-wall.jpg" 
+              src="https://i.ibb.co.com/G94LNJg/ai-nuclear-energy-background-future-innovation-disruptive-technology-53876-129783.jpg" 
               alt="Student holding files" 
               className="w-full h-auto max-h-[500px] object-cover rounded-md shadow-lg" 
             />
@@ -47,7 +47,7 @@ const page = () => {
             <Image 
               width={300}
               height={500}
-              src="https://i.ibb.co/xX6L8Yz/happy-man-blackboard-point-with-finger-copyspace-176420-2947.jpg" 
+              src="https://i.ibb.co.com/Wg90fym/primary-school-teacher-walking-classroom-600nw-2492761215.webp" 
               alt="Instructor pointing to blackboard" 
               className="w-full h-auto max-h-[500px] object-cover rounded-md shadow-lg" 
             />
