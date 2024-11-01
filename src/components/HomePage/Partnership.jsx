@@ -5,11 +5,11 @@ import { FaCircleDot } from "react-icons/fa6";
 const Partnership = () => {
   return (
     <div className="bg-gray-100 ">
-      <h1 className="text-4xl font-bold text-black text-center mb-12">
+      <h1 className="text-4xl font-bold text-black text-center mb-6">
         Quiz Rules & Partnerships
       </h1>
       <div className="w-[90%] md:max-w-6xl mx-auto text">
-        <div className="w-full bg-[#F0E6F3] text-black rounded-2xl p-8 flex flex-col lg:flex-row gap-8 lg:gap-12 mb-8">
+        <div className="w-full bg-[#F0E6F3] text-black rounded-2xl p-8 flex flex-col lg:flex-row gap-4 lg:gap-6 mb-4">
           <div className="relative w-full lg:w-[40%] h-[370px] md:h-[420px]">
             <Image
               src={"https://i.ibb.co.com/3dqN05S/2121601-prev-ui.png"}
@@ -72,7 +72,7 @@ const Partnership = () => {
             </ul>
           </div>
         </div>
-        <div className="w-full text-black rounded-2xl flex flex-col lg:flex-row gap-8">
+        <div className="w-full text-black rounded-2xl flex flex-col lg:flex-row gap-4">
           <div  data-aos="flip-left" className="w-full lg:w-1/2 bg-[#F0E6F3] text-black rounded-2xl p-8 flex flex-col md:flex-row gap-8">
             <div className="relative w-[220px] md:w-[280px] lg:w-[40%] h-[220px]">
               <Image

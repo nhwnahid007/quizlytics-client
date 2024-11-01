@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useRouterHook from "@/app/hooks/useRouterHook";
+import LoadingSpinner from '../Spinner/LoadingSpinner';
 
 export default function BlogPost() {
   const [posts, setPosts] = useState([]);
@@ -11,11 +12,13 @@ export default function BlogPost() {
   const [searchTerm, setSearchTerm] = useState('');
   const router = useRouterHook();
 
+  // Fetch posts on component mount
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get('https://quizlytics.jonomukti.org/allBlogs');
         setPosts(response.data);
+        console.log('Fetched posts:', response.data); // Debug: check fetched posts
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
@@ -23,13 +26,15 @@ export default function BlogPost() {
     fetchPosts();
   }, []);
 
+  // Filter posts based on slug and search term
   const filteredPosts = posts.filter((post) => {
     const matchesSlug = selectedSlug ? post.slug === selectedSlug : true;
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesSlug && matchesSearch;
   });
 
-  const relevantSlugs = [...new Set(filteredPosts.map((post) => post.slug))];
+  // Get unique slugs for the filter buttons
+  const relevantSlugs = [...new Set(posts.map((post) => post.slug))];
 
   const handleclick = () => {
     router.push("/quickExam");
@@ -102,9 +107,9 @@ export default function BlogPost() {
                     <span className="text-gray-400 text-sm">Released on {post.releaseDate}</span>
                   </div>
                   <h2 className="text-2xl font-semibold mb-1 text-secondary-color">{post.title}</h2>
-                  <p className="text-gray-700 mb-2">{post.summary}</p>
-                  <p className="text-gray-500 text-sm mb-4">{post.description}</p>
-                  <Link href={`/blogs/${post.slug}`} className="inline-block px-4 py-2">
+                  <p className="text-gray-700 mb-2">{post.summary.slice(0,20)}</p>
+                  <p className="text-gray-500 text-sm mb-4">{post.description.slice(0,50)}</p>
+                  <Link href={`/blogs/${post._id}`} className="inline-block px-4 py-2">
                     <button className="inline-block px-4 py-2 text-white bg-primary-color hover:bg-primary-dark rounded-lg shadow-sm transition duration-300">
                       Read More
                     </button>
@@ -113,7 +118,7 @@ export default function BlogPost() {
               </div>
             ))
           ) : (
-            <p className="text-center text-primary-color font-bold text-2xl">No posts found.</p>
+            <LoadingSpinner></LoadingSpinner>
           )}
         </div>
 

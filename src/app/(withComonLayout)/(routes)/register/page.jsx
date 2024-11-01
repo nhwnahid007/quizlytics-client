@@ -12,6 +12,7 @@ import '../../../../components/Shared/CustomCSS/style.css';
 import useShowPassState from '@/app/hooks/useShowPassState';
 import useShowConfimPass from '@/app/hooks/useShowConfimPass';
 import { Suspense } from 'react';
+import LoadingSpinner from '@/components/Spinner/LoadingSpinner';
 
 const img_hosting_key = process.env.NEXT_PUBLIC_IMG_HOSTING_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
@@ -71,7 +72,6 @@ const Register = () => {
             formData.append("image", profileImgFill);
             const imgRes = await axios.post(img_hosting_api, formData);
             const profile = imgRes?.data?.data?.display_url;
-            console.log(profile);
 
             // new user info 
             const newUser = { name, email, password, profile, role: "user" }; // Set role here
@@ -116,7 +116,7 @@ const Register = () => {
     }
 
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingSpinner></LoadingSpinner>}>
             <div className='flex pt-10 min-h-screen justify-center items-center h-screen bg-white'>
                 <div className='w-full max-w-md bg-white p-4 rounded-lg shadow-md'>
                     <h2 className='text-3xl font-bold text-center mb-6 text-gray-800'>Register Now!</h2>
