@@ -1,11 +1,12 @@
 "use client";
-import React, { useState, useEffect, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
+import React, {useState, useEffect, Suspense} from "react";
+import {useSearchParams} from "next/navigation";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
+import {loadStripe} from "@stripe/stripe-js";
+import {Elements} from "@stripe/react-stripe-js";
 import CheckoutPage from "@/components/CheckoutPage/CheckoutPage";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
+import {useSession} from "next-auth/react";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
 
@@ -14,6 +15,9 @@ const PaymentCard = () => {
   const prices = searchParams.get("price");
   const plans = searchParams.get("plan");
   const [clientSecret, setClientSecret] = useState(null);
+  const {data: session} = useSession();
+  const name = session?.user?.name;
+  const email = session?.user?.email;
 
   useEffect(() => {
     if (prices) {
@@ -24,14 +28,14 @@ const PaymentCard = () => {
         },
         body: JSON.stringify({
           prices: convertToSubcurrency(prices),
-          email: "user@example.com",
-          userName: "John Doe",
+          email,
+          userName: name,
         }),
       })
         .then((res) => res.json())
         .then((data) => setClientSecret(data.clientSecret));
     }
-  }, [prices]);
+  }, [email, name, prices]);
 
   return (
     <div className="max-w-full mx-auto p-6 bg-white shadow-md rounded-lg mt-10 md:mt-20 min-h-[calc(100vh-360px)]">
@@ -46,11 +50,13 @@ const PaymentCard = () => {
           </p>
         </div>
       ) : (
-        <p className="text-center"><LoadingSpinner /></p>
+        <p className="text-center">
+          <LoadingSpinner />
+        </p>
       )}
 
       {clientSecret && (
-        <Elements stripe={stripePromise} options={{ clientSecret }}>
+        <Elements stripe={stripePromise} options={{clientSecret}}>
           <CheckoutPage clientSecret={clientSecret} prices={prices} />
         </Elements>
       )}
@@ -65,5 +71,3 @@ export default function WrappedPaymentCard() {
     </Suspense>
   );
 }
-
-
