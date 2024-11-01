@@ -96,7 +96,9 @@ const QuizHistory = () => {
                   className="hover:bg-gray-50 transition-colors duration-200"
                   key={item._id}
                 >
-                  <TableCell className="font-medium">{idx + 1}</TableCell>
+                  <TableCell className="font-medium">
+                    {(currentPage - 1) * itemsPerPage + idx + 1}
+                  </TableCell>
                   <TableCell>
                     {moment(item.date).format("MMMM Do YYYY")}
                   </TableCell>
