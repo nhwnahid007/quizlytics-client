@@ -86,9 +86,11 @@ const Page = () => {
         <p className="md:text-5xl text-sm font-semibold text-gray-600">No exam given yet.</p>
       ) : (
         <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl w-full">
-          <h2 className="text-2xl font-bold text-primary-color mb-4 text-center">
-            Exam Statistics
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-8 font-bold text-gray-800">
+          Exam Statistics
           </h2>
+
+          
           <div className="grid grid-cols-2 gap-6 mb-8">
             <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
               <p className="text-lg font-medium text-primary-color">Total Exams Attempted</p>
