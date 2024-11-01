@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useRouterHook from '@/app/hooks/useRouterHook';
+import LoadingSpinner from '@/components/Spinner/LoadingSpinner';
 
 export default function Post({ params }) {
   const { slug:id } = params;
@@ -42,7 +43,7 @@ export default function Post({ params }) {
     router.push("/quizByLink");
   };
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner/>
   if (error) return <p>{error}</p>;
   if (!post) return <p>Post not found.</p>;
   console.log(post._id)
