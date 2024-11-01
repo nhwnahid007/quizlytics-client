@@ -1,26 +1,24 @@
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
 import Image from "next/image";
 import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const ServicesPage = () => {
   return (
-    <div className="">
+    <div className="min-h-screen lg:h-screen">
       <section className="relative bg-gray-100 py-10 ">
-        <div className="container px-6   mx-auto">
-          <h2 className="text-center mt-8 text-3xl font-bold  ">
-            Meet Our Team
-          </h2>
-          <p className="text-center  mt-3 mb-6">
-            We are a passionate and dedicated team committed to delivering
-            top-notch solutions.
-          </p>
+        <div className="container mx-auto mt-6">
+         <SectionTitleMinimal heading={"Meet Our Team"} subHeading={"We are a passionate and dedicated team committed to delivering top-notch solutions."}>
 
-          <div className=" max-w-3xl  grid gap-7  sm:grid-cols-2 lg:grid-cols-3 mx-auto p-4 py-5  bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+         </SectionTitleMinimal>
+          
+
+          <div className="   grid gap-7  sm:grid-cols-1 lg:grid-cols-5 mx-auto p-4 py-8 my-4  bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
             {/* Team Member 1 */}
             <div className=" max-w-xs text-center mx-auto">
               <div className="relative group">
                 <Image
-                  className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
+                  className="object-cover object-center w-[200px] h-[200px] mx-auto rounded-full"
                   src="https://i.ibb.co.com/Gp2pbHR/304944883-193506636368131-6096839391558381294-n.jpg"
                   alt="Nahid"
                   width={300}
@@ -56,7 +54,7 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className=" font-bold text-[#ff0000]">
+                <h3 className=" font-bold text-primary-color">
                   Nahidul Islam
                 </h3>
                 <span className="mt-1  dark:text-gray-300">
@@ -69,7 +67,7 @@ const ServicesPage = () => {
             <div className="max-w-xs text-center mx-auto relative">
               <div className="relative group">
                 <Image
-                  className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
+                  className="object-cover object-center w-[200px] h-[200px] mx-auto rounded-full"
                   src="https://i.ibb.co.com/g95Gd68/photo-2024-07-06-13-14-23.jpg"
                   alt="Musa Akram Saleh"
                   width={300}
@@ -105,7 +103,7 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className="font-bold text-[#ff0000]">Musa Akram</h3>
+                <h3 className="font-bold text-primary-color">Musa Akram</h3>
                 <span className="mt-1 dark:text-gray-300">Team Member</span>
               </div>
             </div>
@@ -114,7 +112,7 @@ const ServicesPage = () => {
             <div className="max-w-xs text-center mx-auto relative">
               <div className="relative group">
                 <Image
-                  className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
+                  className="object-cover object-center w-[200px] h-[200px]  mx-auto rounded-full"
                   src="https://i.ibb.co.com/0Bfm4Wh/rzb4.jpg"
                   alt="Rafiul"
                   width={300}
@@ -150,8 +148,8 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className="font-bold text-[#ff0000]">Rafiul Habib</h3>
-                <span className="mt-1 font-medium dark:text-gray-300">
+                <h3 className="font-bold text-primary-color">Rafiul Habib</h3>
+                <span className="mt-1  ">
                   Team Member
                 </span>
               </div>
@@ -160,7 +158,7 @@ const ServicesPage = () => {
             <div className="max-w-xs text-center mx-auto relative">
               <div className="relative group">
                 <Image
-                  className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
+                  className="object-cover object-center w-[200px] h-[200px]  mx-auto rounded-full"
                   src="https://i.ibb.co.com/1RSt7QY/Sa-Rana02.jpg"
                   alt="Sayed Rana"
                   width={300}
@@ -196,7 +194,7 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className="font-bold text-[#ff0000]">Sayed Rana</h3>
+                <h3 className="font-bold text-primary-color">Sayed Rana</h3>
                 <span className="mt-1 text-sm  dark:text-gray-300">
                   Team Member
                 </span>
@@ -208,7 +206,7 @@ const ServicesPage = () => {
             <div className="max-w-xs text-center mx-auto relative">
               <div className="relative group">
                 <Image
-                  className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
+                  className="object-cover object-center w-[200px] h-[200px]  mx-auto rounded-full"
                   src="https://i.ibb.co.com/jhFdWP2/IMG-20240426-031304-893.jpg"
                   alt="Musa Akram Saleh"
                   width={300}
@@ -244,7 +242,7 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className=" font-bold text-[#ff0000]">Ashim Sarkar</h3>
+                <h3 className=" font-bold text-primary-color">Ashim Sarkar</h3>
                 <span className="mt-1 text-sm dark:text-gray-300">
                   Team Member
                 </span>
@@ -253,7 +251,7 @@ const ServicesPage = () => {
           </div>
         </div>
       </section>
-      <hr className="border-4" />
+      <hr className="border-2 my-2" />
     </div>
   );
 };
