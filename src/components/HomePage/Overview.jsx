@@ -95,7 +95,7 @@ const Overview = () => {
             className="w-full lg:w-1/2 bg-gray-100 bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
-            <h2 className="text-3xl font-bold pb-2 mb-4 text-semibold">
+            <h2 className="text-3xl border-b-2 border-gray-300 font-bold pb-2 mb-4 text-semibold">
               Trending Topics
             </h2>
             <div className="flex justify-center">

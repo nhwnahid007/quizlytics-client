@@ -10,7 +10,7 @@ const HelloTeacher = () => {
       <div className="flex-1 lg:pl-14">
           <SectionTitleMinimal heading={"Hello Teachers!"} subHeading={"Add Interactivity to your Teaching"}></SectionTitleMinimal>
           
-          <p className="text-base md:text-lg mb-2 md:mb-4 opacity-80 lg:text-left">
+          <p className="text-base text-center md:text-lg mb-2 md:mb-4 opacity-80 ">
             A quiz can teach anything to your students. From primary school to
             university, quizzes make education more engaging and fun. You can also
             test the knowledge of your students and view their results in real time.
