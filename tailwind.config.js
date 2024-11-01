@@ -9,8 +9,9 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
-  			"primary-color": '#8E49B6',  
-  			"secondary-color": '#FF7303',
+  			"primary-color": '#7A1CAC',  
+  			"secondary-color": '#090909',
+  			
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {

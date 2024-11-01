@@ -1,11 +1,16 @@
 "use client";
+
 import useRouterHook from "@/app/hooks/useRouterHook";
-import Image from "next/image";
-import React from "react";
-import Typewriter from "typewriter-effect";
+import React, { useEffect, useState } from "react";
+import SectionTitle, { SectionTitleMinimal } from "../Shared/SectionTitle";
 
 const Banner = () => {
   const router = useRouterHook();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleQuicktExam = () => {
     router.push("/quickExam");
@@ -19,121 +24,75 @@ const Banner = () => {
     router.push("/quizByLink");
   };
 
+  if (!isMounted) {
+    return null; // or a loading skeleton
+  }
+
   return (
-    <div
-      className="relative min-h-screen lg:h-[90vh] bg-cover bg-right bg-no-repeat text-black"
-      style={{
-        backgroundImage: `url('https://i.ibb.co.com/5KnXW7M/Untitled-design.png')`,
-        backgroundColor: "#f3f4f6",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Gradient overlay */}
-      <div className="absolute pt-2 md:pt-10 lg:pt-20 inset-0 bg-gradient-to-r from-white/70 to-[#f0f4ff]/80">
-        <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-4 md:px-10 lg:px-20 pt-16">
-          <div className="w-full lg:w-[60%] md:pr-8 lg:pr-32">
-            <div className="w-full md:w-[683px]">
-              <h1 className="text-3xl md:text-5xl font-bold text-[#333333] mb-6 md:mb-14 h-12 md:pr-20">
-                <Typewriter
-                  options={{
-                    strings: "Challenge Your Mind with Fun Quizzes",
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
-              </h1>
-              <p className="text-[#555555] font-semibold p-5 pt-5 rounded-xl bg-[#FCFAF9] bg-opacity-20">
-                Explore our interactive quiz platform to test your knowledge on
-                diverse topics! Track your progress, compete with others, and
-                climb the leaderboards. Join now and discover what you really
-                know!
-              </p>
-              <div className="flex flex-col md:justify-center md:mt-5 md:flex-row lg:flex-row mt-3 gap-3 md:gap-5 lg:gap-4 lg:mt-8">
-                <button
-                  onClick={handleQuicktExam}
-                  className="px-6 md:px-14 py-2 md:py-4 lg:py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient"
-                >
-                  Quick Exam
-                </button>
-                <button
-                  onClick={handleCustomExam}
-                  className="px-6 md:px-12 py-2 md:py-4 lg:py-4 rounded-xl font-bold border-2 text-white bg-secondary-color hover:bg-transparent hover:text-secondary-color transition-colors duration-300 border-gradient"
-                >
-                  Custom Exam
-                </button>
-                <button
-                  onClick={handleQuizByLink}
-                  className="px-6 md:px-12 py-2 md:py-4 lg:py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient"
-                >
-                  Test on Article
-                </button>
-              </div>
+    <div className="relative min-h-screen lg:h-[90vh] text-black bg-gradient-to-br from-purple-50 to-white">
+      {/* Floating UI Elements Background */}
+      <div className="absolute inset-0 overflow-hidden opacity-20">
+        <div className="absolute -left-10 top-20 w-40 h-40 bg-neutral-200 rounded-lg transform rotate-12 animate-float"></div>
+        <div className="absolute right-20 top-40 w-32 h-32 bg-blue-200 rounded-lg transform -rotate-12 animate-float-delayed"></div>
+        <div className="absolute left-1/3 bottom-40 w-36 h-36 bg-primary-color bg-opacity-25 rounded-lg transform rotate-45 animate-float"></div>
+        
+        {/* New Floating Elements */}
+        <div className="absolute right-1/4 top-20 w-24 h-24 bg-purple-200 rounded-full transform animate-float-delayed"></div>
+        <div className="absolute left-1/4 top-1/3 w-28 h-28 bg-pink-200 rounded-lg transform rotate-24 animate-float"></div>
+        <div className="absolute right-1/3 bottom-1/4 w-20 h-20 bg-yellow-200 rounded-full transform animate-float-delayed"></div>
+        <div className="absolute left-10 bottom-1/3 w-16 h-16 bg-green-200 rounded-lg transform -rotate-12 animate-float"></div>
+        <div className="absolute right-10 bottom-20 w-32 h-32 bg-blue-100 rounded-full transform animate-float-delayed"></div>
+      </div>
+
+      {/* Main Content */}
+      <div className="absolute inset-0 pt-2 md:pt-10 lg:pt-20">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 md:px-10 lg:px-12">
+          <div className="w-full max-w-4xl text-center">
+            {/* Intro Section */}
+            <div className="mb-8">
+              
+
+              <SectionTitleMinimal heading="Master Any Topic Through Interactive Quizzes" />
+
+
             </div>
-          </div>
-          <div className="w-full lg:w-[40%] flex justify-center items-center lg:mt-0 md:mt-0">
-            <div className="continuous-rotate mb-2 w-40 h-40 md:w-96 md:h-96 lg:w-auto lg:h-auto flex justify-center items-center">
-              <Image
-                src="https://svgshare.com/i/1C5S.svg"
-                loading="lazy"
-                alt="Rotating quiz illustration"
-                width={1000}
-                height={1000}
-                className="w-full h-full object-contain"
-              />
+
+            {/* Description Box */}
+            <div className="bg-[#FCFAF9] shadow-lg rounded-xl p-6 mb-10">
+              <p className="text-[#555555] font-semibold">
+                Elevate your learning experience with our dynamic quiz platform! Choose from quick assessments, 
+                create custom quizzes, or generate AI-powered questions from any article. Perfect for students, 
+                professionals, and lifelong learners seeking to test and expand their knowledge.
+              </p>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-5 lg:gap-6">
+              <button
+                onClick={handleQuicktExam}
+                className="w-full md:w-auto px-6 md:px-14 py-3 md:py-4 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300"
+              >
+                Start Quick Quiz
+              </button>
+              <button
+                onClick={handleCustomExam}
+                className="w-full md:w-auto px-6 md:px-12 py-3 md:py-4 rounded-xl font-bold text-secondary-color bg-gray-200 hover:bg-transparent hover:text-gray-600 border-2 border-gray-200 transition-all duration-300"
+              >
+                Create Custom Quiz
+              </button>
+              <button
+                onClick={handleQuizByLink}
+                className="w-full md:w-auto px-6 md:px-12 py-3 md:py-4 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300"
+              >
+                Quiz from Article
+              </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Inline CSS for Animation */}
-      <style jsx>{`
-        @keyframes continuousRotate {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        .continuous-rotate {
-          animation: continuousRotate 100s linear infinite;
-          display: inline-block;
-        }
-
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.1);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-
-        .pulse {
-          animation: pulse 3s infinite;
-        }
-
-        @keyframes gradient-border {
-          0% {
-            border-color: #ff7e5f;
-          }
-          50% {
-            border-color: #feb47b;
-          }
-          100% {
-            border-color: #ff7e5f;
-          }
-        }
-
-        .border-gradient {
-          animation: gradient-border 3s infinite;
-        }
-      `}</style>
+      {/* Decorative Elements */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
     </div>
   );
 };

@@ -49,7 +49,7 @@ const Header = () => {
           href="/"
           className="text-3xl items-center md:ml-5 md:text-4xl text-primary-color font-bold"
         >
-          Quiz<span className="text-[#FF7303]">lytics</span>
+          Quizlytics
         </Link>
 
         {/* Main Navigation for larger screens */}
