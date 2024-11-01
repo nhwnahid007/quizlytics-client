@@ -32,7 +32,7 @@ const Feedback = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 p-2 overflow-hidden">
+    <div className="bg-gray-100 p-4 overflow-hidden mt-4">
       <h1 className="text-4xl font-bold text-black text-center mb-3">
         Feedback & Reviews
       </h1>

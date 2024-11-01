@@ -8,8 +8,8 @@ import {
 const Faq = () => {
   return (
     <section className="bg-gray-100">
-      <div className="container p-4 mx-auto md:p-8 bg-white text-gray-800 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold sm:text-4xl mb-4 text-center">
+      <div className="container p-4 mx-auto md:p-4 bg-white text-gray-800 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold sm:text-4xl mb-6 text-center">
           Frequently Asked Questions:
         </h2>
 
