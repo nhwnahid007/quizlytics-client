@@ -17,6 +17,7 @@ import {
   RedditIcon,
 } from "next-share";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
+import UserFeedback from "../Modals/UserFeedback";
 
 const QuizResult = ({
   result,
@@ -165,9 +166,9 @@ const QuizResult = ({
         <h1 className="text-white text-center text-4xl mb-10">
           You achieved {result?.percentageMark}% mark!
         </h1>
-        {/* <div>
+        <div>
           <UserFeedback />
-        </div> */}
+        </div>
         <div className="mt-4 flex justify-center gap-4 w-full">
           <div className="font-medium py-1 px-8 border border-red-600 rounded-md">
             <h2 className="text-xl mb-5 text-center">Share Social Media:</h2>

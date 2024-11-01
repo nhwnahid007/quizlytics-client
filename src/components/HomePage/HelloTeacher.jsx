@@ -1,22 +1,16 @@
-
-
-
 import Image from "next/image";
 import React from "react";
+import { SectionTitleMinimal } from "../Shared/SectionTitle";
 
 const HelloTeacher = () => {
 
 
   return (
-    <div className="my-auto  mt-10 flex gap-10 flex-col md:text-center md:items-center lg:flex-row p-4 md:p-8">
-      <div className="flex-1 lg:pl-14 ">
-          <h1 className="text-2xl md:text-4xl font-bold mb-2 md:mb-4">
-            Hello Teachers!
-          </h1>
-          <h2 className="text-xl md:text-2xl font-semibold mb-4 md:mb-6">
-            Add Interactivity to your Teaching
-          </h2>
-          <p className="text-base md:text-lg mb-2 md:mb-4 opacity-80 text-justify">
+    <div className="my-auto mt-10 flex gap-10 flex-col md:text-center lg:text-left md:items-center lg:flex-row p-4 md:p-8 lg:gap-20">
+      <div className="flex-1 lg:pl-14">
+          <SectionTitleMinimal heading={"Hello Teachers!"} subHeading={"Add Interactivity to your Teaching"}></SectionTitleMinimal>
+          
+          <p className="text-base md:text-lg mb-2 md:mb-4 opacity-80 lg:text-left">
             A quiz can teach anything to your students. From primary school to
             university, quizzes make education more engaging and fun. You can also
             test the knowledge of your students and view their results in real time.
@@ -26,12 +20,12 @@ const HelloTeacher = () => {
           </p>
           
       </div>
-      <div className="flex-1">
+      <div className="flex-1 flex justify-end items-center">
         <Image
           src="https://svgshare.com/i/1BcG.svg"
           alt="Quiz Illustration"
-          width={500}
-          height={500}
+          width={700}
+          height={700}
           className="max-w-full h-auto"
         />
       </div>
