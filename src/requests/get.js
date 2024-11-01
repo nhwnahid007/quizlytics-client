@@ -114,13 +114,4 @@ export const getMarks = async(email)=>{
 }
 
 
-export const getTotalUsers = async () => {
-    try {
-      const res = await axios.get('https://quizlytics.jonomukti.org/totalUsers');
-      return res.data.totalUsers; // Assuming the response contains a field called 'totalUsers'
-    } catch (error) {
-      console.log("Error fetching total users:", error);
-      return 0;
-    }
-  };
 
