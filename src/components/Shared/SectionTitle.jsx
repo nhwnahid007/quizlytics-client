@@ -61,7 +61,12 @@ const SectionTitle = ({ heading, subHeading }) => {
     return (
       <div className="max-w-2xl mx-auto text-center py-4 2xl:py-10 px-4 sm:px-6">
         <div className="space-y-2 sm:space-y-4">
-          {/* Subtitle with dots */}
+          {/* Main heading first */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800">
+            {heading}
+          </h2>
+          
+          {/* Subtitle with dots below heading */}
           <div className="flex items-center justify-center gap-2 sm:gap-3">
             <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-purple-400"></span>
             <span className="text-xs sm:text-sm text-purple-600 font-medium uppercase tracking-wider">
@@ -69,11 +74,6 @@ const SectionTitle = ({ heading, subHeading }) => {
             </span>
             <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-purple-400"></span>
           </div>
-          
-          {/* Main heading */}
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800">
-            {heading}
-          </h2>
           
           {/* Simple underline */}
           <div className="w-16 sm:w-20 h-0.5 sm:h-1 mx-auto bg-gradient-to-r from-purple-400 to-[#eee4f3] rounded-full"></div>

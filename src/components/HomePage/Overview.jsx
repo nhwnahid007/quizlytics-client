@@ -62,7 +62,7 @@ const Overview = () => {
   }, []);
 
   return (
-    <div className="py-3 bg-gray-100">
+    <div className=" py-8 bg-white">
       <div className="w-[90%]  max-w-6xl mx-auto">
         <h1
           className="text-4xl font-bold text-center text-semibold"
@@ -72,12 +72,12 @@ const Overview = () => {
         </h1>
 
         {/* Trending Topics & Question Type */}
-        <div className="flex flex-col lg:flex-row gap-4 mt-4">
+        <div className="flex flex-col lg:flex-row gap-8 mt-12">
           <div
-            className="w-full lg:w-[65%] bg-white bg-opacity-90 rounded-2xl p-8"
+            className="w-full lg:w-[65%] bg-gray-100 bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
-            <h2 className="text-3xl font-bold text-semibold">
+            <h2 className="text-3xl font-bold pb-2 mb-4 text-semibold">
               Trending Topics
             </h2>
             <div className="flex justify-center">
@@ -86,17 +86,17 @@ const Overview = () => {
                 <XAxis dataKey="quizCategory" />
                 <YAxis />
                 <Tooltip />
-                {/* <Legend /> */}
+                <Legend />
                 <Bar dataKey="count" fill="#8884d8" />
               </BarChart>
             </div>
           </div>
      
           <div
-            className="w-full lg:w-[35%] bg-white bg-opacity-90 rounded-2xl p-2"
+            className="w-full lg:w-[35%] bg-gray-100 bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
           >
-            <h2 className="text-3xl font-bold border-b-2 border-gray-300 pb-2 mb-4 text-semibold">
+            <h2 className="text-3xl font-bold border-b-2 border-gray-300 pb-2 mb-8 text-semibold">
               DemoQuestion Type
             </h2>
             <h3 className="text-xl font-semibold text-semibold">
@@ -113,14 +113,14 @@ const Overview = () => {
                   <li
                     key={index}
                     className={`flex items-center border-2 border-gray-300 py-2 px-4 rounded-xl ${
-                      selectedOption === option ? "bg-secondary-color opacity-80" : ""
+                      selectedOption === option ? "bg-secondary-color opacity-80 text-white" : ""
                     }`}
                   >
                     <input
                       type="radio"
                       id={`option${index}`}
                       name="question"
-                      className="mr-2"
+                      className="mr-2 accent-primary-color"
                       onChange={() => setSelectedOption(option)}
                     />
                     <label htmlFor={`option${index}`} className="text-semibold">
@@ -130,13 +130,15 @@ const Overview = () => {
                 ))}
               </ul>
             </div>
-            <button onClick={handleCheckAnswer} className="mt-4 bg-primary-color text-white py-2 px-4 rounded w-full">
+            <button onClick={handleCheckAnswer} className="mt-4 bg-primary-color text-white py-2 px-4 rounded">
               Check
             </button>
           </div>
         </div>
 
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+          <DialogTrigger asChild>
+          </DialogTrigger>
           <DialogContent>
             <DialogHeader>
               <DialogTitle>
@@ -171,7 +173,7 @@ const Overview = () => {
         </Dialog>
 
         {/* Achievement */}
-        <div className="flex flex-col lg:flex-row gap-4 mt-4 lg:pr-4">
+        <div className="flex flex-col lg:flex-row gap-8 mt-8 lg:pr-8">
           <div
             className="w-full lg:w-1/2 bg-white bg-opacity-90 rounded-2xl p-8"
             style={{ color: "#2C2F33" }}
