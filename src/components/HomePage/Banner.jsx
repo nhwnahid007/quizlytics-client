@@ -6,27 +6,28 @@ import SectionTitle, { SectionTitleMinimal } from "../Shared/SectionTitle";
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 import { Rocket, Sparkles } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { Button } from "../ui/button";
 
 
 const Banner = () => {
   const router = useRouterHook();
   const [isMounted, setIsMounted] = useState(false);
+  const session = useSession();
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const handleQuicktExam = () => {
-    router.push("/quickExam");
+  const handleGetStarted = () => {
+    if (session?.status === "authenticated") {
+      router.push("/Dashboard"); // or wherever you want logged-in users to go
+    } else {
+      router.push("/login"); // redirect to login page for non-authenticated users
+    }
   };
 
-  const handleCustomExam = () => {
-    router.push("/customQuiz");
-  };
 
-  const handleQuizByLink = () => {
-    router.push("/quizByLink");
-  };
 
   if (!isMounted) {
     return null; // or a loading skeleton
@@ -62,7 +63,7 @@ const Banner = () => {
                 
 
               {/* Description Box */}
-              <div className="p-2 max-w-6xl mb-4 ">
+              <div className="p-2 max-w-6xl mb-4 2xl:mb-2">
                 <p className="text-[#555555] text-base sm:text-lg md:text-xl leading-relaxed">
                   <span className="inline-flex items-center">
                     <Rocket className="w-6 h-6 text-primary-color mr-2 inline-block" />
@@ -82,36 +83,25 @@ const Banner = () => {
             {/* Centered Buttons */}
             <div className="flex-1 flex items-center justify-center">
               <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row justify-center items-center gap-2 sm:gap-4 lg:gap-6">
-                <button
-                  onClick={handleQuicktExam}
-                  className="w-[200px] md:w-[300px] xl:w-[350px] px-4 sm:px-6 py-2 sm:py-3 2xl:py-5 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300 text-sm sm:text-base lg:text-lg"
+                <Button
+                  onClick={handleGetStarted}
+                  className="w-[250px] md:w-[350px] xl:w-[400px] px-6 sm:px-8 py-3 sm:py-4 2xl:py-8 rounded-xl font-bold text-white  text-base sm:text-lg lg:text-xl 2xl:text-2xl"
                 >
-                  Ai Generated Quiz
-                </button>
-                <button
-                  onClick={handleCustomExam}
-                  className="w-[200px] md:w-[300px] xl:w-[350px] px-4 sm:px-6 py-2 sm:py-3 2xl:py-5 rounded-xl font-bold text-secondary-color bg-gray-200 hover:bg-transparent hover:text-gray-600 border-2 border-gray-200 transition-all duration-300 text-sm sm:text-base lg:text-lg"
-                >
-                  Custom Quiz
-                </button>
-                <button
-                  onClick={handleQuizByLink}
-                  className="w-[200px] md:w-[300px] xl:w-[350px] px-4 sm:px-6 py-2 sm:py-3 2xl:py-5 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300 text-sm sm:text-base lg:text-lg"
-                >
-                  Quiz from Article
-                </button>
+                  Get Started
+                </Button>
+                
               </div>
             </div>
 
             {/* Bottom Content */}
             <div>
               {/* Trust Badges Marquee Section */}
-              <div className="mb-4">
+              <div className="mb-4 2xl:mb-20 2xl:mt-2">
                 <Marquee
                   gradient={false}
                   speed={40}
                   pauseOnHover={true}
-                  className="py-2 md:py-4"
+                  className="py-2 md:py-4 2xl:py-2"
                 >
                   <Image
                     src="https://i.ibb.co.com/MkmNxnG/png-clipart-award-award-ribbon-label-removebg-preview.png"
