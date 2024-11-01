@@ -68,7 +68,7 @@ const UserFeedback = () => {
       <div className=" mb-4 flex items-center gap-5 justify-center">
         <div className="w-full flex items-center justify-center">
           <button
-            className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient text-xl"
+            className="px-6 md:px-8 py-2 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient text-xm"
             onClick={() => setisModalOpen(true)}
           >
             Give Us Feedback
@@ -91,7 +91,7 @@ const UserFeedback = () => {
                 Your Feedback about Quizlytics
               </h1>
               <RxCross1
-                className="p-2 text-[2.5rem] text-white bg-primary-color hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer"
+                className="p-2 text-[2.5rem] text-white bg-primary-color hover:bg-[#e7e7e7] rounded-full transition-all duration-300 cursor-pointer opacity-80"
                 onClick={() => setisModalOpen(false)}
               />
             </div>
@@ -137,13 +137,13 @@ const UserFeedback = () => {
             {/* Action buttons */}
             <div className="flex items-center gap-4 p-4">
               <button
-                className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient text-xl"
+                className="px-6 md:px-8 py-2 rounded-xl font-bold border-2 text-white bg-purple-600 hover:bg-transparent hover:text-black transition-colors duration-300 border-gradient text-xm opacity-80"
                 onClick={() => setisModalOpen(false)}
               >
                 Cancel
               </button>
               <button
-                className="px-6 md:px-12 py-4 rounded-xl font-bold border-2 text-white bg-secondary-color hover:bg-transparent hover:text-secondary-color transition-colors duration-300 border-gradient text-xl"
+                className="px-6 md:px-8 py-2 rounded-xl font-bold border-2 text-purple-600  hover:bg-transparent hover:text-black transition-colors duration-300 border-gradient text-xm"
                 onClick={handleSubmit}
               >
                 Submit
