@@ -6,7 +6,7 @@ const HelloTeacher = () => {
 
 
   return (
-    <div className="my-auto mt-10 flex gap-10 flex-col md:text-center lg:text-left md:items-center lg:flex-row p-4 md:p-8">
+    <div className="my-auto mt-10 flex gap-10 flex-col md:text-center lg:text-left md:items-center lg:flex-row p-4 md:p-8 lg:gap-20">
       <div className="flex-1 lg:pl-14">
           <SectionTitleMinimal heading={"Hello Teachers!"} subHeading={"Add Interactivity to your Teaching"}></SectionTitleMinimal>
           
@@ -20,12 +20,12 @@ const HelloTeacher = () => {
           </p>
           
       </div>
-      <div className="flex-1 flex justify-center items-center">
+      <div className="flex-1 flex justify-end items-center">
         <Image
           src="https://svgshare.com/i/1BcG.svg"
           alt="Quiz Illustration"
-          width={500}
-          height={500}
+          width={700}
+          height={700}
           className="max-w-full h-auto"
         />
       </div>
