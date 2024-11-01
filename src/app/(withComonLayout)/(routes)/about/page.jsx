@@ -24,7 +24,7 @@ const page = () => {
               Test your Knowledge with AI-Generated Quizzes
             </h1>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Dive into a world of knowledge and challenge yourself with quizzes designed to boost your skills. Powered by AI, our quizzes cover a wide range of topics tailored for students, with different levels based on expertise. Whether you're preparing for exams or enhancing your knowledge, track your progress and make learning engaging. Start today and see how far you can go!
+              Dive into a world of knowledge and challenge yourself with quizzes designed to boost your skills. Powered by AI, our quizzes cover a wide range of topics tailored for students, with different levels based on expertise. Whether you&apos;re preparing for exams or enhancing your knowledge, track your progress and make learning engaging. Start today and see how far you can go!
             </p>
           </div>
 

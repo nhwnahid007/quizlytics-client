@@ -1,139 +1,156 @@
 "use client";
+
 import useRouterHook from "@/app/hooks/useRouterHook";
+import React, { useEffect, useState } from "react";
+import SectionTitle, { SectionTitleMinimal } from "../Shared/SectionTitle";
 import Image from "next/image";
-import React from "react";
-import Typewriter from "typewriter-effect";
+import Marquee from "react-fast-marquee";
+import { Rocket, Sparkles } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { Button } from "../ui/button";
+
 
 const Banner = () => {
   const router = useRouterHook();
+  const [isMounted, setIsMounted] = useState(false);
+  const session = useSession();
 
-  const handleQuicktExam = () => {
-    router.push("/quickExam");
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const handleGetStarted = () => {
+    if (session?.status === "authenticated") {
+      router.push("/Dashboard"); // or wherever you want logged-in users to go
+    } else {
+      router.push("/login"); // redirect to login page for non-authenticated users
+    }
   };
 
-  const handleCustomExam = () => {
-    router.push("/customQuiz");
-  };
 
-  const handleQuizByLink = () => {
-    router.push("/quizByLink");
-  };
+
+  if (!isMounted) {
+    return null; // or a loading skeleton
+  }
 
   return (
-    <div
-      className="relative min-h-screen lg:h-[90vh] bg-cover bg-right bg-no-repeat text-black"
-      style={{
-        backgroundImage: `url('https://i.ibb.co.com/5KnXW7M/Untitled-design.png')`,
-        backgroundColor: "#f3f4f6",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Gradient overlay */}
-      <div className="absolute pt-2 md:pt-10 lg:pt-20 inset-0 bg-gradient-to-r from-white/70 to-[#f0f4ff]/80">
-        <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 px-4 md:px-10 lg:px-20 pt-16">
-          <div className="w-full lg:w-[60%] md:pr-8 lg:pr-32">
-            <div className="w-full md:w-[683px]">
-              <h1 className="text-3xl md:text-5xl font-bold text-[#333333] mb-6 md:mb-14 h-12 md:pr-20">
-                <Typewriter
-                  options={{
-                    strings: "Challenge Your Mind with Fun Quizzes",
-                    autoStart: true,
-                    loop: true,
-                  }}
-                />
-              </h1>
-              <p className="text-[#555555] font-semibold p-5 pt-5 rounded-xl bg-[#FCFAF9] bg-opacity-20">
-                Explore our interactive quiz platform to test your knowledge on
-                diverse topics! Track your progress, compete with others, and
-                climb the leaderboards. Join now and discover what you really
-                know!
-              </p>
-              <div className="flex flex-col md:justify-center md:mt-5 md:flex-row lg:flex-row mt-3 gap-3 md:gap-5 lg:gap-4 lg:mt-8">
-                <button
-                  onClick={handleQuicktExam}
-                  className="px-6 md:px-14 py-2 md:py-4 lg:py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient"
-                >
-                  Quick Exam
-                </button>
-                <button
-                  onClick={handleCustomExam}
-                  className="px-6 md:px-12 py-2 md:py-4 lg:py-4 rounded-xl font-bold border-2 text-white bg-secondary-color hover:bg-transparent hover:text-secondary-color transition-colors duration-300 border-gradient"
-                >
-                  Custom Exam
-                </button>
-                <button
-                  onClick={handleQuizByLink}
-                  className="px-6 md:px-12 py-2 md:py-4 lg:py-4 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient"
-                >
-                  Test on Article
-                </button>
+    <div className="relative min-h-screen lg:h-[90vh] text-black bg-gradient-to-br from-purple-50 to-white">
+      {/* Floating UI Elements Background */}
+      <div className="absolute inset-0 overflow-hidden opacity-20">
+        {/* Left Side Elements */}
+        <div className="absolute -left-10 top-20 w-40 h-40 bg-neutral-200 rounded-lg transform rotate-12 animate-float"></div>
+        <div className="absolute left-1/4 top-1/3 w-28 h-28 bg-pink-200 rounded-lg transform rotate-24 animate-float"></div>
+        <div className="absolute left-10 bottom-1/3 w-16 h-16 bg-green-200 rounded-lg transform -rotate-12 animate-float"></div>
+        <div className="absolute left-1/3 bottom-40 w-36 h-36 bg-primary-color bg-opacity-25 rounded-lg transform rotate-45 animate-float"></div>
+        
+        {/* Right Side Elements */}
+        <div className="absolute right-20 top-40 w-32 h-32 bg-blue-200 rounded-lg transform -rotate-12 animate-float-delayed"></div>
+        <div className="absolute right-1/4 top-20 w-24 h-24 bg-purple-200 rounded-full transform animate-float-delayed"></div>
+        <div className="absolute right-1/3 bottom-1/4 w-20 h-20 bg-yellow-200 rounded-full transform animate-float-delayed"></div>
+        <div className="absolute right-10 bottom-20 w-32 h-32 bg-blue-100 rounded-full transform animate-float-delayed"></div>
+      </div>
+
+      {/* Main Content */}
+      <div className="absolute inset-0 pt-7 md:pt-10">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-6xl text-center  h-full flex flex-col">
+            {/* Top Content */}
+            <div>
+              {/* Intro Section */}
+              <div className="md:mb-4 pt-5 sm:mb-8">
+                <SectionTitleMinimal heading="Master Any Topic Through Interactive Quizzes" />
+              </div>
+                
+
+              {/* Description Box */}
+              <div className="p-2 max-w-6xl mb-4 2xl:mb-2">
+                <p className="text-[#555555] text-base sm:text-lg md:text-xl leading-relaxed">
+                  <span className="inline-flex items-center">
+                    <Rocket className="w-6 h-6 text-primary-color mr-2 inline-block" />
+                    <span className="font-bold text-purple-600">Transform Your Learning Journey</span>
+                  </span> with our 
+                  <span className="font-bold text-primary-color"> AI-Powered Quiz Platform!</span> Whether you&apos;re preparing for exams, 
+                  upskilling for your career, or simply curious to learn, we&apos;ve got you covered. Create personalized quizzes, 
+                  generate AI questions, or instantly turn any article into an interactive learning experience. 
+                  <span className="font-bold mt-2 text-primary-color inline-flex items-center">
+                    Join thousands of learners who&apos;ve already unlocked their potential! 
+                    <Sparkles className="w-6 h-6 ml-2 inline-block" />
+                  </span>
+                </p>
               </div>
             </div>
-          </div>
-          <div className="w-full lg:w-[40%] flex justify-center items-center lg:mt-0 md:mt-0">
-            <div className="continuous-rotate mb-2 w-40 h-40 md:w-96 md:h-96 lg:w-auto lg:h-auto flex justify-center items-center">
-              <Image
-                src="https://svgshare.com/i/1C5S.svg"
-                loading="lazy"
-                alt="Rotating quiz illustration"
-                width={1000}
-                height={1000}
-                className="w-full h-full object-contain"
-              />
+
+            {/* Centered Buttons */}
+            <div className="flex-1 flex items-center justify-center">
+              <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row justify-center items-center gap-2 sm:gap-4 lg:gap-6">
+                <Button
+                  onClick={handleGetStarted}
+                  className="w-[250px] md:w-[350px] xl:w-[400px] px-6 sm:px-8 py-3 sm:py-4 2xl:py-8 rounded-xl font-bold text-white  text-base sm:text-lg lg:text-xl 2xl:text-2xl"
+                >
+                  Get Started
+                </Button>
+                
+              </div>
+            </div>
+
+            {/* Bottom Content */}
+            <div>
+              {/* Trust Badges Marquee Section */}
+              <div className="mb-4 2xl:mb-20 2xl:mt-2">
+                <Marquee
+                  gradient={false}
+                  speed={40}
+                  pauseOnHover={true}
+                  className="py-2 md:py-4 2xl:py-2"
+                >
+                  <Image
+                    src="https://i.ibb.co.com/MkmNxnG/png-clipart-award-award-ribbon-label-removebg-preview.png"
+                    alt="ISO Badge"
+                    width={100}
+                    height={100}
+                    className="h-16 w-auto mx-4"
+                  />
+                  <Image
+                    src="https://i.ibb.co.com/ngsv1fv/iso-removebg-preview.png"
+                    alt="ISO Badge"
+                    width={100}
+                    height={100}
+                    className="h-16 w-auto mx-4"
+                  />
+                  <Image
+                    src="https://i.ibb.co.com/ZWtZdMr/images-1-removebg-preview-1.png"
+                    alt="Trust Badge"
+                    width={100}
+                    height={100}
+                    className="h-16 w-auto mx-4"
+                  />
+                  <Image
+                    src="https://i.ibb.co.com/mzJ2fGp/png-transparent-computer-icons-certification-chartered-quality-institute-digital-signature-others-se.png"
+                    alt="Trust Badge"
+                    width={100}
+                    height={100}
+                    className="h-16 w-auto mx-4"
+                  />
+                  <Image
+                    src="https://i.ibb.co.com/RHy3wyy/pngtree-best-award-gold-label-png-image-6595408-removebg-preview.png"
+                    alt="Trust Badge"
+                    width={100}
+                    height={100}
+                    className="h-16 w-auto mx-4"
+                  />
+                  {/* Add more badges as needed */}
+                </Marquee>
+
+                {/* Trust Text */}
+                
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Inline CSS for Animation */}
-      <style jsx>{`
-        @keyframes continuousRotate {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        .continuous-rotate {
-          animation: continuousRotate 100s linear infinite;
-          display: inline-block;
-        }
-
-        @keyframes pulse {
-          0% {
-            transform: scale(1);
-          }
-          50% {
-            transform: scale(1.1);
-          }
-          100% {
-            transform: scale(1);
-          }
-        }
-
-        .pulse {
-          animation: pulse 3s infinite;
-        }
-
-        @keyframes gradient-border {
-          0% {
-            border-color: #ff7e5f;
-          }
-          50% {
-            border-color: #feb47b;
-          }
-          100% {
-            border-color: #ff7e5f;
-          }
-        }
-
-        .border-gradient {
-          animation: gradient-border 3s infinite;
-        }
-      `}</style>
+      {/* Decorative Elements */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white to-transparent"></div>
     </div>
   );
 };
