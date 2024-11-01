@@ -1,3 +1,4 @@
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
 import Image from "next/image";
 import React from "react";
 
@@ -6,9 +7,10 @@ const page = () => {
     <div className="bg-gray-50 text-black">
       <div className="w-full lg:w-[70%] mx-auto py-8 text-center">
         {/* Main Title Section */}
-        <h1 className="mt-10 text-4xl md:text-6xl font-bold text-primary-color mb-8">
+        {/* <h1 className="mt-10 text-4xl md:text-6xl font-bold text-primary-color mb-8">
           Elevate Your Learning with Quizlytics
-        </h1>
+        </h1> */}
+        <SectionTitleMinimal heading={'Elevate Your Learning with Quizlytics'}></SectionTitleMinimal>
         <p className="text-black text-lg md:text-xl mx-4 md:mx-auto leading-relaxed mb-8">
           Welcome to <span className="font-bold">Quizlytics</span>—where you unlock knowledge, track progress, and ace every challenge. Built for learners in Bangladesh, Quizlytics is your all-in-one tool for mastering MCQs in board exams, job tests, and more. Join us to make learning engaging, personalized, and impactful!
         </p>
