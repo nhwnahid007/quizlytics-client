@@ -1,6 +1,7 @@
 "use client";
 import {
   getLinkHistoryByUser,
+  getSubmissionById,
   getSubmissionByKey,
   getSubmissionByQuizTitle,
 } from "@/requests/get";
@@ -9,8 +10,9 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import SubmitCard from "./SubmitCard";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
+import moment from "moment";
 
-const LatestSubmission = ({ quizKey, searchCategory }) => {
+const LatestSubmission = ({ quizKey, searchCategory, quizId }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [latestSubmission, setLatestSubmission] = useState([]);
@@ -18,6 +20,8 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
   const { data: session } = useSession();
   const email = session?.user?.email;
   const name = session?.user?.name;
+
+  console.log("id", quizId);
 
   useEffect(() => {
     const getLatestSubmission = async () => {
@@ -33,6 +37,12 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
           const data = await getSubmissionByQuizTitle(searchCategory, email);
           console.log("quick data", data);
           setLatestSubmission(data.at(-1));
+          setIsLoading(false);
+        } else if (quizId) {
+          setLatestSubmission([]);
+          const data = await getSubmissionById(quizId);
+          console.log("quick data", data);
+          setLatestSubmission(data);
           setIsLoading(false);
         } else {
           setLatestSubmission([]);
@@ -56,17 +66,26 @@ const LatestSubmission = ({ quizKey, searchCategory }) => {
 
   return (
     <div className="h-auto max-w-6xl pt-20 mx-auto">
-      <h2 className="text-center text-3xl  font-extrabold  mb-8">
-        YOUR LATEST SUBMISSION
-      </h2>
+      {quizId ? (
+        <h2 className="text-center text-3xl  font-extrabold  mb-8">
+          Exam of {moment(latestSubmission.date).format("MMMM Do YYYY")}
+        </h2>
+      ) : (
+        <h2 className="text-center text-3xl  font-extrabold  mb-8">
+          YOUR LATEST SUBMISSION
+        </h2>
+      )}
 
       {isLoading ? (
-        <div className="text-center"><LoadingSpinner></LoadingSpinner>   </div>
+        <div className="text-center">
+          <LoadingSpinner></LoadingSpinner>{" "}
+        </div>
       ) : latestSubmission?.questions?.length > 0 ? (
         latestSubmission.questions.map((item, idx) => (
           <SubmitCard
             key={item._id}
             item={item}
+            idx={idx}
             markedAnswer={latestSubmission.answers[idx]}
           />
         ))

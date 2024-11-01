@@ -112,6 +112,15 @@ export const getMarks = async(email)=>{
         return [];
     }
 }
+export const getSubmissionById = async(id)=>{
+    try{
+        const res = await axios.get(`https://quizlytics.jonomukti.org/userHistory/${id}`)
+        return res.data;
+    } catch(error){
+        console.log("Error fetching History:", error);
+        return [];
+    }
+}
 
 
 export const getTotalUsers = async () => {
