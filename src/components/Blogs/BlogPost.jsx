@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useRouterHook from "@/app/hooks/useRouterHook";
+import LoadingSpinner from '../Spinner/LoadingSpinner';
 
 export default function BlogPost() {
   const [posts, setPosts] = useState([]);
@@ -117,7 +118,7 @@ export default function BlogPost() {
               </div>
             ))
           ) : (
-            <p className="text-center text-primary-color font-bold text-2xl">No posts found.</p>
+            <LoadingSpinner></LoadingSpinner>
           )}
         </div>
 
