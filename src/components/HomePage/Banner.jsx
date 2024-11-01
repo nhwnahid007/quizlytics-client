@@ -58,11 +58,9 @@ const Banner = () => {
             </div>
 
             {/* Description Box */}
-            <div className="bg-[#FCFAF9] shadow-lg rounded-xl p-6 mb-10">
+            <div className="p-6 mb-5">
               <p className="text-[#555555] font-semibold">
-                Elevate your learning experience with our dynamic quiz platform! Choose from quick assessments, 
-                create custom quizzes, or generate AI-powered questions from any article. Perfect for students, 
-                professionals, and lifelong learners seeking to test and expand their knowledge.
+                Elevate your learning experience with our dynamic quiz platform! Choose custom quizzes, or generate AI-powered questions from anything, including any article link. Perfect for students, professionals, and lifelong learners seeking to test and expand their knowledge.
               </p>
             </div>
 
@@ -70,19 +68,19 @@ const Banner = () => {
             <div className="flex flex-col md:flex-row justify-center items-center gap-3 md:gap-5 lg:gap-6">
               <button
                 onClick={handleQuicktExam}
-                className="w-full md:w-auto px-6 md:px-14 py-3 md:py-4 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300"
+                className="w-full md:w-[200px] px-6 py-3 md:py-4 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300"
               >
-                Start Quick Quiz
+                Ai Generated Quiz
               </button>
               <button
                 onClick={handleCustomExam}
-                className="w-full md:w-auto px-6 md:px-12 py-3 md:py-4 rounded-xl font-bold text-secondary-color bg-gray-200 hover:bg-transparent hover:text-gray-600 border-2 border-gray-200 transition-all duration-300"
+                className="w-full md:w-[200px] px-6 py-3 md:py-4 rounded-xl font-bold text-secondary-color bg-gray-200 hover:bg-transparent hover:text-gray-600 border-2 border-gray-200 transition-all duration-300"
               >
-                Create Custom Quiz
+                Custom Quiz
               </button>
               <button
                 onClick={handleQuizByLink}
-                className="w-full md:w-auto px-6 md:px-12 py-3 md:py-4 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300"
+                className="w-full md:w-[200px] px-6 py-3 md:py-4 rounded-xl font-bold text-white bg-purple-600 hover:bg-transparent hover:text-purple-600 border-2 border-purple-600 transition-all duration-300"
               >
                 Quiz from Article
               </button>
