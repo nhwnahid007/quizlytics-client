@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import Image from "next/image";
 import { getExaminees } from "@/requests/get";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner"; // Import the spinner component
+import { SectionTitleMinimal } from "./SectionTitle";
 
 const Leaders = () => {
   const [leaders, setLeaders] = useState([]);
@@ -59,16 +60,18 @@ const Leaders = () => {
   }, []);
 
   return (
-    <div className="leaderboard-container mb-8 mt-7 mx-5">
+    <div className="leaderboard-container mb-8 mx-5">
       <main className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-extrabold text-gray-800 text-center mb-6">
-          Leaderboard
-        </h1>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center my-5 font-bold text-gray-800">
+            Leaderboard
+          </h2>
+          
+       
 
         {loading ? (
           <LoadingSpinner /> // Display the loading spinner
         ) : (
-          <div className="leaderboard bg-opacity-70 bg-secondary-color p-6 rounded-lg shadow-lg">
+          <div className="leaderboard  bg-gray-100 p-6 rounded-lg shadow-lg">
             <div className="flex justify-between mb-4">
               <h2 className=" text-xl font-semibold">
                 {currentMonth} {currentYear}
@@ -92,7 +95,7 @@ const Leaders = () => {
                     </h3>
                     <p>Average Marks: {leader.marks || 0}%</p>
                   </div>
-                  <div className={`w-16 h-16 rounded-t-lg mt-4 flex justify-center items-center ${index === 0 ? 'bg-[#FFD700]' : index === 1 ? 'bg-[#C0C0C0]' : 'bg-[#CD7F32]'}`}>
+                  <div className={`w-16 h-16 rounded-t-lg mt-4 bg-gray-300 flex justify-center items-center`}>
                     <span className={`text-${index === 0 ? '2xl' : 'xl'} font-bold`}>{index + 1}</span>
                   </div>
                 </div>
@@ -104,7 +107,7 @@ const Leaders = () => {
               {leaders.slice(3).map((leader, idx) => (
                 <div
                   key={leader.userEmail}
-                  className="flex items-center justify-between bg-primary-color p-4 rounded-lg mb-4"
+                  className="flex items-center justify-between bg-primary-color  p-4 rounded-lg mb-4"
                 >
                   <div className="flex items-center space-x-4">
                     <Image
@@ -115,11 +118,11 @@ const Leaders = () => {
                       className="rounded-full"
                     />
                     <div>
-                      <h4 className=" font-bold">{leader.userName}</h4>
-                      <p className="">Average Marks: {leader.marks || 0}%</p>
+                      <h4 className=" font-bold text-white">{leader.userName}</h4>
+                      <p className="text-white">Average Marks: {leader.marks || 0}%</p>
                     </div>
                   </div>
-                  <span className="font-bold text-lg">
+                  <span className="font-bold text-white text-lg">
                     {idx + 4}
                   </span>
                 </div>

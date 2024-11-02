@@ -79,31 +79,33 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
+    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-gray-50 p-4">
       {loading ? (
         <LoadingSpinner />
       ) : marks.length === 0 ? (
         <p className="md:text-5xl text-sm font-semibold text-gray-600">No exam given yet.</p>
       ) : (
         <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl w-full">
-          <h2 className="text-2xl font-bold text-primary-color mb-4 text-center">
-            Exam Statistics
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-8 font-bold text-gray-800">
+          Exam Statistics
           </h2>
+
+          
           <div className="grid grid-cols-2 gap-6 mb-8">
-            <div className="text-center bg-gray-100 p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
-              <p className="text-lg font-medium text-gray-700">Total Exams Attempted</p>
+            <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
+              <p className="text-lg font-medium text-primary-color">Total Exams Attempted</p>
               <p className="text-2xl font-bold">{totalExams}</p>
             </div>
-            <div className="text-center bg-gray-100 p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
-              <p className="text-lg font-medium text-gray-700">Average Marks</p>
+            <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
+              <p className="text-lg font-medium text-primary-color">Average Marks</p>
               <p className="text-2xl font-bold">{averageMarks}</p>
             </div>
-            <div className="text-center bg-gray-100 p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
-              <p className="text-lg font-medium text-gray-700">Highest Marks</p>
+            <div className="text-center bg-gray-100 p-4 rounded-lg  transition-colors duration-300">
+              <p className="text-lg font-medium text-primary-color">Highest Marks</p>
               <p className="text-2xl font-bold">{highestMarks}</p>
             </div>
-            <div className="text-center bg-gray-100 p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
-              <p className="text-lg font-medium text-gray-700">Lowest Marks</p>
+            <div className="text-center bg-gray-100 p-4 rounded-lg  transition-colors duration-300">
+              <p className="text-lg font-medium text-primary-color">Lowest Marks</p>
               <p className="text-2xl font-bold">{lowestMarks}</p>
             </div>
           </div>
@@ -156,7 +158,7 @@ const Page = () => {
                   labelLine={false}
                   label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
                   outerRadius={150}
-                  fill="#8884d8"
+                  fill="#7a1cac"
                   dataKey="value"
                 >
                   {pieChartData.map((entry, index) => (
