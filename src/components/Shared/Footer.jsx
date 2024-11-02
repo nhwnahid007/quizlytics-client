@@ -14,9 +14,8 @@ const Footer = () => {
       <div className="absolute bottom-0 right-0 bg-pink-300 opacity-10 rounded-full blur-3xl animate-pulse"></div>
 
       <div className="mx-auto">
-        <div className="text-black p-10 bg-gray-100 flex flex-col lg:flex-row justify-between">
-          {/* Footer background set to black and text to white */}
-          <div className="footer-start mb-8">
+        <div className="text-black p-10 bg-gray-100 flex flex-col md:flex-row justify-between">
+          <div className="footer-start -mt-4">
             <Image
               src="https://i.ibb.co.com/dW1jRgp/quizlytics-logo-removebg-preview.png"
               height={100}
@@ -25,24 +24,13 @@ const Footer = () => {
               className="rounded-full"
             />
             <p className="mt-2 text-black">
-              Quizlytics Ltd.
+              <span className="text-xl font-bold">Quizlytics Ltd.</span>
               <br />
               Providing reliable service since {currentYear}
             </p>
           </div>
-          <div className="flex flex-col md:flex-row md:gap-96">
-            {/* <div>
-              <h3 className="text-xl font-semibold mb-2 text-Black">
-                Services
-              </h3>
-              <nav>
-                <p className="block hover:text-yellow-400 transition-colors duration-300">Branding</p>
-                <p className="block hover:text-yellow-400 transition-colors duration-300">Design</p>
-                <p className="block hover:text-yellow-400 transition-colors duration-300">Marketing</p>
-                <p className="block hover:text-yellow-400 transition-colors duration-300">Advertisement</p>
-              </nav>
-            </div> */}
 
+          <div className="mt-5 md:mt-0 flex flex-row justify-between gap-10 md:gap-20 lg:gap-96">
             <div>
               <h3 className="text-xl font-semibold mb-2 text-Black">Company</h3>
               <nav>
@@ -64,22 +52,14 @@ const Footer = () => {
                     Our team
                   </p>
                 </Link>
-                {/* <p className="block hover:text-yellow-400 transition-colors duration-300">Press kit</p> */}
               </nav>
             </div>
 
-            {/* <div>
-              <h3 className="text-xl font-semibold mb-2 text-Black">Legal</h3>
-              <nav>
-                <p className="block hover:text-yellow-400 transition-colors duration-300">Terms of use</p>
-                <p className="block hover:text-yellow-400 transition-colors duration-300">Privacy policy</p>
-                <p className="block hover:text-yellow-400 transition-colors duration-300">Cookie policy</p>
-              </nav>
-            </div> */}
-
-            <div className="text-center mt-6 text-Black">
-              <h6>Follow Us</h6>
-              <div className="flex justify-center space-x-6 mt-5">
+            <div className="text-Black">
+              <h6 className="text-xl font-semibold mb-2 text-Black">
+                Follow Us
+              </h6>
+              <div className="flex space-x-6 mt-5">
                 <a
                   href="https://www.facebook.com"
                   target="_blank"
@@ -120,7 +100,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="text-center font-semibold bg-gray-100 mb-10 text-[#333333] py-1">
+        <div className="text-center font-semibold bg-gray-100 -mt-4 mb-10 text-[#333333]">
           <p className="hover:scale-105 transition-transform duration-500">
             &copy; {currentYear} Quizlytics Ltd. All rights reserved.
           </p>
