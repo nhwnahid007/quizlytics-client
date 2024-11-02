@@ -158,7 +158,7 @@ const Page = () => {
                   labelLine={false}
                   label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
                   outerRadius={150}
-                  fill="#8884d8"
+                  fill="#7a1cac"
                   dataKey="value"
                 >
                   {pieChartData.map((entry, index) => (
