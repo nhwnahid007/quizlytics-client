@@ -138,12 +138,12 @@ const Page = () => {
                   <TableCell className="text-center">{item.quizArr.length}</TableCell>
                   <TableCell className="text-right">
                     <Button
-                      variant="destructive"
+                      variant="buttonOutline"
                       size="sm"
                       onClick={() => handleDelete(item.quizStartKey)}
                     >
                       <RiDeleteBinLine className="mr-1" />
-                      Delete
+                      
                     </Button>
                   </TableCell>
                 </TableRow>
