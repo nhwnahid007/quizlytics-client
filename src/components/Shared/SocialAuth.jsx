@@ -11,12 +11,13 @@ import { useSearchParams } from "next/navigation";
 const SocialAuth = () => {
   const router = useRouterHook();
   const { data: session, status } = useSession();
-  const SearchParams = useSearchParams()
-  const path = SearchParams.get('redirect')
+  const SearchParams = useSearchParams();
+  const path = SearchParams.get("redirect");
   const handleSocialLogin = async (provider) => {
-    const resp = await signIn(provider, { 
+    const resp = await signIn(provider, {
       redirect: true,
-      callbackUrl: path? path: '/' });
+      callbackUrl: path ? path : "/",
+    });
     console.log(resp);
   };
 
@@ -26,11 +27,11 @@ const SocialAuth = () => {
         const name = session?.user?.name;
         const email = session?.user?.email;
         const image = session?.user?.image;
-        const newUser = { 
-          name, 
-          email, 
+        const newUser = {
+          name,
+          email,
           image,
-          role: "user" // Added the default role
+          role: "user", // Added the default role
         };
 
         try {
@@ -76,10 +77,10 @@ const SocialAuth = () => {
   ]);
 
   return (
-    <div className="flex flex-col items-center space-y-2"> {/* Center buttons and add spacing */}
+    <div className="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-2">
       <Button
         onClick={() => handleSocialLogin("google")}
-        className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md max-w-xs  text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
       >
         <svg
           className="h-6 w-6 mr-2"
@@ -125,7 +126,7 @@ const SocialAuth = () => {
       </Button>
       <Button
         onClick={() => handleSocialLogin("github")}
-        className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md max-w-xs px-6 py-2 text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md max-w-xs  text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
       >
         <svg
           className="h-6 w-6 mr-2"
