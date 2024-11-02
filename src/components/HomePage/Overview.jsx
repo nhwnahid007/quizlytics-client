@@ -114,7 +114,7 @@ const Overview = () => {
             style={{ color: "#2C2F33" }}
           >
             <h2 className="text-3xl font-bold border-b-2 border-gray-300 pb-2 mb-8 text-semibold">
-              DemoQuestion Type
+              Check Your Knowledge Now!
             </h2>
             <h3 className="text-xl font-semibold text-semibold">
               What is the primary use of Node.js in the MERN stack?
@@ -149,12 +149,12 @@ const Overview = () => {
                 ))}
               </ul>
             </div>
-            <button
+            <Button
               onClick={handleCheckAnswer}
-              className="mt-4 bg-primary-color text-white py-2 px-4 rounded"
+              className="mt-4 py-2 px-4 rounded"
             >
               Check
-            </button>
+            </Button>
           </div>
         </div>
 

@@ -72,7 +72,7 @@ const Partnership = () => {
             </ul>
           </div>
         </div>
-        <div className="w-full text-black rounded-2xl lg:pt-4 flex flex-col lg:flex-row gap-8 justify-between items-center">
+        <div className="w-full text-black rounded-2xl lg:pt-8 flex flex-col lg:flex-row gap-8 justify-between items-center">
           {/* Success Card */}
           <div data-aos="flip-left" className="w-full lg:w-[30%] bg-gray-100 text-black rounded-2xl p-8">
             <h3 className="text-3xl font-semibold mb-4 text-green-400">
