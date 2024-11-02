@@ -1,33 +1,35 @@
-'use client';
-import { getMarks } from '@/requests/get';
-import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
-import { useSession } from 'next-auth/react';
+"use client";
+import { getMarks } from "@/requests/get";
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { useSession } from "next-auth/react";
 
-import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  LineChart,
-  Line,
-  PieChart,
-  Pie,
-  Cell,
-} from 'recharts';
-import { FiUsers, FiCheckCircle, FiBarChart, FiClock } from 'react-icons/fi';
-import Spinner from '../Shared/Spinner';
-import Link from 'next/link';
+import { FiUsers, FiCheckCircle, FiBarChart, FiClock } from "react-icons/fi";
+import Spinner from "../Shared/Spinner";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import useRouterHook from "@/app/hooks/useRouterHook";
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
 
 const QuizlyticsDashboard = () => {
   const { data: session } = useSession();
   const [marks, setMarks] = useState([]);
   const [loading, setLoading] = useState(true); // New loading state
+
+  const router = useRouterHook();
+
+  const handleAIQuiz = () => {
+    router.push("/quickExam");
+  };
+
+  const handleCustomQuiz = () => {
+    router.push("/customQuiz");
+  };
+
+  const handleQuizByLink = () => {
+    router.push("/quizByLink");
+  };
 
   useEffect(() => {
     const fetchMarks = async () => {
@@ -37,11 +39,11 @@ const QuizlyticsDashboard = () => {
           setMarks(data);
         }
       } catch (error) {
-        console.error('Data fetching error', error);
+        console.error("Data fetching error", error);
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong while fetching leaderboard data!',
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong while fetching leaderboard data!",
           toast: true,
         });
       } finally {
@@ -55,8 +57,10 @@ const QuizlyticsDashboard = () => {
     const totalExams = marks.length;
     const totalMarks = marks.reduce((acc, item) => acc + item.marks, 0);
     const averageMarks = (totalMarks / totalExams).toFixed(2);
-    const highestMarks = totalExams > 0 ? Math.max(...marks.map((item) => item.marks)) : 0;
-  const lowestMarks = totalExams > 0 ? Math.min(...marks.map((item) => item.marks)) : 0;
+    const highestMarks =
+      totalExams > 0 ? Math.max(...marks.map((item) => item.marks)) : 0;
+    const lowestMarks =
+      totalExams > 0 ? Math.min(...marks.map((item) => item.marks)) : 0;
 
     return { totalExams, averageMarks, highestMarks, lowestMarks };
   };
@@ -69,9 +73,9 @@ const QuizlyticsDashboard = () => {
       else ranges.high += 1;
     });
     return [
-      { name: '0-50%', value: ranges.low },
-      { name: '51-70%', value: ranges.mid },
-      { name: '71-100%', value: ranges.high },
+      { name: "0-50%", value: ranges.low },
+      { name: "51-70%", value: ranges.mid },
+      { name: "71-100%", value: ranges.high },
     ];
   };
 
@@ -82,7 +86,8 @@ const QuizlyticsDashboard = () => {
     return marks.filter((quiz) => new Date(quiz.date) >= thirtyDaysAgo).length;
   };
 
-  const { totalExams, averageMarks, highestMarks, lowestMarks } = getStatistics();
+  const { totalExams, averageMarks, highestMarks, lowestMarks } =
+    getStatistics();
 
   // Prepare data for charts
   const barChartData = marks.map((quiz) => ({
@@ -97,7 +102,6 @@ const QuizlyticsDashboard = () => {
 
   const pieChartData = categorizeMarks();
 
-
   return (
     <div className="min-h-screen overflow-hidden bg-gray-100 p-6">
       {/* Dashboard Header */}
@@ -105,7 +109,6 @@ const QuizlyticsDashboard = () => {
         <h1 className="text-2xl font-semibold">Quizlytics Dashboard</h1>
       </div>
 
-      
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <div className="bg-[#E3C8FF] p-4 rounded-lg shadow-md flex items-center">
           <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
@@ -123,7 +126,9 @@ const QuizlyticsDashboard = () => {
           </div>
           <div>
             <p className="text-sm text-gray-500">Best Performance</p>
-            <p className="text-xl font-bold">{highestMarks <= 100? highestMarks: 0}%</p>
+            <p className="text-xl font-bold">
+              {highestMarks <= 100 ? highestMarks : 0}%
+            </p>
           </div>
         </div>
 
@@ -148,8 +153,13 @@ const QuizlyticsDashboard = () => {
         </div>
       </div>
 
-      {/* Charts and Statistics section */}
-      
+      {/* Quiz Start Section*/}
+
+      <div className="h-64 flex justify-center items-center gap-3">
+        <Button onClick={handleAIQuiz}>Quick Exam with AI</Button>
+        <Button onClick={handleCustomQuiz}>Custom Exam</Button>
+        <Button onClick={handleQuizByLink}>Test on Article Link</Button>
+      </div>
     </div>
   );
 };
