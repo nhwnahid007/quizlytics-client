@@ -83,7 +83,7 @@ const MakeExam = ({
             <input
               onChange={(e) => setSearch(e.target.value)}
               type="text"
-              className=" bg-secondary-color bg-opacity-20 text-black w-full py-2 px-4 rounded-lg text-lg placeholder-gray-800"
+              className=" bg-secondary-color bg-opacity-20 text-black w-full py-2 px-4 rounded-lg text-lg placeholder-gray-500"
               placeholder="Write topics"
             />
             {searchError && <p className="text-red-600">{searchError}</p>}
@@ -94,7 +94,7 @@ const MakeExam = ({
               className="bg-secondary-color bg-opacity-20 w-full py-2 px-4 text-gray-800 rounded-lg text-lg"
             >
               <option value="" disabled selected>
-                Level
+                <span className="text-gray-500">Lavel</span>
               </option>
               <option value="beginner">Beginner</option>
               <option value="moderate">Moderate</option>
