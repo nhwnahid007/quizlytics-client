@@ -50,7 +50,7 @@ const QuizLink = ({ setQuizByLink, setArtLink, setIsLoading }) => {
             <input
               onChange={(e) => setSearch(e.target.value)}
               type="text"
-              className="bg-secondary-color bg-opacity-20 placeholder-gray-800 w-full py-2 px-4 text-gray-800 rounded-lg text-lg text-center"
+              className="bg-secondary-color bg-opacity-20 placeholder-gray-500 w-full py-2 px-4 text-gray-800 rounded-lg text-lg text-center"
               placeholder="Paste any article link to generate quiz"
             />
             {searchError && <p className="text-red-600">{searchError}</p>}
