@@ -158,7 +158,7 @@ const Page = () => {
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
             className={`px-4 py-2 rounded-md ${
-              currentPage === 1 ? "bg-gray-300" : "bg-primary text-white"
+              currentPage === 1 ? "bg-gray-300" : "bg-primary-color text-white"
             }`}
           >
             &#8592; {/* Left arrow for previous */}
@@ -170,7 +170,7 @@ const Page = () => {
               onClick={() => handlePageChange(index + 1)}
               className={`px-4 py-2 rounded-md ${
                 currentPage === index + 1
-                  ? "bg-primary text-white"
+                  ? "bg-primary-color text-white"
                   : "bg-gray-200"
               }`}
             >
@@ -182,7 +182,7 @@ const Page = () => {
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
             className={`px-4 py-2 rounded-md ${
-              currentPage === totalPages ? "bg-gray-300" : "bg-primary text-white"
+              currentPage === totalPages ? "bg-gray-300" : "bg-primary-color text-white"
             }`}
           >
             &#8594; {/* Right arrow for next */}
