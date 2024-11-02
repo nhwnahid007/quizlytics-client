@@ -15,6 +15,7 @@ import useRole from "@/app/hooks/useRole";
 import NotFound from "@/app/not-found";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
+import { Button } from "@/components/ui/button";
 
 const ExamineeList = () => {
   const [examinees, setExaminees] = useState([]);
@@ -165,7 +166,7 @@ const ExamineeList = () => {
 
         {/* Pagination */}
         <div className="flex justify-center mt-4 space-x-2">
-          <button
+          <Button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
             className={`px-4 py-2 rounded-md ${
@@ -173,7 +174,7 @@ const ExamineeList = () => {
             }`}
           >
             &#8592; 
-          </button>
+          </Button>
 
          
           {getVisiblePages().map((page) => (
@@ -188,7 +189,7 @@ const ExamineeList = () => {
             </button>
           ))}
 
-          <button
+          <Button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
             className={`px-4 py-2 rounded-md ${
@@ -196,7 +197,7 @@ const ExamineeList = () => {
             }`}
           >
             &#8594; 
-          </button>
+          </Button>
         </div>
       </div>
     </div>

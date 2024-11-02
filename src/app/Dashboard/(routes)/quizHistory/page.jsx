@@ -71,7 +71,8 @@ const QuizHistory = () => {
   return (
     <div className="h-screen max-w-6xl mx-auto  px-2 relative overflow-auto">
     
-      <SectionTitleMinimal heading={" Quiz History"}></SectionTitleMinimal>
+     <div className="mx-20">
+     <SectionTitleMinimal heading={" Quiz History"}></SectionTitleMinimal>
       <div className="overflow-hidden shadow-md h-[410px] sm:rounded-lg">
         <Table className="w-full min-w-full table-fixed">
           {/* <TableCaption>A list of your attempts in Custom Quiz.</TableCaption> */}
@@ -122,7 +123,7 @@ const QuizHistory = () => {
       </div>
       {/* Pagination */}
       <div className="flex justify-center mt-8 space-x-2">
-        <button
+        <Button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
           className={`px-4 py-2 rounded-md ${
@@ -130,7 +131,7 @@ const QuizHistory = () => {
           }`}
         >
           &#8592;
-        </button>
+        </Button>
 
         {getVisiblePages().map((page) => (
           <button
@@ -144,7 +145,7 @@ const QuizHistory = () => {
           </button>
         ))}
 
-        <button
+        <Button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
           className={`px-4 py-2 rounded-md ${
@@ -152,8 +153,9 @@ const QuizHistory = () => {
           }`}
         >
           &#8594;
-        </button>
+        </Button>
       </div>
+     </div>
     </div>
   );
 };

@@ -79,13 +79,13 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex items-center justify-center min-h-screen">
+    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-white mt-10 mx-20 ">
       {loading ? (
         <LoadingSpinner />
       ) : marks.length === 0 ? (
         <p className="md:text-5xl text-sm font-semibold text-gray-600">No exam given yet.</p>
       ) : (
-        <div className="bg-white shadow-lg rounded-lg  max-w-6xl">
+        <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl w-full">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-8 font-bold text-gray-800">
             Exam Statistics
           </h2>

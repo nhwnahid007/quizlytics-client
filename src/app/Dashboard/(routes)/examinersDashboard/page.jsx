@@ -118,7 +118,7 @@ const Page = () => {
                   <TableCell className="font-medium">
                     {(currentPage - 1) * itemsPerPage + idx + 1}
                   </TableCell>
-                  <TableCell className="font-medium flex items-center">
+                  <TableCell className="font-medium flex  items-center ">
                     {item.quizStartKey}
                     <Tooltip>
                       <TooltipTrigger>
@@ -138,8 +138,7 @@ const Page = () => {
                   <TableCell className="text-center">{item.quizArr.length}</TableCell>
                   <TableCell className="text-right">
                     <Button
-                   
-                      variant="destructive"
+                      variant="buttonOutline"
                       size="sm"
                       onClick={() => handleDelete(item.quizStartKey)}
                     >
