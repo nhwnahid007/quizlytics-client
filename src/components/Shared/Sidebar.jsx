@@ -94,10 +94,10 @@ const Sidebar = () => {
       <div
         className={`${
           isSidebarOpen ? "w-72 p-3" : "w-10 p-[6]"
-        } bg-purple-600 bg-opacity-60 h-auto  pt-8 relative duration-300 text-white`}
+        } bg-gray-100 h-auto pt-8 relative duration-300 text-primary-color`}
       >
         <button
-          className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color"
+          className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color text-white"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >
           {isSidebarOpen ? (
@@ -109,7 +109,7 @@ const Sidebar = () => {
         <div className="flex gap-x-4 items-center">
           <Link
             href="/Dashboard"
-            className={`text-white origin-left font-bold text-2xl duration-200 ${
+            className={`text-primary-color origin-left font-bold text-2xl duration-200 ${
               !isSidebarOpen && "scale-0"
             }`}
           >
@@ -120,8 +120,8 @@ const Sidebar = () => {
           {Menus.map((Menu, index) => (
             <Link href={Menu.route} key={index}>
               <li
-                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-white text-sm font-semibold items-center gap-x-2 ${
-                  isActive(Menu.route) ? "bg-gray-700 text-secondary-color" : ""
+                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-200 text-primary-color text-sm font-semibold items-center gap-x-2 ${
+                  isActive(Menu.route) ? "bg-gray-300 text-secondary-color" : ""
                 }`}
               >
                 <span
@@ -142,7 +142,7 @@ const Sidebar = () => {
             </Link>
           ))}
           <Link href="/">
-            <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-700 text-white text-sm font-semibold items-center gap-x-4">
+            <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-200 text-primary-color text-sm font-semibold items-center gap-x-4">
               <span
                 className={`text-lg ${
                   pathname === "/" ? "text-secondary-color" : ""

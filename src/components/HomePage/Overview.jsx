@@ -104,7 +104,7 @@ const Overview = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="count" fill="#8884d8" />
+                <Bar dataKey="count" fill="#7A1CAC" />
               </BarChart>
             </div>
           </div>
