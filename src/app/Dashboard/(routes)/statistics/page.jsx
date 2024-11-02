@@ -85,7 +85,7 @@ const Page = () => {
       ) : marks.length === 0 ? (
         <p className="md:text-5xl text-sm font-semibold text-gray-600">No exam given yet.</p>
       ) : (
-        <div className="bg-white shadow-lg rounded-lg px-2 max-w-6xl w-full">
+        <div className="bg-white shadow-lg rounded-lg  max-w-6xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-8 font-bold text-gray-800">
             Exam Statistics
           </h2>

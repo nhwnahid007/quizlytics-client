@@ -1,14 +1,16 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
-import Swal from "sweetalert2";
 import Image from "next/image";
+import { Crown } from "lucide-react";
 import { getExaminees } from "@/requests/get";
-import LoadingSpinner from "@/components/Spinner/LoadingSpinner"; // Import the spinner component
+import Swal from "sweetalert2";
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 import { SectionTitleMinimal } from "./SectionTitle";
 
 const Leaders = () => {
   const [leaders, setLeaders] = useState([]);
-  const [loading, setLoading] = useState(true); // New state for loading
+  const [loading, setLoading] = useState(true);
 
   const currentDate = new Date();
   const monthNames = [
@@ -53,13 +55,18 @@ const Leaders = () => {
           toast: true,
         });
       } finally {
-        setLoading(false); // Set loading to false after fetching
+        setLoading(false);
       }
     };
     getAllExaminees();
   }, []);
 
+  if (loading) {
+    return <LoadingSpinner />;
+  }
+
   return (
+<<<<<<< HEAD
     <div className="h-screen">
       <main className="max-w-6xl px-2 mx-auto">
       {/* <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center my-5 font-bold text-gray-800">
@@ -68,70 +75,101 @@ const Leaders = () => {
           
           <SectionTitleMinimal heading={"Leaderboard"}></SectionTitleMinimal>
        
+=======
+    <div className=" p-8 rounded-lg max-w-3xl mx-auto">
+      {/* <h2 className="text-4xl font-bold text-white text-center mb-12">LEADERBOARD</h2> */}
+>>>>>>> 02fc51078e306728e3d09fcab79241ff0ca4ebad
 
-        {loading ? (
-          <LoadingSpinner /> // Display the loading spinner
-        ) : (
-          <div className="leaderboard  bg-gray-100 p-6 rounded-lg shadow-lg">
-            <div className="flex justify-between mb-4">
-              <h2 className=" text-xl font-semibold">
-                {currentMonth} {currentYear}
-              </h2>
+      <SectionTitleMinimal heading="LEADERBOARD" subHeading={"Recognizing Excellence"}/>
+      
+      <div className="bg-purple-600 p-8 rounded-lg">
+        <div className="text-white text-xl mb-6">
+          {currentMonth} {currentYear}
+        </div>
+  
+        {/* Top 3 Players */}
+        <div className="flex bg-purple-600 justify-center items-end gap-8 mb-12">
+          {/* Second Place */}
+          {leaders[1] && (
+            <div className="text-center">
+              <div className="w-20 h-20 bg-white rounded-full mx-auto mb-2 flex items-center justify-center">
+                <Image
+                  src={leaders[1].userImg || "/default-user.png"}
+                  alt="Player"
+                  width={64}
+                  height={64}
+                  className="rounded-full"
+                />
+              </div>
+              <p className="text-white font-semibold">{leaders[1].userName}</p>
+              <p className="text-yellow-300">{leaders[1].marks}%</p>
+              <div className="text-2xl text-white mt-2">2</div>
             </div>
-
-            {/* Leaderboard Top 3 */}
-            <div className="leaderboard-grid grid grid-cols-1 md:grid-cols-3 gap-6 items-end">
-              {leaders.slice(0, 3).map((leader, index) => (
-                <div key={leader.userEmail} className="flex flex-col items-center justify-center">
-                  <div className="flex flex-col items-center">
-                    <Image
-                      src={leader.userImg || "/default-user.png"}
-                      alt="user"
-                      width={64}
-                      height={64}
-                      className="rounded-full"
-                    />
-                    <h3 className="text-lg font-semibold mt-2">
-                      {leader.userName || "No Name"}
-                    </h3>
-                    <p>Average Marks: {leader.marks || 0}%</p>
-                  </div>
-                  <div className={`w-16 h-16 rounded-t-lg mt-4 bg-gray-300 flex justify-center items-center`}>
-                    <span className={`text-${index === 0 ? '2xl' : 'xl'} font-bold`}>{index + 1}</span>
-                  </div>
-                </div>
-              ))}
+          )}
+  
+          {/* First Place */}
+          {leaders[0] && (
+            <div className="text-center -mt-8">
+              <Crown className="w-8 h-8 text-yellow-300 mx-auto mb-2" />
+              <div className="w-24 h-24 bg-white rounded-full mx-auto mb-2 flex items-center justify-center">
+                <Image
+                  src={leaders[0].userImg || "/default-user.png"}
+                  alt="Player"
+                  width={72}
+                  height={72}
+                  className="rounded-full"
+                />
+              </div>
+              <p className="text-white font-semibold">{leaders[0].userName}</p>
+              <p className="text-yellow-300">{leaders[0].marks}%</p>
+              <div className="text-2xl text-white mt-2">1</div>
             </div>
-
-            {/* Leaderboard 4th to 5th places */}
-            <div className="mt-6">
-              {leaders.slice(3).map((leader, idx) => (
-                <div
-                  key={leader.userEmail}
-                  className="flex items-center justify-between bg-primary-color  p-4 rounded-lg mb-4"
-                >
-                  <div className="flex items-center space-x-4">
-                    <Image
-                      src={leader.userImg || "/default-user.png"}
-                      alt="user"
-                      width={48}
-                      height={48}
-                      className="rounded-full"
-                    />
-                    <div>
-                      <h4 className=" font-bold text-white">{leader.userName}</h4>
-                      <p className="text-white">Average Marks: {leader.marks || 0}%</p>
-                    </div>
-                  </div>
-                  <span className="font-bold text-white text-lg">
-                    {idx + 4}
-                  </span>
-                </div>
-              ))}
+          )}
+  
+          {/* Third Place */}
+          {leaders[2] && (
+            <div className="text-center">
+              <div className="w-20 h-20 bg-white rounded-full mx-auto mb-2 flex items-center justify-center">
+                <Image
+                  src={leaders[2].userImg || "/default-user.png"}
+                  alt="Player"
+                  width={64}
+                  height={64}
+                  className="rounded-full"
+                />
+              </div>
+              <p className="text-white font-semibold">{leaders[2].userName}</p>
+              <p className="text-yellow-300">{leaders[2].marks}%</p>
+              <div className="text-2xl text-white mt-2">3</div>
             </div>
-          </div>
-        )}
-      </main>
+          )}
+        </div>
+  
+        {/* Leaderboard List */}
+        <div className="space-y-4 bg-purple-600">
+          {leaders.map((leader, index) => (
+            <div
+              key={leader.userEmail}
+              className="flex items-center bg-purple-500/50 rounded-lg p-4 backdrop-blur-sm"
+            >
+              <div className="w-8 text-white font-bold">{index + 1}</div>
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mr-4">
+                <Image
+                  src={leader.userImg || "/default-user.png"}
+                  alt="Player"
+                  width={40}
+                  height={40}
+                  className="rounded-full"
+                />
+              </div>
+              <div className="flex-grow">
+                <p className="text-white font-semibold">{leader.userName}</p>
+              </div>
+              <div className="text-yellow-300 font-bold">{leader.marks}%</div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

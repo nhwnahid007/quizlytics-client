@@ -154,7 +154,7 @@ const Page = () => {
   };
 
   return (
-    <div className="h-screen px-2">
+    <div className="h-screen mx-20">
       <main className="max-w-6xl mx-auto">
         <div className="">
         

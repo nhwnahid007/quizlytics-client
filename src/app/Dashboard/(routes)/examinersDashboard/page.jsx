@@ -95,7 +95,7 @@ const Page = () => {
   }
 
   return (
-    <div className="h-screen px-2">
+    <div className="h-screen mx-20">
       <main className="max-w-6xl mx-auto">
       
         <SectionTitleMinimal heading={"All Custom Questions"}></SectionTitleMinimal>
@@ -138,12 +138,13 @@ const Page = () => {
                   <TableCell className="text-center">{item.quizArr.length}</TableCell>
                   <TableCell className="text-right">
                     <Button
+                   
                       variant="destructive"
                       size="sm"
                       onClick={() => handleDelete(item.quizStartKey)}
                     >
                       <RiDeleteBinLine className="mr-1" />
-                      Delete
+                      
                     </Button>
                   </TableCell>
                 </TableRow>
