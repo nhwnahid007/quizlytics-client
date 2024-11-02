@@ -20,7 +20,7 @@ const HelloTeacher = () => {
           </p>
           
       </div>
-      <div className="flex-1 flex justify-end items-center">
+      <div className="flex-1 flex justify-end items-center lg:pr-14">
         <Image
           src="https://svgshare.com/i/1BcG.svg"
           alt="Quiz Illustration"

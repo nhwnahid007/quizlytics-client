@@ -242,9 +242,9 @@ const Page = () => {
           </div>
 
           <Button
-            variant="secondary"
+           
             onClick={addQuestion}
-            className="w-full bg-primary-color text-white mt-5 px-4 rounded-md shadow-md hover:bg-primary-color transition duration-200"
+            className="w-full  mt-5 px-4 "
           >
             Add Question
           </Button>
