@@ -65,7 +65,7 @@ const BlogFormPage = () => {
     <div className="max-w-6xl mx-auto mt-20">
       <div className="p-6">
         <h1 className="text-3xl font-extrabold mb-6 text-gray-800 text-center">
-          What's on your Mind?
+          What&apos;s on your Mind?
         </h1>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-6 md:grid-cols-2 mb-8">
