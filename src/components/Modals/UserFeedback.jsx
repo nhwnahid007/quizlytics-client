@@ -1,9 +1,9 @@
 "use client";
-import React, {useState, useEffect} from "react";
-import {FaStar} from "react-icons/fa";
-import {RxCross1} from "react-icons/rx";
+import React, { useState, useEffect } from "react";
+import { FaStar } from "react-icons/fa";
+import { RxCross1 } from "react-icons/rx";
 import axios from "axios";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 const UserFeedback = () => {
   const [isModalOpen, setisModalOpen] = useState(false);
@@ -11,7 +11,7 @@ const UserFeedback = () => {
   const [message, setMessage] = useState("");
   const [feedback, setFeedback] = useState([]);
   const [error, setError] = useState("");
-  const {data: session} = useSession();
+  const { data: session } = useSession();
   const name = session?.user?.name;
   const email = session?.user?.email;
   const profile = session?.user?.profile;
@@ -68,7 +68,7 @@ const UserFeedback = () => {
       <div className=" mb-4 flex items-center gap-5 justify-center">
         <div className="w-full flex items-center justify-center">
           <button
-            className="px-6 md:px-8 py-2 rounded-xl font-bold border-2 text-white bg-primary-color hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient text-xm"
+            className="px-6 md:px-8 py-2 rounded-xl font-bold border-2 text-white bg-primary-color bg-opacity-70 hover:bg-transparent hover:text-primary-color transition-colors duration-300 border-gradient text-xm"
             onClick={() => setisModalOpen(true)}
           >
             Give Us Feedback

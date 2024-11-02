@@ -148,34 +148,25 @@ const QuizResult = ({
     <div className="fixed h-screen inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
       <div className="bg-white w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg">
         <div
-          className={`w-[200px] h-[200px] mx-auto my-8 border-8 p-8 rounded-full flex justify-center items-center border-primary-color border-opacity-70`}
+          className={`w-[200px] h-[200px] mx-auto my-4 md:my-8 border-8 p-8 rounded-full flex justify-center items-center border-primary-color border-opacity-70`}
         >
-          <h1 className={`text-4xl font-bold  ${remarkColor}`}>
+          <h1 className={`text-4xl font-bold  text-primary-color`}>
             {result?.correctAnswers} / {result?.totalQuiz}
           </h1>
         </div>
         <h1 className={`mb-5 text-center text-4xl ${remarkColor}`}>
           {/* {result?.percentageMark}% */}
         </h1>
-        <div className="my-4 flex gap-4 justify-center items-center">
-          <Button
-            className="lg:px-10 bg-primary-color"
-            onClick={handleSaveRecord}
-          >
+        <div className="my-4 flex flex-col md:flex-row gap-4 justify-center items-center">
+          <Button className="lg:px-10 " onClick={handleSaveRecord}>
             Submit
           </Button>
-          <Button
-            onClick={handleViewAnswers}
-            className="bg-primary-color"
-            disabled={isDisabled}
-          >
+          <Button onClick={handleViewAnswers} disabled={isDisabled}>
             View Submission
           </Button>
-          <Button onClick={handleGoToHome} className="bg-primary-color">
-            Back to Home
-          </Button>
+          <Button onClick={handleGoToHome}>Back to Home</Button>
         </div>
-        <h1 className="text-white text-center text-4xl mb-10">
+        <h1 className="text-secondary-color text-center text-xl lg:text-4xl mb-2 md:mb-10">
           You achieved {result?.percentageMark}% mark!
         </h1>
         <div>
