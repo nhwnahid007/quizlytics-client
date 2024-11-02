@@ -19,6 +19,8 @@ const buttonVariants = cva(
           "relative group rounded-xl border-2 border-[#090909] before:absolute before:transitiona-all before:duration-1000 before:-inset-px before:bg-gradient-to-r before:from-[#44BCFF] before:via-[#FF44EC] before:to-[#FF675E] before:rounded-xl before:blur-lg before:opacity-70 before:-z-10 hover:before:opacity-100 hover:before:-inset-1 hover:before:duration-200 bg-gradient-to-r from-[#090909] to-[#232323] text-white hover:bg-none hover:bg-transparent hover:text-[#090909]",
         ghost: "hover:bg-[#7A1CAC]/10 hover:text-[#7A1CAC]",
         link: "text-[#7A1CAC] underline-offset-4 hover:underline",
+        buttonOutline:
+          "border-2 border-red bg-transparent shadow-sm hover:bg-red/10 text-red",
       },
       size: {
         default: "h-9 px-4 py-2",
