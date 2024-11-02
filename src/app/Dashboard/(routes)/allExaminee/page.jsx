@@ -169,7 +169,7 @@ const ExamineeList = () => {
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
             className={`px-4 py-2 rounded-md ${
-              currentPage === 1 ? "bg-gray-300" : "bg-primary text-white"
+              currentPage === 1 ? "bg-gray-300" : "bg-primary-color text-white"
             }`}
           >
             &#8592; 
@@ -181,7 +181,7 @@ const ExamineeList = () => {
               key={page}
               onClick={() => handlePageChange(page)}
               className={`px-4 py-2 rounded-md ${
-                currentPage === page ? "bg-primary text-white" : "bg-gray-200"
+                currentPage === page ? "bg-primary-color text-white" : "bg-gray-200"
               }`}
             >
               {page}
@@ -192,7 +192,7 @@ const ExamineeList = () => {
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
             className={`px-4 py-2 rounded-md ${
-              currentPage === totalPages ? "bg-gray-300" : "bg-primary text-white"
+              currentPage === totalPages ? "bg-gray-300" : "bg-primary-color text-white"
             }`}
           >
             &#8594; 
