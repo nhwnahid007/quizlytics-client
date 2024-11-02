@@ -32,8 +32,8 @@ const Feedback = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 p-10 overflow-hidden">
-      <h1 className="text-4xl font-bold text-black text-center mb-8">
+    <div className="bg-gray-100 p-4 overflow-hidden mt-4">
+      <h1 className="text-4xl font-bold text-black text-center mb-3">
         Feedback & Reviews
       </h1>
 
@@ -50,7 +50,7 @@ const Feedback = () => {
               key={index}
               className="pl-1 md:basis-1/2 lg:basis-1/3"
             >
-              <div className="p-2">
+              <div className="p-1">
                 <Card className="">
                   <CardContent className="flex aspect-square p-4 justify-center">
                     <div>

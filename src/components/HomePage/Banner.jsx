@@ -58,7 +58,7 @@ const Banner = () => {
             <div>
               {/* Intro Section */}
               <div className="md:mb-4 pt-5 sm:mb-8">
-                <SectionTitleMinimal heading="Master Any Topic Through Interactive Quizzes" />
+                <SectionTitleMinimal heading="Master Any Topic Through Interactive Quizzes" subHeading={"Transform Your Learning Journey"} />
               </div>
                 
 
