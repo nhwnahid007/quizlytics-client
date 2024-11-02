@@ -34,7 +34,7 @@ const Feedback = () => {
 
   return (
     <div className="bg-gray-100 overflow-hidden mt-4 pb-12">
-     <SectionTitleMinimal heading={"Feedback & Reviews"} subheading={"What our clients say about us"}></SectionTitleMinimal>
+     <SectionTitleMinimal heading={"Feedback & Reviewss"} subHeading={"What our clients say about us"} ></SectionTitleMinimal>
 
       <Carousel
         opts={{
@@ -50,7 +50,7 @@ const Feedback = () => {
               className="pl-1 md:basis-1/2 lg:basis-1/3"
             >
               <div className="p-1">
-                <Card className="relative bg-white shadow-lg rounded-lg overflow-hidden w-80 h-60 border-l-4 border-primary-color">
+                <Card className="relative p-3 bg-white shadow-lg rounded-lg overflow-hidden w-80 h-80 border-l-4 border-primary-color">
                   <div className="flex items-center p-4">
                     <div className="w-16 h-16 bg-primary-color rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
                       {item?.image ? (
@@ -87,10 +87,10 @@ const Feedback = () => {
                       {item.message || "No feedback provided"}
                     </p>
                   </CardContent>
-                  <div className="absolute top-1 right-1 bg-primary-color text-white rounded-lg p-2">
+                  <div className="absolute top-1 right-1 bg-primary-color opacity-80 text-white rounded-lg p-2">
                     <div className="flex gap-0.5">
                       {[...Array(item.rating || 5)].map((_, i) => (
-                        <FaStar key={i} className="text-white w-3 h-3" />
+                        <FaStar key={i} className="text-[#F3C623] w-3 h-3" />
                       ))}
                     </div>
                   </div>
