@@ -90,19 +90,19 @@ const Page = () => {
             Exam Statistics
           </h2>
           <div className="grid grid-cols-2 gap-6 mb-8">
-            <div className="text-center bg-secondary-color p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
+            <div className="text-center bg-gray-100 p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
               <p className="text-lg font-medium text-gray-700">Total Exams Attempted</p>
               <p className="text-2xl font-bold">{totalExams}</p>
             </div>
-            <div className="text-center bg-secondary-color p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
+            <div className="text-center bg-gray-100 p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
               <p className="text-lg font-medium text-gray-700">Average Marks</p>
               <p className="text-2xl font-bold">{averageMarks}</p>
             </div>
-            <div className="text-center bg-secondary-color p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
+            <div className="text-center bg-gray-100 p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
               <p className="text-lg font-medium text-gray-700">Highest Marks</p>
               <p className="text-2xl font-bold">{highestMarks}</p>
             </div>
-            <div className="text-center bg-secondary-color p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
+            <div className="text-center bg-gray-100 p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
               <p className="text-lg font-medium text-gray-700">Lowest Marks</p>
               <p className="text-2xl font-bold">{lowestMarks}</p>
             </div>

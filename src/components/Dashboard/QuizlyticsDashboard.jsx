@@ -149,72 +149,7 @@ const QuizlyticsDashboard = () => {
       </div>
 
       {/* Charts and Statistics section */}
-      {marks.length === 0 ? (
-        <div className="text-center mt-12">
-          <h2 className="text-2xl font-semibold mb-4">No Quizzes Attempted Yet</h2>
-          <p className="text-gray-600 mb-6">It seems like you haven&apos;t taken any quizzes yet. Start your learning journey by taking your first quiz now!</p>
-          <Link href="/customQuiz">
-  <button className="bg-primary-color font-semibold text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-200">
-    Attempt Your First Quiz
-  </button>
-</Link>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Bar Chart for individual topic marks */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">Marks by Quiz Topic</h3>
-            <div className="flex justify-center">
-              <BarChart width={500} height={300} data={barChartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="quizTitle" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="marks" fill="#8e49b6" />
-              </BarChart>
-            </div>
-          </div>
-
-          {/* Line Chart for performance trend */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">Performance Trend Over Attempts</h3>
-            <div className="flex justify-center">
-              <LineChart width={500} height={300} data={lineChartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="attempt" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="marks" stroke="#8e49b6" activeDot={{ r: 8 }} />
-              </LineChart>
-            </div>
-          </div>
-
-          {/* Pie Chart for marks distribution */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">Marks Distribution</h3>
-            <div className="flex justify-center">
-              <PieChart width={400} height={300}>
-                <Pie
-                  data={pieChartData}
-                  cx={200}
-                  cy={150}
-                  labelLine={false}
-                  label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                  outerRadius={120}
-                  fill="#8884d8"
-                  dataKey="value"
-                >
-                  {pieChartData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-              </PieChart>
-            </div>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 };
