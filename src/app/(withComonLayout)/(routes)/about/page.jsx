@@ -123,7 +123,7 @@ const page = () => {
             </h1>
             <p className="text-lg text-gray-700 leading-relaxed">
               Rise to the top with our leaderboard feature! Quizlytics recognizes and celebrates users with the best average results across quizzes. Track your progress and compare your scores with peers to foster a healthy competitive spirit. 
-              Results are displayed through engaging graphical representations, making it easy to visualize your performance and improvements. Whether you're a top performer or just starting, everyone has the chance to shine. Join now and see how your dedication pays off!
+              Results are displayed through engaging graphical representations, making it easy to visualize your performance and improvements. Whether you&apos;re a top performer or just starting, everyone has the chance to shine. Join now and see how your dedication pays off!
             </p>
           </div>
 
