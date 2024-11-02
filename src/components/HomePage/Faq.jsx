@@ -9,7 +9,7 @@ import { SectionTitleMinimal } from "../Shared/SectionTitle";
 const Faq = () => {
   return (
     <section className="">
-      <div className="container p-4 mx-auto md:p-4 bg-white text-gray-800 rounded-lg ">
+      <div className="container p-4 mx-auto md:p-4  text-gray-800 rounded-lg ">
         
           <SectionTitleMinimal heading={"Frequently Asked Questions"} subheading={"Answers to common questions"}></SectionTitleMinimal>
        
