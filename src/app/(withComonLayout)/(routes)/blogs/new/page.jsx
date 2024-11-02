@@ -141,7 +141,7 @@ const BlogFormPage = () => {
           <Button
             variant="primary"
             type="submit"
-            className="w-full bg-primary-color text-white mt-5 px-4 rounded-md shadow-md hover:bg-gray-400 transition duration-200"
+            className="w-full  mt-5 px-4 "
           >
             Post
           </Button>
