@@ -1,22 +1,20 @@
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
 import Image from "next/image";
 import React from "react";
 import { FaFacebook, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const ServicesPage = () => {
   return (
-    <div className="">
-      <section className="relative bg-gray-100 py-10 ">
-        <div className="container px-6   mx-auto">
-          <h2 className="text-center mt-8 text-3xl font-bold  ">
-            Meet Our Team
-          </h2>
-          <p className="text-center  mt-3 mb-6">
-            We are a passionate and dedicated team committed to delivering
-            top-notch solutions.
-          </p>
+    <div className="mb-5 min-h-screen">
+      <section className="relative  bg-gray-100 py-10 ">
+        <div className="container pt-5 mx-auto">
 
-          <div className=" max-w-3xl  grid gap-7  sm:grid-cols-2 lg:grid-cols-3 mx-auto p-4 py-5  bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
-            {/* Team Member 1 */}
+          <SectionTitleMinimal  heading={" Meet Our Team"} subHeading={" We are a passionate and dedicated team committed to deliveringtop-notch solutions."}></SectionTitleMinimal>
+          
+
+          <div className=" max-w-4xl  mx-auto p-4 py-5  bg-white rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+  {/* Team Member 1 */}
+            <div className="flex">
             <div className=" max-w-xs text-center mx-auto">
               <div className="relative group">
                 <Image
@@ -56,7 +54,7 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className=" font-bold text-[#ff0000]">
+                <h3 className=" font-bold text-primary-color">
                   Nahidul Islam
                 </h3>
                 <span className="mt-1  dark:text-gray-300">
@@ -64,9 +62,13 @@ const ServicesPage = () => {
                 </span>
               </div>
             </div>
-
+            </div>
+          
+        
+<div className="flex flex-col lg:flex-row">
+  
             {/* Team Member 2 */}
-            <div className="max-w-xs text-center mx-auto relative">
+            <div className="max-w-xs text-center mx-auto relative mb-3">
               <div className="relative group">
                 <Image
                   className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
@@ -105,13 +107,13 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className="font-bold text-[#ff0000]">Musa Akram</h3>
+                <h3 className="font-bold text-primary-color">Musa Akram</h3>
                 <span className="mt-1 dark:text-gray-300">Team Member</span>
               </div>
             </div>
 
             {/* Team Member 3 */}
-            <div className="max-w-xs text-center mx-auto relative">
+            <div className="max-w-xs text-center mx-auto relative mb-3">
               <div className="relative group">
                 <Image
                   className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
@@ -150,14 +152,16 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className="font-bold text-[#ff0000]">Rafiul Habib</h3>
-                <span className="mt-1 font-medium dark:text-gray-300">
+                <h3 className="font-bold text-primary-color">Rafiul Habib</h3>
+                <span className="mt-1  dark:text-gray-300">
                   Team Member
                 </span>
               </div>
             </div>
-            {/* Team Member 4 */}
-            <div className="max-w-xs text-center mx-auto relative">
+</div>
+           <div className="flex flex-col lg:flex-row ">
+             {/* Team Member 4 */}
+             <div className="max-w-xs text-center mx-auto relative">
               <div className="relative group">
                 <Image
                   className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
@@ -196,7 +200,7 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className="font-bold text-[#ff0000]">Sayed Rana</h3>
+                <h3 className="font-bold text-primary-color">Sayed Rana</h3>
                 <span className="mt-1 text-sm  dark:text-gray-300">
                   Team Member
                 </span>
@@ -244,16 +248,17 @@ const ServicesPage = () => {
                 </div>
               </div>
               <div className="mt-2">
-                <h3 className=" font-bold text-[#ff0000]">Ashim Sarkar</h3>
+                <h3 className=" font-bold text-primary-color">Ashim Sarkar</h3>
                 <span className="mt-1 text-sm dark:text-gray-300">
                   Team Member
                 </span>
               </div>
             </div>
+           </div>
           </div>
         </div>
       </section>
-      <hr className="border-4" />
+    
     </div>
   );
 };
