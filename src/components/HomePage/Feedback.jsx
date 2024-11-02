@@ -12,6 +12,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import { SectionTitleMinimal } from "../Shared/SectionTitle";
 
 const Feedback = () => {
   const [feedback, setFeedback] = useState([]);
@@ -32,10 +33,8 @@ const Feedback = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 p-4 overflow-hidden mt-4">
-      <h1 className="text-4xl font-bold text-black text-center mb-3">
-        Feedback & Reviews
-      </h1>
+    <div className="bg-gray-100 overflow-hidden mt-4 pb-12">
+     <SectionTitleMinimal heading={"Feedback & Reviews"} subheading={"What our clients say about us"}></SectionTitleMinimal>
 
       <Carousel
         opts={{
