@@ -73,7 +73,7 @@ const MobileNav = () => {
               Contact
             </Link>
 
-            <Link
+            {/* <Link
               href="/team"
               className={`py-2 font-semibold ${
                 pathname === "/team"
@@ -83,7 +83,7 @@ const MobileNav = () => {
               onClick={handleLinkClick}
             >
               Our Team
-            </Link>
+            </Link> */}
           </nav>
         </SheetContent>
       </Sheet>
