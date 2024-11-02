@@ -82,7 +82,7 @@ const MainNav = () => {
         </Link>
 
         {/* Our Team Link */}
-        <Link
+        {/* <Link
           href="/team"
           className={`flex items-center gap-2 font-semibold text-xl ${
             pathname === "/team" ? "text-primary-color" : "text-secondary-color"
@@ -96,7 +96,7 @@ const MainNav = () => {
             }`}
           />
           Team
-        </Link>
+        </Link> */}
       </nav>
     </div>
   );
