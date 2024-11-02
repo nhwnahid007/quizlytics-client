@@ -4,14 +4,15 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { SectionTitleMinimal } from "../Shared/SectionTitle";
 
 const Faq = () => {
   return (
-    <section className="bg-gray-100">
-      <div className="container p-4 mx-auto md:p-4 bg-white text-gray-800 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold sm:text-4xl mb-6 text-center">
-          Frequently Asked Questions:
-        </h2>
+    <section className="">
+      <div className="container p-4 mx-auto md:p-4 bg-white text-gray-800 rounded-lg ">
+        
+          <SectionTitleMinimal heading={"Frequently Asked Questions"} subheading={"Answers to common questions"}></SectionTitleMinimal>
+       
 
         <Accordion className="w-full space-y-4" type="single" collapsible>
           <AccordionItem className="border rounded-lg pl-4 bg-gray-50" value="item-1">

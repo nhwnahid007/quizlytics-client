@@ -1,5 +1,4 @@
-'use client';
-import { getMarks } from '@/requests/get';
+'use client'
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { useSession } from 'next-auth/react';
@@ -18,9 +17,10 @@ import {
   Cell,
 } from 'recharts';
 import LoadingSpinner from '@/components/Spinner/LoadingSpinner';
+import { getMarks } from '@/requests/get';
 
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const PRIMARY_COLOR = '#8e49b6'; // Use your primary color here
+const GRAY_COLOR = '#9ca3af'; // Gray color for other sections
 
 const Page = () => {
   const { data: session } = useSession();
@@ -79,31 +79,32 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-4">
+    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-gray-50 p-4">
       {loading ? (
         <LoadingSpinner />
       ) : marks.length === 0 ? (
         <p className="md:text-5xl text-sm font-semibold text-gray-600">No exam given yet.</p>
       ) : (
         <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl w-full">
-          <h2 className="text-2xl font-bold text-primary-color mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-8 font-bold text-gray-800">
             Exam Statistics
           </h2>
+
           <div className="grid grid-cols-2 gap-6 mb-8">
-            <div className="text-center bg-secondary-color p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
-              <p className="text-lg font-medium text-gray-700">Total Exams Attempted</p>
+            <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
+              <p className="text-lg font-medium text-primary-color">Total Exams Attempted</p>
               <p className="text-2xl font-bold">{totalExams}</p>
             </div>
-            <div className="text-center bg-secondary-color p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
-              <p className="text-lg font-medium text-gray-700">Average Marks</p>
+            <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
+              <p className="text-lg font-medium text-primary-color">Average Marks</p>
               <p className="text-2xl font-bold">{averageMarks}</p>
             </div>
-            <div className="text-center bg-secondary-color p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
-              <p className="text-lg font-medium text-gray-700">Highest Marks</p>
+            <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
+              <p className="text-lg font-medium text-primary-color">Highest Marks</p>
               <p className="text-2xl font-bold">{highestMarks}</p>
             </div>
-            <div className="text-center bg-secondary-color p-4 rounded-lg hover:text-primary-color transition-colors duration-300">
-              <p className="text-lg font-medium text-gray-700">Lowest Marks</p>
+            <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
+              <p className="text-lg font-medium text-primary-color">Lowest Marks</p>
               <p className="text-2xl font-bold">{lowestMarks}</p>
             </div>
           </div>
@@ -120,7 +121,7 @@ const Page = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="marks" fill="#8e49b6" />
+                <Bar dataKey="marks" fill={PRIMARY_COLOR} />
               </BarChart>
             </div>
           </div>
@@ -137,7 +138,7 @@ const Page = () => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="marks" stroke="#8e49b6" />
+                <Line type="monotone" dataKey="marks" stroke={PRIMARY_COLOR} />
               </LineChart>
             </div>
           </div>
@@ -148,19 +149,19 @@ const Page = () => {
               Marks Distribution
             </h3>
             <div className="flex justify-center">
-              <PieChart width={400} height={400}>
+              <PieChart width={450} height={450}>
                 <Pie
                   data={pieChartData}
                   cx={200}
                   cy={200}
                   labelLine={false}
                   label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                  outerRadius={150}
-                  fill="#8884d8"
+                  outerRadius={180} // Increased radius for a larger curve
+                  fill={'#374151'}
                   dataKey="value"
                 >
                   {pieChartData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    <Cell key={`cell-${index}`} fill={index === 0 ? PRIMARY_COLOR : GRAY_COLOR} />
                   ))}
                 </Pie>
                 <Tooltip />

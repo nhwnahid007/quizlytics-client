@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import {FaStar} from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -11,11 +11,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import {Card, CardContent} from "../ui/card";
+import { Card, CardContent } from "@/components/ui/card";
+import { SectionTitleMinimal } from "../Shared/SectionTitle";
 
 const Feedback = () => {
   const [feedback, setFeedback] = useState([]);
-  const autoplay = Autoplay({delay: 3000});
+  const autoplay = Autoplay({ delay: 3000 });
 
   useEffect(() => {
     const fetchFeedback = async () => {
@@ -32,10 +33,8 @@ const Feedback = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 p-4 overflow-hidden mt-4">
-      <h1 className="text-4xl font-bold text-black text-center mb-3">
-        Feedback & Reviews
-      </h1>
+    <div className="bg-gray-100 overflow-hidden mt-4 pb-12">
+     <SectionTitleMinimal heading={"Feedback & Reviews"} subheading={"What our clients say about us"}></SectionTitleMinimal>
 
       <Carousel
         opts={{
@@ -51,49 +50,50 @@ const Feedback = () => {
               className="pl-1 md:basis-1/2 lg:basis-1/3"
             >
               <div className="p-1">
-                <Card className="">
-                  <CardContent className="flex aspect-square p-4 justify-center">
-                    <div>
-                      <div className="flex gap-3 mx-auto">
-                        <div>
-                          <Image
-                            src={item?.image}
-                            alt="feedback"
-                            width={90}
-                            height={80}
-                            className="rounded-md"
+                <Card className="relative bg-white shadow-lg rounded-lg overflow-hidden w-80 h-60 border-l-4 border-primary-color">
+                  <div className="flex items-center p-4">
+                    <div className="w-16 h-16 bg-primary-color rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
+                      {item?.image ? (
+                        <Image
+                          src={item.image}
+                          alt="feedback"
+                          width={64}
+                          height={64}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <svg
+                          className="w-8 h-8 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                           />
-                        </div>
-                        <div className="ml-2">
-                          <h2 className="text-lg font-bold">
-                            {item.name.length > 20
-                              ? item.name.substring(0, 20)
-                              : item.name}
-                          </h2>
-                          <h2 className="opacity-75 italic">{"Teacher"}</h2>
-                          <h2 className="opacity-75 italic">
-                            {"X high school"}
-                          </h2>
-                          <p className="flex items-center mx-auto">
-                            <span className="mr-2 opacity-75 italic">
-                              Rating:
-                            </span>
-                            {Array.from({length: item.rating}).map(
-                              (_, index) => (
-                                <FaStar key={index} style={{color: "gold"}} />
-                              )
-                            )}
-                          </p>
-                        </div>
-                      </div>
-                      <div className=" mt-4 md:mt-5">
-                        <p className="italic text-justify mx-auto">
-                          {item.message.split(" ").slice(0, 28).join(" ")}
-                          {item.message.split(" ").length > 28 ? "..." : ""}
-                        </p>
-                      </div>
+                        </svg>
+                      )}
                     </div>
+                    <div className="ml-4">
+                      <h2 className="text-lg font-bold text-black">{item.name || 'Anonymous'}</h2>
+                      <p className="text-gray-600">{item.designation || "Teacher"}</p>
+                    </div>
+                  </div>
+                  <CardContent className="p-4">
+                    <p className="italic text-gray-600 text-justify">
+                      {item.message || "No feedback provided"}
+                    </p>
                   </CardContent>
+                  <div className="absolute top-1 right-1 bg-primary-color text-white rounded-lg p-2">
+                    <div className="flex gap-0.5">
+                      {[...Array(item.rating || 5)].map((_, i) => (
+                        <FaStar key={i} className="text-white w-3 h-3" />
+                      ))}
+                    </div>
+                  </div>
                 </Card>
               </div>
             </CarouselItem>
