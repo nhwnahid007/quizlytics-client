@@ -13,7 +13,7 @@ export default function NotFound() {
               className="w-3/4 h-auto"
             >
               <path
-                fill="#ff7303"
+                fill="#7A1CAC"
                 d="M435,288.5Q457,337,412,359Q367,381,337.5,415Q308,449,264.5,432.5Q221,416,172.5,428.5Q124,441,88,409Q52,377,47,329.5Q42,282,34.5,238.5Q27,195,57.5,162.5Q88,130,105.5,83.5Q123,37,171.5,42Q220,47,261.5,47Q303,47,338,70Q373,93,413,119Q453,145,433,192.5Q413,240,435,288.5Z"
               />
               <foreignObject x="0" y="0" width="100%" height="100%">
@@ -21,7 +21,7 @@ export default function NotFound() {
                   xmlns="http://www.w3.org/1999/xhtml"
                   className="flex items-center justify-center h-full"
                 >
-                  <h2 className="font-extrabold text-6xl md:text-9xl text-gray-600 dark:text-gray-100">
+                  <h2 className="font-extrabold text-6xl md:text-9xl text-secondary-color dark:text-gray-100">
                     <span className="sr-only">Error</span>404
                   </h2>
                 </div>
