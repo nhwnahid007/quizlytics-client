@@ -65,7 +65,7 @@ const BlogFormPage = () => {
     <div className="max-w-6xl mx-auto mt-20">
       <div className="p-6">
         <h1 className="text-3xl font-extrabold mb-6 text-gray-800 text-center">
-          What&apos;s on your Mind?
+          What's on your Mind?
         </h1>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-6 md:grid-cols-2 mb-8">
@@ -126,9 +126,9 @@ const BlogFormPage = () => {
           </div>
 
           {/* Photo Upload */}
-          <div className="mb-4">
+          <div className="mb-4 w-1/5 border border-solid p-3 rounded-lg">
             <label className="block text-sm font-medium text-gray-700">
-              Upload Blog Photo
+              Upload Blog Photo:
             </label>
             <input
               type="file"
@@ -141,7 +141,7 @@ const BlogFormPage = () => {
           <Button
             variant="primary"
             type="submit"
-            className="w-full  mt-5 px-4 "
+            className="w-full bg-primary-color text-white mt-5 px-4 rounded-md shadow-md hover:bg-gray-400 transition duration-200"
           >
             Post
           </Button>

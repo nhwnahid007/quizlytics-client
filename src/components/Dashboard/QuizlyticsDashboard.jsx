@@ -156,9 +156,15 @@ const QuizlyticsDashboard = () => {
       {/* Quiz Start Section*/}
 
       <div className="h-64 flex justify-center items-center gap-3">
-        <Button onClick={handleAIQuiz}>Quick Exam with AI</Button>
-        <Button onClick={handleCustomQuiz}>Custom Exam</Button>
-        <Button onClick={handleQuizByLink}>Test on Article Link</Button>
+        <button className="md:text-md bg-primary-color md:px-6 border-2 border-[#7A1CAC]  shadow-sm hover:bg-[#7A1CAC]/10 hover:text-[#7A1CAC] md:py-3 text-gray-100 font-bold rounded-md lg:text-lg lg:px-8 lg:py-4" onClick={handleAIQuiz}>
+          Quick Exam with AI
+        </button>
+        <button className="md:text-md bg-primary-color md:px-6 border-2 border-[#7A1CAC]  shadow-sm hover:bg-[#7A1CAC]/10 hover:text-[#7A1CAC]  md:py-3 text-gray-100 font-bold rounded-md lg:text-lg lg:px-8 lg:py-4" onClick={handleCustomQuiz}>
+          Custom Exam
+        </button>
+        <button className="md:text-md bg-primary-color md:px-6 border-2 border-[#7A1CAC]  shadow-sm hover:bg-[#7A1CAC]/10 hover:text-[#7A1CAC] md:py-3 text-gray-100 font-bold rounded-md lg:text-lg lg:px-8 lg:py-4" onClick={handleQuizByLink}>
+          Test on Article Link
+        </button>
       </div>
     </div>
   );
