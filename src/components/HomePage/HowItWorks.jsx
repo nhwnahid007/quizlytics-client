@@ -29,7 +29,7 @@ const HowItWorks = () => {
     }, []);
 
     return (
-        <div className="flex flex-col md:flex-row justify-between lg:my-10 p-4 md:mt-0 md:p-8 gap-4 md:gap-8">
+        <div className="flex flex-col md:flex-row justify-between lg:my-10 p-4 md:mt-0 md:p-8 gap-4 md:gap-8 2xl:gap-12 2xl:p-12">
             <CardComponent 
                 imageSrc="https://i.ibb.co.com/jybNXN0/graident-ai-robot-vectorart-78370-4114-removebg-preview.png"
                 altText="Create"

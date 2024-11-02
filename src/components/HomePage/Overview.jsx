@@ -81,7 +81,7 @@ const Overview = () => {
   }, []);
 
   return (
-    <div className=" py-8 bg-white">
+    <div className=" py-8 ">
       <div className="w-[90%]  max-w-6xl mx-auto">
         <SectionTitleMinimal 
           heading={"Overview"} 

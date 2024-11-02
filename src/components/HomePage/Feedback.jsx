@@ -33,7 +33,7 @@ const Feedback = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 overflow-hidden mt-4 pb-12">
+    <div className=" overflow-hidden mt-4 pb-12">
      <SectionTitleMinimal heading={"Feedback & Reviewss"} subHeading={"What our clients say about us"} ></SectionTitleMinimal>
 
       <Carousel
