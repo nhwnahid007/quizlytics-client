@@ -77,26 +77,26 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-2 sm:p-4">
-      <div className="w-full max-w-3xl h-[500px] overflow-y-auto bg-white p-3 sm:p-4 md:p-6 pt-2 shadow-2xl rounded-lg flex flex-col min-h-[380px] max-h-[90vh] overflow-auto relative">
+      <div className="w-full max-w-4xl h-[600px] overflow-y-auto bg-white p-3 sm:p-4 md:p-6 pt-2 shadow-2xl rounded-lg flex flex-col min-h-[400px] max-h-[90vh] overflow-auto relative">
         <button
           onClick={() => router.push("/")}
           className="absolute top-4 right-4 text-black"
         >
           <X size={24} />
         </button>
-        <div className="text-center flex justify-center items-center  text-sm sm:text-base">
-          <svg width="100" height="100">
+        <div className="text-center flex justify-center items-center text-sm sm:text-base">
+          <svg width="120" height="120">
             <circle
-              cx="50"
-              cy="50"
+              cx="60"
+              cy="60"
               r={radius}
               stroke="#d6d6d6"
               strokeWidth="10"
               fill="transparent"
             />
             <circle
-              cx="50"
-              cy="50"
+              cx="60"
+              cy="60"
               r={radius}
               className="stroke-primary-color"
               strokeWidth="10"
@@ -111,7 +111,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
               dominantBaseline="middle"
               textAnchor="middle"
               className="fill-primary-color font-bold"
-              fontSize="16px"
+              fontSize="18px"
             >
               {remainingTime} S
             </text>
