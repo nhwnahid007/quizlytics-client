@@ -59,7 +59,7 @@ const MakeExam = ({
         <h1 className="text-primary-color font-bold text-center text-3xl">
           Quick Exam
         </h1>
-        <div className="w-full md:w-[480px] mx-auto mt-8 flex justify-between">
+        <div className="w-full md:w-[480px] mx-auto mt-8 flex flex-col md:flex-row text-center md:text-start justify-around">
           <div className="flex flex-col space-y-1">
             <h1 className="font-medium">
               <span className="font-bold">Duration:</span> 300 Seconds
@@ -69,7 +69,7 @@ const MakeExam = ({
               {name ? name : "Guest"}
             </h1>
           </div>
-          <div className="flex flex-col space-y-1">
+          <div className="flex flex-col justify-between it  space-y-1">
             <h1 className="font-medium">
               <span className="font-bold">MCQ:</span> 10
             </h1>
@@ -83,7 +83,7 @@ const MakeExam = ({
             <input
               onChange={(e) => setSearch(e.target.value)}
               type="text"
-              className=" bg-secondary-color bg-opacity-20 text-black w-full py-2 px-4 rounded-lg text-lg placeholder-gray-800"
+              className=" bg-secondary-color bg-opacity-20 text-black w-full py-2 px-4 rounded-lg text-lg placeholder-gray-500 h-11"
               placeholder="Write topics"
             />
             {searchError && <p className="text-red-600">{searchError}</p>}
@@ -91,10 +91,10 @@ const MakeExam = ({
           <div className="w-full md:w-1/2">
             <select
               onChange={(e) => setLavel(e.target.value)}
-              className="bg-secondary-color bg-opacity-20 w-full py-2 px-4 text-gray-800 rounded-lg text-lg"
+              className="bg-secondary-color bg-opacity-20 w-full py-2 px-4 text-gray-800 rounded-lg text-lg h-11"
             >
               <option value="" disabled selected>
-                Level
+                <span className="text-gray-500">Level</span>
               </option>
               <option value="beginner">Beginner</option>
               <option value="moderate">Moderate</option>

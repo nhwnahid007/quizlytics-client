@@ -77,7 +77,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-2 sm:p-4">
-      <div className="w-full max-w-3xl bg-white p-3 sm:p-4 md:p-6 pt-2 shadow-2xl rounded-lg flex flex-col min-h-[380px] max-h-[90vh] overflow-auto relative">
+      <div className="w-full max-w-3xl h-[500px] overflow-y-auto bg-white p-3 sm:p-4 md:p-6 pt-2 shadow-2xl rounded-lg flex flex-col min-h-[380px] max-h-[90vh] overflow-auto relative">
         <button
           onClick={() => router.push("/")}
           className="absolute top-4 right-4 text-black"
@@ -98,7 +98,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
               cx="50"
               cy="50"
               r={radius}
-              className="stroke-secondary-color"
+              className="stroke-primary-color"
               strokeWidth="10"
               fill="transparent"
               strokeDasharray={circumference}
@@ -136,7 +136,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
                 key={index}
                 className={`flex items-center p-3 sm:p-4 rounded-lg cursor-pointer transition duration-200 ${
                   index === selectedOption
-                    ? "bg-secondary-color text-black border-2 border-primary-color"
+                    ? "bg-gray-300 text-black border-2 border-primary-color"
                     : "bg-white text-black border-2 border-gray-300 hover:bg-gray-100"
                 }`}
                 onClick={() => handleOptionClick(index)}
@@ -154,7 +154,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
           <button
             className={`btn flex-1 py-2 sm:py-3 text-sm sm:text-base rounded-lg transition duration-200 bg-purple-400 text-white ${
               selectedOption === null
-                ? "opacity-50 cursor-not-allowed"
+                ? "opacity-50 bg-primary-color cursor-not-allowed"
                 : "hover:bg-primary-color"
             }`}
             onClick={handleGoToNextQuiz}
