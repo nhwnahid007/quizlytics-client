@@ -126,9 +126,9 @@ const BlogFormPage = () => {
           </div>
 
           {/* Photo Upload */}
-          <div className="mb-4">
+          <div className="mb-4 w-1/5 border border-solid p-3 rounded-lg">
             <label className="block text-sm font-medium text-gray-700">
-              Upload Blog Photo
+              Upload Blog Photo:
             </label>
             <input
               type="file"
