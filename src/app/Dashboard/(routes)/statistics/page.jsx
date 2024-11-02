@@ -17,11 +17,7 @@ import {
   Cell,
 } from 'recharts';
 import LoadingSpinner from '@/components/Spinner/LoadingSpinner';
-<<<<<<< HEAD
-import { SectionTitleMinimal } from '@/components/Shared/SectionTitle';
-=======
 import { getMarks } from '@/requests/get';
->>>>>>> 7b2575920b601560d544686e4e93098b4c8dae8e
 
 const PRIMARY_COLOR = '#8e49b6'; // Use your primary color here
 const GRAY_COLOR = '#9ca3af'; // Gray color for other sections
@@ -83,7 +79,7 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-gray-50 ">
+    <div className="flex flex-col lg:flex items-center justify-center min-h-screen">
       {loading ? (
         <LoadingSpinner />
       ) : marks.length === 0 ? (
