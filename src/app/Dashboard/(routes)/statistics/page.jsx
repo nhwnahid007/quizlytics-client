@@ -18,6 +18,7 @@ import {
   Cell,
 } from 'recharts';
 import LoadingSpinner from '@/components/Spinner/LoadingSpinner';
+import { SectionTitleMinimal } from '@/components/Shared/SectionTitle';
 
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -79,16 +80,17 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-gray-50 p-4">
+    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-gray-50 ">
       {loading ? (
         <LoadingSpinner />
       ) : marks.length === 0 ? (
         <p className="md:text-5xl text-sm font-semibold text-gray-600">No exam given yet.</p>
       ) : (
-        <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl w-full">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-8 font-bold text-gray-800">
+        <div className="bg-white shadow-lg rounded-lg px-2  max-w-6xl w-full">
+          {/* <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-8 font-bold text-gray-800">
           Exam Statistics
-          </h2>
+          </h2> */}
+          <SectionTitleMinimal heading={"Exam Statistics"}></SectionTitleMinimal>
 
           
           <div className="grid grid-cols-2 gap-6 mb-8">

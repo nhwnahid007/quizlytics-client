@@ -25,12 +25,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
 
 
 const Page = () => {
   const [AllQuiz, refetch] = useAllQuiz();
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(8);
+  const [itemsPerPage] = useState(7);
   const [loading, setLoading] = useState(true);
 
   const totalPages = Math.ceil(AllQuiz.length / itemsPerPage);
@@ -94,12 +95,11 @@ const Page = () => {
   }
 
   return (
-    <div className="my-8 mx-6">
+    <div className="h-screen px-2">
       <main className="max-w-6xl mx-auto">
-        <h1 className="text-3xl text-center font-extrabold mb-4">
-          All Custom Questions
-        </h1>
-        <div className="lg:h-[450px]">
+      
+        <SectionTitleMinimal heading={"All Custom Questions"}></SectionTitleMinimal>
+        <div className="lg:h-[410px]">
           <Table>
             <TableHeader>
               <TableRow className="">
@@ -153,7 +153,7 @@ const Page = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center mt-4 space-x-2">
+        <div className="flex justify-center mt-8 space-x-2">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}

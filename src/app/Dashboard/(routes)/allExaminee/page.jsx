@@ -14,6 +14,7 @@ import Image from "next/image";
 import useRole from "@/app/hooks/useRole";
 import NotFound from "@/app/not-found";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
 
 const ExamineeList = () => {
   const [examinees, setExaminees] = useState([]);
@@ -86,8 +87,9 @@ const ExamineeList = () => {
   }
 
   return (
-    <div className="p-4 max-w-7xl mx-auto">
-      <div className="text-center my-5 text-3xl font-bold">All Examinees</div>
+    <div className=" h-screen px-2 max-w-6xl mx-auto">
+      {/* <div className="text-center my-5 text-3xl font-bold">All Examinees</div> */}
+      <SectionTitleMinimal heading={"All Examinees"}></SectionTitleMinimal>
 
       <div className="flex flex-col sm:flex-row justify-between mb-4 gap-3">
         <input
@@ -107,7 +109,7 @@ const ExamineeList = () => {
       </div>
 
       <div className="relative overflow-auto">
-        <div className="overflow-hidden shadow-md h-[400px] sm:rounded-lg">
+        <div className="overflow-hidden shadow-md h-[375px] sm:rounded-lg">
           <Table className="w-full min-w-full table-fixed">
             <TableHeader className="bg-gray-100">
               <TableRow>

@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import useRole from "@/app/hooks/useRole";
 import NotFound from "@/app/not-found";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
 
 const Page = () => {
   const [role, roleError, roleLoading] = useRole();
@@ -153,14 +154,13 @@ const Page = () => {
   };
 
   return (
-    <div className="">
+    <div className="h-screen px-2">
       <main className="max-w-6xl mx-auto">
-        <div className="p-6">
-          <h1 className="text-3xl font-extrabold mb-6 text-gray-800 text-center">
-            Create Custom Questions
-          </h1>
+        <div className="">
+        
+          <SectionTitleMinimal heading={" Create Custom Questions"}></SectionTitleMinimal>
 
-          <div className="grid gap-6 md:grid-cols-2 mb-8">
+          <div className="grid gap-6 md:grid-cols-2 mb-5">
             <div className="relative">
               <label className="block text-sm font-medium text-gray-700">
                 Quiz Start Key
@@ -185,7 +185,7 @@ const Page = () => {
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 mb-8">
+          <div className="grid gap-6 md:grid-cols-2 mb-5">
             <div className="relative">
               <label className="block text-sm font-medium text-gray-700">
                 Category

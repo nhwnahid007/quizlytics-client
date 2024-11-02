@@ -15,13 +15,14 @@ import {
 import { Button } from "@/components/ui/button";
 import moment from "moment/moment";
 import useRouterHook from "@/app/hooks/useRouterHook";
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
 
 const QuizHistory = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [history, setHistory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(7);
 
   const router = useRouterHook();
 
@@ -68,13 +69,12 @@ const QuizHistory = () => {
   };
 
   return (
-    <div className="h-screen max-w-6xl mx-auto pt-20 px-4 relative overflow-auto">
-      <h1 className="text-center text-3xl  font-extrabold  mb-8">
-        Quiz History
-      </h1>
-      <div className="overflow-hidden shadow-md sm:rounded-lg">
+    <div className="h-screen max-w-6xl mx-auto  px-2 relative overflow-auto">
+    
+      <SectionTitleMinimal heading={" Quiz History"}></SectionTitleMinimal>
+      <div className="overflow-hidden shadow-md h-[410px] sm:rounded-lg">
         <Table className="w-full min-w-full table-fixed">
-          <TableCaption>A list of your attempts in Custom Quiz.</TableCaption>
+          {/* <TableCaption>A list of your attempts in Custom Quiz.</TableCaption> */}
           <TableHeader className="bg-gray-100">
             <TableRow>
               <TableHead className="w-[60px]">#</TableHead>
@@ -121,7 +121,7 @@ const QuizHistory = () => {
         </Table>
       </div>
       {/* Pagination */}
-      <div className="flex justify-center mt-4 space-x-2">
+      <div className="flex justify-center mt-8 space-x-2">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}

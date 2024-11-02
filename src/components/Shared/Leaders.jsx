@@ -60,12 +60,13 @@ const Leaders = () => {
   }, []);
 
   return (
-    <div className="leaderboard-container mb-8 mx-5">
-      <main className="max-w-4xl mx-auto">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center my-5 font-bold text-gray-800">
+    <div className="h-screen">
+      <main className="max-w-6xl px-2 mx-auto">
+      {/* <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center my-5 font-bold text-gray-800">
             Leaderboard
-          </h2>
+          </h2> */}
           
+          <SectionTitleMinimal heading={"Leaderboard"}></SectionTitleMinimal>
        
 
         {loading ? (
