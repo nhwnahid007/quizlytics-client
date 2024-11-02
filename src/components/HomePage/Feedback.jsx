@@ -1,9 +1,8 @@
 "use client";
 import Image from "next/image";
-import React from "react";
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import axios from "axios";
-import {FaQuoteLeft, FaStar} from "react-icons/fa";
+import {FaStar} from "react-icons/fa";
 import Autoplay from "embla-carousel-autoplay";
 import {
   Carousel,
@@ -16,7 +15,7 @@ import {Card, CardContent} from "../ui/card";
 
 const Feedback = () => {
   const [feedback, setFeedback] = useState([]);
-  // const autoplay = Autoplay({delay: 3000});
+  const autoplay = Autoplay({delay: 3000});
 
   useEffect(() => {
     const fetchFeedback = async () => {
@@ -33,26 +32,29 @@ const Feedback = () => {
   }, []);
 
   return (
-    <div className="bg-gray-100 p-10 overflow-hidden">
-      <h1 className="text-4xl font-bold text-black text-center mb-8">
+    <div className="bg-gray-100 p-4 overflow-hidden mt-4">
+      <h1 className="text-4xl font-bold text-black text-center mb-3">
         Feedback & Reviews
       </h1>
 
-      <div className="container mx-auto">
-        <Carousel
-          opts={{
-            align: "start",
-          }}
-          // plugins={[autoplay]}
-          className="relative"
-        >
-          <CarouselContent className="md:ml-64 md:mr-64">
-            {feedback.slice(0,3).map((item, index) => (
-              <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                <div className="p-1">
-                  <Card className="w-[300] h-[384] md:min-h-96 bg-white shadow-md p-4 rounded-xl border-2 border-primary-color">
-                    <CardContent className="flex flex-col aspect-square items-center justify-center p-2">
-                      <div className="flex items-start gap-5 pt-0 mt-0 h-28">
+      <Carousel
+        opts={{
+          align: "start",
+        }}
+        plugins={[autoplay]}
+        className="w-full max-w-5xl mx-auto"
+      >
+        <CarouselContent className="-ml-1">
+          {feedback.map((item, index) => (
+            <CarouselItem
+              key={index}
+              className="pl-1 md:basis-1/2 lg:basis-1/3"
+            >
+              <div className="p-1">
+                <Card className="">
+                  <CardContent className="flex aspect-square p-4 justify-center">
+                    <div>
+                      <div className="flex gap-3 mx-auto">
                         <div>
                           <Image
                             src={item?.image}
@@ -62,10 +64,10 @@ const Feedback = () => {
                             className="rounded-md"
                           />
                         </div>
-                        <div>
+                        <div className="ml-2">
                           <h2 className="text-lg font-bold">
-                            {item.name.length > 12
-                              ? item.name.substring(0, 12) 
+                            {item.name.length > 20
+                              ? item.name.substring(0, 20)
                               : item.name}
                           </h2>
                           <h2 className="opacity-75 italic">{"Teacher"}</h2>
@@ -84,21 +86,22 @@ const Feedback = () => {
                           </p>
                         </div>
                       </div>
-                      <div className="flex flex-col mx-auto text-center items-center justify-center min-h-[272]">
-                        <p className="my-4 italic flex gap-2 text-justify mx-auto">
-                          {item.message}
+                      <div className=" mt-4 md:mt-5">
+                        <p className="italic text-justify mx-auto">
+                          {item.message.split(" ").slice(0, 28).join(" ")}
+                          {item.message.split(" ").length > 28 ? "..." : ""}
                         </p>
                       </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <CarouselPrevious className="hidden md:flex absolute left-0" />
-          <CarouselNext className="hidden md:flex absolute right-0" />
-        </Carousel>
-      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="hidden md:flex" />
+        <CarouselNext className="hidden md:flex" />
+      </Carousel>
     </div>
   );
 };

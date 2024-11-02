@@ -41,7 +41,8 @@ const CheckoutPage = ({ prices }) => {
       return;
     }
 
-    if (paymentIntent && paymentIntent.status === "Succeeded") {
+    if (paymentIntent && paymentIntent.status === "succeeded") {
+      console.log("hello from payment");
       const paymentInfo = {
         userName: name,
         email: email,
@@ -51,22 +52,41 @@ const CheckoutPage = ({ prices }) => {
       };
 
       try {
-        console.log("hello from payment");
-        const data = await axios.patch(
-          "http://localhost:4000/paymentInfo",
-          paymentInfo
+        const response = await axios.post(
+          "https://quizlytics.jonomukti.org/paymentHistory",
+          paymentInfo,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
-        console.log("Payment saved:", data);
 
-        // Show SweetAlert2 success message
+        if (response.data.success) {
+          Swal.fire({
+            title: "Payment Successful!",
+            text: `Your payment of $${prices} was successful and your account has been upgraded to Pro!`,
+            icon: "success",
+            confirmButtonText: "OK",
+          }).then(() => {
+            // Optionally refresh the page or redirect
+            window.location.href = "/Dashboard";
+          });
+        } else {
+          throw new Error(
+            response.data.error || "Failed to update user status"
+          );
+        }
+      } catch (error) {
+        console.error("Error processing payment:", error);
         Swal.fire({
-          title: "Payment Successful!",
-          text: `Your payment of $${prices} was successful.`,
-          icon: "success",
+          title: "Error",
+          text:
+            error.response?.data?.error ||
+            "There was an error processing your payment",
+          icon: "error",
           confirmButtonText: "OK",
         });
-      } catch (error) {
-        console.log("Error saving payment:", error);
       } finally {
         setLoading(false);
       }
