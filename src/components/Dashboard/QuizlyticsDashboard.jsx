@@ -99,7 +99,7 @@ const QuizlyticsDashboard = () => {
 
 
   return (
-    <div className="min-h-screen overflow-hidden bg-gray-100 p-6">
+    <div className="min-h-screen overflow-hidden bg-white p-6">
       {/* Dashboard Header */}
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-semibold">Quizlytics Dashboard</h1>
