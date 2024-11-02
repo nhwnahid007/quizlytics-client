@@ -5,7 +5,7 @@ import { SectionTitleMinimal } from "../Shared/SectionTitle";
 
 const Partnership = () => {
   return (
-    <div className="bg-white">
+    <div className="">
       <SectionTitleMinimal
         heading={"Master Your Quiz Journey"}
         subHeading={"Unlock your full potential with our comprehensive quiz strategies"}
