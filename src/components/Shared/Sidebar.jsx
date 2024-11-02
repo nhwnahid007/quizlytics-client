@@ -97,7 +97,7 @@ const Sidebar = () => {
         } bg-gray-100 h-auto pt-8 relative duration-300 text-primary-color`}
       >
         <button
-          className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color"
+          className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color text-white"
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
         >
           {isSidebarOpen ? (
