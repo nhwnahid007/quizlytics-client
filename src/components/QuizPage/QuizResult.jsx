@@ -4,7 +4,7 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
-import {Button} from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 import {
   FacebookIcon,
@@ -36,7 +36,7 @@ const QuizResult = ({
   console.log("allQuestions", allQuestions);
   console.log("quizStartKey", quizStartKey);
   // access next auth session
-  const {data: session} = useSession();
+  const { data: session } = useSession();
   const name = session?.user?.name;
   const profile = session?.user?.profile;
   const image = session?.user?.image;
@@ -47,9 +47,18 @@ const QuizResult = ({
     quizStartKey,
     date: new Date(),
     linkId: "1001",
-    quizTitle: (quizSet && quizSet.length > 0 && quizSet[0].quizTitle) ? quizSet[0].quizTitle : searchCategory || "Untitled Quiz",
-    quizCategory: (quizSet && quizSet.length > 0 && quizSet[0].quizCategory) ? quizSet[0].quizCategory : searchLavel || "General",
-    quizCreator: (quizSet && quizSet.length > 0 && quizSet[0].quizCreator) ? quizSet[0].quizCreator : "AI",
+    quizTitle:
+      quizSet && quizSet.length > 0 && quizSet[0].quizTitle
+        ? quizSet[0].quizTitle
+        : searchCategory || "Untitled Quiz",
+    quizCategory:
+      quizSet && quizSet.length > 0 && quizSet[0].quizCategory
+        ? quizSet[0].quizCategory
+        : searchLavel || "General",
+    quizCreator:
+      quizSet && quizSet.length > 0 && quizSet[0].quizCreator
+        ? quizSet[0].quizCreator
+        : "AI",
     questions: allQuestions,
     answers: markedAnswer,
     userName: name,
@@ -129,7 +138,7 @@ const QuizResult = ({
     remarkColor = "text-green-600";
   } else if (result?.percentageMark >= 50) {
     remark = "Good!";
-    remarkColor = "text-orange-600";
+    remarkColor = "text-primary-color";
   } else {
     remark = "Needs Improvement";
     remarkColor = "text-red-600";
@@ -137,11 +146,11 @@ const QuizResult = ({
 
   return (
     <div className="fixed h-screen inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
-      <div className="bg-orange-400 bg-opacity-70 w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg">
+      <div className="bg-white w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg">
         <div
-          className={`w-[200px] h-[200px] mx-auto my-8 border-8 p-8 rounded-full flex justify-center items-center ${remarkColor}`}
+          className={`w-[200px] h-[200px] mx-auto my-8 border-8 p-8 rounded-full flex justify-center items-center border-primary-color border-opacity-70`}
         >
-          <h1 className={`text-4xl font-bold text-primary-color`}>
+          <h1 className={`text-4xl font-bold  ${remarkColor}`}>
             {result?.correctAnswers} / {result?.totalQuiz}
           </h1>
         </div>
@@ -149,7 +158,10 @@ const QuizResult = ({
           {/* {result?.percentageMark}% */}
         </h1>
         <div className="my-4 flex gap-4 justify-center items-center">
-          <Button className="lg:px-10 bg-primary-color" onClick={handleSaveRecord}>
+          <Button
+            className="lg:px-10 bg-primary-color"
+            onClick={handleSaveRecord}
+          >
             Submit
           </Button>
           <Button
@@ -160,7 +172,7 @@ const QuizResult = ({
             View Submission
           </Button>
           <Button onClick={handleGoToHome} className="bg-primary-color">
-            Home
+            Back to Home
           </Button>
         </div>
         <h1 className="text-white text-center text-4xl mb-10">
@@ -170,7 +182,7 @@ const QuizResult = ({
           <UserFeedback />
         </div>
         <div className="mt-4 flex justify-center gap-4 w-full">
-          <div className="font-medium py-1 px-8 border border-red-600 rounded-md">
+          <div className="font-medium py-1 px-8 border border-secondary-color rounded-md">
             <h2 className="text-xl mb-5 text-center">Share Social Media:</h2>
             <FacebookShareButton
               url={"https://quizlytics.vercel.app/"}

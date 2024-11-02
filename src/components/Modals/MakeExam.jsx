@@ -49,14 +49,14 @@ const MakeExam = ({
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
-      <div className="bg-orange-400 bg-opacity-70 w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg relative">
+      <div className="bg-white w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg relative">
         <button
           onClick={() => router.push("/")}
           className="absolute top-4 right-4 text-black"
         >
           <X size={24} />
         </button>
-        <h1 className="text-black font-bold text-center text-3xl">
+        <h1 className="text-primary-color font-bold text-center text-3xl">
           Quick Exam
         </h1>
         <div className="w-full md:w-[480px] mx-auto mt-8 flex justify-between">
@@ -83,7 +83,7 @@ const MakeExam = ({
             <input
               onChange={(e) => setSearch(e.target.value)}
               type="text"
-              className="bg-black w-full py-2 px-4 text-[#ffefd3] rounded-lg text-lg"
+              className=" bg-secondary-color bg-opacity-20 text-black w-full py-2 px-4 rounded-lg text-lg placeholder-gray-800"
               placeholder="Write topics"
             />
             {searchError && <p className="text-red-600">{searchError}</p>}
@@ -91,7 +91,7 @@ const MakeExam = ({
           <div className="w-full md:w-1/2">
             <select
               onChange={(e) => setLavel(e.target.value)}
-              className="bg-black w-full py-2 px-4 text-[#ffefd3] rounded-lg text-lg"
+              className="bg-secondary-color bg-opacity-20 w-full py-2 px-4 text-gray-800 rounded-lg text-lg"
             >
               <option value="" disabled selected>
                 Level

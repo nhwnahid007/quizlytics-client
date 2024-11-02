@@ -21,7 +21,7 @@ const CustomExam = ({ setCustomExam, setQuizKey }) => {
             type="text"
             name="quizKey"
             onChange={handleChange}
-            className="text-center font-bold bg-secondary-color bg-opacity-20 text-gray-300"
+            className="text-center font-bold bg-secondary-color bg-opacity-20 text-black"
           />
 
           <Button

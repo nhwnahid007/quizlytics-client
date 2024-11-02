@@ -1,17 +1,21 @@
 "use client";
-import {PaymentElement, useElements, useStripe} from "@stripe/react-stripe-js";
-import React, {useState} from "react";
-import {Button} from "../ui/button";
+import {
+  PaymentElement,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
+import React, { useState } from "react";
+import { Button } from "../ui/button";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {useSession} from "next-auth/react";
+import { useSession } from "next-auth/react";
 
-const CheckoutPage = ({prices}) => {
+const CheckoutPage = ({ prices }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
-  const {data: session} = useSession();
+  const { data: session } = useSession();
   const name = session?.user?.name;
   const email = session?.user?.email;
 
@@ -24,7 +28,7 @@ const CheckoutPage = ({prices}) => {
       return;
     }
 
-    const {error: confirmError, paymentIntent} = await stripe.confirmPayment({
+    const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: `${window.location.origin}/Dashboard`,
@@ -38,6 +42,7 @@ const CheckoutPage = ({prices}) => {
     }
 
     if (paymentIntent && paymentIntent.status === "succeeded") {
+      console.log("hello from payment");
       const paymentInfo = {
         userName: name,
         email: email,
@@ -52,8 +57,8 @@ const CheckoutPage = ({prices}) => {
           paymentInfo,
           {
             headers: {
-              'Content-Type': 'application/json'
-            }
+              "Content-Type": "application/json",
+            },
           }
         );
 
@@ -65,16 +70,20 @@ const CheckoutPage = ({prices}) => {
             confirmButtonText: "OK",
           }).then(() => {
             // Optionally refresh the page or redirect
-            window.location.href = '/Dashboard';
+            window.location.href = "/Dashboard";
           });
         } else {
-          throw new Error(response.data.error || 'Failed to update user status');
+          throw new Error(
+            response.data.error || "Failed to update user status"
+          );
         }
       } catch (error) {
         console.error("Error processing payment:", error);
         Swal.fire({
           title: "Error",
-          text: error.response?.data?.error || "There was an error processing your payment",
+          text:
+            error.response?.data?.error ||
+            "There was an error processing your payment",
           icon: "error",
           confirmButtonText: "OK",
         });
