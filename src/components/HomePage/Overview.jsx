@@ -205,9 +205,9 @@ const Overview = () => {
                 Add Time Limits
               </h1>
               <p className="text-gray-600 text-lg">
-                Make your classroom quizzes more challenging by time-restricting
-                each question. Choose different time limits depending on the
-                difficulty of the question.
+                Experience the thrill of competitive quizzing with our timed challenges. 
+                Race against the clock as you tackle questions of varying difficulty, 
+                making every second count!
               </p>
             </div>
           </div>
