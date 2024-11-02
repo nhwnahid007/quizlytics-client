@@ -148,7 +148,7 @@ const Contact = () => {
             </div>
             <div className="flex items-center justify-between">
               <Button
-                className="bg-primary-color hover:bg-secondary-color text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline flex items-center"
+                className="  flex items-center"
                 type="submit"
                 disabled={isLoading}
               >
