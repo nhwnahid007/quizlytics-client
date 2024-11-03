@@ -54,6 +54,7 @@ const Footer = () => {
                 </Link>
               </nav>
             </div>
+            
 
             <div className="text-Black">
               <h6 className="text-xl font-semibold mb-2 text-Black">
