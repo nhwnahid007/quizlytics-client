@@ -152,10 +152,10 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
 
         <div className="mt-auto pt-3 sm:pt-4 flex justify-end">
           <button
-            className={`btn flex-1 py-2 sm:py-3 text-sm sm:text-base rounded-lg transition duration-200 bg-purple-400 text-white ${
+            className={`btn flex-1 py-2 sm:py-3 text-sm sm:text-base rounded-lg transition duration-200 bg-primary-color text-white ${
               selectedOption === null
-                ? "opacity-50 bg-primary-color cursor-not-allowed"
-                : "hover:bg-primary-color"
+                ? "cursor-not-allowed"
+                : "hover:opacity-60"
             }`}
             onClick={handleGoToNextQuiz}
             disabled={selectedOption === null}

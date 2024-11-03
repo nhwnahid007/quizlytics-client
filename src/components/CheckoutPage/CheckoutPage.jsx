@@ -12,6 +12,7 @@ import { useSession } from "next-auth/react";
 
 const CheckoutPage = ({ prices }) => {
   const stripe = useStripe();
+  console.log("stripe",stripe);
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -31,10 +32,11 @@ const CheckoutPage = ({ prices }) => {
     const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
       elements,
       confirmParams: {
+        
         return_url: `${window.location.origin}/Dashboard`,
       },
     });
-    console.log(paymentIntent);
+    console.log("paymentIntent",paymentIntent);
     if (confirmError) {
       setErrorMessage(confirmError.message);
       setLoading(false);
@@ -68,10 +70,11 @@ const CheckoutPage = ({ prices }) => {
             text: `Your payment of $${prices} was successful and your account has been upgraded to Pro!`,
             icon: "success",
             confirmButtonText: "OK",
-          }).then(() => {
-            // Optionally refresh the page or redirect
-            window.location.href = "/Dashboard";
           });
+
+          setLoading(false);
+
+          // window.location.href = "/Dashboard";
         } else {
           throw new Error(
             response.data.error || "Failed to update user status"
@@ -79,6 +82,7 @@ const CheckoutPage = ({ prices }) => {
         }
       } catch (error) {
         console.error("Error processing payment:", error);
+        console.error("Error response:", error.response);
         Swal.fire({
           title: "Error",
           text:
