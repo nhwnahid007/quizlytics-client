@@ -112,7 +112,7 @@ const Contact = () => {
                 Phone Number
               </h4>
               <p className="text-base text-body-color dark:text-dark-6">
-                ++801784051122
+                +8801784051122
               </p>
             </div>
           </div>
@@ -136,7 +136,7 @@ const Contact = () => {
                 Email Address
               </h4>
               <p className="text-base text-body-color dark:text-dark-6">
-                info@quizlytics.com
+                nhwnahid@gmail.com
               </p>
             </div>
           </div>
