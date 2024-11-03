@@ -12,7 +12,7 @@ const Faq = () => {
       <div className="container p-4 mx-auto md:p-4  text-gray-800 rounded-lg mb-20 ">
         <SectionTitleMinimal
           heading={"Frequently Asked Questions"}
-          subheading={"Answers to common questions"}
+          subheading={"Answers to common questions about Quizlytics"}
         ></SectionTitleMinimal>
 
         <Accordion className="w-full space-y-4" type="single" collapsible>
@@ -21,11 +21,10 @@ const Faq = () => {
             value="item-1"
           >
             <AccordionTrigger className="font-medium text-lg">
-              Can I retake a quiz?
+              What is Quizlytics?
             </AccordionTrigger>
             <AccordionContent className="pt-2">
-              Yes, you can retake quizzes as many times as you like to improve
-              your score.
+              Quizlytics is an all-in-one tool designed for learners in Bangladesh to master MCQs in board exams, job tests, and more. It aims to make learning engaging, personalized, and impactful.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -33,11 +32,10 @@ const Faq = () => {
             value="item-2"
           >
             <AccordionTrigger className="font-medium text-lg">
-              Is there a time limit for each quiz?
+              How can Quizlytics help me track my progress?
             </AccordionTrigger>
             <AccordionContent className="pt-2">
-              Yes, most quizzes have a time limit to add an extra challenge, but
-              it varies depending on the quiz topic.
+              Quizlytics offers features like AI-generated quizzes, custom quizzes, and a leaderboard to help you track your progress and showcase your skills.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -45,12 +43,10 @@ const Faq = () => {
             value="item-3"
           >
             <AccordionTrigger className="font-medium text-lg">
-              How is my score calculated?
+              Can teachers create custom quizzes on Quizlytics?
             </AccordionTrigger>
             <AccordionContent className="pt-2">
-              Each correct answer earns you points, and your final score is the
-              sum of all correct responses. There are no penalties for incorrect
-              answers.
+              Yes, teachers and instructors can create, manage, and share custom quizzes seamlessly, simplifying exam administration and enhancing the learning experience.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -58,11 +54,10 @@ const Faq = () => {
             value="item-4"
           >
             <AccordionTrigger className="font-medium text-lg">
-              Are there backend-focused quizzes?
+              How does Quizlytics generate quizzes from articles?
             </AccordionTrigger>
             <AccordionContent className="pt-2">
-              Yes! We offer quizzes on MongoDB, Firebase, and Express, covering
-              database management, authentication, and server-side logic.
+              Quizlytics uses advanced AI to create questions based on any provided article link, ensuring comprehension and retention for focused study sessions.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -70,12 +65,10 @@ const Faq = () => {
             value="item-5"
           >
             <AccordionTrigger className="font-medium text-lg">
-              How difficult is the React quiz?
+              What kind of content can I find in the Quizlytics blog section?
             </AccordionTrigger>
             <AccordionContent className="pt-2">
-              The React quiz is designed for both beginners and intermediate
-              learners, covering topics like components, state management,
-              hooks, lifecycle methods, and JSX.
+              The blog section offers insightful articles on exams, study strategies, and more, allowing users to engage in valuable discussions and deepen their understanding.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem
@@ -83,11 +76,10 @@ const Faq = () => {
             value="item-6"
           >
             <AccordionTrigger className="font-medium text-lg">
-              What can I expect in the CSS quiz?
+              How does the Quizlytics leaderboard work?
             </AccordionTrigger>
             <AccordionContent className="pt-2">
-              The CSS quiz includes questions on selectors, layout models
-              (Flexbox, Grid), animations, responsiveness, and more.
+              The leaderboard tracks your progress and compares your scores with peers, using engaging graphical representations to visualize performance and improvements.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
