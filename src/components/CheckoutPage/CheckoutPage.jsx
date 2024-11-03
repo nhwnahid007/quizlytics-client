@@ -12,7 +12,6 @@ import { useSession } from "next-auth/react";
 
 const CheckoutPage = ({ prices }) => {
   const stripe = useStripe();
-  console.log("stripe",stripe);
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -29,14 +28,13 @@ const CheckoutPage = ({ prices }) => {
       return;
     }
 
-    const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
+    const { paymentIntent, error: confirmError } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        
         return_url: `${window.location.origin}/Dashboard`,
       },
     });
-    console.log("paymentIntent",paymentIntent);
+
     if (confirmError) {
       setErrorMessage(confirmError.message);
       setLoading(false);
@@ -44,7 +42,6 @@ const CheckoutPage = ({ prices }) => {
     }
 
     if (paymentIntent && paymentIntent.status === "succeeded") {
-      console.log("hello from payment");
       const paymentInfo = {
         userName: name,
         email: email,
@@ -70,11 +67,9 @@ const CheckoutPage = ({ prices }) => {
             text: `Your payment of $${prices} was successful and your account has been upgraded to Pro!`,
             icon: "success",
             confirmButtonText: "OK",
+          }).then(() => {
+            window.location.href = "/Dashboard";
           });
-
-          setLoading(false);
-
-          // window.location.href = "/Dashboard";
         } else {
           throw new Error(
             response.data.error || "Failed to update user status"
@@ -82,7 +77,6 @@ const CheckoutPage = ({ prices }) => {
         }
       } catch (error) {
         console.error("Error processing payment:", error);
-        console.error("Error response:", error.response);
         Swal.fire({
           title: "Error",
           text:
