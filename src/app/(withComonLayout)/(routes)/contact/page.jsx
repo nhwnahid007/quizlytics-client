@@ -46,12 +46,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="mt-20 min-h-screen">
+    <div className="mt-20 min-h-screen mx-5 lg:mx-0 ">
       <SectionTitleMinimal
         heading={"GET IN TOUCH WITH US"}
         subHeading="We'd love to hear from you!"
       />
-      <div className="mt-12 max-w-6xl mx-auto bg-gray-100 shadow-lg rounded-lg p-6 flex flex-col md:flex-row justify-center items-center">
+      <div className="mt-12  mb-16 max-w-6xl mx-auto bg-gray-100 shadow-lg rounded-lg p-6 flex flex-col md:flex-row justify-center items-center">
         <div className="mb-12 lg:mb-0 md:w-1/2">
           <div className="mb-8 flex w-full">
             <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary">
