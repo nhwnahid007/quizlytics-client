@@ -4,7 +4,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="bg-gray-50 text-black">
+    <div className="bg-gray-50 text-black pt-8">
       <div className="w-full lg:w-[70%] mx-auto py-8 text-center">
         {/* Main Title Section */}
         {/* <h1 className="mt-10 text-4xl md:text-6xl font-bold text-primary-color mb-8">
@@ -16,7 +16,7 @@ const page = () => {
         </p>
 
         {/* Key Features Section */}
-        <h2 className="text-4xl font-bold text-primary-color ">Explore Key Features</h2>
+        <h2 className="text-4xl font-bold text-primary-color mb-5">Explore Key Features</h2>
 
         {/* Feature 1 - AI Generated Quizzes */}
         <div className="flex flex-col md:flex-row items-center justify-between bg-gray-50 py-10 px-5">
