@@ -12,7 +12,6 @@ import { useSession } from "next-auth/react";
 
 const CheckoutPage = ({ prices }) => {
   const stripe = useStripe();
-  console.log("stripe",stripe);
   const elements = useElements();
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -32,39 +31,17 @@ const CheckoutPage = ({ prices }) => {
     const { paymentIntent, error: confirmError } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        
         return_url: `${window.location.origin}/Dashboard`,
       },
     });
-    console.log("paymentIntent",paymentIntent);
+
     if (confirmError) {
       setErrorMessage(confirmError.message);
       setLoading(false);
       return;
-    } else {
-      if (paymentIntent && paymentIntent.status === "succeeded") {
-        console.log("hello from payment");
-        const paymentInfo = {
-          userName: name,
-          email: email,
-          transactionId: paymentIntent.id,
-          amount: prices,
-          date: new Date(),
-        };
+    }
 
-<<<<<<< HEAD
-        try {
-          const response = await axios.post(
-            "https://quizlytics.jonomukti.org/paymentHistory",
-            paymentInfo,
-            {
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-=======
     if (paymentIntent && paymentIntent.status === "succeeded") {
-      console.log("hello from payment");
       const paymentInfo = {
         userName: name,
         email: email,
@@ -90,50 +67,16 @@ const CheckoutPage = ({ prices }) => {
             text: `Your payment of $${prices} was successful and your account has been upgraded to Pro!`,
             icon: "success",
             confirmButtonText: "OK",
+          }).then(() => {
+            window.location.href = "/Dashboard";
           });
-
-          setLoading(false);
-
-          // window.location.href = "/Dashboard";
         } else {
           throw new Error(
             response.data.error || "Failed to update user status"
->>>>>>> 83d41483e50ec1cb4c523e046764f8cf2045794d
           );
-
-          if (response.data.success) {
-            Swal.fire({
-              title: "Payment Successful!",
-              text: `Your payment of $${prices} was successful and your account has been upgraded to Pro!`,
-              icon: "success",
-              confirmButtonText: "OK",
-            }).then(() => {
-              // Optionally refresh the page or redirect
-              window.location.href = "/Dashboard";
-            });
-          } else {
-            throw new Error(
-              response.data.error || "Failed to update user status"
-            );
-          }
-        } catch (error) {
-          console.error("Error processing payment:", error);
-          Swal.fire({
-            title: "Error",
-            text:
-              error.response?.data?.error ||
-              "There was an error processing your payment",
-            icon: "error",
-            confirmButtonText: "OK",
-          });
-        } finally {
-          setLoading(false);
         }
-<<<<<<< HEAD
-=======
       } catch (error) {
         console.error("Error processing payment:", error);
-        console.error("Error response:", error.response);
         Swal.fire({
           title: "Error",
           text:
@@ -144,7 +87,6 @@ const CheckoutPage = ({ prices }) => {
         });
       } finally {
         setLoading(false);
->>>>>>> 83d41483e50ec1cb4c523e046764f8cf2045794d
       }
     }
   };
