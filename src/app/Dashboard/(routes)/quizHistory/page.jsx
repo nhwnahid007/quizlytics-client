@@ -22,7 +22,7 @@ const QuizHistory = () => {
 
   const [history, setHistory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(7);
+  const [itemsPerPage] = useState(5);
 
   const router = useRouterHook();
 
@@ -69,10 +69,10 @@ const QuizHistory = () => {
   };
 
   return (
-    <div className="h-screen lg:mx-20  mx-auto p-5 relative overflow-auto">
+    <div className="min-h-screen lg:mx-20 my-auto  mx-auto p-5 relative overflow-auto">
       <div className="">
-        <SectionTitleMinimal heading={" Quiz History"}></SectionTitleMinimal>
-        <div className="overflow-hidden shadow-md h-[410px] sm:rounded-lg">
+        <SectionTitleMinimal heading={" Quiz History"} subHeading={"List of all your quiz attempts"}></SectionTitleMinimal>
+        <div className="overflow-hidden shadow-md h-[400px] sm:rounded-lg">
           <div className="overflow-x-auto">
             <Table className="w-full min-w-full table-auto">
               {/* <TableCaption>A list of your attempts in Custom Quiz.</TableCaption> */}
@@ -97,18 +97,18 @@ const QuizHistory = () => {
                       className="hover:bg-gray-50 transition-colors py-2 duration-200"
                       key={item._id}
                     >
-                      <TableCell className="font-medium px-4 py-2">
+                      <TableCell className="font-medium px-4 py-4">
                         {(currentPage - 1) * itemsPerPage + idx + 1}
                       </TableCell>
-                      <TableCell className="px-4 py-2">
+                      <TableCell className="px-4 py-4">
                         {moment(item.date).format("MMMM Do YYYY")}
                       </TableCell>
-                      <TableCell className="px-4 py-2">{item.quizCategory}</TableCell>
-                      <TableCell className="px-4 py-2">{item.quizCreator}</TableCell>
-                      <TableCell className="text-center font-bold px-4 py-2">
+                      <TableCell className="px-4 py-4">{item.quizCategory}</TableCell>
+                      <TableCell className="px-4 py-4">{item.quizCreator}</TableCell>
+                      <TableCell className="text-center font-bold px-4 py-4">
                         {item.marks}%
                       </TableCell>
-                      <TableCell className="text-right px-4 py-2">
+                      <TableCell className="text-right px-4 py-4">
                         <Button
                           onClick={() => handleDetails(item._id)}
                           className=""

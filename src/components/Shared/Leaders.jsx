@@ -69,25 +69,25 @@ const Leaders = () => {
   const remainingLeaders = leaders.slice(3); // Remaining players (4th and 5th)
 
   return (
-    <div className="p-8 rounded-lg max-w-3xl mx-auto">
+    <div className="lg:p-8 p-4 rounded-lg max-w-3xl mx-auto">
       <SectionTitleMinimal heading="LEADERBOARD" subHeading="Recognizing Excellence" />
       
-      <div className="bg-purple-600 p-8 rounded-lg">
+      <div className="bg-purple-600 lg:p-8 p-2 rounded-lg">
         <div className="text-white text-xl mb-6">
           {currentMonth} {currentYear}
         </div>
 
         {/* Top 3 Players */}
-        <div className="flex bg-purple-600 justify-center items-end gap-8 mb-12">
+        <div className="flex bg-purple-600 pt-4 justify-center items-end lg:gap-8 gap-4 mb-12">
           {topThree[1] && (
             <div className="text-center">
-              <div className="w-20 h-20 bg-white rounded-full mx-auto mb-2 flex items-center justify-center">
+              <div className="w-20 h-20 bg-transparent rounded-full mx-auto mb-2 flex items-center justify-center sm:w-12 sm:h-12">
                 <Image
                   src={topThree[1].userImg || "https://i.ibb.co.com/6R6bSSV/user.png"}
                   alt="Player"
                   width={64}
                   height={64}
-                  className="rounded-full"
+                  className="rounded-full max-w-full max-h-full"
                 />
               </div>
               <p className="text-white font-semibold">{topThree[1].userName}</p>
@@ -99,13 +99,13 @@ const Leaders = () => {
           {topThree[0] && (
             <div className="text-center -mt-8">
               <Crown className="w-8 h-8 text-yellow-300 mx-auto mb-2" />
-              <div className="w-24 h-24 bg-white rounded-full mx-auto mb-2 flex items-center justify-center">
+              <div className="w-24 h-24 bg-white rounded-full mx-auto mb-2 flex items-center justify-center sm:w-16 sm:h-16">
                 <Image
                   src={topThree[0].userImg || "https://i.ibb.co.com/6R6bSSV/user.png"}
                   alt="Player"
                   width={72}
                   height={72}
-                  className="rounded-full"
+                  className="rounded-full max-w-full max-h-full"
                 />
               </div>
               <p className="text-white font-semibold">{topThree[0].userName}</p>
@@ -116,13 +116,13 @@ const Leaders = () => {
 
           {topThree[2] && (
             <div className="text-center">
-              <div className="w-20 h-20 bg-white rounded-full mx-auto mb-2 flex items-center justify-center">
+              <div className="w-20 h-20 bg-transparent rounded-full mx-auto mb-2 flex items-center justify-center sm:w-12 sm:h-12">
                 <Image
                   src={topThree[2].userImg || "https://i.ibb.co.com/6R6bSSV/user.png"}
                   alt="Player"
                   width={64}
                   height={64}
-                  className="rounded-full"
+                  className="rounded-full max-w-full max-h-full"
                 />
               </div>
               <p className="text-white font-semibold">{topThree[2].userName}</p>
@@ -140,13 +140,13 @@ const Leaders = () => {
               className="flex items-center bg-purple-500/50 rounded-lg p-4 backdrop-blur-sm"
             >
               <div className="w-8 text-white font-bold">{index + 4}</div>
-              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mr-4">
+              <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center mr-4 sm:w-8 sm:h-8">
                 <Image
                   src={leader.userImg || "https://i.ibb.co.com/6R6bSSV/user.png"}
                   alt="Player"
                   width={40}
                   height={40}
-                  className="rounded-full"
+                  className="rounded-full max-w-full max-h-full"
                 />
               </div>
               <div className="flex-grow">

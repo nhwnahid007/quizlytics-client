@@ -185,63 +185,31 @@ const QuizlyticsDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen lg:mx-20  mx-auto overflow-hidden">
+    <div className="min-h-screen lg:mx-20 mx-auto overflow-hidden">
       <SectionTitleMinimal
-        heading={"Quizlytics Dashboard"}
+        heading={"Welcome to your dashboard!"} subHeading={"Take your quizzes and improve your skills here!"}
       ></SectionTitleMinimal>
 
-      <div className="grid grid-cols-1  lg:grid-cols-3 gap-6 mb-5 px-5">
-        <div className="bg-[#E3C8FF] py-8 px-4 rounded-lg shadow-md flex items-center justify-center">
-          <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
-            <FiBarChart className="" size={24} />
-          </div>
-          <div>
-            <p className="text-xl font-semibold ">Total Attempted</p>
-            <p className="text-2xl font-bold">{totalExams}</p>
-          </div>
-        </div>
-
-        <div className="bg-[#F4E1FF]  py-8 px-4 rounded-lg shadow-md flex items-center justify-center">
-          <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
-            <FiCheckCircle className="" size={24} />
-          </div>
-          <div>
-            <p className="text-xl font-semibold ">Best Performance</p>
-            <p className="text-2xl font-bold">
-              {highestMarks <= 100 ? highestMarks : 0}%
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-[#9B7EBD] bg-opacity-85 py-8 px-4 rounded-lg shadow-md flex items-center justify-center">
-          <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
-            <FiClock className="" size={24} />
-          </div>
-          <div>
-            <p className="text-xl font-semibold ">Quiz History</p>
-            <p className="text-2xl font-bold">{getRecentQuizzes()} days</p>
-          </div>
-        </div>
-      </div>
+    
 
       {/* Quiz Cards here */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-12 mb-2">
         {/* QuickExam */}
-        <Card className="h-[500px] flex flex-col justify-between">
+        <Card className="h-auto w-full flex flex-col justify-between">
           <CardHeader>
             <CardTitle>Quick Exam on AI Generated Quiz</CardTitle>
             <CardDescription>
               Instant AI-generated quizzes on any topic and difficulty level!
             </CardDescription>
           </CardHeader>
-          <CardContent className="grid gap-4">
+          <CardContent className="grid gap-2">
             <div>
               {quickExamFeatures.map((notification, index) => (
                 <div
                   key={index}
                   className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
                 >
-                  <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+                  <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary-color" />
                   <div className="space-y-1">
                     <p className="text-sm font-medium leading-none">
                       {notification.title}
@@ -255,29 +223,28 @@ const QuizlyticsDashboard = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={handleQuickExam} className="w-full">
-              <CheckIcon />
+            <Button onClick={handleQuickExam} className="w-full h-10 lg:h-12">
               Start Quick Exam
             </Button>
           </CardFooter>
         </Card>
 
         {/* CustomExam */}
-        <Card className="h-[500px] flex flex-col justify-between">
+        <Card className="h-auto w-full flex flex-col justify-between">
           <CardHeader>
             <CardTitle>Exam on Custom Quiz</CardTitle>
             <CardDescription>
-              Unique exams with personalized questions and a secure access key.
+              Unique exams with personalized questions and a secure access key given by your teacher.
             </CardDescription>
           </CardHeader>
-          <CardContent className="grid gap-4">
+          <CardContent className="grid gap-2">
             <div>
               {customExamFeatures.map((notification, index) => (
                 <div
                   key={index}
                   className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
                 >
-                  <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+                  <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary-color " />
                   <div className="space-y-1">
                     <p className="text-sm font-medium leading-none">
                       {notification.title}
@@ -291,14 +258,14 @@ const QuizlyticsDashboard = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={handleCustomQuiz} className="w-full">
-              <CheckIcon /> Custom Exam
+            <Button onClick={handleCustomQuiz} className="w-full h-10 lg:h-12">
+              Start Custom Quiz
             </Button>
           </CardFooter>
         </Card>
 
         {/* QuizByLink */}
-        <Card className="h-[500px] flex flex-col justify-between">
+        <Card className="h-auto w-full flex flex-col justify-between">
           <CardHeader>
             <CardTitle>Quiz from any Article Link</CardTitle>
             <CardDescription>
@@ -306,14 +273,14 @@ const QuizlyticsDashboard = () => {
               of the content.
             </CardDescription>
           </CardHeader>
-          <CardContent className="grid gap-4">
+          <CardContent className="grid gap-2">
             <div>
               {quizByLinkFeatures.map((notification, index) => (
                 <div
                   key={index}
                   className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
                 >
-                  <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500" />
+                  <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary-color" />
                   <div className="space-y-1">
                     <p className="text-sm font-medium leading-none">
                       {notification.title}
@@ -327,11 +294,46 @@ const QuizlyticsDashboard = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={handleQuizByLink} className="w-full">
-              <CheckIcon /> Generate Quiz from any Link
+            <Button onClick={handleQuizByLink} className="w-full h-10 lg:h-12">
+              Generate Quiz from any Link
             </Button>
           </CardFooter>
         </Card>
+      </div>
+
+
+      <div className="grid grid-cols-1 pt-8 lg:grid-cols-3 gap-6 mb-5 px-5">
+        <div className="bg-primary-color bg-opacity-35 py-4 lg:py-8 px-2 lg:px-4 rounded-lg shadow-md flex items-center justify-center">
+          <div className="w-8 lg:w-12 h-8 lg:h-12 bg-gray-100 rounded-full flex justify-center items-center mr-2 lg:mr-4">
+            <FiBarChart className="text-lg lg:text-xl" />
+          </div>
+          <div>
+            <p className="text-lg lg:text-xl font-semibold">Total Attempted</p>
+            <p className="text-xl lg:text-2xl font-bold">{totalExams}</p>
+          </div>
+        </div>
+
+        <div className="bg-primary-color bg-opacity-35 py-4 lg:py-8 px-2 lg:px-4 rounded-lg shadow-md flex items-center justify-center">
+          <div className="w-8 lg:w-12 h-8 lg:h-12 bg-gray-100 rounded-full flex justify-center items-center mr-2 lg:mr-4">
+            <FiCheckCircle className="text-lg lg:text-xl" />
+          </div>
+          <div>
+            <p className="text-lg lg:text-xl font-semibold">Best Performance</p>
+            <p className="text-xl lg:text-2xl font-bold">
+              {highestMarks <= 100 ? highestMarks : 0}%
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-primary-color bg-opacity-35 py-4 lg:py-8 px-2 lg:px-4 rounded-lg shadow-md flex items-center justify-center">
+          <div className="w-8 lg:w-12 h-8 lg:h-12 bg-gray-100 rounded-full flex justify-center items-center mr-2 lg:mr-4">
+            <FiClock className="text-lg lg:text-xl" />
+          </div>
+          <div>
+            <p className="text-lg lg:text-xl font-semibold">Quiz History</p>
+            <p className="text-xl lg:text-2xl font-bold">{getRecentQuizzes()} days</p>
+          </div>
+        </div>
       </div>
 
       {/* Charts and Statistics section */}
@@ -369,26 +371,6 @@ const QuizlyticsDashboard = () => {
             </div>
           </div>
 
-          {/* Line Chart for performance trend */}
-          {/* <div className="bg-white shadow-lg rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">Performance Trend Over Attempts</h3>
-            <div className="flex justify-center">
-              <LineChart width={500} height={300} data={lineChartData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="attempt" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="marks"
-                  stroke="#8e49b6"
-                  activeDot={{ r: 8 }}
-                />
-              </LineChart>
-            </div>
-          </div> */}
-
           {/* Pie Chart for marks distribution */}
           <div className="bg-white shadow-lg rounded-lg p-6">
             <h3 className="text-xl font-semibold text-gray-700 mb-4">
@@ -404,7 +386,7 @@ const QuizlyticsDashboard = () => {
                   label={({ name, percent }) =>
                     `${name}: ${(percent * 100).toFixed(0)}%`
                   }
-                  outerRadius={180} // Increased radius for a larger curve
+                  outerRadius={180}
                   fill={"#374151"}
                   dataKey="value"
                 >

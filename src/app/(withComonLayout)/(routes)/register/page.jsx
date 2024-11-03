@@ -7,7 +7,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import React from 'react';
 import Swal from 'sweetalert2';
-import { IoEye, IoEyeOff } from "react-icons/io5";
+import { IoEye, IoEyeOff, IoCloudUploadOutline } from "react-icons/io5";
 import '../../../../components/Shared/CustomCSS/style.css';
 import useShowPassState from '@/app/hooks/useShowPassState';
 import useShowConfimPass from '@/app/hooks/useShowConfimPass';
@@ -125,7 +125,7 @@ const Register = () => {
                 <div className='w-full max-w-md p-4'>
                     <h2 className='text-3xl font-bold text-center mb-6 text-gray-800'>Register Now!</h2>
                     <form onSubmit={handleRegister}>
-                        <div className="space-y-4">
+                        <div className="space-y-3 lg:space-y-6">
                             <div className='flex flex-col md:flex-row gap-4'>
                                 <div className='w-full md:w-1/2 flex flex-col'>
                                     <label className='text-sm font-semibold text-gray-600'>Name</label>
@@ -153,15 +153,26 @@ const Register = () => {
                                 </div>
                             </div>
                             <div className='w-full flex flex-col mb-6'>
-                                <label className='text-sm font-semibold text-gray-600'>Upload Profile</label>
-                                <input type="file" name="my_profile" className='py-2 px-4 border rounded-lg' />
-                                {validState === fillErr && <p className='text-red-500 font-semibold'>{validState}</p>}
+                                <label className='text-sm font-semibold text-gray-600 mb-2'>Upload Profile Picture</label>
+                                <div className='w-full'>
+                                    <input 
+                                        className="hidden" 
+                                        id="large_size" 
+                                        type="file" 
+                                        name="my_profile"
+                                    />
+                                    <label htmlFor="large_size" className='flex items-center justify-center w-full cursor-pointer py-2 px-4 border border-gray-300 rounded-lg bg-gray-50 text-gray-900'>
+                                        <IoCloudUploadOutline className='text-xl mr-2' />
+                                        <span>Upload</span>
+                                    </label>
+                                </div>
+                                {validState === fillErr && <p className='text-red-500 font-semibold mt-2'>{validState}</p>}
                             </div>
                             <Button className='btn bg-purple-500 text-white text-lg mt-6  w-full py-2 rounded-lg'>Register</Button>
                             {validState === "Please fill out all fields!" && <p className='text-red-500 mt-2 text-center font-semibold'>{validState}</p>}
                         </div>
                     </form>
-                    <div className='mt-2'><SocialAuth /></div>
+                    <div className="mt-4 lg:mt-6"><SocialAuth /></div>
                     <p className='mt-4 font-medium text-center'>Already have an account? <Link href={'/login'} className='text-purple-500'>Please Login</Link></p>
                 </div>
             </div>
