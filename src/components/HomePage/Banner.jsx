@@ -4,7 +4,6 @@ import useRouterHook from "@/app/hooks/useRouterHook";
 import React, { useEffect, useState } from "react";
 import SectionTitle, { SectionTitleMinimal } from "../Shared/SectionTitle";
 import Image from "next/image";
-import Marquee from "react-fast-marquee";
 import { Rocket, Sparkles } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { Button } from "../ui/button";
@@ -64,17 +63,17 @@ const Banner = () => {
 
               {/* Description Box */}
               <div className="p-2 max-w-6xl mb-4 2xl:mb-2">
-                <p className="text-[#555555] text-base sm:text-lg md:text-xl leading-relaxed">
+                <p className="text-[#555555] text-base sm:text-lg md:text-xl 2xl:text-2xl leading-relaxed">
                   <span className="inline-flex items-center">
-                    <Rocket className="w-6 h-6 text-primary-color mr-2 inline-block" />
-                    <span className="font-bold text-purple-600">Transform Your Learning Journey</span>
+                    <Rocket className="w-6 h-6 text-primary-color mr-2" />
+                    <span className="font-bold text-purple-600 2xl:text-3xl">Transform Your Learning Journey</span>
                   </span> with our 
-                  <span className="font-bold text-primary-color"> AI-Powered Quiz Platform!</span> Whether you&apos;re preparing for exams, 
+                  <span className="font-bold text-primary-color 2xl:text-3xl"> AI-Powered Quiz Platform!</span> Whether you&apos;re preparing for exams, 
                   upskilling for your career, or simply curious to learn, we&apos;ve got you covered. Create personalized quizzes, 
-                  generate AI questions, or instantly turn any article into an interactive learning experience. 
-                  <span className="font-bold mt-2 text-primary-color inline-flex items-center">
-                    Join thousands of learners who&apos;ve already unlocked their potential! 
-                    <Sparkles className="w-6 h-6 ml-2 inline-block" />
+                  generate AI questions, or instantly turn any article into an interactive learning experience.  
+                  <span className="font-bold mt-2 text-primary-color inline-flex items-center 2xl:text-3xl">
+                     Join thousands of learners who&apos;ve already unlocked their potential! 
+                    <Sparkles className="w-6 h-6 ml-2" />
                   </span>
                 </p>
               </div>
@@ -85,7 +84,7 @@ const Banner = () => {
               <div className="flex flex-col sm:flex-row md:flex-col lg:flex-row justify-center items-center gap-2 sm:gap-4 lg:gap-6">
                 <Button
                   onClick={handleGetStarted}
-                  className="w-[250px] md:w-[350px] xl:w-[400px] px-6 sm:px-8 py-3 sm:py-4 2xl:py-8 rounded-xl font-bold text-white  text-base sm:text-lg lg:text-xl 2xl:text-2xl"
+                  className="w-[250px] md:w-[350px] lg:w-[400px] px-6 sm:px-8 py-3 sm:py-4 lg:py-8 rounded-xl font-bold text-white  text-base sm:text-lg lg:text-xl 2xl:text-2xl"
                 >
                   Get Started
                 </Button>
@@ -97,52 +96,7 @@ const Banner = () => {
             <div>
               {/* Trust Badges Marquee Section */}
               <div className="mb-4 2xl:mb-20 2xl:mt-2">
-                <Marquee
-                  gradient={false}
-                  speed={40}
-                  pauseOnHover={true}
-                  className="py-2 md:py-4 2xl:py-2"
-                >
-                  <Image
-                    src="https://i.ibb.co.com/MkmNxnG/png-clipart-award-award-ribbon-label-removebg-preview.png"
-                    alt="ISO Badge"
-                    width={100}
-                    height={100}
-                    className="h-16 w-auto mx-4"
-                  />
-                  <Image
-                    src="https://i.ibb.co.com/ngsv1fv/iso-removebg-preview.png"
-                    alt="ISO Badge"
-                    width={100}
-                    height={100}
-                    className="h-16 w-auto mx-4"
-                  />
-                  <Image
-                    src="https://i.ibb.co.com/ZWtZdMr/images-1-removebg-preview-1.png"
-                    alt="Trust Badge"
-                    width={100}
-                    height={100}
-                    className="h-16 w-auto mx-4"
-                  />
-                  <Image
-                    src="https://i.ibb.co.com/mzJ2fGp/png-transparent-computer-icons-certification-chartered-quality-institute-digital-signature-others-se.png"
-                    alt="Trust Badge"
-                    width={100}
-                    height={100}
-                    className="h-16 w-auto mx-4"
-                  />
-                  <Image
-                    src="https://i.ibb.co.com/RHy3wyy/pngtree-best-award-gold-label-png-image-6595408-removebg-preview.png"
-                    alt="Trust Badge"
-                    width={100}
-                    height={100}
-                    className="h-16 w-auto mx-4"
-                  />
-                  {/* Add more badges as needed */}
-                </Marquee>
-
-                {/* Trust Text */}
-                
+                {/* Removed Marquee component */}
               </div>
             </div>
           </div>

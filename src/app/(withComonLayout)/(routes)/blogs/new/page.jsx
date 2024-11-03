@@ -5,6 +5,7 @@ import axios from 'axios';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useRouter } from 'next/navigation';
+import { SectionTitleMinimal } from '@/components/Shared/SectionTitle';
 const img_hosting_key = process.env.NEXT_PUBLIC_IMG_HOSTING_KEY;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`;
 
@@ -13,7 +14,7 @@ const BlogFormPage = () => {
   const router = useRouter()
   const [formData, setFormData] = useState({
     title: '',
-    slug: 'Technology', // default category
+    slug: '', // default category
     summary: '',
     description: '',
     photo: '',
@@ -64,9 +65,7 @@ const BlogFormPage = () => {
   return (
     <div className="max-w-6xl mx-auto mt-20">
       <div className="p-6">
-        <h1 className="text-3xl font-extrabold mb-6 text-gray-800 text-center">
-          What&apos;s on your Mind?
-        </h1>
+        <SectionTitleMinimal heading={'What is on your Mind?'}></SectionTitleMinimal>
         <form onSubmit={handleSubmit}>
           <div className="grid gap-6 md:grid-cols-2 mb-8">
             {/* Blog Title */}
@@ -93,7 +92,7 @@ const BlogFormPage = () => {
                 name="slug"
                 value={formData.slug}
                 onChange={handleChange}
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50"
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-gray-100 hover:bg-gray-50"
               />
             </div>
           </div>
@@ -125,15 +124,19 @@ const BlogFormPage = () => {
             ></textarea>
           </div>
 
-          {/* Photo Upload */}
-          <div className="mb-4 w-1/5 border border-solid p-3 rounded-lg">
-            <label className="block text-sm font-medium text-gray-700">
-              Upload Blog Photo:
+{/* Photo Upload */}
+<div className="mb-4 w-full md:w-1/2 p-3 rounded-lg bg-gray-50 border border-dashed border-gray-300 flex flex-col items-center">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Upload Blog Photo
             </label>
             <input
               type="file"
               onChange={handleImageUpload}
-              className="mt-2 block w-full text-sm text-gray-600"
+              className="cursor-pointer w-full text-gray-600 text-sm
+                        file:mr-4 file:py-2 file:px-4 file:rounded-full
+                        file:border-0 file:text-sm file:font-semibold
+                        file:bg-blue-50 file:text-blue-700
+                        hover:file:bg-blue-100 transition"
             />
           </div>
 

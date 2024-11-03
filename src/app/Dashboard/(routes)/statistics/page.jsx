@@ -79,7 +79,7 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-gray-50 p-4">
+    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-white mt-10 mx-20 ">
       {loading ? (
         <LoadingSpinner />
       ) : marks.length === 0 ? (

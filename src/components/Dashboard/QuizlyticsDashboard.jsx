@@ -21,6 +21,7 @@ import {
 import { FiUsers, FiCheckCircle, FiBarChart, FiClock } from 'react-icons/fi';
 import Spinner from '../Shared/Spinner';
 import Link from 'next/link';
+import { SectionTitleMinimal } from '../Shared/SectionTitle';
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
 const PRIMARY_COLOR = '#8e49b6'; // Use your primary color here
@@ -100,51 +101,43 @@ const QuizlyticsDashboard = () => {
 
 
   return (
-    <div className="min-h-screen overflow-hidden bg-gray-100 p-6">
-      {/* Dashboard Header */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-semibold">Quizlytics Dashboard</h1>
-      </div>
+    <div className="min-h-screen lg:mx-20  mx-auto overflow-hidden">
+      
+
+     <SectionTitleMinimal heading={"Quizlytics Dashboard"}></SectionTitleMinimal>
+
 
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-[#E3C8FF] p-4 rounded-lg shadow-md flex items-center">
+      <div className="grid grid-cols-1  lg:grid-cols-3 gap-6 mb-5 px-5">
+        <div className="bg-[#E3C8FF] py-8 px-4 rounded-lg shadow-md flex items-center justify-center">
           <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
-            <FiBarChart className="text-gray-500" size={24} />
+            <FiBarChart className="" size={24} />
           </div>
           <div>
-            <p className="text-sm text-gray-500">Total Quizzes Attempted</p>
-            <p className="text-xl font-bold">{totalExams}</p>
+            <p className="text-xl font-semibold ">Total  Attempted</p>
+            <p className="text-2xl font-bold">{totalExams}</p>
           </div>
         </div>
 
-        <div className="bg-[#F4E1FF] p-4 rounded-lg shadow-md flex items-center">
+        <div className="bg-[#F4E1FF]  py-8 px-4 rounded-lg shadow-md flex items-center justify-center">
           <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
-            <FiCheckCircle className="text-gray-500" size={24} />
+            <FiCheckCircle className="" size={24} />
           </div>
           <div>
-            <p className="text-sm text-gray-500">Best Performance</p>
-            <p className="text-xl font-bold">{highestMarks <= 100? highestMarks: 0}%</p>
+            <p className="text-xl font-semibold ">Best Performance</p>
+            <p className="text-2xl font-bold">{highestMarks <= 100? highestMarks: 0}%</p>
           </div>
         </div>
 
-        <div className="bg-[#E3F4FF] p-4 rounded-lg shadow-md flex items-center">
-          <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
-            <FiUsers className="text-gray-500" size={24} />
-          </div>
-          <div>
-            <p className="text-sm text-gray-500">Total Users</p>
-            <p className="text-xl font-bold">5,921</p>
-          </div>
-        </div>
+        
 
-        <div className="bg-[#FFE3E8] p-4 rounded-lg shadow-md flex items-center">
+        <div className="bg-[#9B7EBD] bg-opacity-85 py-8 px-4 rounded-lg shadow-md flex items-center justify-center">
           <div className="w-12 h-12 bg-gray-100 rounded-full flex justify-center items-center mr-4">
-            <FiClock className="text-gray-500" size={24} />
+            <FiClock className="" size={24} />
           </div>
           <div>
-            <p className="text-sm text-gray-500">Quiz History</p>
-            <p className="text-xl font-bold">{getRecentQuizzes()} days</p>
+            <p className="text-xl font-semibold ">Quiz History</p>
+            <p className="text-2xl font-bold">{getRecentQuizzes()} days</p>
           </div>
         </div>
       </div>
@@ -178,7 +171,7 @@ const QuizlyticsDashboard = () => {
           </div>
 
           {/* Line Chart for performance trend */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
+          {/* <div className="bg-white shadow-lg rounded-lg p-6">
             <h3 className="text-xl font-semibold text-gray-700 mb-4">Performance Trend Over Attempts</h3>
             <div className="flex justify-center">
               <LineChart width={500} height={300} data={lineChartData}>
@@ -190,7 +183,7 @@ const QuizlyticsDashboard = () => {
                 <Line type="monotone" dataKey="marks" stroke="#8e49b6" activeDot={{ r: 8 }} />
               </LineChart>
             </div>
-          </div>
+          </div> */}
 
           {/* Pie Chart for marks distribution */}
           <div className="bg-white shadow-lg rounded-lg p-6">

@@ -25,12 +25,13 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
 
 
 const Page = () => {
   const [AllQuiz, refetch] = useAllQuiz();
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(8);
+  const [itemsPerPage] = useState(7);
   const [loading, setLoading] = useState(true);
 
   const totalPages = Math.ceil(AllQuiz.length / itemsPerPage);
@@ -94,12 +95,11 @@ const Page = () => {
   }
 
   return (
-    <div className="my-8 mx-6">
+    <div className="h-screen lg:mx-20 px-5  mx-auto">
       <main className="max-w-6xl mx-auto">
-        <h1 className="text-3xl text-center font-extrabold mb-4">
-          All Custom Questions
-        </h1>
-        <div className="lg:h-[450px]">
+      
+        <SectionTitleMinimal heading={"All Custom Questions"}></SectionTitleMinimal>
+        <div className="lg:h-[410px]">
           <Table>
             <TableHeader>
               <TableRow className="">
@@ -118,7 +118,7 @@ const Page = () => {
                   <TableCell className="font-medium">
                     {(currentPage - 1) * itemsPerPage + idx + 1}
                   </TableCell>
-                  <TableCell className="font-medium flex items-center">
+                  <TableCell className="font-medium flex  items-center ">
                     {item.quizStartKey}
                     <Tooltip>
                       <TooltipTrigger>
@@ -138,12 +138,12 @@ const Page = () => {
                   <TableCell className="text-center">{item.quizArr.length}</TableCell>
                   <TableCell className="text-right">
                     <Button
-                      variant="destructive"
+                      variant="buttonOutline"
                       size="sm"
                       onClick={() => handleDelete(item.quizStartKey)}
                     >
                       <RiDeleteBinLine className="mr-1" />
-                      Delete
+                      
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -153,12 +153,12 @@ const Page = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center mt-4 space-x-2">
+        <div className="flex justify-center mt-8 space-x-2">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
             className={`px-4 py-2 rounded-md ${
-              currentPage === 1 ? "bg-gray-300" : "bg-primary text-white"
+              currentPage === 1 ? "bg-gray-300" : "bg-primary-color text-white"
             }`}
           >
             &#8592; {/* Left arrow for previous */}
@@ -170,7 +170,7 @@ const Page = () => {
               onClick={() => handlePageChange(index + 1)}
               className={`px-4 py-2 rounded-md ${
                 currentPage === index + 1
-                  ? "bg-primary text-white"
+                  ? "bg-primary-color text-white"
                   : "bg-gray-200"
               }`}
             >
@@ -182,7 +182,7 @@ const Page = () => {
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
             className={`px-4 py-2 rounded-md ${
-              currentPage === totalPages ? "bg-gray-300" : "bg-primary text-white"
+              currentPage === totalPages ? "bg-gray-300" : "bg-primary-color text-white"
             }`}
           >
             &#8594; {/* Right arrow for next */}

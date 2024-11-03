@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import useRole from "@/app/hooks/useRole";
 import NotFound from "@/app/not-found";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
 
 const Page = () => {
   const [role, roleError, roleLoading] = useRole();
@@ -153,14 +154,13 @@ const Page = () => {
   };
 
   return (
-    <div className="">
+    <div className="h-screen px-5 lg:mx-20  mx-auto">
       <main className="max-w-6xl mx-auto">
-        <div className="p-6">
-          <h1 className="text-3xl font-extrabold mb-6 text-gray-800 text-center">
-            Create Custom Questions
-          </h1>
+        <div className="">
+        
+          <SectionTitleMinimal heading={" Create Custom Questions"}></SectionTitleMinimal>
 
-          <div className="grid gap-6 md:grid-cols-2 mb-8">
+          <div className="grid gap-6 md:grid-cols-2 mb-5">
             <div className="relative">
               <label className="block text-sm font-medium text-gray-700">
                 Quiz Start Key
@@ -169,7 +169,7 @@ const Page = () => {
                 type="text"
                 value={quizKey}
                 readOnly
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-gray-100 hover:bg-gray-50"
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-gray-100 hover:bg-gray-50 mb-4"
               />
             </div>
             <div className="relative">
@@ -180,12 +180,12 @@ const Page = () => {
                 type="text"
                 name="quizTitle"
                 onChange={handleChangeTitle}
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50"
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
               />
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 mb-8">
+          <div className="grid gap-6 md:grid-cols-2 mb-5">
             <div className="relative">
               <label className="block text-sm font-medium text-gray-700">
                 Category
@@ -193,7 +193,7 @@ const Page = () => {
               <Input
                 type="text"
                 onChange={handleChangeCategory}
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50"
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
               />
             </div>
             <div className="relative">
@@ -205,7 +205,7 @@ const Page = () => {
                 name="question"
                 value={questionData.question}
                 onChange={handleChange}
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-green-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50"
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-green-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
               />
             </div>
           </div>
@@ -221,7 +221,7 @@ const Page = () => {
                 value={option}
                 onChange={(e) => handleOptionChange(index, e.target.value)}
                 placeholder={`Option ${index + 1}`}
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-2"
+                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
               />
             ))}
           </div>
@@ -237,17 +237,18 @@ const Page = () => {
               onChange={handleChange}
               min="0"
               max="3"
-              className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-red-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50"
+              className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-red-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
             />
           </div>
 
-          <Button
-           
-            onClick={addQuestion}
-            className="w-full  mt-5 px-4 "
-          >
-            Add Question
-          </Button>
+          <div className="flex justify-center">
+            <Button
+              onClick={addQuestion}
+              className="w-full md:w-2/5 h-12 mt-5 px-4"
+            >
+              Add Question
+            </Button>
+          </div>
 
           <div className="mt-3">
             {questions.length > 0 && (
