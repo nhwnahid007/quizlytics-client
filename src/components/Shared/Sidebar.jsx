@@ -15,6 +15,7 @@ import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import {
+  BookOpenCheck,
   ChartNoAxesCombined,
   ChartSpline,
   CreditCard,
@@ -57,7 +58,7 @@ const Sidebar = () => {
   const isActive = (route) => pathname === route;
 
   const Menus = [
-    { title: "Home", route: "/Dashboard", icon: <ChartSpline /> },
+    { title: "Take your Quiz", route: "/Dashboard", icon: <BookOpenCheck /> },
     {
       title: "Make custom questions",
       route: "/Dashboard/customquestion",
@@ -138,13 +139,13 @@ const Sidebar = () => {
           {Menus.map((Menu, index) => (
             <Link href={Menu.route} key={index}>
               <li
-                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-200 text-primary-color text-sm font-semibold items-center gap-x-2 ${
-                  isActive(Menu.route) ? "bg-gray-300 text-secondary-color" : ""
+                className={`flex rounded-md p-2 cursor-pointer hover:bg-primary-color/80 text-primary-color text-sm font-semibold items-center gap-x-2 ${
+                  isActive(Menu.route) ? "bg-primary-color text-white" : ""
                 }`}
               >
                 <span
                   className={`text-md ${
-                    isActive(Menu.route) ? "text-secondary-color" : ""
+                    isActive(Menu.route) ? "text-white" : ""
                   }`}
                 >
                   {Menu.icon}
