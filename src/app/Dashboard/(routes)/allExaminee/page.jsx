@@ -88,7 +88,7 @@ const ExamineeList = () => {
   }
 
   return (
-    <div className=" h-screen px-2 max-w-6xl mx-auto">
+    <div className=" h-screen px-5 lg:mx-20  mx-auto">
       {/* <div className="text-center my-5 text-3xl font-bold">All Examinees</div> */}
       <SectionTitleMinimal heading={"All Examinees"}></SectionTitleMinimal>
 

@@ -20,6 +20,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import useRole from "@/app/hooks/useRole";
 import NotFound from "@/app/not-found";
 import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
+import { Button } from "@/components/ui/button";
 
 const AllUser = () => {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -109,13 +110,14 @@ if (roleError || userRoleError) return <div>Error loading data</div>;
           <TableCell className="flex justify-start">
             <AlertDialog>
               <AlertDialogTrigger asChild>
-                <button
-                  type="button"
-                  className="text-sm flex items-center gap-2 bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                <Button
+                  variant="buttonOutline"
+                  size="sm"
+                  className="text-sm flex items-center gap-2"
                   onClick={() => setSelectedUser(user.email)}
                 >
-                  <span className="text-sm"><UserX /></span> <span className="font-bold">Remove</span>
-                </button>
+                  <UserX />
+                </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogTitle>Confirm Deletion</AlertDialogTitle>
@@ -141,7 +143,7 @@ if (roleError || userRoleError) return <div>Error loading data</div>;
   };
 
   return (
-    <div className=" min-h-screen max-w-6xl px-2 ">
+    <div className=" min-h-screen px-5 lg:mx-20  mx-auto">
       <ToastContainer />
       {/* <div className="p-4 flex items-center justify-center">
         <h1 className="text-3xl ">Users</h1>

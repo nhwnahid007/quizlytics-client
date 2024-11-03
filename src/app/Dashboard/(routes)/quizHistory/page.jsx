@@ -69,93 +69,94 @@ const QuizHistory = () => {
   };
 
   return (
-    <div className="h-screen max-w-6xl mx-auto  px-2 relative overflow-auto">
-    
-     <div className="mx-20">
-     <SectionTitleMinimal heading={" Quiz History"}></SectionTitleMinimal>
-      <div className="overflow-hidden shadow-md h-[410px] sm:rounded-lg">
-        <Table className="w-full min-w-full table-fixed">
-          {/* <TableCaption>A list of your attempts in Custom Quiz.</TableCaption> */}
-          <TableHeader className="bg-gray-100">
-            <TableRow>
-              <TableHead className="w-[60px]">#</TableHead>
-              <TableHead className="w-[200px]">Date</TableHead>
-              <TableHead>Quiz On</TableHead>
-              <TableHead>Examiner</TableHead>
-              <TableHead className="text-center">Marks Obtained</TableHead>
-              <TableHead className="text-right">Attempt Details</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {history
-              .slice(
-                (currentPage - 1) * itemsPerPage,
-                currentPage * itemsPerPage
-              )
-              .map((item, idx) => (
-                <TableRow
-                  className="hover:bg-gray-50 transition-colors duration-200"
-                  key={item._id}
-                >
-                  <TableCell className="font-medium">
-                    {(currentPage - 1) * itemsPerPage + idx + 1}
-                  </TableCell>
-                  <TableCell>
-                    {moment(item.date).format("MMMM Do YYYY")}
-                  </TableCell>
-                  <TableCell>{item.quizCategory}</TableCell>
-                  <TableCell>{item.quizCreator}</TableCell>
-                  <TableCell className="text-center font-bold">
-                    {item.marks}%
-                  </TableCell>
-                  <TableCell className="text-right">
-                    <Button
-                      onClick={() => handleDetails(item._id)}
-                      className=""
-                    >
-                      Details
-                    </Button>
-                  </TableCell>
+    <div className="h-screen lg:mx-20  mx-auto p-5 relative overflow-auto">
+      <div className="">
+        <SectionTitleMinimal heading={" Quiz History"}></SectionTitleMinimal>
+        <div className="overflow-hidden shadow-md h-[410px] sm:rounded-lg">
+          <div className="overflow-x-auto">
+            <Table className="w-full min-w-full table-auto">
+              {/* <TableCaption>A list of your attempts in Custom Quiz.</TableCaption> */}
+              <TableHeader className="bg-gray-100">
+                <TableRow>
+                  <TableHead className="w-[60px]">#</TableHead>
+                  <TableHead className="w-[200px]">Date</TableHead>
+                  <TableHead>Quiz On</TableHead>
+                  <TableHead>Examiner</TableHead>
+                  <TableHead className="text-center">Marks Obtained</TableHead>
+                  <TableHead className="text-right">Attempt Details</TableHead>
                 </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </div>
-      {/* Pagination */}
-      <div className="flex justify-center mt-8 space-x-2">
-        <Button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1}
-          className={`px-4 py-2 rounded-md ${
-            currentPage === 1 ? "bg-gray-300" : "bg-primary-color text-white"
-          }`}
-        >
-          &#8592;
-        </Button>
-
-        {getVisiblePages().map((page) => (
-          <button
-            key={page}
-            onClick={() => handlePageChange(page)}
+              </TableHeader>
+              <TableBody>
+                {history
+                  .slice(
+                    (currentPage - 1) * itemsPerPage,
+                    currentPage * itemsPerPage
+                  )
+                  .map((item, idx) => (
+                    <TableRow
+                      className="hover:bg-gray-50 transition-colors duration-200"
+                      key={item._id}
+                    >
+                      <TableCell className="font-medium">
+                        {(currentPage - 1) * itemsPerPage + idx + 1}
+                      </TableCell>
+                      <TableCell>
+                        {moment(item.date).format("MMMM Do YYYY")}
+                      </TableCell>
+                      <TableCell>{item.quizCategory}</TableCell>
+                      <TableCell>{item.quizCreator}</TableCell>
+                      <TableCell className="text-center font-bold">
+                        {item.marks}%
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <Button
+                          onClick={() => handleDetails(item._id)}
+                          className=""
+                        >
+                          Details
+                        </Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+              </TableBody>
+            </Table>
+          </div>
+        </div>
+        {/* Pagination */}
+        <div className="flex justify-center mt-8 space-x-2">
+          <Button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
             className={`px-4 py-2 rounded-md ${
-              currentPage === page ? "bg-primary-color text-white" : "bg-gray-200"
+              currentPage === 1 ? "bg-gray-300" : "bg-primary-color text-white"
             }`}
           >
-            {page}
-          </button>
-        ))}
+            &#8592;
+          </Button>
 
-        <Button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className={`px-4 py-2 rounded-md ${
-            currentPage === totalPages ? "bg-gray-300" : "bg-primary-color text-white"
-          }`}
-        >
-          &#8594;
-        </Button>
+          {getVisiblePages().map((page) => (
+            <button
+              key={page}
+              onClick={() => handlePageChange(page)}
+              className={`px-4 py-2 rounded-md ${
+                currentPage === page ? "bg-primary-color text-white" : "bg-gray-200"
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+
+          <Button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className={`px-4 py-2 rounded-md ${
+              currentPage === totalPages ? "bg-gray-300" : "bg-primary-color text-white"
+            }`}
+          >
+            &#8594;
+          </Button>
+        </div>
       </div>
-     </div>
     </div>
   );
 };

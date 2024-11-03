@@ -21,6 +21,7 @@ import {
   Database,
   FileQuestion,
   FileStack,
+  History,
   House,
   Medal,
   ShieldEllipsis,
@@ -65,7 +66,7 @@ const Sidebar = () => {
     {
       title: "Quiz History",
       route: "/Dashboard/quizHistory",
-      icon: <FileStack />,
+      icon: <History />,
     },
     {
       title: "All Examinee",
@@ -96,7 +97,7 @@ const Sidebar = () => {
       <div
         className={`${
           isSidebarOpen ? "w-72 p-3" : "w-10 p-[6]"
-        } bg-[#FBF8FF] h-auto pt-8 relative duration-300 text-primary-color`}
+        } bg-[#eee3fd] h-auto pt-8 relative duration-300 text-primary-color`}
       >
         <button
           className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color text-white"

@@ -101,7 +101,7 @@ const QuizlyticsDashboard = () => {
 
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="min-h-screen lg:mx-20  mx-auto overflow-hidden">
       
 
      <SectionTitleMinimal heading={"Quizlytics Dashboard"}></SectionTitleMinimal>
