@@ -46,7 +46,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex mt-5 justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex py-4 justify-center items-center min-h-screen bg-gray-50">
       <div className="mt-12 bg-white shadow-lg rounded-lg p-6 flex flex-col md:flex-row">
         <div className="mb-12 max-w-[570px] lg:mb-0">
           <SectionTitleMinimal heading={"GET IN TOUCH WITH US"}></SectionTitleMinimal>
