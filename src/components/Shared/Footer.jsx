@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import {FaFacebook, FaTwitter, FaLinkedin, FaInstagram} from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   // new update date
@@ -21,7 +21,7 @@ const Footer = () => {
               height={100}
               width={100}
               alt="icon"
-              className="rounded-full"
+              className="rounded-full -ms-6"
             />
             <p className="mt-2 text-black">
               <span className="text-xl font-bold">Quizlytics Ltd.</span>
@@ -54,7 +54,6 @@ const Footer = () => {
                 </Link>
               </nav>
             </div>
-            
 
             <div className="text-Black">
               <h6 className="text-xl font-semibold mb-2 text-Black">
