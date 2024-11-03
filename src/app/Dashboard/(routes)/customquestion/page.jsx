@@ -154,50 +154,50 @@ const Page = () => {
   };
 
   return (
-    <div className="h-screen px-5 lg:mx-20  mx-auto">
-      <main className="max-w-6xl mx-auto">
+    <div className="h-screen px-5  lg:mx-20  mx-auto">
+      <main className="max-w-6xl mx-auto ">
         <div className="">
         
           <SectionTitleMinimal heading={" Create Custom Questions"} subHeading={"Create custom questions for your quiz"}></SectionTitleMinimal>
 
-          <div className="grid gap-6 md:grid-cols-2 mb-5">
+          <div className="grid gap-6 md:grid-cols-2 mb-3">
             <div className="relative">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block  font-bold text-gray-700">
                 Quiz Start Key
               </label>
               <Input
                 type="text"
                 value={quizKey}
                 readOnly
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-gray-100 hover:bg-gray-50 mb-4"
+                className="w-full p-6 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-gray-100 hover:bg-gray-50 mb-4"
               />
             </div>
             <div className="relative">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block  font-bold text-gray-700">
                 Quiz Title
               </label>
               <Input
                 type="text"
                 name="quizTitle"
                 onChange={handleChangeTitle}
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
+                className="w-full p-6 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
               />
             </div>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 mb-5">
+          <div className="grid gap-6 md:grid-cols-2 mb-3">
             <div className="relative">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block font-bold text-gray-700">
                 Category
               </label>
               <Input
                 type="text"
                 onChange={handleChangeCategory}
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
+                className="w-full p-6 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-blue-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
               />
             </div>
             <div className="relative">
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block font-bold text-gray-700">
                 Question
               </label>
               <Input
@@ -205,13 +205,13 @@ const Page = () => {
                 name="question"
                 value={questionData.question}
                 onChange={handleChange}
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-green-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
+                className="w-full p-6 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-green-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
               />
             </div>
           </div>
 
-          <div className="relative mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+          <div className="relative mb-3">
+            <label className="block font-bold text-gray-700">
               Options
             </label>
             {questionData.options.map((option, index) => (
@@ -221,13 +221,13 @@ const Page = () => {
                 value={option}
                 onChange={(e) => handleOptionChange(index, e.target.value)}
                 placeholder={`Option ${index + 1}`}
-                className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
+                className="w-full p-6 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-purple-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
               />
             ))}
           </div>
 
           <div className="relative mb-4">
-            <label className="block text-sm font-medium text-gray-700">
+            <label className="block font-bold text-gray-700">
               Correct Answer (0-3)
             </label>
             <Input
@@ -237,7 +237,7 @@ const Page = () => {
               onChange={handleChange}
               min="0"
               max="3"
-              className="w-full p-4 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-red-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
+              className="w-full p-6 border border-transparent rounded-md shadow-md focus:ring-2 focus:ring-red-400 focus:outline-none transition duration-200 ease-in-out bg-white hover:bg-gray-50 mb-4"
             />
           </div>
 
@@ -259,7 +259,7 @@ const Page = () => {
             {questions.map((q) => (
               <div
                 key={q.id}
-                className="mb-4 p-4 border border-gray-300 rounded-md shadow-md"
+                className="mb-4 p-6 border border-gray-300 rounded-md shadow-md"
               >
                 <h3 className="font-semibold text-lg">{q.question}</h3>
                 <ul className="list-disc list-inside ">
