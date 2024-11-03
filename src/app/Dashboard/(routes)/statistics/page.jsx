@@ -79,7 +79,7 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-white mt-10 mx-20 ">
+    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-white mt-10 lg:mx-20 mx-auto ">
       {loading ? (
         <LoadingSpinner />
       ) : marks.length === 0 ? (
@@ -114,8 +114,12 @@ const Page = () => {
             <h3 className="text-xl font-semibold text-gray-700 mb-4 hover:text-primary-color">
               Marks by Quiz Topic
             </h3>
-            <div className="flex justify-center">
-              <BarChart width={600} height={300} data={barChartData}>
+            <div className="flex justify-center overflow-x-auto">
+              <BarChart
+                width={window.innerWidth < 768 ? 300 : 600}
+                height={window.innerWidth < 768 ? 150 : 300}
+                data={barChartData}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="quizTitle" />
                 <YAxis />
@@ -131,8 +135,12 @@ const Page = () => {
             <h3 className="text-xl font-semibold text-gray-700 mb-4 hover:text-primary-color">
               Progress Over Time
             </h3>
-            <div className="flex justify-center">
-              <LineChart width={600} height={300} data={lineChartData}>
+            <div className="flex justify-center overflow-x-auto">
+              <LineChart
+                width={window.innerWidth < 768 ? 300 : 600}
+                height={window.innerWidth < 768 ? 150 : 300}
+                data={lineChartData}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="attempt" />
                 <YAxis />
@@ -148,7 +156,7 @@ const Page = () => {
             <h3 className="text-xl font-semibold text-gray-700 mb-4 hover:text-primary-color">
               Marks Distribution
             </h3>
-            <div className="flex justify-center">
+            <div className="flex justify-center overflow-x-auto">
               <PieChart width={450} height={450}>
                 <Pie
                   data={pieChartData}

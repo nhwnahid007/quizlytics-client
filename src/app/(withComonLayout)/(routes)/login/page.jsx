@@ -67,7 +67,7 @@ const ClientWrapper = () => {
   };
 
   return (
-    <div className="flex pt-16 md:pt-10 min-h-screen justify-center gap-20 items-start md:items-center h-screen bg-white">
+    <div className="flex pt-24 md:pt-28 lg:pt-10 min-h-screen justify-center gap-20 items-start  lg:items-center h-screen bg-white">
       <div className="hidden lg:flex ">
         <svg
           id="a87032b8-5b37-4b7e-a4d9-4dbfbe394641"
@@ -274,7 +274,7 @@ const ClientWrapper = () => {
         </h2>
 
         <form onSubmit={handleLogin}>
-          <div className="space-y-3">
+          <div className="space-y-3 lg:space-y-6">
             <div className="w-full flex flex-col">
               <label className="text-sm font-semibold text-gray-600">
                 Email
@@ -307,7 +307,7 @@ const ClientWrapper = () => {
             </div>
           </div>
           <Button
-            className="btn bg-purple-500 text-white text-lg mt-4 w-full py-2 my-2 rounded-lg flex justify-center items-center"
+            className="btn bg-purple-500 text-white text-lg mt-4 lg:mt-6 w-full py-2 my-2 rounded-lg flex justify-center items-center"
             disabled={loading}
           >
             {loading ? <ImSpinner3 className="animate-spin" /> : "Login"}
@@ -325,7 +325,9 @@ const ClientWrapper = () => {
             </p>
           )}
         </form>
-        <SocialAuth />
+        <div className="mt-4 lg:mt-6">
+          <SocialAuth />
+        </div>
         <div className="flex justify-center mt-3">
           <Link href="/register">
             <button className="btn text-purple-500">
