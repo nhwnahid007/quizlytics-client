@@ -95,7 +95,7 @@ const Page = () => {
   }
 
   return (
-    <div className="h-screen mx-20">
+    <div className="h-screen lg:mx-20 px-5  mx-auto">
       <main className="max-w-6xl mx-auto">
       
         <SectionTitleMinimal heading={"All Custom Questions"}></SectionTitleMinimal>

@@ -8,7 +8,7 @@ import CheckoutPage from "@/components/CheckoutPage/CheckoutPage";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 import {useSession} from "next-auth/react";
 
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY || "");
 
 const PaymentCard = () => {
   const searchParams = useSearchParams();
@@ -18,6 +18,8 @@ const PaymentCard = () => {
   const {data: session} = useSession();
   const name = session?.user?.name;
   const email = session?.user?.email;
+
+  console.log("clientSecret", clientSecret);
 
   useEffect(() => {
     if (prices) {
@@ -33,7 +35,10 @@ const PaymentCard = () => {
         }),
       })
         .then((res) => res.json())
-        .then((data) => setClientSecret(data.clientSecret));
+        .then((data) => setClientSecret(data.clientSecret))
+        .catch((error) => {
+          console.error("Error creating payment intent:", error);
+        });
     }
   }, [email, name, prices]);
 
@@ -54,7 +59,9 @@ const PaymentCard = () => {
           <LoadingSpinner />
         </p>
       )}
-
+{
+  console.log("clientSecret",clientSecret)
+}
       {clientSecret && (
         <Elements stripe={stripePromise} options={{clientSecret}}>
           <CheckoutPage clientSecret={clientSecret} prices={prices} />

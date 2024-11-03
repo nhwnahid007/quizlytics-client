@@ -64,8 +64,8 @@ const Banner = () => {
               {/* Description Box */}
               <div className="p-2 max-w-6xl mb-4 2xl:mb-2">
                 <p className="text-[#555555] text-base sm:text-lg md:text-xl 2xl:text-2xl leading-relaxed">
-                  <span className="inline-flex">
-                    <Rocket className="w-6 h-6 text-primary-color mr-2 inline-block" />
+                  <span className="inline-flex items-center">
+                    <Rocket className="w-6 h-6 text-primary-color mr-2" />
                     <span className="font-bold text-purple-600 2xl:text-3xl">Transform Your Learning Journey</span>
                   </span> with our 
                   <span className="font-bold text-primary-color 2xl:text-3xl"> AI-Powered Quiz Platform!</span> Whether you&apos;re preparing for exams, 
@@ -73,7 +73,7 @@ const Banner = () => {
                   generate AI questions, or instantly turn any article into an interactive learning experience.  
                   <span className="font-bold mt-2 text-primary-color inline-flex items-center 2xl:text-3xl">
                      Join thousands of learners who&apos;ve already unlocked their potential! 
-                    <Sparkles className="w-6 h-6 ml-2 inline-block" />
+                    <Sparkles className="w-6 h-6 ml-2" />
                   </span>
                 </p>
               </div>

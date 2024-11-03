@@ -44,25 +44,23 @@ const quickExamFeatures = [
   },
   {
     title: "Choose Your Knowledge Level",
-    description:
-      "Select Beginner, Intermediate, or Advanced to match quiz difficulty to your skill level.",
+    description: "Select difficulty level to your skill.",
   },
   {
     title: "Subscription Expiring Soon",
-    description:
-      "Renew your subscription to keep accessing premium features. Notified 2 hours ago.",
+    description: "Renew your subscription to keep accessing premium features.",
   },
 ];
 
 const customExamFeatures = [
-  {
-    title: "Upload Custom Questions",
-    description: "Create unique questions for a personalized exam.",
-  },
   // {
-  //   title: "Unique Exam Key",
-  //   description: "Provide secure access with a unique exam key.",
+  //   title: "Upload Custom Questions",
+  //   description: "Create unique questions for a personalized exam.",
   // },
+  {
+    title: "Unique Exam Key",
+    description: "Get secure access from your teacher with a unique exam key.",
+  },
   {
     title: "Review Correct Answers",
     description: "Allow examinees to view correct answers post-exam.",
@@ -75,19 +73,17 @@ const customExamFeatures = [
 
 const quizByLinkFeatures = [
   {
-    title: "Generate Quiz from Article Link",
+    title: "Generate Quiz from URL",
     description:
       "Paste any article link to generate a quiz based on its content instantly.",
   },
   {
     title: "AI-Generated Questions",
-    description:
-      "AI analyzes the article and creates relevant multiple-choice questions.",
+    description: "AI analyzes the article and creates relevant MCQ.",
   },
   {
     title: "Test Your Understanding",
-    description:
-      "Quickly assess your comprehension of the article's content with custom questions.",
+    description: "Quickly assess your comprehension of the article's content.",
   },
   // {
   //   title: "Review Correct Answers",
@@ -189,7 +185,7 @@ const QuizlyticsDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden">
+    <div className="min-h-screen lg:mx-20  mx-auto overflow-hidden">
       <SectionTitleMinimal
         heading={"Quizlytics Dashboard"}
       ></SectionTitleMinimal>
@@ -229,7 +225,7 @@ const QuizlyticsDashboard = () => {
       </div>
 
       {/* Quiz Cards here */}
-      <div className="flex flex-col md:flex-row gap-4 justify-center items-center my-12 mx-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-12">
         {/* QuickExam */}
         <Card className="h-[500px] flex flex-col justify-between">
           <CardHeader>
@@ -271,8 +267,7 @@ const QuizlyticsDashboard = () => {
           <CardHeader>
             <CardTitle>Exam on Custom Quiz</CardTitle>
             <CardDescription>
-              Create and share unique exams with personalized questions and a
-              secure access key.
+              Unique exams with personalized questions and a secure access key.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4">
@@ -375,10 +370,8 @@ const QuizlyticsDashboard = () => {
           </div>
 
           {/* Line Chart for performance trend */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
-            <h3 className="text-xl font-semibold text-gray-700 mb-4">
-              Performance Trend Over Attempts
-            </h3>
+          {/* <div className="bg-white shadow-lg rounded-lg p-6">
+            <h3 className="text-xl font-semibold text-gray-700 mb-4">Performance Trend Over Attempts</h3>
             <div className="flex justify-center">
               <LineChart width={500} height={300} data={lineChartData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -394,7 +387,7 @@ const QuizlyticsDashboard = () => {
                 />
               </LineChart>
             </div>
-          </div>
+          </div> */}
 
           {/* Pie Chart for marks distribution */}
           <div className="bg-white shadow-lg rounded-lg p-6">

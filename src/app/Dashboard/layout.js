@@ -33,12 +33,12 @@ export default function RootLayout({ children }) {
                 <LoadingSpinner />
               </div>
             ) : (
-              <>
-                <Sidebar />
-                <div className="flex-grow">
+              <div className="flex w-full">
+                <Sidebar className="sticky top-0" style={{ position: 'sticky', top: 0, height: '100vh' }} />
+                <div className="flex-grow overflow-y-auto" style={{ height: '100vh' }}>
                   {children}
                 </div>
-              </>
+              </div>
             )}
           </TooltipProvider>
         </QueryClientProvider>
