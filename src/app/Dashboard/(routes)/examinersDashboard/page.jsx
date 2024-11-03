@@ -99,7 +99,7 @@ const Page = () => {
       <main className="max-w-6xl mx-auto">
       
         <SectionTitleMinimal heading={"All Custom Questions"} subHeading={"Explore the List of all custom questions"}></SectionTitleMinimal>
-        <div className="lg:h-[410px]">
+        <div className="h-[460px] lg:h-[410px]">
           <Table>
             <TableHeader>
               <TableRow className="">
