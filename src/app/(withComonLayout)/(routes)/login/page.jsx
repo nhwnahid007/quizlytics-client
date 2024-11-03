@@ -75,7 +75,7 @@ const ClientWrapper = () => {
         <h2 className="text-3xl font-bold text-center mb-4 text-gray-800">Login</h2>
         
         <form onSubmit={handleLogin}>
-          <div className="space-y-3">
+          <div className="space-y-3 lg:space-y-6">
             <div className="w-full flex flex-col">
               <label className="text-sm font-semibold text-gray-600">Email</label>
               <input
@@ -104,7 +104,7 @@ const ClientWrapper = () => {
             </div>
           </div>
           <Button
-            className="btn bg-purple-500 text-white text-lg mt-4 w-full py-2 my-2 rounded-lg flex justify-center items-center"
+            className="btn bg-purple-500 text-white text-lg mt-4 lg:mt-6 w-full py-2 my-2 rounded-lg flex justify-center items-center"
             disabled={loading}
           >
             {loading ? <ImSpinner3 className="animate-spin" /> : "Login"}
@@ -116,7 +116,7 @@ const ClientWrapper = () => {
             </p>
           )}
         </form>
-        <SocialAuth />
+        <div className="mt-4 lg:mt-6"><SocialAuth /></div>
         <div className="flex justify-center mt-3">
           <Link href="/register">
             <button className="btn text-purple-500">Create a new account</button>

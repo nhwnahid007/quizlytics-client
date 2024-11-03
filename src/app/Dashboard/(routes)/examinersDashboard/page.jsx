@@ -98,7 +98,7 @@ const Page = () => {
     <div className="h-screen lg:mx-20 px-5  mx-auto">
       <main className="max-w-6xl mx-auto">
       
-        <SectionTitleMinimal heading={"All Custom Questions"}></SectionTitleMinimal>
+        <SectionTitleMinimal heading={"All Custom Questions"} subHeading={"Explore the List of all custom questions"}></SectionTitleMinimal>
         <div className="lg:h-[410px]">
           <Table>
             <TableHeader>

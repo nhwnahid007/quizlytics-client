@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -11,10 +11,11 @@ import {
 } from "react-icons/fa";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { FaFileCircleQuestion, FaPeopleGroup } from "react-icons/fa6";
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import {
+  BookOpenCheck,
   ChartNoAxesCombined,
   ChartSpline,
   CreditCard,
@@ -23,6 +24,7 @@ import {
   FileStack,
   History,
   House,
+  LogOut,
   Medal,
   ShieldEllipsis,
   ShieldQuestion,
@@ -35,6 +37,21 @@ import LoadingSpinner from "../Spinner/LoadingSpinner";
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setIsSidebarOpen(false); // Close sidebar on mobile
+      } else {
+        setIsSidebarOpen(true); // Open sidebar on medium and larger screens
+      }
+    };
+
+    handleResize(); // Set initial state based on current window size
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const pathname = usePathname();
 
   const [role, roleLoading] = useRole();
@@ -42,7 +59,7 @@ const Sidebar = () => {
   const isActive = (route) => pathname === route;
 
   const Menus = [
-    { title: "Home", route: "/Dashboard", icon: <ChartSpline /> },
+    { title: "Take your Quiz", route: "/Dashboard", icon: <BookOpenCheck /> },
     {
       title: "Make custom questions",
       route: "/Dashboard/customquestion",
@@ -78,11 +95,11 @@ const Sidebar = () => {
       route: "/Dashboard/allUser",
       icon: <UserCog />,
     },
-    {
-      title: "Payment",
-      route: "/Dashboard/payment",
-      icon: <CreditCard />,
-    },
+    // {
+    //   title: "Payment",
+    //   route: "/Dashboard/payment",
+    //   icon: <CreditCard />,
+    // },
   ].filter(
     (menu) =>
       role === "admin" ||
@@ -97,55 +114,59 @@ const Sidebar = () => {
       <div
         className={`${
           isSidebarOpen ? "w-72 p-3" : "w-10 p-[6]"
-        } bg-[#eee3fd] h-auto pt-8 relative duration-300 text-primary-color`}
+        } bg-[#eee3fd] h-auto pt-8 relative duration-300 text-primary-color flex flex-col justify-between`}
       >
-        <button
-          className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color text-white"
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-        >
-          {isSidebarOpen ? (
-            <FiChevronLeft className="h-6 w-6" />
-          ) : (
-            <FiChevronRight className="h-6 w-6" />
-          )}
-        </button>
-        <div className="flex gap-x-4 items-center">
-          <Link
-            href="/Dashboard"
-            className={`text-primary-color origin-left font-bold text-2xl duration-200 ${
-              !isSidebarOpen && "scale-0"
-            }`}
+        <div>
+          <button
+            className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color text-white"
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           >
-            Dashboard
-          </Link>
-        </div>
-        <ul className="pt-6">
-          {Menus.map((Menu, index) => (
-            <Link href={Menu.route} key={index}>
-              <li
-                className={`flex rounded-md p-2 cursor-pointer hover:bg-gray-200 text-primary-color text-sm font-semibold items-center gap-x-2 ${
-                  isActive(Menu.route) ? "bg-gray-300 text-secondary-color" : ""
-                }`}
-              >
-                <span
-                  className={`text-md ${
-                    isActive(Menu.route) ? "text-secondary-color" : ""
-                  }`}
-                >
-                  {Menu.icon}
-                </span>
-                <span
-                  className={`origin-left duration-200 ${
-                    !isSidebarOpen ? "hidden" : "block"
-                  }`}
-                >
-                  {Menu.title}
-                </span>
-              </li>
+            {isSidebarOpen ? (
+              <FiChevronLeft className="h-6 w-6" />
+            ) : (
+              <FiChevronRight className="h-6 w-6" />
+            )}
+          </button>
+          <div className="flex gap-x-4 items-center">
+            <Link
+              href="/Dashboard"
+              className={`text-primary-color origin-left font-bold text-2xl duration-200 ${
+                !isSidebarOpen && "scale-0"
+              }`}
+            >
+              Dashboard
             </Link>
-          ))}
+          </div>
+          <ul className="pt-6">
+            {Menus.map((Menu, index) => (
+              <Link href={Menu.route} key={index}>
+                <li
+                  className={`flex rounded-md p-2 cursor-pointer hover:bg-primary-color/80 text-primary-color text-sm font-semibold items-center gap-x-2 ${
+                    isActive(Menu.route) ? "bg-primary-color text-white" : ""
+                  }`}
+                >
+                  <span
+                    className={`text-md ${
+                      isActive(Menu.route) ? "text-white" : ""
+                    }`}
+                  >
+                    {Menu.icon}
+                  </span>
+                  <span
+                    className={`origin-left duration-200 ${
+                      !isSidebarOpen ? "hidden" : "block"
+                    }`}
+                  >
+                    {Menu.title}
+                  </span>
+                </li>
+              </Link>
+            ))}
+          </ul>
+        </div>
+        <div className="flex flex-col gap-y-2">
           <Link href="/">
-            <li className="flex rounded-md p-2 cursor-pointer hover:bg-gray-200 text-primary-color text-sm font-semibold items-center gap-x-4">
+            <li className="flex rounded-md p-2 cursor-pointer hover:bg-primary-color/80 hover:text-white text-primary-color text-sm font-semibold items-center gap-x-4">
               <span
                 className={`text-lg ${
                   pathname === "/" ? "text-secondary-color" : ""
@@ -162,7 +183,22 @@ const Sidebar = () => {
               </span>
             </li>
           </Link>
-        </ul>
+          <button
+            onClick={() => signOut()}
+            className="flex rounded-md p-2 cursor-pointer hover:bg-primary-color/80 hover:text-white text-primary-color text-sm font-semibold items-center gap-x-4"
+          >
+            <span className="text-lg">
+            <LogOut />
+            </span>
+            <span
+              className={`origin-left duration-200 ${
+                !isSidebarOpen ? "hidden" : "block"
+              }`}
+            >
+              Logout
+            </span>
+          </button>
+        </div>
       </div>
     </div>
   );

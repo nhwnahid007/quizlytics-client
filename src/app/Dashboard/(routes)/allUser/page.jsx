@@ -89,7 +89,7 @@ if (roleError || userRoleError) return <div>Error loading data</div>;
     return users
       .filter((user) => user.role === role)
       .map((user) => (
-        <TableRow key={user.id} className="border-b hover:bg-orange-100">
+        <TableRow key={user.id} className="border-b hover:bg-gray-100">
           <TableCell className="p-3 px-5">
             <span className="bg-transparent min-w-[200px]">{user.name}</span>
           </TableCell>
@@ -148,7 +148,7 @@ if (roleError || userRoleError) return <div>Error loading data</div>;
       {/* <div className="p-4 flex items-center justify-center">
         <h1 className="text-3xl ">Users</h1>
       </div> */}
-      <SectionTitleMinimal heading={"Users"}></SectionTitleMinimal>
+      <SectionTitleMinimal heading={"Users"} subHeading={"Manage all users"}></SectionTitleMinimal>
       <Tabs defaultValue="user">
         <TabsList className="flex justify-center mb-4"> {/* Center the tabs */}
           <TabsTrigger value="user">User</TabsTrigger>
