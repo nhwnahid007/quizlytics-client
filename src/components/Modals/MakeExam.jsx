@@ -56,7 +56,7 @@ const MakeExam = ({
         >
           <X size={24} />
         </button>
-        <h1 className="text-primary-color font-bold text-center text-3xl">
+        <h1 className="text-primary-color font-bold text-center text-xl md:text-3xl">
           Quick Exam
         </h1>
         <div className="w-full md:w-[480px] mx-auto mt-8 flex flex-col md:flex-row text-center md:text-start justify-around">
@@ -83,7 +83,7 @@ const MakeExam = ({
             <input
               onChange={(e) => setSearch(e.target.value)}
               type="text"
-              className=" bg-secondary-color bg-opacity-20 text-black w-full py-2 px-4 rounded-lg text-lg placeholder-gray-500 h-11"
+              className=" bg-secondary-color bg-opacity-20 text-black w-full py-2 px-4 rounded-lg text-md md:text-lg placeholder-gray-500 h-11"
               placeholder="Write topics"
             />
             {searchError && <p className="text-red-600">{searchError}</p>}
@@ -94,7 +94,7 @@ const MakeExam = ({
               className="bg-secondary-color bg-opacity-20 w-full py-2 px-4 text-gray-800 rounded-lg text-lg h-11"
             >
               <option value="" disabled selected>
-                <span className="text-gray-500">Level</span>
+                <span className="text-gray-500 text-md md:text-lg">Level</span>
               </option>
               <option value="beginner">Beginner</option>
               <option value="moderate">Moderate</option>

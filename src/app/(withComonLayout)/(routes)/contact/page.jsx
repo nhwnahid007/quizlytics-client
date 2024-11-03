@@ -1,9 +1,9 @@
 "use client";
 
-import React, {useState} from "react";
-import {useForm} from "react-hook-form";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
-import {ToastContainer, toast} from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
     reset,
   } = useForm();
 
@@ -49,8 +49,10 @@ const Contact = () => {
     <div className="flex mt-5 justify-center items-center min-h-screen bg-gray-100">
       <div className="mt-12 bg-white shadow-lg rounded-lg p-6 flex flex-col md:flex-row">
         <div className="mb-12 max-w-[570px] lg:mb-0">
-          <SectionTitleMinimal heading={"GET IN TOUCH WITH US"}></SectionTitleMinimal>
-        
+          <SectionTitleMinimal
+            heading={"GET IN TOUCH WITH US"}
+          ></SectionTitleMinimal>
+
           <div className="mb-8 flex w-full max-w-[370px]">
             <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
               <svg
@@ -140,7 +142,6 @@ const Contact = () => {
           </div>
         </div>
         <div className="md:w-1/2 p-6 order-2 md:order-1">
-          
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label
@@ -154,7 +155,7 @@ const Contact = () => {
                 id="name"
                 type="text"
                 placeholder="Name"
-                {...register("name", {required: true})}
+                {...register("name", { required: true })}
               />
               {errors.name && (
                 <span className="text-red-500 text-xs">
@@ -174,7 +175,7 @@ const Contact = () => {
                 id="email"
                 type="email"
                 placeholder="Email"
-                {...register("email", {required: true})}
+                {...register("email", { required: true })}
               />
               {errors.email && (
                 <span className="text-red-500 text-xs">
@@ -194,7 +195,7 @@ const Contact = () => {
                 id="message"
                 placeholder="Message"
                 rows="4"
-                {...register("message", {required: true})}
+                {...register("message", { required: true })}
               ></textarea>
               {errors.message && (
                 <span className="text-red-500 text-xs">
