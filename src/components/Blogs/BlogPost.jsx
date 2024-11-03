@@ -48,7 +48,7 @@ export default function BlogPost() {
 
   return (
     <div className="container mx-auto px-4 py-12 min-h-screen">
-      <SectionTitleMinimal heading={'Our Blog'}></SectionTitleMinimal>
+      <SectionTitleMinimal heading={'Our Blog'} subHeading={"Quiz Your Way to Knowledge"}></SectionTitleMinimal>
 
       <div className="flex justify-center mb-4">
         <button
