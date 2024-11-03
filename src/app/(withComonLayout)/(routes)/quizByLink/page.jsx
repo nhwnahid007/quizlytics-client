@@ -21,7 +21,7 @@ const Page = () => {
   const router = useRouterHook();
 
   const handleReturn = () => {
-    router.push("/");
+    router.push("/Dashboard");
   };
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const Page = () => {
             No question loaded due to AI is Busy. Try again...
           </h1>
           <Button onClick={handleReturn} className="mt-4 bg-primary-color">
-            Back to Home
+            Back to Dashboard
           </Button>
         </div>
       ) : (
