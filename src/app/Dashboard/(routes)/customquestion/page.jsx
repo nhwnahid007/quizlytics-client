@@ -158,7 +158,7 @@ const Page = () => {
       <main className="max-w-6xl mx-auto">
         <div className="">
         
-          <SectionTitleMinimal heading={" Create Custom Questions"}></SectionTitleMinimal>
+          <SectionTitleMinimal heading={" Create Custom Questions"} subHeading={"Create custom questions for your quiz"}></SectionTitleMinimal>
 
           <div className="grid gap-6 md:grid-cols-2 mb-5">
             <div className="relative">

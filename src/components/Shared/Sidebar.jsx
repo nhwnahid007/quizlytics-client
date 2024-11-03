@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -34,6 +34,21 @@ import LoadingSpinner from "../Spinner/LoadingSpinner";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setIsSidebarOpen(false); // Close sidebar on mobile
+      } else {
+        setIsSidebarOpen(true); // Open sidebar on medium and larger screens
+      }
+    };
+
+    handleResize(); // Set initial state based on current window size
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const pathname = usePathname();
 
@@ -78,11 +93,11 @@ const Sidebar = () => {
       route: "/Dashboard/allUser",
       icon: <UserCog />,
     },
-    {
-      title: "Payment",
-      route: "/Dashboard/payment",
-      icon: <CreditCard />,
-    },
+    // {
+    //   title: "Payment",
+    //   route: "/Dashboard/payment",
+    //   icon: <CreditCard />,
+    // },
   ].filter(
     (menu) =>
       role === "admin" ||

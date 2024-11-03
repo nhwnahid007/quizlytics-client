@@ -110,7 +110,7 @@ const ExamineeList = () => {
   return (
     <div className="h-screen px-5 lg:mx-20 mx-auto overflow-hidden">
       {/* <div className="text-center my-5 text-3xl font-bold">All Examinees</div> */}
-      <SectionTitleMinimal heading={"All Examinees"}></SectionTitleMinimal>
+      <SectionTitleMinimal heading={"All Examinees"} subHeading={"List of all examinees"}></SectionTitleMinimal>
 
       <div className="flex flex-col sm:flex-row justify-between mb-4 gap-3">
         <input
