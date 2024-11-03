@@ -46,15 +46,15 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex mt-5 justify-center items-center min-h-screen bg-gray-100">
-      <div className="mt-12 bg-white shadow-lg rounded-lg p-6 flex flex-col md:flex-row">
-        <div className="mb-12 max-w-[570px] lg:mb-0">
-          <SectionTitleMinimal
-            heading={"GET IN TOUCH WITH US"}
-          ></SectionTitleMinimal>
-
-          <div className="mb-8 flex w-full max-w-[370px]">
-            <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
+    <div className="mt-20 min-h-screen">
+      <SectionTitleMinimal
+        heading={"GET IN TOUCH WITH US"}
+        subHeading="We'd love to hear from you!"
+      />
+      <div className="mt-12 max-w-6xl mx-auto bg-gray-100 shadow-lg rounded-lg p-6 flex flex-col md:flex-row justify-center items-center">
+        <div className="mb-12 lg:mb-0 md:w-1/2">
+          <div className="mb-8 flex w-full">
+            <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary">
               <svg
                 width="32"
                 height="32"
