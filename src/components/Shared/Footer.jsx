@@ -21,7 +21,7 @@ const Footer = () => {
               height={200}
               width={200}
               alt="icon"
-              className="rounded-full"
+              className="rounded-full -mx-6"
             />
             <p className="mt-2 text-black">
               <span className="text-xl font-bold">Quizlytics Ltd.</span>
