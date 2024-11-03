@@ -224,7 +224,7 @@ const QuizlyticsDashboard = () => {
           </CardContent>
           <CardFooter>
             <Button onClick={handleQuickExam} className="w-full h-10 lg:h-12">
-              Start Quick Exam
+              Start AI Quizzes
             </Button>
           </CardFooter>
         </Card>
