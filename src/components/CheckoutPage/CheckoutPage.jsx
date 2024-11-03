@@ -28,7 +28,7 @@ const CheckoutPage = ({ prices }) => {
       return;
     }
 
-    const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
+    const { paymentIntent, error: confirmError } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: `${window.location.origin}/Dashboard`,
@@ -39,56 +39,56 @@ const CheckoutPage = ({ prices }) => {
       setErrorMessage(confirmError.message);
       setLoading(false);
       return;
-    }
+    } else {
+      if (paymentIntent && paymentIntent.status === "succeeded") {
+        console.log("hello from payment");
+        const paymentInfo = {
+          userName: name,
+          email: email,
+          transactionId: paymentIntent.id,
+          amount: prices,
+          date: new Date(),
+        };
 
-    if (paymentIntent && paymentIntent.status === "succeeded") {
-      console.log("hello from payment");
-      const paymentInfo = {
-        userName: name,
-        email: email,
-        transactionId: paymentIntent.id,
-        amount: prices,
-        date: new Date(),
-      };
-
-      try {
-        const response = await axios.post(
-          "https://quizlytics.jonomukti.org/paymentHistory",
-          paymentInfo,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-
-        if (response.data.success) {
-          Swal.fire({
-            title: "Payment Successful!",
-            text: `Your payment of $${prices} was successful and your account has been upgraded to Pro!`,
-            icon: "success",
-            confirmButtonText: "OK",
-          }).then(() => {
-            // Optionally refresh the page or redirect
-            window.location.href = "/Dashboard";
-          });
-        } else {
-          throw new Error(
-            response.data.error || "Failed to update user status"
+        try {
+          const response = await axios.post(
+            "https://quizlytics.jonomukti.org/paymentHistory",
+            paymentInfo,
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
           );
+
+          if (response.data.success) {
+            Swal.fire({
+              title: "Payment Successful!",
+              text: `Your payment of $${prices} was successful and your account has been upgraded to Pro!`,
+              icon: "success",
+              confirmButtonText: "OK",
+            }).then(() => {
+              // Optionally refresh the page or redirect
+              window.location.href = "/Dashboard";
+            });
+          } else {
+            throw new Error(
+              response.data.error || "Failed to update user status"
+            );
+          }
+        } catch (error) {
+          console.error("Error processing payment:", error);
+          Swal.fire({
+            title: "Error",
+            text:
+              error.response?.data?.error ||
+              "There was an error processing your payment",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
+        } finally {
+          setLoading(false);
         }
-      } catch (error) {
-        console.error("Error processing payment:", error);
-        Swal.fire({
-          title: "Error",
-          text:
-            error.response?.data?.error ||
-            "There was an error processing your payment",
-          icon: "error",
-          confirmButtonText: "OK",
-        });
-      } finally {
-        setLoading(false);
       }
     }
   };
