@@ -67,11 +67,11 @@ const LatestSubmission = ({ quizKey, searchCategory, quizId }) => {
   return (
     <div className="h-auto max-w-6xl pt-20 mx-auto">
       {quizId ? (
-        <h2 className="text-center text-3xl  font-extrabold  mb-8">
+        <h2 className="text-center text-xl md:text-3xl  font-extrabold  mb-8">
           Exam of {moment(latestSubmission.date).format("MMMM Do YYYY")}
         </h2>
       ) : (
-        <h2 className="text-center text-3xl  font-extrabold  mb-8">
+        <h2 className="text-center text-xl md:text-3xl  font-extrabold  mb-8">
           YOUR LATEST SUBMISSION
         </h2>
       )}
