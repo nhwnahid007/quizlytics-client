@@ -46,13 +46,12 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex py-4 justify-center items-center min-h-screen bg-gray-50">
-      <div className="mt-12 bg-white shadow-lg rounded-lg p-6 flex flex-col md:flex-row">
-        <div className="mb-12 max-w-[570px] lg:mb-0">
-          <SectionTitleMinimal heading={"GET IN TOUCH WITH US"}></SectionTitleMinimal>
-        
-          <div className="mb-8 flex w-full max-w-[370px]">
-            <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary sm:h-[70px] sm:max-w-[70px]">
+    <div className="mt-20 min-h-screen">
+      <SectionTitleMinimal heading={"GET IN TOUCH WITH US"} subHeading="We'd love to hear from you!" />
+      <div className="mt-12 max-w-6xl mx-auto bg-gray-100 shadow-lg rounded-lg p-6 flex flex-col md:flex-row justify-center items-center">
+        <div className="mb-12 lg:mb-0 md:w-1/2">
+          <div className="mb-8 flex w-full">
+            <div className="mr-6 flex h-[60px] w-full max-w-[60px] items-center justify-center overflow-hidden rounded bg-primary/5 text-primary">
               <svg
                 width="32"
                 height="32"
@@ -110,7 +109,7 @@ const Contact = () => {
                 Phone Number
               </h4>
               <p className="text-base text-body-color dark:text-dark-6">
-                ++801784051122
+                +8801784051122
               </p>
             </div>
           </div>
@@ -134,13 +133,12 @@ const Contact = () => {
                 Email Address
               </h4>
               <p className="text-base text-body-color dark:text-dark-6">
-                info@quizlytics.com
+                nhwnahid@gmail.com
               </p>
             </div>
           </div>
         </div>
         <div className="md:w-1/2 p-6 order-2 md:order-1">
-          
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mb-4">
               <label
@@ -154,7 +152,7 @@ const Contact = () => {
                 id="name"
                 type="text"
                 placeholder="Name"
-                {...register("name", {required: true})}
+                {...register("name", { required: true })}
               />
               {errors.name && (
                 <span className="text-red-500 text-xs">
@@ -174,7 +172,7 @@ const Contact = () => {
                 id="email"
                 type="email"
                 placeholder="Email"
-                {...register("email", {required: true})}
+                {...register("email", { required: true })}
               />
               {errors.email && (
                 <span className="text-red-500 text-xs">
@@ -194,7 +192,7 @@ const Contact = () => {
                 id="message"
                 placeholder="Message"
                 rows="4"
-                {...register("message", {required: true})}
+                {...register("message", { required: true })}
               ></textarea>
               {errors.message && (
                 <span className="text-red-500 text-xs">
