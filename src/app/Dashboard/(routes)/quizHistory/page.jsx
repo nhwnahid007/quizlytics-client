@@ -94,21 +94,21 @@ const QuizHistory = () => {
                   )
                   .map((item, idx) => (
                     <TableRow
-                      className="hover:bg-gray-50 transition-colors duration-200"
+                      className="hover:bg-gray-50 transition-colors py-2 duration-200"
                       key={item._id}
                     >
-                      <TableCell className="font-medium">
+                      <TableCell className="font-medium px-4 py-2">
                         {(currentPage - 1) * itemsPerPage + idx + 1}
                       </TableCell>
-                      <TableCell>
+                      <TableCell className="px-4 py-2">
                         {moment(item.date).format("MMMM Do YYYY")}
                       </TableCell>
-                      <TableCell>{item.quizCategory}</TableCell>
-                      <TableCell>{item.quizCreator}</TableCell>
-                      <TableCell className="text-center font-bold">
+                      <TableCell className="px-4 py-2">{item.quizCategory}</TableCell>
+                      <TableCell className="px-4 py-2">{item.quizCreator}</TableCell>
+                      <TableCell className="text-center font-bold px-4 py-2">
                         {item.marks}%
                       </TableCell>
-                      <TableCell className="text-right">
+                      <TableCell className="text-right px-4 py-2">
                         <Button
                           onClick={() => handleDetails(item._id)}
                           className=""
@@ -123,38 +123,40 @@ const QuizHistory = () => {
           </div>
         </div>
         {/* Pagination */}
-        <div className="flex justify-center mt-8 space-x-2">
-          <Button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className={`px-4 py-2 rounded-md ${
-              currentPage === 1 ? "bg-gray-300" : "bg-primary-color text-white"
-            }`}
-          >
-            &#8592;
-          </Button>
-
-          {getVisiblePages().map((page) => (
-            <button
-              key={page}
-              onClick={() => handlePageChange(page)}
-              className={`px-4 py-2 rounded-md ${
-                currentPage === page ? "bg-primary-color text-white" : "bg-gray-200"
+        <div className="flex justify-center mt-8">
+          <div className="flex justify-between space-x-2">
+            <Button
+              onClick={() => handlePageChange(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`w-10 h-10 flex items-center justify-center rounded-md ${
+                currentPage === 1 ? "bg-gray-300" : "bg-primary-color text-white"
               }`}
             >
-              {page}
-            </button>
-          ))}
+              &#8592;
+            </Button>
 
-          <Button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded-md ${
-              currentPage === totalPages ? "bg-gray-300" : "bg-primary-color text-white"
-            }`}
-          >
-            &#8594;
-          </Button>
+            {getVisiblePages().map((page) => (
+              <button
+                key={page}
+                onClick={() => handlePageChange(page)}
+                className={`w-10 h-10 flex items-center justify-center rounded-md ${
+                  currentPage === page ? "bg-primary-color text-white" : "bg-gray-200"
+                }`}
+              >
+                {page}
+              </button>
+            ))}
+
+            <Button
+              onClick={() => handlePageChange(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`w-10 h-10 flex items-center justify-center rounded-md ${
+                currentPage === totalPages ? "bg-gray-300" : "bg-primary-color text-white"
+              }`}
+            >
+              &#8594;
+            </Button>
+          </div>
         </div>
       </div>
     </div>
