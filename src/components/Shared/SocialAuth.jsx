@@ -80,7 +80,7 @@ const SocialAuth = () => {
     <div className="flex flex-col lg:flex-row items-center space-y-2 lg:space-y-0 lg:space-x-2">
       <Button
         onClick={() => handleSocialLogin("google")}
-        className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md max-w-xs  text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        className="flex items-center justify-center w-full lg:w-auto"
       >
         <svg
           className="h-6 w-6 mr-2"
@@ -126,7 +126,7 @@ const SocialAuth = () => {
       </Button>
       <Button
         onClick={() => handleSocialLogin("github")}
-        className="flex items-center bg-white border border-gray-300 rounded-lg shadow-md max-w-xs  text-sm font-medium text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+        className="flex items-center justify-center w-full lg:w-auto"
       >
         <svg
           className="h-6 w-6 mr-2"
