@@ -192,7 +192,7 @@ const QuizlyticsDashboard = () => {
       ></SectionTitleMinimal>
 
       {/* Quiz Cards here */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-12 mb-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-12 mb-2 mx-5 md:mx-0">
         {/* QuickExam */}
         <Card className="h-auto w-full flex flex-col justify-between">
           <CardHeader>
