@@ -39,7 +39,11 @@ const Page = () => {
   return (
     <div>
       {customExam ? (
-        <CustomExam setCustomExam={setCustomExam} setQuizKey={setQuizKey} />
+        <CustomExam
+          setCustomExam={setCustomExam}
+          setQuizKey={setQuizKey}
+          quizKey={quizKey}
+        />
       ) : (
         <QuizScreen
           quizKey={quizKey}

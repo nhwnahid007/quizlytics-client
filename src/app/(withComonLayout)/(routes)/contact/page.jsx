@@ -1,9 +1,9 @@
 "use client";
 
-import React, {useState} from "react";
-import {useForm} from "react-hook-form";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
-import {ToastContainer, toast} from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -16,7 +16,7 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
     reset,
   } = useForm();
 
@@ -47,7 +47,10 @@ const Contact = () => {
 
   return (
     <div className="mt-20 min-h-screen">
-      <SectionTitleMinimal heading={"GET IN TOUCH WITH US"} subHeading="We'd love to hear from you!" />
+      <SectionTitleMinimal
+        heading={"GET IN TOUCH WITH US"}
+        subHeading="We'd love to hear from you!"
+      />
       <div className="mt-12 max-w-6xl mx-auto bg-gray-100 shadow-lg rounded-lg p-6 flex flex-col md:flex-row justify-center items-center">
         <div className="mb-12 lg:mb-0 md:w-1/2">
           <div className="mb-8 flex w-full">

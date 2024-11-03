@@ -41,7 +41,7 @@ const QuizLink = ({ setQuizByLink, setArtLink, setIsLoading }) => {
         >
           <X size={24} />
         </button>
-        <h1 className="text-primary-color font-bold text-center text-3xl">
+        <h1 className="text-primary-color font-bold text-center text-xl md:text-3xl">
           Generate Quiz From Link
         </h1>
 
@@ -50,8 +50,8 @@ const QuizLink = ({ setQuizByLink, setArtLink, setIsLoading }) => {
             <input
               onChange={(e) => setSearch(e.target.value)}
               type="text"
-              className="bg-secondary-color bg-opacity-20 placeholder-gray-500 w-full py-2 px-4 text-gray-800 rounded-lg text-lg text-center"
-              placeholder="Paste any article link to generate quiz"
+              className="bg-secondary-color bg-opacity-20 placeholder-gray-500 w-full py-2 px-4 text-gray-800 rounded-lg text-md md:text-lg text-center"
+              placeholder="Paste Any Article URL Here"
             />
             {searchError && <p className="text-red-600">{searchError}</p>}
           </div>

@@ -1,29 +1,58 @@
-import { Input } from "@/components/ui/input";
+"use client";
+import useRouterHook from "@/app/hooks/useRouterHook";
 import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
+import { useState } from "react";
 
-const CustomExam = ({ setCustomExam, setQuizKey }) => {
+const CustomExam = ({ setCustomExam, setQuizKey, quizKey }) => {
+  const [searchError, setSearchError] = useState("");
+  const router = useRouterHook();
   const handleChange = (e) => {
     setQuizKey(e.target.value);
   };
   const handleStart = () => {
-    setCustomExam(false);
     console.log("exam started");
+
+    let hasError = false;
+
+    if (!quizKey) {
+      setSearchError("Field is required!");
+      hasError = true;
+    } else {
+      setSearchError("");
+    }
+
+    if (!hasError) {
+      setCustomExam(false);
+    }
   };
 
   return (
-    <div className="bg-gray-100 flex justify-center items-center min-h-screen">
-      <div className="h-[300px] flex flex-col justify-center items-center">
-        <div className="mb-4 text-center">
-          <label className="block text-gray-700 font-bold mb-2">
-            Enter Quiz Key to Start
-          </label>
-          <Input
-            type="text"
-            name="quizKey"
-            onChange={handleChange}
-            className="text-center font-bold bg-secondary-color bg-opacity-20 text-black"
-          />
+    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
+      <div className="bg-white w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg relative">
+        <button
+          onClick={() => router.push("/Dashboard")}
+          className="absolute top-4 right-4 text-black"
+        >
+          <X size={24} />
+        </button>
+        <h1 className="text-primary-color font-bold text-center text-xl md:text-3xl">
+          Enter Quiz Key to Start
+        </h1>
 
+        <div className="w-full md:w-[480px] mx-auto mt-6">
+          <div className="w-full">
+            <input
+              type="text"
+              name="quizKey"
+              onChange={handleChange}
+              className="bg-secondary-color bg-opacity-20 placeholder-gray-500 w-full py-2 px-4 text-gray-800 rounded-lg text-md md:text-lg text-center"
+              placeholder="Enter Quiz Key Here"
+            />
+            {searchError && <p className="text-red-600">{searchError}</p>}
+          </div>
+        </div>
+        <div className="flex justify-center mt-6">
           <Button
             onClick={handleStart}
             type="submit"
