@@ -14,6 +14,8 @@ import Image from "next/image";
 import useRole from "@/app/hooks/useRole";
 import NotFound from "@/app/not-found";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
+import { Button } from "@/components/ui/button";
 
 const ExamineeList = () => {
   const [examinees, setExaminees] = useState([]);
@@ -86,8 +88,9 @@ const ExamineeList = () => {
   }
 
   return (
-    <div className="p-4 max-w-7xl mx-auto">
-      <div className="text-center my-5 text-3xl font-bold">All Examinees</div>
+    <div className=" h-screen px-2 max-w-6xl mx-auto">
+      {/* <div className="text-center my-5 text-3xl font-bold">All Examinees</div> */}
+      <SectionTitleMinimal heading={"All Examinees"}></SectionTitleMinimal>
 
       <div className="flex flex-col sm:flex-row justify-between mb-4 gap-3">
         <input
@@ -107,7 +110,7 @@ const ExamineeList = () => {
       </div>
 
       <div className="relative overflow-auto">
-        <div className="overflow-hidden shadow-md h-[400px] sm:rounded-lg">
+        <div className="overflow-hidden shadow-md h-[375px] sm:rounded-lg">
           <Table className="w-full min-w-full table-fixed">
             <TableHeader className="bg-gray-100">
               <TableRow>
@@ -163,15 +166,15 @@ const ExamineeList = () => {
 
         {/* Pagination */}
         <div className="flex justify-center mt-4 space-x-2">
-          <button
+          <Button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
             className={`px-4 py-2 rounded-md ${
-              currentPage === 1 ? "bg-gray-300" : "bg-primary text-white"
+              currentPage === 1 ? "bg-gray-300" : "bg-primary-color text-white"
             }`}
           >
             &#8592; 
-          </button>
+          </Button>
 
          
           {getVisiblePages().map((page) => (
@@ -179,22 +182,22 @@ const ExamineeList = () => {
               key={page}
               onClick={() => handlePageChange(page)}
               className={`px-4 py-2 rounded-md ${
-                currentPage === page ? "bg-primary text-white" : "bg-gray-200"
+                currentPage === page ? "bg-primary-color text-white" : "bg-gray-200"
               }`}
             >
               {page}
             </button>
           ))}
 
-          <button
+          <Button
             onClick={() => handlePageChange(currentPage + 1)}
             disabled={currentPage === totalPages}
             className={`px-4 py-2 rounded-md ${
-              currentPage === totalPages ? "bg-gray-300" : "bg-primary text-white"
+              currentPage === totalPages ? "bg-gray-300" : "bg-primary-color text-white"
             }`}
           >
             &#8594; 
-          </button>
+          </Button>
         </div>
       </div>
     </div>

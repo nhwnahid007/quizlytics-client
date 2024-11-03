@@ -107,7 +107,7 @@ const QuizResult = ({
   const router = useRouterHook();
 
   const handleGoToHome = () => {
-    router.push("/");
+    router.push("/Dashboard");
   };
 
   let viewSubmission = ``;
@@ -164,7 +164,7 @@ const QuizResult = ({
           <Button onClick={handleViewAnswers} disabled={isDisabled}>
             View Submission
           </Button>
-          <Button onClick={handleGoToHome}>Back to Home</Button>
+          <Button onClick={handleGoToHome}>Back to Dashboard</Button>
         </div>
         <h1 className="text-secondary-color text-center text-xl lg:text-4xl mb-2 md:mb-10">
           You achieved {result?.percentageMark}% mark!

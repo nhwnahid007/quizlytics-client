@@ -15,13 +15,14 @@ import {
 import { Button } from "@/components/ui/button";
 import moment from "moment/moment";
 import useRouterHook from "@/app/hooks/useRouterHook";
+import { SectionTitleMinimal } from "@/components/Shared/SectionTitle";
 
 const QuizHistory = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [history, setHistory] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(7);
 
   const router = useRouterHook();
 
@@ -68,13 +69,13 @@ const QuizHistory = () => {
   };
 
   return (
-    <div className="h-screen max-w-6xl mx-auto pt-20 px-4 relative overflow-auto">
-      <h1 className="text-center text-3xl  font-extrabold  mb-8">
-        Quiz History
-      </h1>
-      <div className="overflow-hidden shadow-md sm:rounded-lg">
+    <div className="h-screen max-w-6xl mx-auto  px-2 relative overflow-auto">
+    
+     <div className="mx-20">
+     <SectionTitleMinimal heading={" Quiz History"}></SectionTitleMinimal>
+      <div className="overflow-hidden shadow-md h-[410px] sm:rounded-lg">
         <Table className="w-full min-w-full table-fixed">
-          <TableCaption>A list of your attempts in Custom Quiz.</TableCaption>
+          {/* <TableCaption>A list of your attempts in Custom Quiz.</TableCaption> */}
           <TableHeader className="bg-gray-100">
             <TableRow>
               <TableHead className="w-[60px]">#</TableHead>
@@ -121,39 +122,40 @@ const QuizHistory = () => {
         </Table>
       </div>
       {/* Pagination */}
-      <div className="flex justify-center mt-4 space-x-2">
-        <button
+      <div className="flex justify-center mt-8 space-x-2">
+        <Button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
           className={`px-4 py-2 rounded-md ${
-            currentPage === 1 ? "bg-gray-300" : "bg-primary text-white"
+            currentPage === 1 ? "bg-gray-300" : "bg-primary-color text-white"
           }`}
         >
           &#8592;
-        </button>
+        </Button>
 
         {getVisiblePages().map((page) => (
           <button
             key={page}
             onClick={() => handlePageChange(page)}
             className={`px-4 py-2 rounded-md ${
-              currentPage === page ? "bg-primary text-white" : "bg-gray-200"
+              currentPage === page ? "bg-primary-color text-white" : "bg-gray-200"
             }`}
           >
             {page}
           </button>
         ))}
 
-        <button
+        <Button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
           className={`px-4 py-2 rounded-md ${
-            currentPage === totalPages ? "bg-gray-300" : "bg-primary text-white"
+            currentPage === totalPages ? "bg-gray-300" : "bg-primary-color text-white"
           }`}
         >
           &#8594;
-        </button>
+        </Button>
       </div>
+     </div>
     </div>
   );
 };

@@ -15,12 +15,14 @@ import { useSession } from "next-auth/react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import {
+  ChartNoAxesCombined,
   ChartSpline,
   CreditCard,
   Database,
   FileQuestion,
   FileStack,
   House,
+  Medal,
   ShieldEllipsis,
   ShieldQuestion,
   UserCog,
@@ -53,12 +55,12 @@ const Sidebar = () => {
     {
       title: "Leaderboard",
       route: "/Dashboard/leaderboard",
-      icon: <ShieldEllipsis />,
+      icon: <Medal />,
     },
     {
       title: "My Progress",
       route: "/Dashboard/statistics",
-      icon: <Database />,
+      icon: <ChartNoAxesCombined/>,
     },
     {
       title: "Quiz History",

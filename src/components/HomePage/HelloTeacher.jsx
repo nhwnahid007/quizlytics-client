@@ -22,7 +22,7 @@ const HelloTeacher = () => {
       </div>
       <div className="flex-1 flex justify-end items-center lg:pr-14">
         <Image
-          src="https://svgshare.com/i/1BcG.svg"
+          src="https://svgshare.com/i/1C9Q.svg"
           alt="Quiz Illustration"
           width={700}
           height={700}

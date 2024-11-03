@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { LayoutDashboard, LayoutDashboardIcon, LogOut } from "lucide-react";
 
 const Header = () => {
   const { data: session, status } = useSession();
@@ -97,14 +98,16 @@ const Header = () => {
                 <DropdownMenuLabel className="text-center font-bold text-sm truncate">
                   {name}
                 </DropdownMenuLabel>
-                <DropdownMenuItem className="bg-purple-600 text-white p-2 rounded-md mb-2 text-center">
-                  <Link href="/Dashboard">My Dashboard</Link>
+                <DropdownMenuItem className="bg-purple-600 flex flex-row items-center gap-2 text-white p-2 text-sm rounded-md mb-2 text-center">
+                  <Link href="/Dashboard" className="flex items-center gap-2">
+                    <LayoutDashboardIcon /> Dashboard
+                  </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  className="bg-purple-600 text-white p-2 rounded-md text-center cursor-pointer"
+                  className="bg-purple-600 text-sm flex flex-row items-center gap-2 text-white p-2 rounded-md text-center cursor-pointer"
                   onClick={() => signOut()}
                 >
-                  Logout
+                  <LogOut /> Logout
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

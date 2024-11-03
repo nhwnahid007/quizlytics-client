@@ -77,7 +77,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 p-2 sm:p-4">
-      <div className="w-full max-w-3xl bg-white p-3 sm:p-4 md:p-6 pt-2 shadow-2xl rounded-lg flex flex-col min-h-[380px] max-h-[90vh] overflow-auto relative">
+      <div className="w-full max-w-3xl h-[500px] overflow-y-auto bg-white p-3 sm:p-4 md:p-6 pt-2 shadow-2xl rounded-lg flex flex-col min-h-[380px] max-h-[90vh] overflow-auto relative">
         <button
           onClick={() => router.push("/")}
           className="absolute top-4 right-4 text-black"
@@ -154,7 +154,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
           <button
             className={`btn flex-1 py-2 sm:py-3 text-sm sm:text-base rounded-lg transition duration-200 bg-purple-400 text-white ${
               selectedOption === null
-                ? "opacity-50 cursor-not-allowed"
+                ? "opacity-50 bg-primary-color cursor-not-allowed"
                 : "hover:bg-primary-color"
             }`}
             onClick={handleGoToNextQuiz}
