@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import useRouterHook from "@/app/hooks/useRouterHook";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
+import { SectionTitleMinimal } from "../Shared/SectionTitle";
 
 export default function BlogPost() {
   const [posts, setPosts] = useState([]);
@@ -46,15 +47,13 @@ export default function BlogPost() {
   };
 
   return (
-    <div className="container mx-auto mt-10 px-4 py-12 min-h-screen">
-      <h1 className="text-4xl font-bold text-center mb-8 text-primary-color">
-        Our Blog
-      </h1>
+    <div className="container mx-auto px-4 py-12 min-h-screen">
+      <SectionTitleMinimal heading={'Our Blog'}></SectionTitleMinimal>
 
       <div className="flex justify-center mb-4">
         <button
           onClick={handleAddNewBlog}
-          className="bg-primary-color text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-primary-dark transition duration-300"
+          className="bg-primary-color text-white font-semibold py-2 px-4 rounded-lg hover:opacity-45 shadow hover:bg-primary-dark transition duration-300"
         >
           Share your thoughts
         </button>
@@ -85,7 +84,7 @@ export default function BlogPost() {
           <button
             key={slug}
             onClick={() => setSelectedSlug(slug)}
-            className={`px-4 py-2 rounded-lg font-semibold transition ${
+            className={`px-4 py-2 rounded-lg hover:opacity-45 font-semibold transition ${
               selectedSlug === slug
                 ? "bg-primary-color text-white"
                 : "bg-gray-200"
@@ -136,7 +135,7 @@ export default function BlogPost() {
                     href={`/blogs/${post._id}`}
                     className="inline-block px-4 py-2"
                   >
-                    <button className="inline-block px-4 py-2 text-white bg-primary-color hover:bg-primary-dark rounded-lg shadow-sm transition duration-300">
+                    <button className="inline-block hover:opacity-45 px-4 py-2 text-white bg-primary-color hover:bg-primary-dark rounded-lg shadow-sm transition duration-300">
                       Read More
                     </button>
                   </Link>

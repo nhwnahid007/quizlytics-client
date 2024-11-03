@@ -132,7 +132,7 @@ const page = () => {
             <Image 
               width={300}
               height={500}
-              src="https://i.ibb.co/mBCHyK3/How-to-Create-An-Anonymous-Leaderboard-in-Tableau-CRM-1.jpg" 
+              src="https://i.ibb.co.com/S0H557w/leader.png" 
               alt="Leaderboard display" 
               className="w-full h-auto max-h-[500px] object-cover rounded-md shadow-lg" 
             />

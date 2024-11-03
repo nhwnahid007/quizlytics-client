@@ -171,7 +171,7 @@ const QuizlyticsDashboard = () => {
           </div>
 
           {/* Line Chart for performance trend */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
+          {/* <div className="bg-white shadow-lg rounded-lg p-6">
             <h3 className="text-xl font-semibold text-gray-700 mb-4">Performance Trend Over Attempts</h3>
             <div className="flex justify-center">
               <LineChart width={500} height={300} data={lineChartData}>
@@ -183,7 +183,7 @@ const QuizlyticsDashboard = () => {
                 <Line type="monotone" dataKey="marks" stroke="#8e49b6" activeDot={{ r: 8 }} />
               </LineChart>
             </div>
-          </div>
+          </div> */}
 
           {/* Pie Chart for marks distribution */}
           <div className="bg-white shadow-lg rounded-lg p-6">
