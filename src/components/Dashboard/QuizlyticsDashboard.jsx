@@ -225,11 +225,13 @@ const QuizlyticsDashboard = () => {
       </div>
 
       {/* Quiz Cards here */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-12 px-5">
         {/* QuickExam */}
         <Card className="h-[500px] flex flex-col justify-between">
           <CardHeader>
-            <CardTitle>Quick Exam on AI Generated Quiz</CardTitle>
+            <CardTitle className="text-primary-color text-xl">
+              AI Generated Quiz
+            </CardTitle>
             <CardDescription>
               Instant AI-generated quizzes on any topic and difficulty level!
             </CardDescription>
@@ -265,7 +267,9 @@ const QuizlyticsDashboard = () => {
         {/* CustomExam */}
         <Card className="h-[500px] flex flex-col justify-between">
           <CardHeader>
-            <CardTitle>Exam on Custom Quiz</CardTitle>
+            <CardTitle className="text-primary-color text-xl">
+              Exam on Custom Quiz
+            </CardTitle>
             <CardDescription>
               Unique exams with personalized questions and a secure access key.
             </CardDescription>
@@ -300,7 +304,9 @@ const QuizlyticsDashboard = () => {
         {/* QuizByLink */}
         <Card className="h-[500px] flex flex-col justify-between">
           <CardHeader>
-            <CardTitle>Quiz from any Article Link</CardTitle>
+            <CardTitle className="text-primary-color text-xl">
+              Quiz from any Article Link
+            </CardTitle>
             <CardDescription>
               Generate quizzes from any article link to test your understanding
               of the content.
