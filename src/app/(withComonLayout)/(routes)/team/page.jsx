@@ -19,7 +19,7 @@ const ServicesPage = () => {
               <div className="relative group">
                 <Image
                   className="object-cover object-center w-[125px] h-[125px] mx-auto rounded-full"
-                  src="https://i.ibb.co.com/Gp2pbHR/304944883-193506636368131-6096839391558381294-n.jpg"
+                  src="https://i.ibb.co.com/4jQKHbZ/myself-1.png"
                   alt="Nahid"
                   width={300}
                   height={300}

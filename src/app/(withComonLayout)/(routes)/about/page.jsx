@@ -4,7 +4,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="bg-gray-50 text-black">
+    <div className="bg-gray-50 mt-20 text-black">
       <div className="w-full lg:w-[70%] mx-auto py-8 text-center">
         {/* Main Title Section */}
         {/* <h1 className="mt-10 text-4xl md:text-6xl font-bold text-primary-color mb-8">

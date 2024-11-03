@@ -17,9 +17,9 @@ const Footer = () => {
         <div className="text-black p-10 bg-gray-100 flex flex-col md:flex-row justify-between">
           <div className="footer-start -mt-4">
             <Image
-              src="https://i.ibb.co.com/dW1jRgp/quizlytics-logo-removebg-preview.png"
-              height={100}
-              width={100}
+              src="https://i.ibb.co.com/hCxJJv0/logo.png"
+              height={200}
+              width={200}
               alt="icon"
               className="rounded-full"
             />
@@ -30,7 +30,7 @@ const Footer = () => {
             </p>
           </div>
 
-          <div className="mt-5 md:mt-0 flex flex-row justify-between gap-10 md:gap-20 lg:gap-96">
+          
             <div>
               <h3 className="text-xl font-semibold mb-2 text-Black">Company</h3>
               <nav>
@@ -97,7 +97,7 @@ const Footer = () => {
                 </a>
               </div>
             </div>
-          </div>
+          
         </div>
 
         <div className="text-center font-semibold bg-gray-100 -mt-4 mb-10 text-[#333333]">
