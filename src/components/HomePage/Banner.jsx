@@ -63,7 +63,7 @@ const Banner = () => {
               {/* Description Box */}
               <div className="p-2 max-w-6xl mb-4 2xl:mb-2">
                 <p className="text-[#555555] text-base sm:text-lg md:text-xl 2xl:text-2xl leading-relaxed">
-                  <span className="inline-flex items-center">
+                  <span className="flex items-center justify-center">
                     <Rocket className="w-6 h-6 text-primary-color mr-2" />
                     <span className="font-bold text-purple-600 2xl:text-3xl">
                       Transform Your Learning Journey

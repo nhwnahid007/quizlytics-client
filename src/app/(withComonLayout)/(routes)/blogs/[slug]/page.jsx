@@ -54,7 +54,7 @@ export default function Post({ params }) {
     <div className="flex flex-col lg:flex-row justify-around items-start mt-10 container mx-auto gap-10 px-4">
       <div className="container mx-auto mt-10 px-4 py-8 bg-white rounded-lg shadow-lg max-w-4xl">
         <div className="mb-6">
-          <h1 className="text-4xl font-extrabold text-primary-color">{post.title}</h1>
+          <h1 className=" text-xl lg:text-2xl  font-semibold text-primary-color">{post.title}</h1>
           <p className="text-lg text-gray-500 mt-2">{post.summary}</p>
         </div>
 
@@ -89,7 +89,7 @@ export default function Post({ params }) {
         </div>
 
         <div className="mt-10 w-full">
-          <h2 className="text-2xl font-bold text-primary-color mb-6">Other Posts:</h2>
+          <h2 className="text-xl lg:text-2xl font-semibold text-primary-color mb-6">Other Posts:</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherPosts.map((otherPost) => (
               <div key={otherPost._id} className="bg-white p-4 rounded-lg shadow-lg flex flex-col items-center md:items-start">

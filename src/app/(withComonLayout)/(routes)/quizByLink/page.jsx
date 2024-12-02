@@ -59,7 +59,7 @@ const Page = () => {
           <LoadingSpinner />
         </div>
       ) : !allQuestions.length ? (
-        <div className="h-screen flex flex-col justify-center items-center">
+        <div className="h-screen flex flex-col justify-center items-center px-12 text-center">
           <h1 className="text-red-500 font-bold">
             No question loaded due to AI is Busy. Try again...
           </h1>

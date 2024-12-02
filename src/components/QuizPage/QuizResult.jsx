@@ -18,6 +18,7 @@ import {
 } from "next-share";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import UserFeedback from "../Modals/UserFeedback";
+import { toast } from "react-toastify";
 
 const QuizResult = ({
   result,
@@ -86,12 +87,7 @@ const QuizResult = ({
       if (res.data.insertedId) {
         setLoading(false);
         setIsDisabled(false);
-        Swal.fire({
-          title: "Success",
-          text: "Recorded successfully!",
-          icon: "success",
-          toast: true,
-        });
+        toast.success("Recorded successfully!");  
       }
     } catch (error) {
       setLoading(false);
@@ -148,7 +144,7 @@ const QuizResult = ({
     <div className="fixed h-screen inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center">
       <div className="bg-white w-[90%] md:w-[580px] p-8 rounded-lg shadow-lg">
         <div
-          className={`w-[200px] h-[200px] mx-auto my-4 md:my-8 border-8 p-8 rounded-full flex justify-center items-center border-primary-color border-opacity-70`}
+          className={` w-[160px] h-[160px] 2xl:w-[200px] 2xl:h-[200px] mx-auto my-4 md:my-8 border-8 p4 2xl:p-8 rounded-full flex justify-center items-center border-primary-color border-opacity-70`}
         >
           <h1 className={`text-4xl font-bold  text-primary-color`}>
             {result?.correctAnswers} / {result?.totalQuiz}
@@ -158,13 +154,15 @@ const QuizResult = ({
           {/* {result?.percentageMark}% */}
         </h1>
         <div className="my-4 flex flex-col md:flex-row gap-4 justify-center items-center">
-          <Button className="lg:px-10 " onClick={handleSaveRecord}>
+          <Button className="w-full md:w-40 lg:w-48" onClick={handleSaveRecord}>
             Submit
           </Button>
-          <Button onClick={handleViewAnswers} disabled={isDisabled}>
+          <Button className="w-full md:w-40 lg:w-48" onClick={handleViewAnswers} disabled={isDisabled}>
             View Submission
           </Button>
-          <Button onClick={handleGoToHome}>Back to Dashboard</Button>
+          <Button className="w-full md:w-40 lg:w-48" onClick={handleGoToHome}>
+            Back to Dashboard
+          </Button>
         </div>
         <h1 className="text-secondary-color text-center text-xl lg:text-4xl mb-2 md:mb-10">
           You achieved {result?.percentageMark}% mark!

@@ -9,10 +9,10 @@ import { useState, useEffect } from "react";
 import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
-
 export default function RootLayout({ children }) {
   const [queryClient] = useState(() => new QueryClient());
   const [isLoading, setIsLoading] = useState(true);
+  const [isBlurred, setIsBlurred] = useState(false);
 
   useEffect(() => {
     // Simulate a loading delay
@@ -34,9 +34,16 @@ export default function RootLayout({ children }) {
               </div>
             ) : (
               <div className="flex w-full">
-                <Sidebar className="sticky top-0" style={{ position: 'sticky', top: 0, height: '100vh' }} />
-                <div className="flex-grow overflow-y-auto" style={{ height: '100vh' }}>
-                  {children}
+                <Sidebar
+                  className="sticky top-0"
+                  style={{ position: 'sticky', top: 0, height: '100vh' }}
+                  onToggleBlur={setIsBlurred}
+                />
+                <div
+                  className={`flex-grow overflow-y-auto ${isBlurred ? "bg-white" : ""}`}
+                  style={{ height: '100vh' }}
+                >
+                  {!isBlurred && children}
                 </div>
               </div>
             )}

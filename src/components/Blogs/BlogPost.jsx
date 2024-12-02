@@ -6,6 +6,7 @@ import axios from "axios";
 import useRouterHook from "@/app/hooks/useRouterHook";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import { SectionTitleMinimal } from "../Shared/SectionTitle";
+import { LogIn } from "lucide-react";
 
 export default function BlogPost() {
   const [posts, setPosts] = useState([]);
@@ -53,9 +54,9 @@ export default function BlogPost() {
       <div className="flex justify-center mb-4">
         <button
           onClick={handleAddNewBlog}
-          className="bg-primary-color text-white font-semibold py-2 px-4 rounded-lg hover:opacity-45 shadow hover:bg-primary-dark transition duration-300"
+          className="bg-primary-color text-white font-semibold py-2 px-4 rounded-lg hover:opacity-45 shadow hover:bg-primary-dark transition duration-300 flex items-center gap-x-1 "
         >
-          Share your thoughts
+          Write your thoughts <LogIn />
         </button>
       </div>
 
@@ -72,7 +73,7 @@ export default function BlogPost() {
       <div className="flex flex-wrap gap-4 justify-center mb-8">
         <button
           onClick={() => setSelectedSlug(null)}
-          className={`px-4 py-2 rounded-lg font-semibold transition ${
+          className={`px-4 sm:text-sm py-1  md:py-2 rounded-lg lg:text-base font-medium	  lg:font-semibold transition ${
             selectedSlug === null
               ? "bg-primary-color text-white"
               : "bg-gray-200"
@@ -84,7 +85,7 @@ export default function BlogPost() {
           <button
             key={slug}
             onClick={() => setSelectedSlug(slug)}
-            className={`md:px-4 md:py-2 py-2 px-2 rounded-lg hover:opacity-45 font-semibold transition ${
+            className={`md:px-4 py-1 md:py-2 px-2 rounded-lg hover:opacity-45 lg:text-base font-medium	  lg:font-semibold transition ${
               selectedSlug === slug
                 ? "bg-primary-color text-white"
                 : "bg-gray-200"

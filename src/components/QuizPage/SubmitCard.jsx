@@ -13,7 +13,7 @@ const SubmitCard = ({ item, markedAnswer, idx }) => {
   const isCorrect = item.correct_answer == markedAnswer;
 
   return (
-    <div className="mb-6 mx-auto max-w-4xl ">
+    <div className="mb-6 mx-2 lg:mx-auto max-w-4xl  ">
       <Card className="shadow-xl border border-gray-200 rounded-lg">
         <CardHeader className="bg-primary-color p-4 rounded-t-lg">
           <CardTitle className="text-white text-lg font-bold">
@@ -32,8 +32,8 @@ const SubmitCard = ({ item, markedAnswer, idx }) => {
                 className={`flex items-center justify-between p-3 rounded-lg transition-all ${
                   markedAnswer === index
                     ? isCorrect
-                      ? "bg-green-500 text-white font-semibold"
-                      : "bg-red-500 text-white font-semibold"
+                      ? "bg-green-400 text-white font-semibold"
+                      : "bg-red-400 text-white font-semibold"
                     : "bg-gray-100"
                 }`}
               >
