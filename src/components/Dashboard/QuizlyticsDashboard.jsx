@@ -185,16 +185,16 @@ const QuizlyticsDashboard = () => {
   };
 
   return (
-    <div className="min-h-screen lg:mx-20 mx-auto overflow-hidden">
+    <div className="min-h-screen lg:mx-10 2xl:mx-20 mx-auto overflow-hidden">
       <SectionTitleMinimal
-        heading={"Welcome to your dashboard!"}
+        heading={"Welcome to your Dashboard!"}
         subHeading={"Take your quizzes and improve your skills here!"}
       ></SectionTitleMinimal>
 
       {/* Quiz Cards here */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 my-12 mb-2 mx-5 md:mx-0">
+      <div className="grid grid-cols-1 mt-5 lg:grid-cols-3 gap-10 my-12 mb-2 mx-5 md:mx-0">
         {/* QuickExam */}
-        <Card className="h-auto w-full flex flex-col justify-between">
+        <Card className="h-auto w-full lg:space-y-1 flex flex-col justify-between">
           <CardHeader>
             <CardTitle className="text-primary-color text-xl">
               AI Generated Quiz
@@ -208,7 +208,7 @@ const QuizlyticsDashboard = () => {
               {quickExamFeatures.map((notification, index) => (
                 <div
                   key={index}
-                  className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
+                  className="mb-4 grid grid-cols-[25px_1fr] items-start  last:mb-0 last:pb-0"
                 >
                   <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary-color" />
                   <div className="space-y-1">
@@ -224,8 +224,8 @@ const QuizlyticsDashboard = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={handleQuickExam} className="w-full h-10 lg:h-12">
-              Start AI Quizzes
+            <Button onClick={handleQuickExam} className="w-full h-10 lg:h-12 font-semibold">
+              Start Quiz by AI 
             </Button>
           </CardFooter>
         </Card>
@@ -234,10 +234,10 @@ const QuizlyticsDashboard = () => {
         <Card className="h-auto w-full flex flex-col justify-between">
           <CardHeader>
             <CardTitle className="text-primary-color text-xl">
-              Exam on Custom Quiz
+              Quiz on Custom Quiz
             </CardTitle>
             <CardDescription>
-              Unique exams with personalized questions and a secure access key
+              Unique Quizzes with personalized questions and a secure access key
               given by your teacher.
             </CardDescription>
           </CardHeader>
@@ -246,7 +246,7 @@ const QuizlyticsDashboard = () => {
               {customExamFeatures.map((notification, index) => (
                 <div
                   key={index}
-                  className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
+                  className="mb-4 grid grid-cols-[25px_1fr] items-start  last:mb-0 last:pb-0"
                 >
                   <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary-color " />
                   <div className="space-y-1">
@@ -262,7 +262,7 @@ const QuizlyticsDashboard = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={handleCustomQuiz} className="w-full h-10 lg:h-12">
+            <Button onClick={handleCustomQuiz} className="w-full h-10 lg:h-12 font-semibold">
               Start Custom Quiz
             </Button>
           </CardFooter>
@@ -284,7 +284,7 @@ const QuizlyticsDashboard = () => {
               {quizByLinkFeatures.map((notification, index) => (
                 <div
                   key={index}
-                  className="mb-4 grid grid-cols-[25px_1fr] items-start pb-4 last:mb-0 last:pb-0"
+                  className="mb-4 grid grid-cols-[25px_1fr] items-start  last:mb-0 last:pb-0"
                 >
                   <span className="flex h-2 w-2 translate-y-1 rounded-full bg-primary-color" />
                   <div className="space-y-1">
@@ -300,15 +300,15 @@ const QuizlyticsDashboard = () => {
             </div>
           </CardContent>
           <CardFooter>
-            <Button onClick={handleQuizByLink} className="w-full h-10 lg:h-12">
-              Generate Quiz from any Link
+            <Button onClick={handleQuizByLink} className="w-full h-10 lg:h-12 font-semibold">
+            Start Quiz by Link
             </Button>
           </CardFooter>
         </Card>
       </div>
 
-      <div className="grid grid-cols-1 pt-8 lg:grid-cols-3 gap-6 mb-5 px-5">
-        <div className="bg-primary-color bg-opacity-35 py-4 lg:py-8 px-2 lg:px-4 rounded-lg shadow-md flex items-center justify-center">
+      <div className="grid grid-cols-1 pt-8 lg:grid-cols-3 gap-6 mb-5 px-5 2xl:mt-3">
+        <div className="bg-primary-color bg-opacity-35 py-4 lg:py-8 px-2 2xl:px-4 rounded-lg shadow-md flex items-center justify-center">
           <div className="w-8 lg:w-12 h-8 lg:h-12 bg-gray-100 rounded-full flex justify-center items-center mr-2 lg:mr-4">
             <FiBarChart className="text-lg lg:text-xl" />
           </div>
@@ -318,7 +318,7 @@ const QuizlyticsDashboard = () => {
           </div>
         </div>
 
-        <div className="bg-primary-color bg-opacity-35 py-4 lg:py-8 px-2 lg:px-4 rounded-lg shadow-md flex items-center justify-center">
+        <div className="bg-primary-color bg-opacity-35 py-4 lg:py-8 px-2 2xl:px-4 rounded-lg shadow-md flex items-center justify-center">
           <div className="w-8 lg:w-12 h-8 lg:h-12 bg-gray-100 rounded-full flex justify-center items-center mr-2 lg:mr-4">
             <FiCheckCircle className="text-lg lg:text-xl" />
           </div>
@@ -330,7 +330,7 @@ const QuizlyticsDashboard = () => {
           </div>
         </div>
 
-        <div className="bg-primary-color bg-opacity-35 py-4 lg:py-8 px-2 lg:px-4 rounded-lg shadow-md flex items-center justify-center">
+        <div className="bg-primary-color bg-opacity-35 py-4 lg:py-8 px-2 2xl:px-4 rounded-lg shadow-md flex items-center justify-center">
           <div className="w-8 lg:w-12 h-8 lg:h-12 bg-gray-100 rounded-full flex justify-center items-center mr-2 lg:mr-4">
             <FiClock className="text-lg lg:text-xl" />
           </div>
@@ -345,7 +345,7 @@ const QuizlyticsDashboard = () => {
 
       {/* Charts and Statistics section */}
       {marks.length === 0 ? (
-        <div className="text-center mt-12">
+        <div className="text-center my-12">
           <h2 className="text-2xl font-semibold mb-4">
             No Quizzes Attempted Yet
           </h2>
@@ -353,7 +353,7 @@ const QuizlyticsDashboard = () => {
             It seems like you haven&apos;t taken any quizzes yet. Start your
             learning journey by taking your first quiz now!
           </p>
-          <Link href="/customQuiz">
+          <Link href="/Dashboard">
             <button className="bg-primary-color font-semibold text-white px-6 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-200">
               Attempt Your First Quiz
             </button>
@@ -362,7 +362,7 @@ const QuizlyticsDashboard = () => {
       ) : (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Bar Chart for individual topic marks */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
+          <div className="bg-white rounded-lg p-6">
             <h3 className="text-xl font-semibold text-gray-700 mb-4">
               Marks by Quiz Topic
             </h3>
@@ -379,7 +379,7 @@ const QuizlyticsDashboard = () => {
           </div>
 
           {/* Pie Chart for marks distribution */}
-          <div className="bg-white shadow-lg rounded-lg p-6">
+          <div className="bg-white  rounded-lg p-6">
             <h3 className="text-xl font-semibold text-gray-700 mb-4">
               Marks Distribution
             </h3>

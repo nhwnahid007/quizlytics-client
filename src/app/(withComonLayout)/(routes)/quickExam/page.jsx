@@ -1,9 +1,12 @@
 "use client";
 import useAllMCQ from "@/app/hooks/useAllMCQ";
+import useRouterHook from "@/app/hooks/useRouterHook";
 import useSearchCategory from "@/app/hooks/useSearchCategory";
 import useSearchLevel from "@/app/hooks/useSearchLevel";
 import MakeExam from "@/components/Modals/MakeExam";
 import QuizScreen from "@/components/QuizPage/QuizScreen";
+import LoadingSpinner from "@/components/Spinner/LoadingSpinner";
+import { Button } from "@/components/ui/button";
 import { getMCQ } from "@/requests/get";
 import React, { useEffect, useState } from "react";
 
@@ -32,6 +35,12 @@ const Page = () => {
     }
   }, [loadData, searchCategory, searchLavel, setAllMCQ]);
 
+  const router = useRouterHook();
+
+  const handleReturn = () => {
+    router.push("/Dashboard");
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Content section */}
@@ -43,6 +52,20 @@ const Page = () => {
             setSearchCategory={setSearchCategory}
             setLoadData={setLoadData}
           />
+        ) : isLoading ? (
+          <div className="h-screen flex justify-center items-center">
+            {/* <Spinner /> */}
+            <LoadingSpinner />
+          </div>
+        ) : !allMCQ.length ? (
+          <div className="h-screen flex flex-col justify-center items-center px-12 text-center">
+            <h1 className="text-red-500 font-bold">
+              No question loaded due to AI is Busy. Try again...
+            </h1>
+            <Button onClick={handleReturn} className="mt-4 bg-primary-color">
+              Back to Dashboard
+            </Button>
+          </div>
         ) : (
           <QuizScreen
             allQuestions={allMCQ}

@@ -76,8 +76,8 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-2 sm:p-4">
-      <div className="w-full max-w-4xl h-full md:h-[600px] overflow-y-auto bg-white p-3 sm:p-4 md:p-6 pt-2 shadow-2xl rounded-lg flex flex-col min-h-[400px] max-h-[90vh] overflow-auto relative">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 p-2 sm:p-4 mt-4 2xl:mt-0">
+      <div className="w-full my-5 md:my-12 max-w-4xl h-[500px] lg:h-[450px] 2xl:h-[550px] overflow-y-auto bg-white p-3 sm:p-4 md:p-6 pt-2 shadow-2xl rounded-lg flex flex-col  overflow-auto 2xl:overflow-hidden relative mb-10">
         <button
           onClick={() => router.push("/Dashboard")}
           className="absolute top-4 right-4 text-black"
@@ -85,21 +85,21 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
           <X size={24} />
         </button>
         <div className="text-center flex justify-center items-center text-sm sm:text-base">
-          <svg width="120" height="120">
+          <svg width="100" height="100">
             <circle
-              cx="60"
-              cy="60"
+              cx="50"
+              cy="50"
               r={radius}
               stroke="#d6d6d6"
-              strokeWidth="10"
+              strokeWidth="8"
               fill="transparent"
             />
             <circle
-              cx="60"
-              cy="60"
+              cx="50"
+              cy="50"
               r={radius}
               className="stroke-primary-color"
-              strokeWidth="10"
+              strokeWidth="8"
               fill="transparent"
               strokeDasharray={circumference}
               strokeDashoffset={offset}
@@ -111,7 +111,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
               dominantBaseline="middle"
               textAnchor="middle"
               className="fill-primary-color font-bold"
-              fontSize="18px"
+              fontSize="16px"
             >
               {remainingTime} S
             </text>
@@ -150,7 +150,7 @@ const Quiz = ({ question, currentQuestion, totalQuestion, setAnswer }) => {
           </div>
         </div>
 
-        <div className="mt-auto pt-3 sm:pt-4 flex justify-end">
+        <div className="mt-auto pt-3 sm:pt-4 flex justify-end mb-5">
           <button
             className={`btn flex-1 py-2 sm:py-3 text-sm sm:text-base rounded-lg transition duration-200 bg-primary-color text-white ${
               selectedOption === null

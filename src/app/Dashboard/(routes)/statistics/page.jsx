@@ -18,6 +18,7 @@ import {
 } from 'recharts';
 import LoadingSpinner from '@/components/Spinner/LoadingSpinner';
 import { getMarks } from '@/requests/get';
+import { SectionTitleMinimal } from '@/components/Shared/SectionTitle';
 
 const PRIMARY_COLOR = '#8e49b6'; // Use your primary color here
 const GRAY_COLOR = '#9ca3af'; // Gray color for other sections
@@ -79,33 +80,31 @@ const Page = () => {
   ];
 
   return (
-    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-white mt-10 lg:mx-20 mx-auto ">
+    <div className="flex flex-col lg:flex items-center justify-center min-h-screen bg-white lg:mx-20 mx-auto ">
       {loading ? (
         <LoadingSpinner />
       ) : marks.length === 0 ? (
         <p className="md:text-5xl text-sm font-semibold text-gray-600">No exam given yet.</p>
       ) : (
         <div className="bg-white shadow-lg rounded-lg p-6 max-w-4xl w-full">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-8 font-bold text-gray-800">
-            Exam Statistics
-          </h2>
+          <SectionTitleMinimal heading="Quiz Statistics" subHeading="Check your Statistics here" />
 
           <div className="grid grid-cols-2 gap-6 mb-8">
             <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
               <p className="text-lg font-medium text-primary-color">Total Exams Attempted</p>
-              <p className="text-2xl font-bold">{totalExams}</p>
+              <p className=" font-semibold">{totalExams}</p>
             </div>
             <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
               <p className="text-lg font-medium text-primary-color">Average Marks</p>
-              <p className="text-2xl font-bold">{averageMarks}</p>
+              <p className=" font-semibold">{averageMarks}%</p>
             </div>
             <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
               <p className="text-lg font-medium text-primary-color">Highest Marks</p>
-              <p className="text-2xl font-bold">{highestMarks}</p>
+              <p className=" font-semibold">{highestMarks}%</p>
             </div>
             <div className="text-center bg-gray-100 p-4 rounded-lg transition-colors duration-300">
               <p className="text-lg font-medium text-primary-color">Lowest Marks</p>
-              <p className="text-2xl font-bold">{lowestMarks}</p>
+              <p className=" font-semibold">{lowestMarks}%</p>
             </div>
           </div>
 

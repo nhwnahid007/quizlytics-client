@@ -32,8 +32,8 @@ const SubmitCard = ({ item, markedAnswer, idx }) => {
                 className={`flex items-center justify-between p-3 rounded-lg transition-all ${
                   markedAnswer === index
                     ? isCorrect
-                      ? "bg-green-500 text-white font-semibold"
-                      : "bg-red-500 text-white font-semibold"
+                      ? "bg-green-400 text-white font-semibold"
+                      : "bg-red-400 text-white font-semibold"
                     : "bg-gray-100"
                 }`}
               >

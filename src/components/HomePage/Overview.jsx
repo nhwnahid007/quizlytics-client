@@ -199,9 +199,9 @@ const Overview = () => {
           <div className="w-full lg:w-1/3 bg-gray-100 rounded-3xl p-8 shadow-md">
             <div className="flex flex-col gap-4">
               <div className="bg-gray-50 w-14 h-14 rounded-2xl flex items-center justify-center">
-                <TimerReset className="w-7 h-7 text-gray-800" />
+                <TimerReset className="w-7 h-7 text-primary-color" />
               </div>
-              <h1 className="text-2xl font-bold text-primary-color">
+              <h1 className="text-2xl font-bold ">
                 Add Time Limits
               </h1>
               <p className="text-gray-600 text-lg">

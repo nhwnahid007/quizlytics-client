@@ -34,27 +34,35 @@ import {
 import useRole from "@/app/hooks/useRole";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 
-const Sidebar = () => {
+const Sidebar = ({ onToggleBlur }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setIsSidebarOpen(false); // Close sidebar on mobile
+      if (window.innerWidth < 1024) {
+        setIsSidebarOpen(false);
       } else {
-        setIsSidebarOpen(true); // Open sidebar on medium and larger screens
+        setIsSidebarOpen(true);
       }
     };
 
-    handleResize(); // Set initial state based on current window size
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    if (onToggleBlur) {
+      onToggleBlur(isSidebarOpen && window.innerWidth < 768);
+    }
+  }, [isSidebarOpen, onToggleBlur]);
+
   const pathname = usePathname();
 
   const [role, roleLoading] = useRole();
+
+  console.log("role",role);  
 
   const isActive = (route) => pathname === route;
 
@@ -104,7 +112,7 @@ const Sidebar = () => {
     (menu) =>
       role === "admin" ||
       (role === "user" &&
-        ["Leaderboard", "My Progress", "Home"].includes(menu.title)) ||
+        ["Leaderboard", "My Progress", "Take your Quiz","Quiz History",].includes(menu.title)) ||
       (role === "teacher" &&
         !["User Management", "Payment"].includes(menu.title))
   );
@@ -118,7 +126,7 @@ const Sidebar = () => {
       >
         <div>
           <button
-            className="absolute text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color text-white"
+            className="absolute z-10 text-3xl cursor-pointer -right-3 top-9 w-7 border-gray-800 border-2 rounded-full bg-secondary-color text-white"
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           >
             {isSidebarOpen ? (
@@ -133,15 +141,16 @@ const Sidebar = () => {
               className={`text-primary-color origin-left font-bold text-2xl duration-200 ${
                 !isSidebarOpen && "scale-0"
               }`}
+              onClick={() => window.innerWidth < 1024 && setIsSidebarOpen(false)}
             >
               Dashboard
             </Link>
           </div>
           <ul className="pt-6">
             {Menus.map((Menu, index) => (
-              <Link href={Menu.route} key={index}>
+              <Link href={Menu.route} key={index} onClick={() => window.innerWidth < 1024 && setIsSidebarOpen(false)}>
                 <li
-                  className={`flex rounded-md p-2 cursor-pointer hover:bg-primary-color/80 text-primary-color text-sm font-semibold items-center gap-x-2 ${
+                  className={`flex rounded-md p-2 cursor-pointer hover:bg-primary-color/80 hover:text-white text-primary-color text-sm font-semibold items-center gap-x-2 mb-1 ${
                     isActive(Menu.route) ? "bg-primary-color text-white" : ""
                   }`}
                 >
@@ -165,7 +174,7 @@ const Sidebar = () => {
           </ul>
         </div>
         <div className="flex flex-col gap-y-2">
-          <Link href="/">
+          <Link href="/" onClick={() => window.innerWidth < 1024 && setIsSidebarOpen(false)}>
             <li className="flex rounded-md p-2 cursor-pointer hover:bg-primary-color/80 hover:text-white text-primary-color text-sm font-semibold items-center gap-x-4">
               <span
                 className={`text-lg ${
@@ -184,7 +193,10 @@ const Sidebar = () => {
             </li>
           </Link>
           <button
-            onClick={() => signOut()}
+            onClick={() => {
+              signOut();
+              window.innerWidth < 1024 && setIsSidebarOpen(false);
+            }}
             className="flex rounded-md p-2 cursor-pointer hover:bg-primary-color/80 hover:text-white text-primary-color text-sm font-semibold items-center gap-x-4"
           >
             <span className="text-lg">

@@ -11,8 +11,10 @@ import Swal from "sweetalert2";
 import SubmitCard from "./SubmitCard";
 import LoadingSpinner from "../Spinner/LoadingSpinner";
 import moment from "moment";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
-const LatestSubmission = ({ quizKey, searchCategory, quizId }) => {
+const LatestSubmission = ({ quizKey, searchCategory, quizId, showBackButton = true }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const [latestSubmission, setLatestSubmission] = useState([]);
@@ -62,13 +64,13 @@ const LatestSubmission = ({ quizKey, searchCategory, quizId }) => {
       }
     };
     getLatestSubmission();
-  }, [quizKey, email, searchCategory]);
+  }, [quizKey, email, searchCategory, quizId]);
 
   return (
-    <div className="h-auto max-w-6xl pt-20 mx-auto">
-      {quizId ? (
+    <div className="h-auto max-w-6xl pt-20 mx-5 lg:mx-10 2xl:mx-auto">
+     {quizId ? (
         <h2 className="text-center text-xl md:text-3xl  font-extrabold  mb-8">
-          Exam of {moment(latestSubmission.date).format("MMMM Do YYYY")}
+          Quiz taken on {moment(latestSubmission.date).format("MMMM Do YYYY")}
         </h2>
       ) : (
         <h2 className="text-center text-xl md:text-3xl  font-extrabold  mb-8">
@@ -91,6 +93,14 @@ const LatestSubmission = ({ quizKey, searchCategory, quizId }) => {
         ))
       ) : (
         <div className="text-center text-gray-500">No submissions found.</div>
+      )}
+
+      {showBackButton && (
+        <div className="flex justify-center my-8">
+          <Link href="/Dashboard" className="mx-auto">
+            <Button>Back to Dashboard</Button>
+          </Link>
+        </div>
       )}
     </div>
   );

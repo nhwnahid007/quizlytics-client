@@ -84,7 +84,7 @@ const UserFeedback = () => {
           <div
             className={`${
               isModalOpen ? "scale-[1] opacity-100" : "scale-[0] opacity-0"
-            } w-[90%] md:w-[80%] lg:w-[60%] bg-[#fff] rounded-lg transition-all duration-300 mx-auto mt-8`}
+            } w-[80%] md:w-[60%] lg:w-[40%] 2xl:w-[25%] bg-[#fff] rounded-lg transition-all duration-300  lg:mx-auto p-4  mt-8`}
           >
             <div className="w-full flex items-end p-4 justify-between border-b border-[#d1d1d1]">
               <h1 className="text-[1.5rem] font-bold">
